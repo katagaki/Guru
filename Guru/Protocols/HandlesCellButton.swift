@@ -1,0 +1,12 @@
+//
+//  HandlesCellButton.swift
+//  Guru
+//
+//  Created by 堅書真太郎 on 2021/07/03.
+//
+
+import Foundation
+
+protocol HandlesCellButton: AnyObject {
+    func handleCellButton()
+}

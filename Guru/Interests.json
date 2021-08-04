@@ -1,0 +1,770 @@
+[
+    {
+        "name": "__reserved",
+        "words": [
+            "Version 1.0",
+            "Modified 25 Jun 2021",
+            "Ref: https://interestexplorer.io/facebook-interests-list/"
+        ]
+    },
+    {
+        "name": "advertising",
+        "words": [
+            "google",
+            "ad",
+            "adtech",
+            "capitalism",
+            "facebook",
+        ]
+    },
+    {
+        "name": "agriculture",
+        "words": [
+            "green",
+            "crops",
+            "plants",
+            "wildlife",
+            "nature",
+            "cultivate",
+            "cultivation",
+            "fertilizer"
+        ]
+    },
+    {
+        "name": "architecture",
+        "words": [
+            "building",
+            "build",
+            "architect"
+        ]
+    },
+    {
+        "name": "aviation",
+        "words": [
+            "boeing",
+            "airbus",
+            "concorde",
+            "fly",
+            "air",
+            "airplane",
+            "plane",
+            "captain"
+        ]
+    },
+    {
+        "name": "banking",
+        "words": [
+            "dbs",
+            "ocbc",
+            "uob",
+            "sc",
+            "money",
+            "bank",
+            "invest",
+            "investment",
+            "retail"
+        ]
+    },
+    {
+        "name": "business",
+        "words": [
+            "money"
+        ]
+    },
+    {
+        "name": "design",
+        "words": [
+            "fashion",
+            "graphic",
+            "interior"
+        ]
+    },
+    {
+        "name": "economics",
+        "words": [
+            "money",
+            "finance",
+            "stocks",
+            "cryptocurrency",
+            "crypto",
+            "market"
+        ]
+    },
+    {
+        "name": "engineering",
+        "words": [
+            "engineer",
+            "build",
+            "machine",
+            "robot",
+            "automation"
+        ]
+    },
+    {
+        "name": "health",
+        "words": [
+            "medicine",
+            "healthcare",
+            "doctor",
+            "nurse",
+            "pharma",
+            "pill",
+            "vaccine",
+            "coronavirus",
+            "covid",
+            "virus"
+        ]
+    },
+    {
+        "name": "education",
+        "words": [
+            "school",
+            "teacher",
+            "book",
+            "pencil",
+            "principal",
+            "eraser",
+            "pen",
+            "textbook",
+            "lesson",
+            "lecture",
+            "class",
+            "classroom",
+            "primary",
+            "elementary",
+            "secondary",
+            "highschool",
+            "tertiary",
+            "polytechnic",
+            "university",
+            "college",
+            "project",
+            "deadline"
+        ]
+    },
+    {
+        "name": "management",
+        "words": [
+            "boss",
+            "manager",
+            "politics",
+            "supervisor",
+            "peer",
+            "coworker",
+            "golf",
+            "office"
+        ]
+    },
+    {
+        "name": "online",
+        "words": [
+            "digital",
+            "marketing",
+            "display",
+            "email",
+            "web",
+            "social",
+            "media",
+            "seo",
+            "design",
+            "internet"
+        ]
+    },
+    {
+        "name": "finance",
+        "words": [
+            "credit",
+            "card",
+            "insurance",
+            "investment",
+            "invest",
+            "crypto",
+            "cryptocurrency",
+            "bitcoin",
+            "ethereum",
+            "dogecoin",
+            "coin",
+            "bank",
+            "debt",
+            "loan",
+            "budget",
+            "mortgage",
+            "rich",
+            "poor"
+        ]
+    },
+    {
+        "name": "science",
+        "words": [
+            "biology",
+            "chemistry",
+            "zoology",
+            "research",
+            "water",
+            "earth",
+            "fire",
+            "study",
+            "lab",
+            "test",
+            "tube",
+            "beaker",
+            "safety",
+            "goggles",
+            "anatomy",
+            "scientist"
+        ]
+    },
+    {
+        "name": "games",
+        "words": [
+            "action",
+            "board",
+            "browser",
+            "card",
+            "casino",
+            "fps",
+            "mmo",
+            "mmorpg",
+            "online",
+            "puzzle",
+            "racing",
+            "rpg",
+            "shooter",
+            "simulation",
+            "sports",
+            "strategy",
+            "video",
+            "word",
+            "steam",
+            "ea",
+            "ubisoft",
+            "horror",
+            "gacha",
+            "moba",
+            "music",
+            "rhythm"
+        ]
+    },
+    {
+        "name": "movies",
+        "words": [
+            "action",
+            "anime",
+            "animated",
+            "bollywood",
+            "comedy",
+            "documentary",
+            "drama",
+            "fantasy",
+            "horror",
+            "hollywood",
+            "musical",
+            "scifi",
+            "thriller",
+            "crime"
+        ]
+    },
+    {
+        "name": "music",
+        "words": [
+            "blues",
+            "classical",
+            "country",
+            "dance",
+            "electronic",
+            "edm",
+            "gospel",
+            "heavy",
+            "metal",
+            "hip",
+            "hop",
+            "hiphop",
+            "jazz",
+            "mv",
+            "pop",
+            "rhythm",
+            "soul",
+            "melody",
+            "tone",
+            "jpop",
+            "kpop",
+            "singer",
+            "songwriter",
+            "song",
+            "lyrics",
+            "lyric"
+        ]
+    },
+    {
+        "name": "reading",
+        "words": [
+            "book",
+            "comic",
+            "ebook",
+            "fiction",
+            "literature",
+            "magazine",
+            "manga",
+            "mystery",
+            "education",
+            "news",
+            "newspaper",
+            "paper",
+            "nonfiction",
+            "romance"
+        ]
+    },
+    {
+        "name": "tv",
+        "words": [
+            "comedy",
+            "game",
+            "show",
+            "reality",
+            "talkshow",
+            "gordon",
+            "ramsay",
+            "food",
+            "drama",
+            "series",
+            "netflix",
+            "couch"
+        ]
+    },
+    {
+        "name": "family",
+        "words": [
+            "father",
+            "mother",
+            "brother",
+            "sister",
+            "dad",
+            "daddy",
+            "mom",
+            "mommy",
+            "bro",
+            "sis",
+            "sibling",
+            "parent",
+            "parents",
+            "wedding",
+            "house",
+            "home"
+        ]
+    },
+    {
+        "name": "relationships",
+        "words": [
+            "family",
+            "friend",
+            "friends",
+            "love",
+            "dating",
+            "ship",
+            "close",
+            "distant"
+        ]
+    },
+    {
+        "name": "fitness",
+        "words": [
+            "body",
+            "build",
+            "bodybuilding",
+            "meditation",
+            "meditate",
+            "physical",
+            "exercise",
+            "running",
+            "run",
+            "walk",
+            "walking",
+            "training",
+            "train",
+            "yoga",
+            "jog",
+            "jogging",
+            "treadmill",
+            "sweat",
+            "strong",
+            "abs",
+            "healthy"
+        ]
+    },
+    {
+        "name": "beverages",
+        "words": [
+            "coffee",
+            "tea",
+            "red",
+            "bull",
+            "juice",
+            "soda",
+            "coke",
+            "pepsi",
+            "cola",
+            "orange",
+            "apple",
+            "fruit",
+            "sugar",
+            "milk",
+            "water",
+            "bubble"
+        ]
+    },
+    {
+        "name": "cooking",
+        "words": [
+            "baking",
+            "recipe",
+            "recipes",
+            "grill",
+            "bake",
+            "cook",
+            "boil",
+            "gordon",
+            "ramsay",
+            "chef",
+            "fry",
+            "steam",
+            "microwave",
+            "pan",
+            "pot"
+        ]
+    },
+    {
+        "name": "cuisine",
+        "words": [
+            "chinese",
+            "japanese",
+            "french",
+            "german",
+            "greek",
+            "indian",
+            "italian",
+            "korean",
+            "latin",
+            "american",
+            "mexican",
+            "middle",
+            "eastern",
+            "spanish",
+            "thai",
+            "vietnamese",
+            "pho",
+            "fine",
+            "dining"
+        ]
+    },
+    {
+        "name": "food",
+        "words": [
+            "barbeque",
+            "chocolate",
+            "dessert",
+            "fast",
+            "organic",
+            "pizza",
+            "seafood",
+            "vegan",
+            "vegetarian",
+            "mc",
+            "mcdonalds",
+            "rice",
+            "noodles",
+            "pasta",
+            "eat"
+        ]
+    },
+    {
+        "name": "arts",
+        "words": [
+            "acting",
+            "crefts",
+            "dance",
+            "drawing",
+            "drums",
+            "fine",
+            "guitar",
+            "painting",
+            "paint",
+            "perform",
+            "photography",
+            "photo",
+            "sculpt",
+            "sculpture",
+            "sing",
+            "singing",
+            "write",
+            "writing",
+            "skill",
+            "art",
+            "abstract"
+        ]
+    },
+    {
+        "name": "home",
+        "words": [
+            "diy",
+            "furniture",
+            "garden",
+            "gardening",
+            "flower",
+            "grass",
+            "dirt",
+            "appliance",
+            "improve",
+            "house"
+        ]
+    },
+    {
+        "name": "pets",
+        "words": [
+            "bird",
+            "cat",
+            "dog",
+            "fish",
+            "horse",
+            "rabbit",
+            "reptile",
+            "snake",
+            "goldfish",
+            "parrot",
+            "parakeet",
+            "cute",
+            "cuddly"
+        ]
+    },
+    {
+        "name": "travel",
+        "words": [
+            "adventure",
+            "travel",
+            "beach",
+            "rental",
+            "car",
+            "drive",
+            "cruise",
+            "eco",
+            "tourist",
+            "tour",
+            "tourism",
+            "hotel",
+            "lake",
+            "mountain",
+            "nature",
+            "theme",
+            "park",
+            "vacation",
+            "visa",
+            "passport",
+            "luggage",
+            "baggage",
+            "bag",
+            "fly"
+        ]
+    },
+    {
+        "name": "vehicles",
+        "words": [
+            "auto",
+            "automobile",
+            "car",
+            "boat",
+            "ev",
+            "vehicle",
+            "hybrid",
+            "minivan",
+            "van",
+            "motorcycle",
+            "bike",
+            "rv",
+            "suv",
+            "scooter",
+            "truck",
+            "drive",
+            "ride",
+            "road",
+            "sea"
+        ]
+    },
+    {
+        "name": "beauty",
+        "words": [
+            "salon",
+            "cosmetic",
+            "fragrance",
+            "hair",
+            "spa",
+            "tattoo",
+            "lipstick",
+            "makeup",
+            "blush",
+            "nail",
+            "polish",
+            "eyelash",
+            "eyebrow",
+            "foundation",
+            "eye"
+        ]
+    },
+    {
+        "name": "clothing",
+        "words": [
+            "supreme",
+            "children",
+            "men",
+            "shoes",
+            "women",
+            "formal",
+            "informal",
+            "uniqlo",
+            "shirt",
+            "shorts",
+            "pants",
+            "blazer",
+            "jacket",
+            "hoodie",
+            "skirt",
+            "dress",
+            "suit",
+            "fashion"
+        ]
+    },
+    {
+        "name": "accessories",
+        "words": [
+            "dress",
+            "handbag",
+            "bag",
+            "jewelry",
+            "diamond",
+            "gold",
+            "necklace",
+            "sunglasses",
+            "hairpin",
+            "piercing",
+            "bracelet",
+            "armband",
+            "glasses",
+            "headband",
+            "earring",
+            "mask"
+        ]
+    },
+    {
+        "name": "shopping",
+        "words": [
+            "amazon",
+            "boutique",
+            "coupon",
+            "cart",
+            "discount",
+            "offer",
+            "good",
+            "luxury",
+            "review",
+            "online",
+            "mall",
+            "window"
+        ]
+    },
+    {
+        "name": "outdoor",
+        "words": [
+            "boating",
+            "camping",
+            "boat",
+            "camp",
+            "fishing",
+            "fish",
+            "horse",
+            "riding",
+            "hunt",
+            "hunter",
+            "hunting",
+            "mountain",
+            "biking",
+            "bike",
+            "surf",
+            "surfing",
+            "hiking",
+            "hike",
+            "hill"
+        ]
+    },
+    {
+        "name": "sports",
+        "words": [
+            "football",
+            "soccer",
+            "racing",
+            "race",
+            "ball",
+            "baseball",
+            "basketball",
+            "golf",
+            "marathon",
+            "running",
+            "run",
+            "sweat",
+            "ski",
+            "skiing",
+            "snowboarding",
+            "snowboard",
+            "swim",
+            "swimming",
+            "tennis",
+            "triathlon",
+            "volleyball",
+            "fencing"
+        ]
+    },
+    {
+        "name": "computers",
+        "words": [
+            "memory",
+            "ram",
+            "monitor",
+            "display",
+            "processor",
+            "cpu",
+            "server",
+            "desktop",
+            "laptop",
+            "software",
+            "hardware",
+            "drive",
+            "network",
+            "storage",
+            "tablet",
+            "apple",
+            "microsoft",
+            "windows",
+            "pc",
+            "mac"
+        ]
+    },
+    {
+        "name": "electronics",
+        "words": [
+            "audio",
+            "camcorder",
+            "camera",
+            "recorder",
+            "reader",
+            "ebook",
+            "gps",
+            "game",
+            "console",
+            "mobile",
+            "smart",
+            "phone",
+            "media",
+            "player",
+            "projector",
+            "television",
+            "tv"
+        ]
+    }
+]

@@ -1,0 +1,324 @@
+/* 
+  Localized.strings
+  Guru
+
+  Created by 堅書真太郎 on 2021/07/03.
+  
+*/
+
+/* Authentication */
+"UnlockGuru" = "Guru Is Locked";
+"UseFaceIDToUnlock" = "Use Face ID to unlock Guru. \nIf you are wearing a mask, or if Face ID is disabled, iOS will ask you for your passcode.";
+"UseTouchIDToUnlock" = "Use Touch ID to unlock Guru.";
+"UseBiometricsToUnlock" = "Use biometrics to unlock Guru. If biometrics are not set or disabled, you will be asked for your passcode.";
+"UsePasswordToUnlock" = "Use your passcode to unlock Guru.";
+"SetPasscodeOrBiometrics" = "You will need to set a passcode to use Guru.";
+"Unlock" = "Unlock";
+"OverlayTitle" = "Logins Hidden";
+"OverlayText" = "To protect your logins, Guru automaticallly shows an overlay to hide your login data.";
+"SystemAuthenticationPromptFaceID" = "Use Face ID to unlock Guru.";
+"SystemAuthenticationPromptTouchID" = "Use Touch ID to unlock Guru.";
+"DeleteProfileAuthentication" = "Use your passcode to reset your profile.";
+
+/* ResetProfile */
+"ConfirmationToResetTitle" = "Delete Profile";
+"ConfirmationToResetText" = "Are you sure you want to delete your profile? All your logins will be deleted permanently. This action cannot be undone.";
+"ConfirmationToResetYes" = "Delete";
+"ConfirmationToResetNo" = "Cancel";
+"ConfirmationOfResetTitle" = "Profile Deleted";
+"ConfirmationOfResetText" = "Your profile has been successfully deleted. Guru will now close.";
+
+/* Tabs */
+"AlertsTab" = "Alerts";
+"LoginsTab" = "Logins";
+"GeneratorTab" = "Generator";
+"SettingsTab" = "Settings";
+
+/* Views */
+"Alerts" = "Breach Alerts";
+"BreachedInformation" = "Breached Information";
+"Logins" = "Your Logins";
+"NewLogin" = "New Login";
+"ScanQRCode" = "Scan QR Code";
+"Generate" = "Generate Password";
+"Settings" = "Settings";
+"Profile" = "Profile";
+"Personalization" = "Personalization";
+"iCloudSync" = "iCloud Sync";
+"ImportExport" = "Import/Export";
+"ImportLogins" = "Import Logins";
+"ExportLogins" = "Export Logins";
+"AppLock" = "App Lock";
+"BreachDetection" = "Breach Detection";
+"ThirdPartyLibraries" = "Third-Party Libraries";
+"UnderTheHood" = "Under The Hood";
+
+/* Alerts */
+"AlertsExplainer" = "Swipe down to check your emails and passwords.";
+"BreachedEmails" = "Breached Emails";
+"BreachedPasswords" = "Breached Passwords";
+"EmailTitle" = "Email Breach Alert";
+"EmailAlert" = "@$1 of your email was included in a data breach. Tap here to change its password now.";
+"EmailsAlert" = "@$1 of your emails were included in a data breach. Tap here to change their passwords now.";
+"EmailNoAlert" = "None of your emails were included in a data breach.";
+"PasswordTitle" = "Password Breach Alert";
+"PasswordAlert" = "@$1 of your password was included in a data breach. Tap here to change it now.";
+"PasswordsAlert" = "@$1 of your passwords were included in a data breach. Tap here to change them now.";
+"PasswordNoAlert" = "None of your passwords were included in a data breach.";
+"NoBreachDetected" = "No Breach Detected";
+"ErrorCheckingBreachesTitle" = "Could Not Check for Breaches";
+"ErrorCheckingBreachesText" = "An error occurred while checking your logins. Please try again later.";
+"Detecting" = "Checking for breaches...";
+"IncludedIn" = "Included in @$, etc";
+"BreachExplainer" = "One or more of your accounts were included in a data breach. Listed below are the logins affected by these breaches.";
+"BreachExplainerEmail" = "The email address '@$' was included in a data breach. Listed below are the logins affected by these breaches. You may want to consider enabling additional security features on your email service.";
+"BreachExplainerPassword" = "The password '@$' was included in a data breach. Listed below are the logins affected by these breaches. You may want to consider changing their passwords immediately.";
+"EmailCheckingTakesTime" = "Checking your emails may take some time.";
+"AffectedLogins" = "Affected Logins";
+
+/* Logins */
+"SearchResults" = "Search Results";
+"CopyPassword" = "Copy Password";
+"CopyOTP" = "Copy One Time Password";
+"AccountName" = "Name";
+"Credentials" = "Credentials";
+"Username" = "Username";
+"Password" = "Password";
+"ServiceURLs" = "Service URLs";
+"LoginURL" = "Login URL";
+"PasswordResetURL" = "Password Reset URL";
+"Icon" = "Icon";
+"2FA" = "2-Factor Authentication";
+"SetUp2FA" = "Set Up 2FA";
+"UseWebsiteIcon" = "Use Website Icon";
+"Optional" = " (Optional)";
+"GettingWebsiteIcon" = "Getting Website Icon";
+"WebsiteIconIsLongRunning" = "If this is taking a long time, you can cancel and try again.";
+"AccountNameRequiredTitle" = "Name Required";
+"AccountNameRequiredText" = "You will need to enter a name for this login.";
+"LoginAlreadyExistsTitle" = "Login Already Exists";
+"LoginAlreadyExistsText" = "A login with this name already exists. Please try again with another name.";
+"PasswordRequiredTitle" = "Password Required";
+"PasswordRequiredText" = "You will need to enter a password for this login.";
+"LoginPageRequiredTitle" = "Login Page Required";
+"LoginPageRequiredText" = "You will need to enter a login page URL for this login.";
+"SetUpLoginPage" = "Set Up Login Page";
+"SetUpResetPage" = "Set Up Password Reset Page";
+"OpenLoginPage" = "Open Website";
+"OpenResetPage" = "Reset Password";
+"OneTimePassword" = "One Time Password";
+"Delete2FA" = "Disable One Time Password";
+"AccountAdvisoryTitle" = "Login Advisory";
+"AccountAdvisoryText" = "The email address of this login was included in a data breach. You can view more information in the Alerts tab.";
+"AccountSafeTitle" = "No Breach Detected";
+"AccountSafeText" = "The email address of this login was not included in a data breach.";
+
+/* Generator */
+"NewPassword" = "New Password";
+"NewPasswordHint" = "Long press @$ to see more options.";
+"GenerateNewPassword" = "Generate New Password";
+"GenerateNewPassphrase" = "Generate New Passphrase";
+"TransformPassword" = "Transform Password";
+"PasswordPolicy" = "Password Policy";
+"PasswordPolicyExplainer" = "Select a password policy based on the password you'd like to generate.";
+"RecommendedTopics" = "Recommended Topics";
+"RecommendedTopicsExplainer" = "Select a topic you'd like to use in your password. Words relevant to the topic will be included.";
+"CharactersToInclude" = "Characters to Include";
+"CharactersToIncludeExplainer" = "Select the type of characters to include in your password.";
+"TopicsToInclude" = "Topics to Include";
+"TopicsToIncludeExplainer" = "Select the topics you'd like to use in your password. Words relevant to the topic will be included.";
+"ExplainerBasic" = "Generate a password based on the password policies for your work or school PC, important accounts, and other services.";
+"ExplainerEnhanced" = "Generate a password based on data from your personal information, existing passwords, and other habits. You can customize these options from the Settings tab.";
+"ExplainerCustom" = "Customize and generate a complex password.";
+"WorkSchool" = "Work or School";
+"WorkSchoolPolicy" = "Must contain lowercase and UPPERCASE letters\nMust contain at least 1 number\nMust contain at least 1 symbol\nMust be 8 or more characters long";
+"SensitivityLevel2" = "Internet Banking, Internet Services, Accounts Containing Sensitive Data";
+"SensitivityLevel2Policy" = "Must contain lowercase and UPPERCASE letters\nMust contain at least 1 number or symbol\nMust be 8 or more characters long";
+"SensitivityLevel3" = "Social Media, Image/Video Sharing Sites";
+"SensitivityLevel3Policy" = "Must contain lowercase and UPPERCASE letters\nMust be 8 or more characters long";
+"PIN" = "PIN";
+"PINPolicy" = "Contains numbers only\nMust be 6 or more digits long";
+"Examples" = "Words Included: @$1, @$2, @$3, etc";
+"Lowercase" = "lowercase Letters";
+"Uppercase" = "UPPERCASE Letters";
+"Numbers" = "Numbers";
+"Symbols" = "Symbols";
+"ExtraSymbols" = "Extra Symbols";
+"ExtraSymbolsDisclaimer" = "\nNOTE: You may not be allowed to include these symbols in your password on some apps/websites.";
+"WhiteSpaces" = "White Spaces";
+"NumberOfCharacters" = "Number of Characters";
+"LengthNotSecure" = "Security: None";
+"LengthAverage" = "Security: Average";
+"LengthModerate" = "Security: Moderate";
+"LengthSecure" = "Security: Secure";
+"LengthVerySecure" = "Security: Extreme";
+"PasswordFloatingPrefix" = "New Password:";
+
+/* Settings */
+"General" = "General";
+"Profile" = "Profile";
+"Personalization" = "Personalization";
+"iCloudSync" = "iCloud Sync";
+"ImportExport" = "Import/Export";
+"Security" = "Security";
+"AppLock" = "App Lock";
+"BreachDetection" = "Breach Detection";
+"Help" = "Help";
+"GetSupport" = "Get Support";
+"FAQs" = "FAQs";
+"Acknowledgements" = "Acknowledgements";
+"Debug" = "Under The Hood";
+"ThirdPartyLibraries" = "Third-Party Libraries";
+"LockApp" = "Lock App";
+"Version" = "Version @$1 Build @$2 (Beta)";
+
+/* Profile */
+"ProfileExplainer" = "You can provide additional information to Guru to improve your password suggestions. You are in control of this information, and you can tap Edit on the top right to edit/remove any of the information shown below.\n\nThis information is stored on your device and is never sent to a server.";
+"PII" = "Personal Information";
+"FullName" = "Full Name";
+"Region" = "Region";
+"Languages" = "@$ Language(s)";
+"Language" = "Language";
+"Birthday" = "Birthday";
+"Company" = "Company";
+"School" = "School";
+"TapToAdd" = "Tap to Add";
+"AddLanguage" = "Add Language";
+"Interests" = "Interests";
+"AddInterest" = "Add Interest";
+"NoInterests" = "No interests added. Tap Edit on the top right to add one now.";
+"UnknownInterest" = "Unknown Interest";
+"AddTitle" = "Add @$";
+"DeleteWarning" = "Permanently delete all your data from Guru. This action cannot be undone.";
+"DeleteProfile" = "Delete Profile";
+
+/* Personalization */
+"PersonalizationExplainer" = "Enable personalization to personalize and improve password suggestions. \n\nWhen you enable personalization, Guru uses your personal information, password preferences, and interests to customize your passwords. Guru will also automatically learn from your habits to suggest better passwords.\n\nKnowledge Guru learns about you is stored on your device and is never sent to a server.";
+"PersonalizePasswords" = "Personalize Passwords";
+"Categories" = "Categories";
+"CategoryExplainer" = "Select the categories of information you want Guru to use when suggesting new passwords.";
+"PersonalInformation" = "Personal Information";
+"InterestsTopics" = "Interests";
+"ExistingPasswords" = "Existing Passwords";
+"AutomaticallyLearnedKnowledge" = "Intelligence";
+"KnowledgeExplainer" = "Manage information Guru has automatically learned about you.";
+"ManageKnowledge" = "Manage Knowledge";
+
+/* CloudSync */
+"CloudSyncExplainer" = "Turn on iCloud syncing to sync your data to iCloud.\n\nTo delete your iCloud data, turn iCloud syncing off.";
+"CloudSyncUnavailableExplainer" = "iCloud syncing is unavailable because iCloud is not turned on or signed in, or is disabled by your device administrator.";
+"CloudSync" = "iCloud Sync";
+"DeleteCloudData" = "Delete all data synced to iCloud.";
+
+/* Portability */
+"PortabilityExplainer" = "Guru allows you to import your data from, and export your data to other password managers. Select an option below to get started.";
+"Import" = "Import";
+"Export" = "Export";
+"ImportExplainer" = "Select the app/service you would like to import your data from to get instructions.";
+"ImportLogins" = "Import Logins";
+"ImportInterests" = "Import Interests";
+"ImportGuide" = "Import from @$";
+"ExportExplainer" = "Select the app/service you would like to export your logins to, then tap Export to get a file which you can import to that app/service.\nYou can also optionally set a password to store the exported file in a password-protected ZIP file.";
+"ExportDestination" = "Destination";
+"ExportPassword" = "Export Password (Optional)";
+"ExportFilename" = "Passwords";
+
+/* ImportGuide */
+"ImportGuideTitle" = "Importing from @$";
+"Step1" = "Step 1";
+"Step2" = "Step 2";
+"Step3" = "Step 3";
+"Step4" = "Step 4";
+"GuruStep1" = "Open your browser, then unlock the Guru extension by clicking on the Guru icon on the menu bar.";
+"GuruStep2" = "Click 'Settings', then click 'Import/Export'.";
+"GuruStep3" = "Click 'Export to Guru', then save the file and transfer it to a location you can access on your iPhone, or AirDrop it to your iPhone directly.";
+"GuruStep4" = "Tap 'Select File...' below and select the saved file to import your logins.";
+"EdgeStep1" = "Open Microsoft Edge, then go to edge://settings/passwords.";
+"EdgeStep2" = "Scroll down to 'Saved Passwords', then click on the ... button.";
+"EdgeStep3" = "Click 'Export Passwords', then save the file and transfer it to a location you can access on your iPhone, or AirDrop it to your iPhone directly.";
+"EdgeStep4" = "Tap 'Select File...' below and select the saved file to import your logins.";
+"ChromeStep1" = "Open Google Chrome, then go to chrome://settings/passwords.";
+"ChromeStep2" = "Scroll down to 'Saved Passwords', then click on the ... button.";
+"ChromeStep3" = "Click 'Export Passwords', then save the file and transfer it to a location you can access on your iPhone, or AirDrop it to your iPhone directly.";
+"ChromeStep4" = "Tap 'Select File...' below and select the saved file to import your logins.";
+"SafariStep1" = "Open the System Preferences app on your Mac, then click on 'Passwords'.\n(Exporting is only available on macOS Monterey and above.)";
+"SafariStep2" = "Unlock the Passwords page using Touch ID or your password, then click the ... button at the bottom of the list.";
+"SafariStep3" = "Click 'Export Passwords', then save the file and transfer it to a location you can access on your iPhone, or AirDrop it to your iPhone directly.";
+"SafariStep4" = "Tap 'Select File...' below and select the saved file to import your logins.";
+"SelectFile..." = "Select File ...";
+"ImportingProgress" = "Importing... @$";
+"ImportCompletedTitle" = "Import Complete";
+"ImportCompletedText" = "Imported a total of @$ login(s).";
+"ImportIncompleteText" = "Imported a total of @$1 login(s). @$2 login(s) already exist and were not imported.";
+"ImportErrorTitle" = "Import Error";
+"ImportErrorText" = "An error occurred while importing your logins. @$ login(s) were successfully imported.";
+
+/* AppLock */
+"AppLockFaceIDExplainer" = "If you are wearing a mask, or if Face ID is disabled, iOS will ask you for your passcode. Your logins remain accessible even if you set up Face ID again.";
+"AppLockTouchIDExplainer" = "If Touch ID is disabled, iOS will ask you for your passcode. Your logins remain accessible even if you set up Touch ID again.";
+"UseFaceID" = "Use Face ID";
+"UseTouchID" = "Use Touch ID";
+"UsePasscode" = "Use Passcode";
+"UseBiometrics" = "UseBiometrics";
+"TimeoutExplainer" = "Your logins are automatically locked when Guru is restarted.";
+"TimeBeforeLocking" = "Time Before Locking";
+"Timeout0" = "Immediately";
+"Timeout1" = "1 Minute";
+"Timeout3" = "3 Minutes";
+"Timeout5" = "5 Minutes";
+"Timeout10" = "10 Minutes";
+
+/* BreachDetection */
+"BreachDetectionExplainer" = "Turn on Breach Detection to allow Guru to use Have I Been Pwned to automatically detect if your emails and passwords were included in breaches.\nGuru will only scan new emails and passwords when you enter them while creating a new login. You can also initiate a full scan of all your saved logins from the Alerts tab.";
+"BreachDetectionToggle" = "Breach Detection";
+"HaveIBeenPwnedTitle" = "Information about data breaches is provided by Have I Been Pwned.";
+"HaveIBeenPwnedLearnMore" = "Learn More";
+"DetectionTypes" = "Detection Types";
+"DetectBreachedEmails" = "Detect Breached Emails";
+"DetectBreachedPasswords" = "Detect Breached Passwords";
+
+/* UnderTheHood */
+"UnderTheHoodExplainer" = "WARNING: These options may break Guru and cause data loss. Only use these options when told to do so by a support representative.";
+"InternalPreferences" = "Internal Preferences";
+"OnboardingCompleted" = "Onboarding Completed";
+"Logging" = "Logging";
+"AppLogs" = "App Logs";
+
+/* Onboarding */
+"WelcomeTitle" = "Welcome to Guru";
+"WelcomeText" = "Guru helps you master your passwords by helping you create and manage memorable and secure passwords.\nTo get started, tap Continue.";
+"WelcomeTextPasscodeRequired" = "Guru helps you master your passwords by helping you create and manage memorable and secure passwords.\nYou will need to set a passcode to use Guru.";
+"TermsOfService" = "Terms of Service";
+"PrivacyPolicy" = "Privacy Policy";
+"InformationAboutYouTitle" = "Information About You";
+"InformationAboutYouText" = "Guru can learn from your data to personalize your passwords.\nInformation you add is stored on your device and is never sent to a server.\nYou can add your information later in Settings > Profile, or import eixsting information in Settings > Import.";
+"PasswordQuestionnaireTitle" = "Password Questionnaire";
+"PasswordQuestionnaireText" = "Guru will now ask you a few questions about how you set your passwords.\nKeep in mind that the passwords you enter during the questionnaire will not be stored, and will only be used to train Guru to recognize how you set your passwords.";
+"SkipPasswordQuestionnaire" = "Skip This";
+
+/* OTP */
+"OTPExplainer" = "Point your iPhone at the QR code displayed on the 2FA setup page of the website/app.";
+"EnterOTPCodeManually" = "Enter Code Manually";
+"NoCameraTitle" = "Scanning Unsupported";
+"NoCameraText" = "This device does not support scanning of QR codes, you can still enter the code manually.";
+"InvalidOTPTitle" = "Invalid 2FA Setup Code";
+"InvalidOTPText" = "The scanned/entered 2FA setup code is invalid, please try again.";
+"ConfirmDisableOTPTitle" = "Disable One Time Password";
+"ConfirmDisableOTPText" = "Are you sure you want to disable one time passwords for @$? This will not disable 2-factor authentication for the account.";
+
+/* General */
+"Add" = "Add";
+"CloseGuru" = "Close Guru";
+"Cancel" = "Cancel";
+"Continue" = "Continue";
+"Copied" = "Copied";
+"Concatenator" = ", ";
+"Done" = "Done";
+"Edit" = "Edit";
+"TryAgain" = "Try Again";
+"OK" = "OK";
+"Yes" = "Yes";
+"No" = "No";
+"Back" = "Back";
+"Skip" = "Skip";
+"Delete" = "Delete";

@@ -1,0 +1,324 @@
+/*
+ Localized.strings
+ Guru
+ 
+ Created by 堅書真太郎 on 2021/07/03.
+ 
+ */
+
+/* Authentication */
+"UnlockGuru" = "Guruがロックされています";
+"UseFaceIDToUnlock" = "Face IDを使用してGuruを解除します。\nFace IDがiOSにより禁止されるまたはマスクを着用する場合、パスコードを求めます。";
+"UseTouchIDToUnlock" = "Touch IDを使用してGuruを解除します。";
+"UseBiometricsToUnlock" = "生体認証を使用してGuruを解除します。";
+"UsePasswordToUnlock" = "パスコードを使用してGuruを解除します。";
+"SetPasscodeOrBiometrics" = "Guruを解除するには、パスコードが必要です。";
+"Unlock" = "解除";
+"OverlayTitle" = "データが保護されています";
+"OverlayText" = "データを保護するために、オーバーレイを表してコンテンツを隠しています。";
+"SystemAuthenticationPromptFaceID" = "Face IDを使用してGuruを解除します。";
+"SystemAuthenticationPromptTouchID" = "Touch IDを使用してGuruを解除します。";
+"DeleteProfileAuthentication" = "パスコードを使用してプロフィールをリセットします。";
+
+/* ResetProfile */
+"ConfirmationToResetTitle" = "プロフィールを削除";
+"ConfirmationToResetText" = "Guruのプロフィールを削除してよろしいですか？アカウントや他のデータは完全に削除され、復元できなくなります。";
+"ConfirmationToResetYes" = "削除";
+"ConfirmationToResetNo" = "キャンセル";
+"ConfirmationOfResetTitle" = "プロフィールが削除しました";
+"ConfirmationOfResetText" = "お客様のプロフィールが削除しました。ご利用ありがとうございました。";
+
+/* Tabs */
+"AlertsTab" = "アラート";
+"LoginsTab" = "アカウント";
+"GeneratorTab" = "作成";
+"SettingsTab" = "設定";
+
+/* Views */
+"Alerts" = "アラート";
+"BreachedInformation" = "漏洩された情報";
+"Logins" = "アカウント";
+"NewLogin" = "新規アカウント";
+"ScanQRCode" = "QRコードをスキャン";
+"Generate" = "パスワード作成";
+"Settings" = "設定";
+"Profile" = "プロフィール";
+"Personalization" = "パーソナライズ";
+"iCloudSync" = "iCloud同期";
+"ImportExport" = "インポート/エクスポート";
+"ImportLogins" = "アカウントを読み込む";
+"ExportLogins" = "アカウントを書き出す";
+"AppLock" = "画面ロック";
+"BreachDetection" = "情報漏洩検出";
+"ThirdPartyLibraries" = "サードパーティーライブラリー";
+"UnderTheHood" = "システムオプション";
+
+/* Alerts */
+"AlertsExplainer" = "下にスワイプしてメールアドレスとパスワードを検査します。";
+"BreachedEmails" = "漏洩されたメールアドレス";
+"BreachedPasswords" = "漏洩されたパスワード";
+"EmailTitle" = "メール漏洩アラート";
+"EmailAlert" = "@$1個のメールアドレスは情報漏洩インシデントに検出されました。漏洩されたメールアドレスに関するアカウントのパスワードを変更することをおすすめします。";
+"EmailsAlert" = "@$1個のメールアドレスは情報漏洩インシデントに検出されました。漏洩されたメールアドレスに関するアカウントのパスワードを変更することをおすすめします。";
+"EmailNoAlert" = "漏洩されたメールアドレスはありません。";
+"PasswordTitle" = "パスワード漏洩アラート";
+"PasswordAlert" = "@$1個のパスワードは情報漏洩インシデントに検出されました。漏洩されたパスワードを変更することをおすすめします。";
+"PasswordsAlert" = "@$1個のパスワードは情報漏洩インシデントに検出されました。漏洩されたパスワードを変更することをおすすめします。";
+"PasswordNoAlert" = "漏洩されたパスワードはありません。";
+"NoBreachDetected" = "情報漏洩は検出しませんでした";
+"Detecting" = "アカウントの情報を検査中…";
+"ErrorCheckingBreachesTitle" = "エラーが発生しました";
+"ErrorCheckingBreachesText" = "検査中にエラーが発生しました。もう一度試してください。";
+"IncludedIn" = "@$などに含まれている";
+"BreachExplainer" = "下のアカウントは漏洩された情報を使われています。アカウントの情報を確認することをお勧めします。";
+"BreachExplainerEmail" = "「@$」は多くの情報と共に漏洩されました。下のアカウントはそのメールアドレスを使われています。メールのセキュリティー機能を確認することをお勧めします。";
+"BreachExplainerPassword" = "「@$」は多くの情報と共に漏洩されました。下のアカウントはそのパスワードを使われています。早めにパスワードを変更することをお勧めします。";
+"EmailCheckingTakesTime" = "メールアドレスの検査は時間がかかります。";
+"AffectedLogins" = "影響されたアカウント";
+
+/* Logins */
+"SearchResults" = "検索結果";
+"CopyPassword" = "パスワードをコピー";
+"CopyOTP" = "認証コードをコピー";
+"AccountName" = "アカウント名";
+"Credentials" = "ログイン情報";
+"Username" = "ユーザーネーム";
+"Password" = "パスワード";
+"ServiceURLs" = "リンク";
+"LoginURL" = "ログインページ";
+"PasswordResetURL" = "パスワードリセットページ";
+"Icon" = "アイコン";
+"2FA" = "2ファクタ認証";
+"SetUp2FA" = "2ファクタ認証をセットアップ";
+"UseWebsiteIcon" = "ウェブサイトのアイコンを使用";
+"Optional" = "（任意）";
+"GettingWebsiteIcon" = "アイコンを読み込み中";
+"WebsiteIconIsLongRunning" = "アイコンの読み込みは時間がかかる場合、キャンセルすることができます。";
+"AccountNameRequiredTitle" = "アカウント名が必要です";
+"AccountNameRequiredText" = "アカウント名を入力してからもう一度試してください。";
+"LoginAlreadyExistsTitle" = "アカウントは既にあります";
+"LoginAlreadyExistsText" = "このアカウント名は既に追加されています。アカウント名をもう一度確認してください。";
+"PasswordRequiredTitle" = "パスワードが必要です";
+"PasswordRequiredText" = "パスワードを入力してからもう一度試してください。";
+"LoginPageRequiredTitle" = "ログインページが必要です";
+"LoginPageRequiredText" = "ログインページを入力してからもう一度試してください。";
+"SetUpLoginPage" = "ログインページを追加";
+"SetUpResetPage" = "パスワードリセットページを追加";
+"OpenLoginPage" = "サービスにログイン";
+"OpenResetPage" = "パスワードをリセット";
+"OneTimePassword" = "認証コード";
+"Delete2FA" = "認証コードを無効化";
+"AccountAdvisoryTitle" = "安全警告";
+"AccountAdvisoryText" = "このアカウントのメールアドレスは情報漏洩インシデントに検出されました。詳しくは、「アラート」をタップしてください。";
+"AccountSafeTitle" = "メールアドレスは安全です";
+"AccountSafeText" = "このアカウントのメールアドレスは情報漏洩インシデントに検出されませんでした。";
+
+/* Generator */
+"NewPassword" = "新規パスワード";
+"NewPasswordHint" = "他の種類のパスワードを作成するには、「@$」を長押ししてください。";
+"GenerateNewPassword" = "新規パスワードを作成";
+"GenerateNewPassphrase" = "新規パスフレーズを作成";
+"TransformPassword" = "パスワードをトランスフォーム";
+"PasswordPolicy" = "パスワードポリシー";
+"PasswordPolicyExplainer" = "適当なパスワードポリシーを選択します。";
+"RecommendedTopics" = "おすすめのトピック";
+"RecommendedTopicsExplainer" = "好きなトピックを選択します。選択されたトピックに関する単語がパスワードに含まれます。";
+"CharactersToInclude" = "含めるキャラクター";
+"CharactersToIncludeExplainer" = "含めたいキャラクターを選択します。";
+"TopicsToInclude" = "含めるトピック";
+"TopicsToIncludeExplainer" = "含めたいトピックを選択します。選択されたトピックに関する単語がパスワードに含まれます。";
+"ExplainerBasic" = "組織、学校、インターネットサービスなどのパスワードポリシーによりパスワードを作成します。";
+"ExplainerEnhanced" = "提供された個人情報、追加されたパスワード、Guruが学んだ習慣などデータポイントによりパスワードを作成します。使われるデータポイントは設定タブで選択できます。";
+"ExplainerCustom" = "条件を選択してパスワードを作成します。";
+"WorkSchool" = "組織・学校";
+"WorkSchoolPolicy" = "小文字と大文字の英文字が必要\n1つ以上の数字が必要\n1つ以上の特集記号が必要\n長さは8文字以上";
+"SensitivityLevel2" = "銀行口座、インターネットサービス、個人情報が保存されるアカウントなど";
+"SensitivityLevel2Policy" = "小文字と大文字の英文字が必要\n1つ以上の数字または特集記号が必要\n長さは8文字以上";
+"SensitivityLevel3" = "SNS、電子掲示板など";
+"SensitivityLevel3Policy" = "小文字と大文字の英文字が必要\n長さは8文字以上";
+"PIN" = "暗証番号";
+"PINPolicy" = "数字のみ\n長さは6文字以上";
+"Examples" = "含まれる言葉：@$1、@$2、@$3など";
+"Lowercase" = "小文字の英文字";
+"Uppercase" = "大文字の英文字";
+"Numbers" = "数字";
+"Symbols" = "特集記号";
+"ExtraSymbols" = "特集記号（拡張）";
+"ExtraSymbolsDisclaimer" = "\n※これらの特集記号は、アプリやサイトによる禁止される場合があります。";
+"WhiteSpaces" = "空白・スペース";
+"NumberOfCharacters" = "キャラクター数";
+"LengthNotSecure" = "安全レベル：低い";
+"LengthAverage" = "安全レベル：普通";
+"LengthModerate" = "安全レベル：やや高い";
+"LengthSecure" = "安全レベル：高い";
+"LengthVerySecure" = "安全レベル：すばらしい";
+"PasswordFloatingPrefix" = "作成されたパスワード：";
+
+/* Settings */
+"General" = "一般";
+"Profile" = "プロフィール";
+"Personalization" = "パーソナライズ";
+"iCloudSync" = "iCloud同期";
+"ImportExport" = "インポート/エクスポート";
+"Security" = "セキュリティー";
+"AppLock" = "画面ロック";
+"BreachDetection" = "情報漏洩検出";
+"Help" = "ヘルプ";
+"GetSupport" = "お問合せ";
+"FAQs" = "よくある質問";
+"Acknowledgements" = "謝辞";
+"Debug" = "システムオプション";
+"ThirdPartyLibraries" = "サードパーティーライブラリー";
+"LockApp" = "ロック";
+"Version" = "バージョン@$1 ビルド@$2（ベータ版）";
+
+/* Profile */
+"ProfileExplainer" = "様々な個人情報を提供すると、Guruで作成したパスワードはその情報を使い、パソナライズすることができます。提供された情報は、いつでもこの画面で編集したり削除したりすることができます。\n\nお客様の個人情報はお客様の端末外に送ったりサーバーに保存されたりすることはありません。";
+"PII" = "個人情報";
+"FullName" = "名前";
+"Region" = "地域";
+"Languages" = "@$個の言語";
+"Language" = "言語";
+"Birthday" = "誕生日";
+"Company" = "会社名";
+"School" = "学校名";
+"TapToAdd" = "タップして追加";
+"AddLanguage" = "言語を追加";
+"Interests" = "興味";
+"AddInterest" = "興味を追加";
+"NoInterests" = "興味はまだ追加されていません。編集ボタンをタップし、興味を追加することができます。";
+"UnknownInterest" = "未知興味";
+"AddTitle" = "@$を追加";
+"DeleteWarning" = "個人情報やアカウントを完全に削除します。削除すると、復元できなくなります。";
+"DeleteProfile" = "プロフィールを削除";
+
+/* Personalization */
+"PersonalizationExplainer" = "パーソナライズされたパスワードをオンにすると、パスワードを作成するとき、データを含め、もっと適当なパスワードを作成することができます。\n\nパスワードを作成するとき、個人情報、パスワードを選択するときの習慣、興味などを使い、パスワードをパーソナライズされます。それに、インテリジェンスによりパスワードの習慣が自動的に変わったりします。\n\nインテリジェンスのデータはお客様の端末外に送ったりサーバーに保存されたりすることはありません。";
+"PersonalizePasswords" = "パーソナライズされたパスワード";
+"Categories" = "カテゴリー";
+"CategoryExplainer" = "パスワードを作成するときのデータを選ぶことができます。";
+"PersonalInformation" = "個人情報";
+"InterestsTopics" = "興味";
+"ExistingPasswords" = "既存のパスワード";
+"AutomaticallyLearnedKnowledge" = "インテリジェンス";
+"KnowledgeExplainer" = "Guruに保存されたインテリジェンスを管理することができます。";
+"ManageKnowledge" = "インテリジェンスを管理";
+
+/* CloudSync */
+"CloudSyncExplainer" = "iCloudに同期をオンにすると、個人情報やアカウントは自動的にiCloudに同期されます。\n\niCloudに同期をオフにすると、iCloudに同期が停止され、同期されたデータが削除されます。";
+"CloudSyncUnavailableExplainer" = "iCloudにサインインされない、または管理者が禁止されたため、iCloudはたった今使用できません。";
+"CloudSync" = "iCloudに同期";
+"DeleteCloudData" = "iCloudに同期されたデータを完全に削除します。";
+
+/* Portability */
+"PortabilityExplainer" = "Guruのアカウントを書き出すまたは他のパスワードマネージャーから読み込むことができます。次のオプションを選択してください。";
+"Import" = "インポート";
+"Export" = "エクスポート";
+"ImportExplainer" = "読み込みたいファイルの元のソース（アプリまたはサービス）を選択してください。";
+"ImportLogins" = "ログインをインポート";
+"ImportInterests" = "興味をインポート";
+"ImportGuide" = "@$からインポート";
+"ExportExplainer" = "アカウントを書き出す後、どのアプリやサービスに読み込むかを選択し、「書き出す」を選択するとファイルを書き出します。\n暗号化されたZIPアーカイブに保存したい場合、パスワードを入力してください。";
+"ExportDestination" = "アプリ・サービス";
+"ExportPassword" = "ZIPアーカイブパスワード（任意）";
+"ExportFilename" = "パスワード";
+
+/* ImportGuide */
+"ImportGuideTitle" = "@$からインポート";
+"Step1" = "ステップ 1";
+"Step2" = "ステップ 2";
+"Step3" = "ステップ 3";
+"Step4" = "ステップ 4";
+"GuruStep1" = "ブラウザーを開き、メニューバーのGuruアイコンをクリックし、解除します。";
+"GuruStep2" = "「設定」をクリックし、「読み込む・書き出す」をクリックします。";
+"GuruStep3" = "「Guruアプリに書き出す」をクリックし、保存先を選択してからiPhoneに転送します。転送するには、クラウドストレージまたはAirDropでできます。";
+"GuruStep4" = "下の「ファイルを選択...」を選択し、書き出したファイルを選択します。";
+"EdgeStep1" = "Microsoft Edgeアプリを開き、edge://settings/passwordsを開きます。";
+"EdgeStep2" = "「保存されたパスワード」にスクロールし、「…」のボタンをクリックします。";
+"EdgeStep3" = "「パスワードをエクスポート」を選択し、保存先を選択してからiPhoneに転送します。転送するには、クラウドストレージまたはAirDropでできます。";
+"EdgeStep4" = "下の「ファイルを選択...」を選択し、書き出したファイルを選択します。";
+"ChromeStep1" = "Google Chromeアプリを開き、chrome://settings/passwordsを開きます。";
+"ChromeStep2" = "「保存されたパスワード」にスクロールし、「…」のボタンをクリックします。";
+"ChromeStep3" = "「パスワードをエクスポート」を選択し、保存先を選択してからiPhoneに転送します。転送するには、クラウドストレージまたはAirDropでできます。";
+"ChromeStep4" = "下の「ファイルを選択...」を選択し、書き出したファイルを選択します。";
+"SafariStep1" = "システム環境設定アプリを開き、「パスワード」をクリックします。\n注意：パスワードの書き出しは、macOS Monterey以上のバージョンだけ対応しています。";
+"SafariStep2" = "Touch IDまたはパスワードを使って解除し、下の「…」のボタンをクリックします。";
+"SafariStep3" = "「パスワードを書き出す...」を選択し、保存先を選択してからiPhoneに転送します。転送するには、クラウドストレージまたはAirDropでできます。";
+"SafariStep4" = "下の「ファイルを選択...」を選択し、書き出したファイルを選択します。";
+"SelectFile..." = "ファイルを選択...";
+"ImportingProgress" = "読み込み中... @$";
+"ImportCompletedTitle" = "インポート完成";
+"ImportCompletedText" = "@$個のアカウントは正常にインポートされました。";
+"ImportIncompleteText" = "@$1個のアカウントは正常にインポートされました。@$2個のアカウントは既にあるため、インポートされませんでした。";
+"ImportErrorTitle" = "インポートエラー";
+"ImportErrorText" = "インポート中、エラーが発生しました。@$個のアカウントは正常にインポートされました。";
+
+/* AppLock */
+"AppLockFaceIDExplainer" = "Face IDがiOSにより禁止されるまたはマスクを着用する場合、パスコードを求めます。Face IDに登録された顔が変わっても、データをアクセスすることができます。";
+"AppLockTouchIDExplainer" = "Touch IDがiOSにより禁止される場合、パスコードを求めます。Touch IDに登録された指紋が変わっても、データをアクセスすることができます。";
+"UseFaceID" = "Face IDを使用";
+"UseTouchID" = "Touch IDを使用";
+"UsePasscode" = "パスコードを使用";
+"UseBiometrics" = "生体認証を使用";
+"TimeoutExplainer" = "アプリを再起動すると、アカウントは自動的にロックされます。";
+"TimeBeforeLocking" = "認証を要求";
+"Timeout0" = "即時";
+"Timeout1" = "1分後";
+"Timeout3" = "3分後";
+"Timeout5" = "5分後";
+"Timeout10" = "10分後";
+
+/* BreachDetection */
+"BreachDetectionExplainer" = "情報漏洩検出をオンにすると、メールアドレスやパスワードの漏洩はHave I Been Pwnedにより自動的に検出されます。\n新しいアカウントを作成するときのみ漏洩を検出されます。アカウントを全て検出するには、「アラート」をタップしてください。";
+"BreachDetectionToggle" = "情報漏洩検出を使用";
+"HaveIBeenPwnedTitle" = "情報漏洩のデータはHave I Been Pwnedによる提供します。";
+"HaveIBeenPwnedLearnMore" = "詳細";
+"DetectionTypes" = "検出設定";
+"DetectBreachedEmails" = "漏洩されたメールアドレスを検出";
+"DetectBreachedPasswords" = "漏洩されたパスワードを検出";
+
+/* UnderTheHood */
+"UnderTheHoodExplainer" = "こちらの設定はアプリを使えないようにして、データにアクセスできなくなることがあります。サポートからのリクエスト以外はお気をつけください。";
+"InternalPreferences" = "内部設定";
+"OnboardingCompleted" = "セットアップ完成";
+"Logging" = "ロギング";
+"AppLogs" = "アプリログ";
+
+/* Onboarding */
+"WelcomeTitle" = "Guruへようこそ";
+"WelcomeText" = "Guruは覚えやすい安全なパスワードを作成したり、保存したりすることができます。\n始めるには、継続をタップしてください。";
+"WelcomeTextPasscodeRequired" = "Guruは、覚えやすい安全なパスワードを作成したり、保存したりすることができます。\nGuruを使うには、パスコードが必要です。";
+"TermsOfService" = "利用規約";
+"PrivacyPolicy" = "プライバシーポリシー";
+"InformationAboutYouTitle" = "あなたについての情報";
+"InformationAboutYouText" = "様々な情報を提供していただけると、Guruはあなたについての情報を使ってパスワードを作成することができます。\n提供された情報はお客様の端末外に送ったりサーバーに保存したりすることはありません。\n情報を追加するには、「設定」＞「プロフィール」の順にタップし、「編集」をタップします。他のサービスからインポートしたい場合、「設定」＞「インポート/エクスポート」の順に選択します。";
+"PasswordQuestionnaireTitle" = "パスワードのアンケート";
+"PasswordQuestionnaireText" = "Guruは今パスワードについてのアンケートをとります。\nアンケートに入力されたパスワードはGuruのインテリジェンスのために使用します。そのパスワードを保存することはありません。";
+"SkipPasswordQuestionnaire" = "やめておく";
+
+/* OTP */
+"OTPExplainer" = "iPhoneのカメラをパソコンの画面に表示されているQRコードに向けてください。";
+"EnterOTPCodeManually" = "手動に入力";
+"NoCameraTitle" = "QRコードはスキャンできません";
+"NoCameraText" = "お使いのデバイスはQRコードのスキャニングに対応しないので、セットアップコードを手動に入力してください。";
+"InvalidOTPTitle" = "無効なセットアップコード";
+"InvalidOTPText" = "スキャンされたまたは入力されたセットアップコードは無効です。確認してからもう一度試してください。";
+"ConfirmDisableOTPTitle" = "認証コードを無効化";
+"ConfirmDisableOTPText" = "認証コードを無効にしてよろしいですか？認証コードを無効にしても、ウェブサイトまたはサービスの2ファクタ認証が自動的にオフになりません。";
+
+/* General */
+"Add" = "追加";
+"CloseGuru" = "Guruを閉じる";
+"Cancel" = "キャンセル";
+"Continue" = "続ける";
+"Copied" = "コピーしました";
+"Concatenator" = "、";
+"Done" = "完了";
+"Edit" = "編集";
+"TryAgain" = "やり直す";
+"OK" = "確認";
+"Yes" = "はい";
+"No" = "いいえ";
+"Back" = "戻る";
+"Skip" = "スキップ";
+"Delete" = "削除";

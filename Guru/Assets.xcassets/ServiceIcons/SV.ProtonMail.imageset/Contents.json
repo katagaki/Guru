@@ -1,0 +1,16 @@
+{
+  "images" : [
+    {
+      "filename" : "SV.ProtonMail.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "compression-type" : "gpu-optimized-best",
+    "template-rendering-intent" : "original"
+  }
+}
