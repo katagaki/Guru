@@ -200,7 +200,6 @@
 		E4593CE6266A5396001DF782 /* ContentLockable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentLockable.swift; sourceTree = "<group>"; };
 		E4593CE9266A703A001DF782 /* WelcomeToGuruViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeToGuruViewController.swift; sourceTree = "<group>"; };
 		E4593CF1266B23FE001DF782 /* UpdatesFolderPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatesFolderPreview.swift; sourceTree = "<group>"; };
-		E45CBAA02686014700644ADE /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
 		E45CBAA32686179000644ADE /* Interests.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Interests.json; sourceTree = "<group>"; };
 		E45CBAA5268617AF00644ADE /* Wordlist.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Wordlist.txt; sourceTree = "<group>"; };
 		E45CBAA8268619D300644ADE /* Interest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interest.swift; sourceTree = "<group>"; };
@@ -508,7 +507,6 @@
 		E4EAB9F02657E59C0054F310 /* Guru */ = {
 			isa = PBXGroup;
 			children = (
-				E45CBAA02686014700644ADE /* TODO.md */,
 				E4EAB9FA2657E59E0054F310 /* Assets.xcassets */,
 				E4EAB9F12657E59C0054F310 /* AppDelegate.swift */,
 				E4EAB9F32657E59C0054F310 /* SceneDelegate.swift */,
