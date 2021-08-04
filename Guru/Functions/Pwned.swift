@@ -33,6 +33,9 @@ public func checkBreaches(emails: [String]) -> (breaches: [String:[Pwnage]], err
                         result.updateValue(breaches, forKey: email)
                         log("Added \(email.prefix(3))<redacted> to list of breached logins.")
                         semaphore.signal()
+                    } else {
+                        log("No breach detected on \(email.prefix(3))<redacted>.")
+                        semaphore.signal()
                     }
                 }
             }
@@ -115,6 +118,9 @@ public func checkBreaches(passwords: [String]) -> (breaches: [String: Bool], has
                             log("Added \(uniquePasswords[i].prefix(3))<redacted> to list of breached logins.")
                             semaphore.signal()
                         }
+                    } else {
+                        log("No breach detected on \(uniquePasswords[i].prefix(3))<redacted>.")
+                        semaphore.signal()
                     }
                 }
             }
