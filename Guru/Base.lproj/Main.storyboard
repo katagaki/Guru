@@ -838,10 +838,10 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                             <subviews>
                                 <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bzg-PC-5j9">
-                                    <rect key="frame" x="0.0" y="0.0" width="137.66666666666666" height="32"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="116.66666666666667" height="32"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="999" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pg7-gC-ME0" customClass="RoundedImageView" customModule="Guru" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="1.6666666666666679" width="50" height="29"/>
+                                            <rect key="frame" x="0.0" y="1.6666666666666679" width="29" height="29"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="29" id="Nbu-ow-Mpb"/>
@@ -860,7 +860,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Login Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CWe-TJ-Lwo">
-                                            <rect key="frame" x="58.000000000000007" y="7.6666666666666679" width="79.666666666666686" height="17"/>
+                                            <rect key="frame" x="37.000000000000007" y="7.6666666666666679" width="79.666666666666686" height="17"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -988,17 +988,17 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="PasswordTextFieldCell" id="ZuU-eS-BeK" customClass="TextInputWithCopyCell" customModule="Guru" customModuleProvider="target">
-                                <rect key="frame" x="20" y="212.9999942779541" width="350" height="258"/>
+                                <rect key="frame" x="20" y="212.9999942779541" width="350" height="259.66665649414062"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZuU-eS-BeK" id="bgQ-Yl-fqG">
-                                    <rect key="frame" x="0.0" y="0.0" width="350" height="258"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="350" height="259.66665649414062"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="4gB-cC-yHz">
-                                            <rect key="frame" x="20" y="0.0" width="310" height="258"/>
+                                            <rect key="frame" x="20" y="0.0" width="310" height="259.66666666666669"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" keyboardDismissMode="onDrag" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cd8-LR-oro" customClass="CenteredTextView" customModule="Guru" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="230.66666666666666" height="258"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="230.66666666666666" height="259.66666666666669"/>
                                                     <color key="textColor" systemColor="labelColor"/>
                                                     <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="new-password"/>
@@ -1007,7 +1007,7 @@
                                                     </connections>
                                                 </textView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hts-8J-qtM">
-                                                    <rect key="frame" x="246.66666666666671" y="0.0" width="63.333333333333343" height="258"/>
+                                                    <rect key="frame" x="246.66666666666671" y="0.0" width="63.333333333333343" height="259.66666666666669"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <state key="normal" image="square.on.square" catalog="system"/>
                                                     <connections>
@@ -1032,7 +1032,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RegenerateCell" textLabel="opn-W5-5jd" style="IBUITableViewCellStyleDefault" id="ggu-G7-7kA">
-                                <rect key="frame" x="20" y="470.9999942779541" width="350" height="43.666667938232422"/>
+                                <rect key="frame" x="20" y="472.66665077209473" width="350" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ggu-G7-7kA" id="iHL-AC-mdr">
                                     <rect key="frame" x="0.0" y="0.0" width="350" height="43.666667938232422"/>
@@ -1049,7 +1049,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CharacterCountCell" id="dLl-Iw-jCd" customClass="SliderCell" customModule="Guru" customModuleProvider="target">
-                                <rect key="frame" x="20" y="514.66666221618652" width="350" height="81.333335876464844"/>
+                                <rect key="frame" x="20" y="516.33331871032715" width="350" height="81.333335876464844"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dLl-Iw-jCd" id="eAt-79-Jqv">
                                     <rect key="frame" x="0.0" y="0.0" width="350" height="81.333335876464844"/>
@@ -1108,7 +1108,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="OptionCell" textLabel="PZz-Tp-1be" detailTextLabel="CBx-kt-tUu" style="IBUITableViewCellStyleSubtitle" id="evH-rb-Gfh">
-                                <rect key="frame" x="20" y="595.99999809265137" width="350" height="49.666667938232422"/>
+                                <rect key="frame" x="20" y="597.66665458679199" width="350" height="49.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="evH-rb-Gfh" id="bWh-G7-bdt">
                                     <rect key="frame" x="0.0" y="0.0" width="350" height="49.666667938232422"/>
@@ -1132,7 +1132,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="InterestCell" textLabel="fUC-Wf-eV1" detailTextLabel="zGr-sB-7oB" style="IBUITableViewCellStyleSubtitle" id="8WQ-8F-B1a">
-                                <rect key="frame" x="20" y="645.66666603088379" width="350" height="49.666667938232422"/>
+                                <rect key="frame" x="20" y="647.33332252502441" width="350" height="49.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8WQ-8F-B1a" id="CnT-5d-gfI">
                                     <rect key="frame" x="0.0" y="0.0" width="350" height="49.666667938232422"/>
@@ -4711,16 +4711,16 @@ This information is only used to teach Guru about your habits, and is not stored
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Export" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="6z3-bn-AyN">
-                                            <rect key="frame" x="56.833333333333343" y="0.0" width="273.16666666666663" height="43.666667938232422"/>
+                                            <rect key="frame" x="55.666666666666657" y="0.0" width="274.33333333333331" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <color key="textColor" name="AccentColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="BuT-by-X5z">
-                                            <rect key="frame" x="18.833333333333336" y="8" width="23" height="26"/>
+                                            <rect key="frame" x="20.833333333333336" y="10.333333333333336" width="19" height="21"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <imageReference key="image" image="square.and.arrow.up" catalog="system" symbolScale="large"/>
+                                            <imageReference key="image" image="square.and.arrow.up.fill" catalog="system"/>
                                         </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
@@ -4841,17 +4841,18 @@ This information is only used to teach Guru about your habits, and is not stored
                     </tableView>
                     <navigationItem key="navigationItem" title="Import Logins" largeTitleDisplayMode="never" id="GaZ-y8-f8S"/>
                     <connections>
-                        <segue destination="bcj-VP-6an" kind="show" identifier="ShowGuide" id="3Ww-OX-Ob8"/>
+                        <segue destination="bcj-VP-6an" kind="show" identifier="ShowImportLogins" id="3Ww-OX-Ob8"/>
+                        <segue destination="bxJ-tN-Soj" kind="show" identifier="ShowImportInterests" id="b0Q-23-7qK"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YsM-i5-5t0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3434" y="1595"/>
         </scene>
-        <!--Import Guide-->
+        <!--Import Logins-->
         <scene sceneID="tOY-cZ-5yN">
             <objects>
-                <tableViewController id="bcj-VP-6an" customClass="ImportGuideTableViewController" customModule="Guru" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="bcj-VP-6an" customClass="ImportLoginsTableViewController" customModule="Guru" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="7Xq-Da-XqC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -4922,16 +4923,16 @@ This information is only used to teach Guru about your habits, and is not stored
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Select File..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="eBc-eI-v3v">
-                                            <rect key="frame" x="56.833333333333343" y="0.0" width="273.16666666666663" height="43.666667938232422"/>
+                                            <rect key="frame" x="55.666666666666657" y="0.0" width="274.33333333333331" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <color key="textColor" name="AccentColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1AQ-nV-nWO">
-                                            <rect key="frame" x="18.833333333333336" y="9" width="23" height="25"/>
+                                            <rect key="frame" x="20.833333333333336" y="11.333333333333336" width="19" height="20"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <imageReference key="image" image="square.and.arrow.down" catalog="system" symbolScale="large"/>
+                                            <imageReference key="image" image="square.and.arrow.down.fill" catalog="system"/>
                                         </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
@@ -4942,15 +4943,115 @@ This information is only used to teach Guru about your habits, and is not stored
                             <outlet property="delegate" destination="bcj-VP-6an" id="Wag-1u-ZfU"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Import Guide" id="mjJ-Ob-UBq"/>
+                    <navigationItem key="navigationItem" title="Import Logins" id="mjJ-Ob-UBq"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qn3-bh-kwg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4094" y="1595"/>
         </scene>
+        <!--Import Interests-->
+        <scene sceneID="2c8-oc-Qfb">
+            <objects>
+                <tableViewController id="bxJ-tN-Soj" customClass="ImportInterestsTableViewController" customModule="Guru" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="eJQ-nh-Jw4">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ExplainerCell" textLabel="1PC-Y3-2Pb" style="IBUITableViewCellStyleDefault" id="CXd-J3-rta">
+                                <rect key="frame" x="20" y="49" width="350" height="55.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CXd-J3-rta" id="bFP-q2-nUX">
+                                    <rect key="frame" x="0.0" y="0.0" width="350" height="55.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="View the download page for @$1 to download a copy of your data." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="1PC-Y3-2Pb">
+                                            <rect key="frame" x="20" y="0.0" width="310" height="55.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <inset key="separatorInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="OpenSupportPageCell" textLabel="TjB-lS-QSS" imageView="OTs-Rq-VYt" style="IBUITableViewCellStyleDefault" id="ABQ-vm-Oxd">
+                                <rect key="frame" x="20" y="104.66666793823242" width="350" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ABQ-vm-Oxd" id="yFx-Ps-ZjA">
+                                    <rect key="frame" x="0.0" y="0.0" width="350" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Open Support Page" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="TjB-lS-QSS">
+                                            <rect key="frame" x="55.666666666666657" y="0.0" width="274.33333333333337" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <color key="textColor" name="AccentColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="OTs-Rq-VYt">
+                                            <rect key="frame" x="20.5" y="12" width="19.666666666666664" height="19"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <imageReference key="image" image="safari.fill" catalog="system"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="FileNameToUploadCell" textLabel="6eK-gz-g1L" style="IBUITableViewCellStyleDefault" id="spm-y9-Gm0">
+                                <rect key="frame" x="20" y="148.33333587646484" width="350" height="55.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="spm-y9-Gm0" id="TsV-eQ-d9i">
+                                    <rect key="frame" x="0.0" y="0.0" width="350" height="55.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Once you have obtained an archive of your data, extract it and select the file named '@$'." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="6eK-gz-g1L">
+                                            <rect key="frame" x="20" y="0.0" width="310" height="55.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <inset key="separatorInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SelectFileCell" textLabel="4jU-Eh-qzp" imageView="7eJ-z4-zUg" style="IBUITableViewCellStyleDefault" id="YbM-2i-3ay">
+                                <rect key="frame" x="20" y="204.00000381469727" width="350" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YbM-2i-3ay" id="2q6-d1-cEf">
+                                    <rect key="frame" x="0.0" y="0.0" width="350" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Select File..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="4jU-Eh-qzp">
+                                            <rect key="frame" x="55.666666666666657" y="0.0" width="274.33333333333331" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <color key="textColor" name="AccentColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7eJ-z4-zUg">
+                                            <rect key="frame" x="20.833333333333336" y="11.333333333333336" width="19" height="20"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <imageReference key="image" image="square.and.arrow.down.fill" catalog="system"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="bxJ-tN-Soj" id="PDw-1v-md9"/>
+                            <outlet property="delegate" destination="bxJ-tN-Soj" id="nKi-LX-VVL"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Import Interests" id="Zae-RK-ovZ"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6c3-xb-xjM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4762" y="1595"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="sw7-B3-0Ki"/>
+        <segue reference="xDK-H9-jHw"/>
         <segue reference="KLf-9f-EBf"/>
         <segue reference="HwA-Gy-KD7"/>
         <segue reference="yPk-vy-8ap"/>
@@ -4997,9 +5098,9 @@ This information is only used to teach Guru about your habits, and is not stored
         <image name="restart.circle.fill" catalog="system" width="128" height="121"/>
         <image name="safari.fill" catalog="system" width="128" height="121"/>
         <image name="shippingbox" catalog="system" width="128" height="124"/>
-        <image name="square.and.arrow.down" catalog="system" width="121" height="128"/>
+        <image name="square.and.arrow.down.fill" catalog="system" width="121" height="128"/>
         <image name="square.and.arrow.down.on.square.fill" catalog="system" width="122" height="128"/>
-        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
+        <image name="square.and.arrow.up.fill" catalog="system" width="115" height="128"/>
         <image name="square.and.arrow.up.on.square.fill" catalog="system" width="117" height="128"/>
         <image name="square.on.square" catalog="system" width="128" height="113"/>
         <image name="trash.fill" catalog="system" width="121" height="128"/>

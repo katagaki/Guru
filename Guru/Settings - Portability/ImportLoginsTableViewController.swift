@@ -1,5 +1,5 @@
 //
-//  ImportGuideTableViewController.swift
+//  ImportLoginsTableViewController.swift
 //  Guru
 //
 //  Created by 堅書真太郎 on 2021/07/25.
@@ -8,13 +8,13 @@
 import UIKit
 import UniformTypeIdentifiers
 
-class ImportGuideTableViewController: UITableViewController, UIDocumentPickerDelegate, ReportsProgress {
+class ImportLoginsTableViewController: UITableViewController, UIDocumentPickerDelegate, ReportsProgress {
     
     var guideCode: String = ""
     
     var floatingActivityView: UIVisualEffectView = UIVisualEffectView()
     let floatingActivityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(style: .large)
-    let floatingActivityLabel: UILabel = singleLinedLabel(withText: NSLocalizedString("ImportingProgress", comment: "ImportGuide").replacingOccurrences(of: "@$", with: "0%"))
+    let floatingActivityLabel: UILabel = singleLinedLabel(withText: NSLocalizedString("ImportingLoginsProgress", comment: "ImportLogins").replacingOccurrences(of: "@$", with: "0%"))
     
     var isImporting: Bool = false
     var importCount: Int = 0
@@ -29,7 +29,7 @@ class ImportGuideTableViewController: UITableViewController, UIDocumentPickerDel
         center(view: floatingActivityView, in: navigationController!.view)
         
         // Localization
-        navigationItem.title = NSLocalizedString("ImportGuide", comment: "Portability").replacingOccurrences(of: "@$", with: guideCode)
+        navigationItem.title = NSLocalizedString("ImportFrom", comment: "Portability").replacingOccurrences(of: "@$", with: guideCode)
         
     }
     
@@ -51,13 +51,13 @@ class ImportGuideTableViewController: UITableViewController, UIDocumentPickerDel
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "StepCell") as! DetailWithLargeImageCell
-            cell.titleLabel.text = NSLocalizedString("Step\(indexPath.row + 1)", comment: "ImportGuide")
-            cell.subtitleLabel.text = NSLocalizedString("\(guideCode)Step\(indexPath.row + 1)", comment: "ImportGuide")
+            cell.titleLabel.text = NSLocalizedString("Step\(indexPath.row + 1)", comment: "ImportLogins")
+            cell.subtitleLabel.text = NSLocalizedString("\(guideCode)Step\(indexPath.row + 1)", comment: "ImportLogins")
             cell.largeImageView.image = UIImage(named: "\(guideCode)Step\(indexPath.row + 1)")
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SelectFileCell")!
-            cell.textLabel?.text = NSLocalizedString("SelectFile...", comment: "ImportGuide")
+            cell.textLabel?.text = NSLocalizedString("SelectFile...", comment: "ImportLogins")
             return cell
         default: return UITableViewCell()
         }
@@ -89,7 +89,7 @@ class ImportGuideTableViewController: UITableViewController, UIDocumentPickerDel
             if let userProfile = userProfile {
                 navigationItem.hidesBackButton = true
                 floatingActivityIndicator.startAnimating()
-                floatingActivityLabel.text = NSLocalizedString("ImportingProgress", comment: "ImportGuide").replacingOccurrences(of: "@$", with: "0%")
+                floatingActivityLabel.text = NSLocalizedString("ImportingLoginsProgress", comment: "ImportLogins").replacingOccurrences(of: "@$", with: "0%")
                 UIView.animate(withDuration: 0.25, delay: 0.0, options: []) {
                     self.floatingActivityView.layer.opacity = 1.0
                 } completion: { _ in
@@ -97,7 +97,7 @@ class ImportGuideTableViewController: UITableViewController, UIDocumentPickerDel
                     DispatchQueue.global(qos: .background).async {
                         let addCSVResult = userProfile.addLogins(fromCSV: contents, progressReporter: self)
                         if addCSVResult.success {
-                            let importAlertText: String = (addCSVResult.notImportedCount == 0 ? NSLocalizedString("ImportCompletedText", comment: "ImportGuide").replacingOccurrences(of: "@$", with: String(self.importCount)) : NSLocalizedString("ImportIncompleteText", comment: "ImportGuide").replacingOccurrences(of: "@$1", with: String(self.importCount)).replacingOccurrences(of: "@$2", with: String(addCSVResult.notImportedCount)))
+                            let importAlertText: String = (addCSVResult.notImportedCount == 0 ? NSLocalizedString("ImportLoginsCompletedText", comment: "ImportLogins").replacingOccurrences(of: "@$", with: String(self.importCount)) : NSLocalizedString("ImportIncompleteText", comment: "ImportLogins").replacingOccurrences(of: "@$1", with: String(self.importCount)).replacingOccurrences(of: "@$2", with: String(addCSVResult.notImportedCount)))
                             DispatchQueue.main.async {
                                 UIView.animate(withDuration: 0.25, delay: 0.0, options: []) {
                                     self.floatingActivityView.layer.opacity = 0.0
@@ -106,7 +106,7 @@ class ImportGuideTableViewController: UITableViewController, UIDocumentPickerDel
                                     UIApplication.shared.isIdleTimerDisabled = false
                                     self.floatingActivityIndicator.stopAnimating()
                                     self.isImporting = false
-                                    let completedAlert = UIAlertController(title: NSLocalizedString("ImportCompletedTitle", comment: "ImportGuide"),
+                                    let completedAlert = UIAlertController(title: NSLocalizedString("ImportLoginsCompletedTitle", comment: "ImportLogins"),
                                                                            message: importAlertText,
                                                                            preferredStyle: .alert)
                                     completedAlert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "General"),
@@ -123,8 +123,8 @@ class ImportGuideTableViewController: UITableViewController, UIDocumentPickerDel
                             UIApplication.shared.isIdleTimerDisabled = false
                             self.floatingActivityIndicator.stopAnimating()
                             self.isImporting = false
-                            let completedAlert = UIAlertController(title: NSLocalizedString("ImportErrorTitle", comment: "ImportGuide"),
-                                                                   message: NSLocalizedString("ImportErrorText", comment: "ImportGuide").replacingOccurrences(of: "@$", with: String(self.importCount)),
+                            let completedAlert = UIAlertController(title: NSLocalizedString("ImportErrorTitle", comment: "ImportLogins"),
+                                                                   message: NSLocalizedString("ImportErrorText", comment: "ImportLogins").replacingOccurrences(of: "@$", with: String(self.importCount)),
                                                                    preferredStyle: .alert)
                             completedAlert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "General"),
                                                                    style: .default,
@@ -153,7 +153,7 @@ class ImportGuideTableViewController: UITableViewController, UIDocumentPickerDel
     func updateProgress(progress: Double, total: Double) {
         importCount = Int(total)
         DispatchQueue.main.async {
-            self.floatingActivityLabel.text = NSLocalizedString("ImportingProgress", comment: "ImportGuide").replacingOccurrences(of: "@$", with: "\(Int((progress / total) * 100))%")
+            self.floatingActivityLabel.text = NSLocalizedString("ImportingLoginsProgress", comment: "ImportLogins").replacingOccurrences(of: "@$", with: "\(Int((progress / total) * 100))%")
         }
     }
     

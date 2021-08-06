@@ -73,6 +73,15 @@
 		E4CEAD2D26A3D3D10067796E /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4593CCD2668F18B001DF782 /* Login.swift */; };
 		E4CEAD2E26A3D5040067796E /* KeychainItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C3CCC9269068E70020942F /* KeychainItem.swift */; };
 		E4CEAD2F26A3D5040067796E /* KeychainItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C3CCC9269068E70020942F /* KeychainItem.swift */; };
+		E4D54E1F26BD63E000CBB76F /* ImportInterestsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D54E1E26BD63E000CBB76F /* ImportInterestsTableViewController.swift */; };
+		E4D6EF3B26BD6EC200BF112B /* TwitterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D6EF3A26BD6EC200BF112B /* TwitterData.swift */; };
+		E4D6EF3D26BD6EFB00BF112B /* TwitterLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D6EF3C26BD6EFB00BF112B /* TwitterLanguage.swift */; };
+		E4D6EF3F26BD6F8000BF112B /* TwitterInterest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D6EF3E26BD6F8000BF112B /* TwitterInterest.swift */; };
+		E4D6EF4126BD8BF700BF112B /* BuiltInData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D6EF4026BD8BF700BF112B /* BuiltInData.swift */; };
+		E4D6EF4226BD8F3000BF112B /* TwitterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D6EF3A26BD6EC200BF112B /* TwitterData.swift */; };
+		E4D6EF4326BD8F3300BF112B /* TwitterInterest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D6EF3E26BD6F8000BF112B /* TwitterInterest.swift */; };
+		E4D6EF4426BD8F3500BF112B /* TwitterLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D6EF3C26BD6EFB00BF112B /* TwitterLanguage.swift */; };
+		E4D6EF4526BD8F4A00BF112B /* BuiltInData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D6EF4026BD8BF700BF112B /* BuiltInData.swift */; };
 		E4DAB02026B1928800540892 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DAB01F26B1928800540892 /* Alerts.swift */; };
 		E4DAB02226B192AA00540892 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DAB02126B192AA00540892 /* Logging.swift */; };
 		E4DAB02426B192C500540892 /* ResetProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DAB02326B192C500540892 /* ResetProfile.swift */; };
@@ -96,7 +105,7 @@
 		E4DF796126AC86E200C3FB5C /* SHA256Digest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DF795F26AC86E200C3FB5C /* SHA256Digest.swift */; };
 		E4DF796326AC932900C3FB5C /* DatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DF796226AC932900C3FB5C /* DatePickerCell.swift */; };
 		E4DF796726AD478700C3FB5C /* DetailWithLargeImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DF796626AD478700C3FB5C /* DetailWithLargeImageCell.swift */; };
-		E4DF796926AD486600C3FB5C /* ImportGuideTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DF796826AD486600C3FB5C /* ImportGuideTableViewController.swift */; };
+		E4DF796926AD486600C3FB5C /* ImportLoginsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DF796826AD486600C3FB5C /* ImportLoginsTableViewController.swift */; };
 		E4E87C6B268CC0AC00CD6832 /* NewLoginTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E87C6A268CC0AB00CD6832 /* NewLoginTableViewController.swift */; };
 		E4E87C6D268CC14A00CD6832 /* TextInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E87C6C268CC14A00CD6832 /* TextInputCell.swift */; };
 		E4E87C71268CC42E00CD6832 /* IconCarousellCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E87C70268CC42E00CD6832 /* IconCarousellCell.swift */; };
@@ -243,6 +252,11 @@
 		E4CEAC4326A2E9B60067796E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		E4CEAC4526A2E9B60067796E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4CEAC4626A2E9B60067796E /* AutoFill.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AutoFill.entitlements; sourceTree = "<group>"; };
+		E4D54E1E26BD63E000CBB76F /* ImportInterestsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportInterestsTableViewController.swift; sourceTree = "<group>"; };
+		E4D6EF3A26BD6EC200BF112B /* TwitterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterData.swift; sourceTree = "<group>"; };
+		E4D6EF3C26BD6EFB00BF112B /* TwitterLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterLanguage.swift; sourceTree = "<group>"; };
+		E4D6EF3E26BD6F8000BF112B /* TwitterInterest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterInterest.swift; sourceTree = "<group>"; };
+		E4D6EF4026BD8BF700BF112B /* BuiltInData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuiltInData.swift; sourceTree = "<group>"; };
 		E4DAB01F26B1928800540892 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		E4DAB02126B192AA00540892 /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		E4DAB02326B192C500540892 /* ResetProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetProfile.swift; sourceTree = "<group>"; };
@@ -253,7 +267,7 @@
 		E4DF795F26AC86E200C3FB5C /* SHA256Digest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHA256Digest.swift; sourceTree = "<group>"; };
 		E4DF796226AC932900C3FB5C /* DatePickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerCell.swift; sourceTree = "<group>"; };
 		E4DF796626AD478700C3FB5C /* DetailWithLargeImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWithLargeImageCell.swift; sourceTree = "<group>"; };
-		E4DF796826AD486600C3FB5C /* ImportGuideTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportGuideTableViewController.swift; sourceTree = "<group>"; };
+		E4DF796826AD486600C3FB5C /* ImportLoginsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportLoginsTableViewController.swift; sourceTree = "<group>"; };
 		E4E87C6A268CC0AB00CD6832 /* NewLoginTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLoginTableViewController.swift; sourceTree = "<group>"; };
 		E4E87C6C268CC14A00CD6832 /* TextInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputCell.swift; sourceTree = "<group>"; };
 		E4E87C70268CC42E00CD6832 /* IconCarousellCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCarousellCell.swift; sourceTree = "<group>"; };
@@ -429,6 +443,9 @@
 				E4CEAC1926A28A850067796E /* Password.swift */,
 				E4281DA92691F0E400949DAD /* Pwnage.swift */,
 				E4CEAC1B26A28C220067796E /* Quirk.swift */,
+				E4D6EF3A26BD6EC200BF112B /* TwitterData.swift */,
+				E4D6EF3E26BD6F8000BF112B /* TwitterInterest.swift */,
+				E4D6EF3C26BD6EFB00BF112B /* TwitterLanguage.swift */,
 				E4C78ED02687114200128F9B /* UserProfile.swift */,
 			);
 			path = Classes;
@@ -438,6 +455,7 @@
 			isa = PBXGroup;
 			children = (
 				E4DAB01F26B1928800540892 /* Alerts.swift */,
+				E4D6EF4026BD8BF700BF112B /* BuiltInData.swift */,
 				E4DAB02526B1930000540892 /* Crypto.swift */,
 				E48F94EA26B55EBE0050AD81 /* ViewGeneration.swift */,
 				E4DAB02126B192AA00540892 /* Logging.swift */,
@@ -592,7 +610,8 @@
 			children = (
 				E4F9D2B52695C56A00867B42 /* PortabilityTableViewController.swift */,
 				E4F9D2BA2695E73100867B42 /* ImportTableViewController.swift */,
-				E4DF796826AD486600C3FB5C /* ImportGuideTableViewController.swift */,
+				E4DF796826AD486600C3FB5C /* ImportLoginsTableViewController.swift */,
+				E4D54E1E26BD63E000CBB76F /* ImportInterestsTableViewController.swift */,
 				E4F9D2BC2695EE0400867B42 /* ExportTableViewController.swift */,
 			);
 			path = "Settings - Portability";
@@ -733,10 +752,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4CEAD2B26A3D3CE0067796E /* UserProfile.swift in Sources */,
+				E4D6EF4326BD8F3300BF112B /* TwitterInterest.swift in Sources */,
 				E4CEAD2D26A3D3D10067796E /* Login.swift in Sources */,
 				E48F94F026B56FB90050AD81 /* Pwned.swift in Sources */,
 				E4DF796126AC86E200C3FB5C /* SHA256Digest.swift in Sources */,
+				E4D6EF4226BD8F3000BF112B /* TwitterData.swift in Sources */,
 				E4CEAD2E26A3D5040067796E /* KeychainItem.swift in Sources */,
+				E4D6EF4526BD8F4A00BF112B /* BuiltInData.swift in Sources */,
 				E40638B726B28ED5009569CD /* GlobalVariables.swift in Sources */,
 				E48F94F226B570460050AD81 /* Sequence.swift in Sources */,
 				E4DAB02F26B194DF00540892 /* CSVType.swift in Sources */,
@@ -749,6 +771,7 @@
 				E4CEAC4E26A2EACB0067796E /* RoundedImageView.swift in Sources */,
 				E4DAB02E26B194D600540892 /* Interest.swift in Sources */,
 				E40638B626B26173009569CD /* ReportsProgress.swift in Sources */,
+				E4D6EF4426BD8F3500BF112B /* TwitterLanguage.swift in Sources */,
 				E48F94F326B570560050AD81 /* Digest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -761,10 +784,14 @@
 				E4593CEA266A703A001DF782 /* WelcomeToGuruViewController.swift in Sources */,
 				E4DAB03126B19E4D00540892 /* Sequence.swift in Sources */,
 				E4CEAD2F26A3D5040067796E /* KeychainItem.swift in Sources */,
+				E4D6EF3B26BD6EC200BF112B /* TwitterData.swift in Sources */,
+				E4D6EF4126BD8BF700BF112B /* BuiltInData.swift in Sources */,
 				E40638B526B26026009569CD /* ReportsProgress.swift in Sources */,
 				E46BB5012691BB8300BEE0AA /* SettingsNavigationController.swift in Sources */,
+				E4D6EF3D26BD6EFB00BF112B /* TwitterLanguage.swift in Sources */,
 				E48F94EF26B56DD30050AD81 /* UINavigationController.swift in Sources */,
 				E4EDA0082660C138003919C7 /* ProfileTableViewController.swift in Sources */,
+				E4D54E1F26BD63E000CBB76F /* ImportInterestsTableViewController.swift in Sources */,
 				E4F9D2C126960E5D00867B42 /* ThirdPartyLibrariesViewController.swift in Sources */,
 				E4DF795526AC845B00C3FB5C /* Interest.swift in Sources */,
 				E4F9D2BB2695E73100867B42 /* ImportTableViewController.swift in Sources */,
@@ -780,7 +807,7 @@
 				E4EABA40265977CB0054F310 /* SettingsTableViewController.swift in Sources */,
 				E4EABA502659936B0054F310 /* ExtendedImageView.swift in Sources */,
 				E46BB4FF2691B5F500BEE0AA /* FinishesOnboarding.swift in Sources */,
-				E4DF796926AD486600C3FB5C /* ImportGuideTableViewController.swift in Sources */,
+				E4DF796926AD486600C3FB5C /* ImportLoginsTableViewController.swift in Sources */,
 				E4DAB03026B19E4700540892 /* Digest.swift in Sources */,
 				E4DF796726AD478700C3FB5C /* DetailWithLargeImageCell.swift in Sources */,
 				E4DAB03226B19E7F00540892 /* Pwned.swift in Sources */,
@@ -815,6 +842,7 @@
 				E4F9D2A526952E3800867B42 /* BreachDetectionTableViewController.swift in Sources */,
 				E4DAB02226B192AA00540892 /* Logging.swift in Sources */,
 				E44FA4B526B69D410010F9C7 /* PasswordTransformation.swift in Sources */,
+				E4D6EF3F26BD6F8000BF112B /* TwitterInterest.swift in Sources */,
 				E46BB5032691BDD900BEE0AA /* LoginsNavigationController.swift in Sources */,
 				E4A0363126A94E690091F4A3 /* AlertDetailTableViewController.swift in Sources */,
 				E4E87C6B268CC0AC00CD6832 /* NewLoginTableViewController.swift in Sources */,

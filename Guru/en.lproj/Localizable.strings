@@ -216,15 +216,15 @@
 "Export" = "Export";
 "ImportExplainer" = "Select the app/service you would like to import your data from to get instructions.";
 "ImportLogins" = "Import Logins";
-"ImportInterests" = "Import Interests";
-"ImportGuide" = "Import from @$";
+"ImportInterests" = "Import Profile Data";
+"ImportFrom" = "Import from @$";
 "ExportExplainer" = "Select the app/service you would like to export your logins to, then tap Export to get a file which you can import to that app/service.\nYou can also optionally set a password to store the exported file in a password-protected ZIP file.";
 "ExportDestination" = "Destination";
 "ExportPassword" = "Export Password (Optional)";
 "ExportFilename" = "Passwords";
 
-/* ImportGuide */
-"ImportGuideTitle" = "Importing from @$";
+/* ImportLogins */
+"ImportLoginsTitle" = "Importing from @$";
 "Step1" = "Step 1";
 "Step2" = "Step 2";
 "Step3" = "Step 3";
@@ -246,12 +246,22 @@
 "SafariStep3" = "Click 'Export Passwords', then save the file and transfer it to a location you can access on your iPhone, or AirDrop it to your iPhone directly.";
 "SafariStep4" = "Tap 'Select File...' below and select the saved file to import your logins.";
 "SelectFile..." = "Select File ...";
-"ImportingProgress" = "Importing... @$";
-"ImportCompletedTitle" = "Import Complete";
-"ImportCompletedText" = "Imported a total of @$ login(s).";
+"ImportingLoginsProgress" = "Importing logins... @$";
+"ImportLoginsCompletedTitle" = "Login Import Complete";
+"ImportLoginsCompletedText" = "Imported a total of @$ login(s).";
 "ImportIncompleteText" = "Imported a total of @$1 login(s). @$2 login(s) already exist and were not imported.";
 "ImportErrorTitle" = "Import Error";
 "ImportErrorText" = "An error occurred while importing your logins. @$ login(s) were successfully imported.";
+
+/* ImportInterests */
+"DownloadDataFromWebsite" = "1. Download Your Data";
+"SelectInterestsFile" = "2. Select Interests File";
+"ImportingInterestsProgress" = "Importing interests... @$";
+"ImportInterestsCompletedTitle" = "Import Complete";
+"ImportInterestsCompletedText" = "Processed a total of @$ interest(s).";
+"ImportInterestsIncompleteText" = "Processed a total of @$1 interest(s). @$2 interest(s) already exist and were not processed.";
+"ImportInterestsErrorTitle" = "Import Error";
+"ImportInterestsErrorText" = "An error occurred while importing your interests. @$ interest(s) were successfully imported.";
 
 /* AppLock */
 "AppLockFaceIDExplainer" = "If you are wearing a mask, or if Face ID is disabled, iOS will ask you for your passcode. Your logins remain accessible even if you set up Face ID again.";

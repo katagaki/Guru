@@ -8,6 +8,12 @@
 import CryptoKit
 import Foundation
 
+// MARK: Data
+
+var emailPwnage: [String:[Pwnage]]?
+var passwordPwnage: [String]?
+var passwordReuse: [String]?
+
 // MARK: Breaches API
 
 /// Checks whether a set of emails have been breached.

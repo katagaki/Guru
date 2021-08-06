@@ -23,14 +23,35 @@ class ImportTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
-        case "ShowGuide":
-            if let sender = sender as? UITableViewCell, let destination = segue.destination as? ImportGuideTableViewController {
+        case "ShowImportLogins":
+            if let sender = sender as? UITableViewCell, let destination = segue.destination as? ImportLoginsTableViewController {
                 switch tableView.indexPath(for: sender)!.row {
                 case 0: destination.guideCode = "Guru"
                 case 1: destination.guideCode = "Edge"
                 case 2: destination.guideCode = "Chrome"
                 case 3: destination.guideCode = "Safari"
                 case 4: destination.guideCode = "OnePassword"
+                default: break
+                }
+            }
+        case "ShowImportInterests":
+            if let sender = sender as? UITableViewCell, let destination = segue.destination as? ImportInterestsTableViewController {
+                switch tableView.indexPath(for: sender)!.row {
+                case 0:
+                    destination.guideCode = "Google"
+                    destination.filename = ""
+                case 1:
+                    destination.guideCode = "Microsoft"
+                    destination.filename = "SearchRequestsAndQuery.csv"
+                case 2:
+                    destination.guideCode = "Twitter"
+                    destination.filename = "personalization.js"
+                case 3:
+                    destination.guideCode = "Facebook"
+                    destination.filename = "your_topics.json"
+                case 4:
+                    destination.guideCode = "Instagram"
+                    destination.filename = "your_topics.json"
                 default: break
                 }
             }
@@ -113,7 +134,15 @@ class ImportTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
         case 1:
-            performSegue(withIdentifier: "ShowGuide", sender: tableView.cellForRow(at: indexPath))
+            performSegue(withIdentifier: "ShowImportLogins", sender: tableView.cellForRow(at: indexPath))
+        case 2:
+            switch indexPath.row {
+            case 2:
+                performSegue(withIdentifier: "ShowImportInterests", sender: tableView.cellForRow(at: indexPath))
+            default:
+                log("Feature temporarily unavailable.")
+            }
+            
         default: break
         }
         tableView.deselectRow(at: indexPath, animated: true)

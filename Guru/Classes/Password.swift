@@ -68,7 +68,7 @@ public class Password: NSObject {
     
     /// Generates a passphrase from the currently set word count.
     public func regeneratePassphrase() {
-        let filteredWords: [String] = words.filter { word in
+        let filteredWords: [String] = builtInWords.filter { word in
             return word.count <= ((maxLength - wordCount + 1) / wordCount) + (wordCount / 2)
         }
         repeat {
@@ -210,7 +210,7 @@ public class Password: NSObject {
         var leetified = Array(generated)
         for i: Int in 0..<leetified.count {
             if cSCoinFlip() {
-                if let value = leetList[String(leetified[i])] {
+                if let value = builtInLeetList[String(leetified[i])] {
                     leetified[i] = value.character(in: 0)
                 }
             }

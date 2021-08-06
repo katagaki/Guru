@@ -216,15 +216,15 @@
 "Export" = "エクスポート";
 "ImportExplainer" = "読み込みたいファイルの元のソース（アプリまたはサービス）を選択してください。";
 "ImportLogins" = "ログインをインポート";
-"ImportInterests" = "興味をインポート";
-"ImportGuide" = "@$からインポート";
+"ImportInterests" = "個人情報をインポート";
+"ImportFrom" = "@$からインポート";
 "ExportExplainer" = "アカウントを書き出す後、どのアプリやサービスに読み込むかを選択し、「書き出す」を選択するとファイルを書き出します。\n暗号化されたZIPアーカイブに保存したい場合、パスワードを入力してください。";
 "ExportDestination" = "アプリ・サービス";
 "ExportPassword" = "ZIPアーカイブパスワード（任意）";
 "ExportFilename" = "パスワード";
 
-/* ImportGuide */
-"ImportGuideTitle" = "@$からインポート";
+/* ImportLogins */
+"ImportLoginsTitle" = "@$からインポート";
 "Step1" = "ステップ 1";
 "Step2" = "ステップ 2";
 "Step3" = "ステップ 3";
@@ -246,12 +246,22 @@
 "SafariStep3" = "「パスワードを書き出す...」を選択し、保存先を選択してからiPhoneに転送します。転送するには、クラウドストレージまたはAirDropでできます。";
 "SafariStep4" = "下の「ファイルを選択...」を選択し、書き出したファイルを選択します。";
 "SelectFile..." = "ファイルを選択...";
-"ImportingProgress" = "読み込み中... @$";
-"ImportCompletedTitle" = "インポート完成";
-"ImportCompletedText" = "@$個のアカウントは正常にインポートされました。";
+"ImportingLoginsProgress" = "アカウントをインポート中... @$";
+"ImportLoginsCompletedTitle" = "インポート完成";
+"ImportLoginsCompletedText" = "@$個のアカウントは正常にインポートされました。";
 "ImportIncompleteText" = "@$1個のアカウントは正常にインポートされました。@$2個のアカウントは既にあるため、インポートされませんでした。";
 "ImportErrorTitle" = "インポートエラー";
 "ImportErrorText" = "インポート中、エラーが発生しました。@$個のアカウントは正常にインポートされました。";
+
+/* ImportInterests */
+"DownloadDataFromWebsite" = "①　個人情報をダウンロード";
+"SelectInterestsFile" = "② ファイルを選択";
+"ImportingInterestsProgress" = "個人情報をインポート中... @$";
+"ImportInterestsCompletedTitle" = "インポート完成";
+"ImportInterestsCompletedText" = "@$個の個人情報は正常にインポートされました。";
+"ImportInterestsIncompleteText" = "@$1個の個人情報は正常にインポートされました。@$2個の情報は既にあるため、インポートされませんでした。";
+"ImportInterestsErrorTitle" = "インポートエラー";
+"ImportInterestsErrorText" = "インポート中、エラーが発生しました。@$個の個人情報は正常にインポートされました。";
 
 /* AppLock */
 "AppLockFaceIDExplainer" = "Face IDがiOSにより禁止されるまたはマスクを着用する場合、パスコードを求めます。Face IDに登録された顔が変わっても、データをアクセスすることができます。";
