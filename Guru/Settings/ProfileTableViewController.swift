@@ -24,7 +24,7 @@ class ProfileTableViewController: UITableViewController {
         
         super.viewDidLoad()
         
-        for language in languages {
+        for language in builtInLanguages {
             let languageAction = UIAction(title: language, image: UIImage(systemName: "globe")) { [weak self] _ in
                 if let userProfile = userProfile {
                     userProfile.languages.append(language)
@@ -35,7 +35,7 @@ class ProfileTableViewController: UITableViewController {
         }
         languageSelectionMenu = UIMenu(title: NSLocalizedString("AddLanguage", comment: "Profile"), children: languageSelectionActions)
         
-        for interest in interests {
+        for interest in builtInInterests {
             let interestAction = UIAction(title: interest.name.capitalized, image: UIImage(systemName: "star")) { [weak self] _ in
                 if let userProfile = userProfile {
                     userProfile.interests.append(interest.name)
@@ -62,11 +62,11 @@ class ProfileTableViewController: UITableViewController {
     @IBAction func toggleEditing(_ sender: Any) {
         if isEditingProfile {
             if let userProfile = userProfile {
-                let nameCell = tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as! TextInputCell
-                let regionCell = tableView.cellForRow(at: IndexPath(row: 1, section: 1)) as! TextInputCell
-                let birthdayCell = tableView.cellForRow(at: IndexPath(row: 3 + userProfile.languages.count, section: 1)) as! DatePickerCell
-                let companyNameCell = tableView.cellForRow(at: IndexPath(row: 4 + userProfile.languages.count, section: 1)) as! TextInputCell
-                let schoolNameCell = tableView.cellForRow(at: IndexPath(row: 5 + userProfile.languages.count, section: 1)) as! TextInputCell
+                if let nameCell = tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as? TextInputCell,
+                    let regionCell = tableView.cellForRow(at: IndexPath(row: 1, section: 1)) as? TextInputCell,
+                    let birthdayCell = tableView.cellForRow(at: IndexPath(row: 3 + userProfile.languages.count, section: 1)) as? DatePickerCell,
+                   let companyNameCell = tableView.cellForRow(at: IndexPath(row: 4 + userProfile.languages.count, section: 1)) as? TextInputCell,
+                   let schoolNameCell = tableView.cellForRow(at: IndexPath(row: 5 + userProfile.languages.count, section: 1)) as? TextInputCell {
                 let dateFormatter:DateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "yyyy/MM/dd"
                 userProfile.fullName = (nameCell.textField.text == "" ? nil : nameCell.textField.text)
@@ -74,6 +74,7 @@ class ProfileTableViewController: UITableViewController {
                 userProfile.set(birthday: dateFormatter.string(for: birthdayCell.datePicker.date)!)
                 userProfile.companyName = (companyNameCell.textField.text == "" ? nil : companyNameCell.textField.text)
                 userProfile.schoolName = (schoolNameCell.textField.text == "" ? nil : schoolNameCell.textField.text)
+                }
             }
         }
         isEditingProfile = !isEditingProfile
@@ -264,7 +265,7 @@ class ProfileTableViewController: UITableViewController {
                     case 0..<userProfile.interests.count:
                         let cell = tableView.dequeueReusableCell(withIdentifier: "InterestDetailCell")!
                         cell.textLabel!.text = userProfile.interests[indexPath.row].capitalized
-                        if let interest = interests.first(where: { interest in
+                        if let interest = builtInInterests.first(where: { interest in
                             return interest.name == userProfile.interests[indexPath.row].lowercased()
                         }) {
                             cell.detailTextLabel!.text = interest.words.joined(separator: ", ")
@@ -280,7 +281,7 @@ class ProfileTableViewController: UITableViewController {
                     } else {
                         let cell = tableView.dequeueReusableCell(withIdentifier: "InterestDetailCell")!
                         cell.textLabel!.text = userProfile.interests[indexPath.row].capitalized
-                        if let interest = interests.first(where: { interest in
+                        if let interest = builtInInterests.first(where: { interest in
                             return interest.name == userProfile.interests[indexPath.row].lowercased()
                         }) {
                             cell.detailTextLabel!.text = interest.words.joined(separator: ", ")

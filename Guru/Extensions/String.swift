@@ -61,4 +61,7 @@ extension String {
         }
     }
     
+    func containsNonLatinCharacters() -> Bool {
+        return self.range(of: "\\P{Latin}", options: .regularExpression) != nil
+    }
 }

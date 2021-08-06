@@ -25,6 +25,9 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
     let basicPolicyMinLengths: [Int] = [8, 8, 8, 6]
     let basicPolicyMaxLengths: [Int] = [20, 16, 16, 6]
     
+    // Enhanced mode variables
+    var enhancedSelectedInterests: [Interest] = []
+    
     // Custom mode variables
     var customContainsLowercase: Bool = true
     var customContainsUppercase: Bool = true
@@ -279,12 +282,12 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
                 let cell = tableView.dequeueReusableCell(withIdentifier: "InterestCell")!
                 if let userProfile = userProfile {
                     cell.textLabel!.text = userProfile.interests[indexPath.row].capitalized
-                    if let interest = interests.first(where: { interest in
+                    if let interest = builtInInterests.first(where: { interest in
                         return interest.name == userProfile.interests[indexPath.row].lowercased()
                     }) {
                         cell.detailTextLabel!.text = interest.words.joined(separator: ", ")
                     }
-                    if customSelectedInterests.contains(where: { interest in
+                    if enhancedSelectedInterests.contains(where: { interest in
                         return interest.name == userProfile.interests[indexPath.row]
                     }) {
                         cell.accessoryType = .checkmark
@@ -346,7 +349,7 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
                 let cell = tableView.dequeueReusableCell(withIdentifier: "InterestCell")!
                 if let userProfile = userProfile {
                     cell.textLabel!.text = userProfile.interests[indexPath.row].capitalized
-                    if let interest = interests.first(where: { interest in
+                    if let interest = builtInInterests.first(where: { interest in
                         return interest.name == userProfile.interests[indexPath.row].lowercased()
                     }) {
                         cell.detailTextLabel!.text = interest.words.joined(separator: ", ")
@@ -382,6 +385,23 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
             }
         case 1:
             switch indexPath.section {
+            case 2:
+                if let userProfile = userProfile {
+                    if enhancedSelectedInterests.contains(where: { interest in
+                        return interest.name == userProfile.interests[indexPath.row]
+                    }) {
+                        enhancedSelectedInterests.removeAll(where: { interest in
+                            return interest.name == userProfile.interests[indexPath.row]
+                        })
+                    } else {
+                        if let interest = builtInInterests.first(where: { interest in
+                            return interest.name == userProfile.interests[indexPath.row].lowercased()
+                        }) {
+                            enhancedSelectedInterests.append(interest)
+                        }
+                    }
+                }
+                tableView.reloadRows(at: [indexPath], with: .none)
             default: break
             }
         case 2:
@@ -411,7 +431,7 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
                             return interest.name == userProfile.interests[indexPath.row]
                         })
                     } else {
-                        if let interest = interests.first(where: { interest in
+                        if let interest = builtInInterests.first(where: { interest in
                             return interest.name == userProfile.interests[indexPath.row].lowercased()
                         }) {
                             customSelectedInterests.append(interest)
@@ -574,10 +594,49 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
                                      withMinLength: basicPolicyMinLengths[basicSelectedPolicyType],
                                      withMaxLength: basicPolicyMaxLengths[basicSelectedPolicyType])
             
+            var availableInterests: [Interest] = []
+            var availableInterestWordAverage: Int = 0
+            var wordCount: Int = 0
+            var characterCount: Int = 0
+            if let userProfile = userProfile {
+                for interestName in userProfile.interests {
+                    if let foundInterest = builtInInterests.first(where: { interest in
+                        return interest.name == interestName
+                    }) {
+                        availableInterests.append(foundInterest)
+                    }
+                }
+            }
+            for interest in availableInterests {
+                for word in interest.words {
+                    wordCount += 1
+                    characterCount += word.count
+                }
+            }
+            availableInterestWordAverage = Int(Double(characterCount) / Double(wordCount))
+            
+            var transformationsToApply: Int = basicPassword.generated.count / availableInterestWordAverage
+            transformationsToApply = cSRandomNumber(to: transformationsToApply)
+            log("Attempting to transform password \(transformationsToApply) times.")
+            for _ in 0..<transformationsToApply {
+                let transformationSuccessful: Bool = basicPassword.transform(withInterest: availableInterests.randomElement()!)
+                log("Interest based transformation succeeded: \(transformationSuccessful).")
+            }
+            
         case 1:
             log("Generating enhanced password.")
             enhancedPassword = Password(forPolicies: [.ContainsUppercase, .ContainsLowercase, .ContainsNumbers, .ContainsBasicSymbols], withMinLength: 8, withMaxLength: 20)
-
+            
+            if enhancedSelectedInterests.count != 0 {
+                var transformationsToApply: Int = enhancedPassword.generated.count / Int(interestWordAverage)
+                transformationsToApply = cSRandomNumber(to: transformationsToApply)
+                log("Attempting to transform password \(transformationsToApply) times.")
+                for _ in 0..<transformationsToApply {
+                    let transformationSuccessful: Bool = enhancedPassword.transform(withInterest: enhancedSelectedInterests.randomElement()!)
+                    log("Interest based transformation succeeded: \(transformationSuccessful).")
+                }
+            }
+            
         case 2:
             var characterPolicies: [PasswordCharacterPolicy] = []
             if customContainsLowercase { characterPolicies.append(.ContainsLowercase) }
@@ -586,16 +645,24 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
             if customContainsSymbols { characterPolicies.append(.ContainsBasicSymbols) }
             if customContainsExtraSymbols { characterPolicies.append(.ContainsComplexSymbols) }
             if customContainsSpaces { characterPolicies.append(.ContainsSpaces) }
+            
             log("Generating custom password based on policies: \(characterPolicies).")
             customPassword = Password(forPolicies: characterPolicies, withMinLength: customCharacterCount, withMaxLength: customCharacterCount)
-            if let userProfile = userProfile, userProfile.interests.count > 0, let interest = customSelectedInterests.randomElement() {
+            
+            if let userProfile = userProfile, userProfile.interests.count > 0 {
                 if customSelectedInterests.count != 0 {
-                    let transformationSuccessful: Bool = customPassword.transform(withInterest: interest)
-                    log("Interest based transformation succeeded: \(transformationSuccessful).")
+                    var transformationsToApply: Int = customPassword.generated.count / Int(interestWordAverage)
+                    transformationsToApply = cSRandomNumber(to: transformationsToApply)
+                    log("Attempting to transform password \(transformationsToApply) times.")
+                    for _ in 0..<transformationsToApply {
+                        let transformationSuccessful: Bool = customPassword.transform(withInterest: customSelectedInterests.randomElement()!)
+                        log("Interest based transformation succeeded: \(transformationSuccessful).")
+                    }
                 }
             } else {
                 log("One or more conditions not met, no interest based transformation applied.")
             }
+            
         default: break
         }
         updatePasswordCell()
