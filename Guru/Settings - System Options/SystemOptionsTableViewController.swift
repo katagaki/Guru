@@ -23,7 +23,7 @@ class SystemOptionsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0: return 1
-        case 1: return 1
+        case 1: return 2
         case 2: return 1
         default: return 0
         }
@@ -51,8 +51,11 @@ class SystemOptionsTableViewController: UITableViewController {
             switch indexPath.row {
             case 0:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "OnboardingCompletedCell")!
-                cell.textLabel!.text = NSLocalizedString("OnboardingCompleted", comment: "UnderTheHood")
-                cell.detailTextLabel!.text = (defaults.bool(forKey: "Onboarding.Completed") ? NSLocalizedString("Yes", comment: "General") : NSLocalizedString("No", comment: "General"))
+                cell.textLabel!.text = NSLocalizedString("ResetOnboarding", comment: "UnderTheHood")
+                return cell
+            case 1:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ClearAnalysisCell")!
+                cell.textLabel!.text = NSLocalizedString("ClearPasswordAnalysis", comment: "UnderTheHood")
                 return cell
             default: return UITableViewCell()
             }
@@ -73,7 +76,7 @@ class SystemOptionsTableViewController: UITableViewController {
         case 1:
             switch indexPath.row {
             case 0:
-                defaults.set(!defaults.bool(forKey: "Onboarding.Completed"), forKey: "Onboarding.Completed")
+                defaults.set(false, forKey: "Onboarding.Completed")
                 defaults.synchronize()
                 tableView.reloadSections(IndexSet(integer: 1), with: .automatic)
             default: break

@@ -297,9 +297,10 @@
 /* UnderTheHood */
 "UnderTheHoodExplainer" = "WARNING: These options may break Guru and cause data loss. Only use these options when told to do so by a support representative.";
 "InternalPreferences" = "Internal Preferences";
-"OnboardingCompleted" = "Onboarding Completed";
+"ResetOnboarding" = "Reset Onboarding";
 "Logging" = "Logging";
 "AppLogs" = "App Logs";
+"ClearPasswordAnalysis" = "Clear Password Analysis";
 
 /* Onboarding */
 "WelcomeTitle" = "Welcome to Guru";

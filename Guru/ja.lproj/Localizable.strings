@@ -250,7 +250,6 @@
 "SafariStep2" = "Touch IDまたはパスワードを使って解除し、下の「…」ボタンをクリックします。";
 "SafariStep3" = "「パスワードを書き出す...」を選択し、保存先を選択してからiPhoneに転送します。転送するには、クラウドストレージまたはAirDropでできます。";
 "SafariStep4" = "下の「ファイルを選択...」を選択し、書き出したファイルを選択します。";
-"SelectFile..." = "ファイルを選択...";
 "ImportingLoginsProgress" = "アカウントをインポート中... @$";
 "ImportLoginsCompletedTitle" = "インポート完成";
 "ImportLoginsCompletedText" = "@$個のアカウントは正常にインポートされました。";
@@ -298,9 +297,10 @@
 /* UnderTheHood */
 "UnderTheHoodExplainer" = "こちらの設定はアプリを使えないようにして、データにアクセスできなくなることがあります。サポートからのリクエスト以外はお気をつけください。";
 "InternalPreferences" = "内部設定";
-"OnboardingCompleted" = "セットアップ完成";
+"ResetOnboarding" = "セットアップをリセット";
 "Logging" = "ロギング";
 "AppLogs" = "アプリログ";
+"ClearPasswordAnalysis" = "パスワード分析をクリア";
 
 /* Onboarding */
 "WelcomeTitle" = "Guruへようこそ";
@@ -345,5 +345,6 @@
 "Back" = "戻る";
 "Skip" = "スキップ";
 "Delete" = "削除";
+"SelectFile..." = "ファイルを選択...";
 "FeatureUnavailableTitle" = "機能が使用できない";
 "FeatureUnavailableText" = "この機能はまだ実装していないので、現在使用できません。";

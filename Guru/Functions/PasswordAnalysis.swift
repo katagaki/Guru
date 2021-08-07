@@ -100,7 +100,6 @@ func analyzePasswordWords(progressReporter: ReportsProgress? = nil) {
                     if let progressReporter = progressReporter {
                         progressReporter.updateProgress(progress: Double(currentCount), total: Double(totalCount))
                     }
-                    log("Skipped password \(i) from analysis.")
                 }
                 
             }
