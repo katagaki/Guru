@@ -1,36 +1,13 @@
 //
-//  String.swift
+//  String+RegEx.swift
 //  Guru
 //
-//  Created by 堅書真太郎 on 2021/07/04.
+//  Created by 堅書真太郎 on 2021/08/07.
 //
 
 import Foundation
 
 extension String {
-    
-    // Improved Character operations for String
-    
-    func character(in index: Int) -> Character {
-        if index > (Array(self).count - 1) {
-            return Character(" ")
-        } else {
-            return Array(self)[index]
-        }
-    }
-    
-    func replacingCharacter(in index: Int, to char: Character) -> String {
-        var originalString = Array(self)
-        originalString[index] = char
-        return String(originalString)
-    }
-    
-    mutating func insertCharacter(_ strChar: String, at index: Int) {
-        let index = self.index(self.startIndex, offsetBy: index)
-        insert(strChar.character(in: 0), at: index)
-    }
-    
-    // Improved regex for String
     
     func isValidEmail() -> Bool {
         let regex = try! NSRegularExpression(pattern: "(?:[\\p{L}0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[\\p{L}0-9!#$%\\&'*+/=?\\^_`{|}" +
@@ -64,4 +41,5 @@ extension String {
     func containsNonLatinCharacters() -> Bool {
         return self.range(of: "\\P{Latin}", options: .regularExpression) != nil
     }
+    
 }

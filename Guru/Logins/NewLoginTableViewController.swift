@@ -157,7 +157,7 @@ class NewLoginTableViewController: UITableViewController, ReceivesQRCodeResult, 
                         }
                     }
                     userProfile.add(login: login)
-                    updatePasswordStatistics()
+                    analyzePasswordCharacters()
                     
                     DispatchQueue.main.async {
                         self.dismiss(animated: true) {

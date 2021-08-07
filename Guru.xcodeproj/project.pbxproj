@@ -17,8 +17,12 @@
 		E40638B726B28ED5009569CD /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E87C76268CD90A00CD6832 /* GlobalVariables.swift */; };
 		E41B2ACB268D76340076B19F /* OTPScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41B2ACA268D76340076B19F /* OTPScannerViewController.swift */; };
 		E41B2ACD268D7BC00076B19F /* ReceivesQRCodeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41B2ACC268D7BC00076B19F /* ReceivesQRCodeResult.swift */; };
+		E4247E4B26BEA34E00CA8A0D /* UserProfile+ImportData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4247E4A26BEA34E00CA8A0D /* UserProfile+ImportData.swift */; };
+		E4247E4D26BEA37100CA8A0D /* UserProfile+CSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4247E4C26BEA37100CA8A0D /* UserProfile+CSV.swift */; };
+		E4247E4F26BEA43300CA8A0D /* String+RegEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4247E4E26BEA43300CA8A0D /* String+RegEx.swift */; };
+		E4247E5026BEA7A900CA8A0D /* String+RegEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4247E4E26BEA43300CA8A0D /* String+RegEx.swift */; };
 		E4281DAC2691FAF900949DAD /* NSMutableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4281DAB2691FAF900949DAD /* NSMutableAttributedString.swift */; };
-		E4281DAE2692076E00949DAD /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4281DAD2692076E00949DAD /* String.swift */; };
+		E4281DAE2692076E00949DAD /* String+Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4281DAD2692076E00949DAD /* String+Character.swift */; };
 		E44FA4B526B69D410010F9C7 /* PasswordTransformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44FA4B426B69D410010F9C7 /* PasswordTransformation.swift */; };
 		E44FA4B726B69DD70010F9C7 /* RunningSequences.plist in Resources */ = {isa = PBXBuildFile; fileRef = E44FA4B626B69DD70010F9C7 /* RunningSequences.plist */; };
 		E44FA4B926B6A4940010F9C7 /* PasswordAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44FA4B826B6A4940010F9C7 /* PasswordAnalysis.swift */; };
@@ -101,7 +105,7 @@
 		E4DF795826AC845F00C3FB5C /* Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CEAC1926A28A850067796E /* Password.swift */; };
 		E4DF795A26AC846400C3FB5C /* Quirk.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CEAC1B26A28C220067796E /* Quirk.swift */; };
 		E4DF795C26AC848500C3FB5C /* PasswordCharacterPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DF795B26AC848500C3FB5C /* PasswordCharacterPolicy.swift */; };
-		E4DF795E26AC84A200C3FB5C /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4281DAD2692076E00949DAD /* String.swift */; };
+		E4DF795E26AC84A200C3FB5C /* String+Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4281DAD2692076E00949DAD /* String+Character.swift */; };
 		E4DF796026AC86E200C3FB5C /* SHA256Digest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DF795F26AC86E200C3FB5C /* SHA256Digest.swift */; };
 		E4DF796126AC86E200C3FB5C /* SHA256Digest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DF795F26AC86E200C3FB5C /* SHA256Digest.swift */; };
 		E4DF796326AC932900C3FB5C /* DatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DF796226AC932900C3FB5C /* DatePickerCell.swift */; };
@@ -200,9 +204,12 @@
 		E40638B426B26026009569CD /* ReportsProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsProgress.swift; sourceTree = "<group>"; };
 		E41B2ACA268D76340076B19F /* OTPScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPScannerViewController.swift; sourceTree = "<group>"; };
 		E41B2ACC268D7BC00076B19F /* ReceivesQRCodeResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivesQRCodeResult.swift; sourceTree = "<group>"; };
+		E4247E4A26BEA34E00CA8A0D /* UserProfile+ImportData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserProfile+ImportData.swift"; sourceTree = "<group>"; };
+		E4247E4C26BEA37100CA8A0D /* UserProfile+CSV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserProfile+CSV.swift"; sourceTree = "<group>"; };
+		E4247E4E26BEA43300CA8A0D /* String+RegEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+RegEx.swift"; sourceTree = "<group>"; };
 		E4281DA92691F0E400949DAD /* Pwnage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pwnage.swift; sourceTree = "<group>"; };
 		E4281DAB2691FAF900949DAD /* NSMutableAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedString.swift; sourceTree = "<group>"; };
-		E4281DAD2692076E00949DAD /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		E4281DAD2692076E00949DAD /* String+Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Character.swift"; sourceTree = "<group>"; };
 		E44FA4B426B69D410010F9C7 /* PasswordTransformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTransformation.swift; sourceTree = "<group>"; };
 		E44FA4B626B69DD70010F9C7 /* RunningSequences.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RunningSequences.plist; sourceTree = "<group>"; };
 		E44FA4B826B6A4940010F9C7 /* PasswordAnalysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordAnalysis.swift; sourceTree = "<group>"; };
@@ -396,7 +403,8 @@
 				E40638AF26B24F4D009569CD /* NSObject.swift */,
 				E4F9D2A22695283200867B42 /* Sequence.swift */,
 				E4DF795F26AC86E200C3FB5C /* SHA256Digest.swift */,
-				E4281DAD2692076E00949DAD /* String.swift */,
+				E4281DAD2692076E00949DAD /* String+Character.swift */,
+				E4247E4E26BEA43300CA8A0D /* String+RegEx.swift */,
 				E4C3CCC52690512F0020942F /* UITextContentType.swift */,
 				E46AFF082661434B001F42EB /* UIView.swift */,
 				E48F94EE26B56DD30050AD81 /* UINavigationController.swift */,
@@ -449,6 +457,8 @@
 				E4D6EF3E26BD6F8000BF112B /* TwitterInterest.swift */,
 				E4D6EF3C26BD6EFB00BF112B /* TwitterLanguage.swift */,
 				E4C78ED02687114200128F9B /* UserProfile.swift */,
+				E4247E4C26BEA37100CA8A0D /* UserProfile+CSV.swift */,
+				E4247E4A26BEA34E00CA8A0D /* UserProfile+ImportData.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -761,6 +771,7 @@
 				E4DF796126AC86E200C3FB5C /* SHA256Digest.swift in Sources */,
 				E4D6EF4226BD8F3000BF112B /* TwitterData.swift in Sources */,
 				E4CEAD2E26A3D5040067796E /* KeychainItem.swift in Sources */,
+				E4247E5026BEA7A900CA8A0D /* String+RegEx.swift in Sources */,
 				E4D6EF4526BD8F4A00BF112B /* BuiltInData.swift in Sources */,
 				E40638B726B28ED5009569CD /* GlobalVariables.swift in Sources */,
 				E48F94F226B570460050AD81 /* Sequence.swift in Sources */,
@@ -769,7 +780,7 @@
 				E4CEAC4126A2E9B60067796E /* CredentialProviderViewController.swift in Sources */,
 				E48F94F126B570040050AD81 /* Pwnage.swift in Sources */,
 				E40638B326B25DAE009569CD /* ParseOTP.swift in Sources */,
-				E4DF795E26AC84A200C3FB5C /* String.swift in Sources */,
+				E4DF795E26AC84A200C3FB5C /* String+Character.swift in Sources */,
 				E4DAB02D26B1947200540892 /* Logging.swift in Sources */,
 				E4CEAC4E26A2EACB0067796E /* RoundedImageView.swift in Sources */,
 				E4DAB02E26B194D600540892 /* Interest.swift in Sources */,
@@ -788,8 +799,10 @@
 				E4DAB03126B19E4D00540892 /* Sequence.swift in Sources */,
 				E4CEAD2F26A3D5040067796E /* KeychainItem.swift in Sources */,
 				E4D6EF3B26BD6EC200BF112B /* TwitterData.swift in Sources */,
+				E4247E4D26BEA37100CA8A0D /* UserProfile+CSV.swift in Sources */,
 				E4D6EF4126BD8BF700BF112B /* BuiltInData.swift in Sources */,
 				E40638B526B26026009569CD /* ReportsProgress.swift in Sources */,
+				E4247E4B26BEA34E00CA8A0D /* UserProfile+ImportData.swift in Sources */,
 				E46BB5012691BB8300BEE0AA /* SettingsNavigationController.swift in Sources */,
 				E4D6EF3D26BD6EFB00BF112B /* TwitterLanguage.swift in Sources */,
 				E48F94EF26B56DD30050AD81 /* UINavigationController.swift in Sources */,
@@ -803,6 +816,7 @@
 				E4EABA4526597ADC0054F310 /* PersonalizationTableViewController.swift in Sources */,
 				E4F344AF26B12F0700ABAC7A /* HandlesCellSliderValueChange.swift in Sources */,
 				E4F9D2B82695C70C00867B42 /* AppLockTableViewController.swift in Sources */,
+				E4247E4F26BEA43300CA8A0D /* String+RegEx.swift in Sources */,
 				E4DAB02626B1930000540892 /* Crypto.swift in Sources */,
 				E4DF795C26AC848500C3FB5C /* PasswordCharacterPolicy.swift in Sources */,
 				E40638B226B25D2C009569CD /* ParseOTP.swift in Sources */,
@@ -826,7 +840,7 @@
 				E4DF795A26AC846400C3FB5C /* Quirk.swift in Sources */,
 				E4593CF2266B23FE001DF782 /* UpdatesFolderPreview.swift in Sources */,
 				E4D6EF4726BE1AC300BF112B /* TextInputWithAlertCell.swift in Sources */,
-				E4281DAE2692076E00949DAD /* String.swift in Sources */,
+				E4281DAE2692076E00949DAD /* String+Character.swift in Sources */,
 				E4EAB9F22657E59C0054F310 /* AppDelegate.swift in Sources */,
 				E4EABA092657F33E0054F310 /* DetailWithImageCell.swift in Sources */,
 				E48F94ED26B55EE30050AD81 /* FloatingViewType.swift in Sources */,

@@ -204,7 +204,7 @@
 "CategoryExplainer" = "Select the categories of information you want Guru to use when suggesting new passwords.";
 "PersonalInformation" = "Personal Information";
 "InterestsTopics" = "Interests";
-"ExistingPasswords" = "Existing Passwords";
+"ExistingPasswords" = "Password Habits";
 "AutomaticallyLearnedKnowledge" = "Intelligence";
 "KnowledgeExplainer" = "Manage information Guru has automatically learned about you.";
 "ManageKnowledge" = "Manage Knowledge";

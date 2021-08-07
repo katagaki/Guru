@@ -7,7 +7,7 @@
 
 import Foundation
 
-let updatePasswordStatisticsQueue = DispatchQueue(label: "updatePasswordStatistics", attributes: .concurrent)
+// Character statistics
 var averagePasswordLength: Double = 0.0
 var freqUppercase: Double = 0
 var freqUppercaseCount: Int = 0
@@ -17,25 +17,54 @@ var freqNumbers: Double = 0
 var freqNumbersCount: Int = 0
 var freqSymbols: Double = 0
 var freqSymbolsCount: Int = 0
+var characterCount: [Character:Int] = [:]
+var symbolCount: [Character:Int] = [:]
 var totalCharacterCount: Int {
     return freqUppercaseCount + freqLowercaseCount + freqNumbersCount + freqSymbolsCount
 }
 
-/// Analyzes a password for words.
-/// - Parameter password: The password to analyze.
-/// - Returns: An array of words.
-public func analyzeForWords(password: String) -> [String] {
+// Linguistic statistics
+var wordCount: [String:Int] = [:]
+var freqWordsConvertedToLeet: Double = 0.0
+var averageWordLength: Double = 0.0
+var averageLeetLength: Double = 0.0
+
+// Keyboard habit statistics
+var runningLetterSequenceCount: Double = 0.0
+var runningNumberSequenceCount: Double = 0.0
+
+/// Analyzes all user profile login passwords' word frequencies.
+public func analyzePasswordWords() {
+    let queue = DispatchQueue(label: "analyzePasswordWords", attributes: .concurrent)
     let semaphore = DispatchSemaphore(value: 0)
-    let queue = DispatchQueue(label: "analyze", attributes: .concurrent)
-    var wordsFound: [String] = []
-    let filteredPassword: String = String(password.unicodeScalars.filter { CharacterSet.letters.contains($0) }).lowercased()
     
-    DispatchQueue.concurrentPerform(iterations: builtInWords.count) { i in
-        if filteredPassword.contains(builtInWords[i]) {
-            queue.async(flags: .barrier) {
-                wordsFound.append(builtInWords[i])
+    wordCount.removeAll()
+    averageWordLength = 0.0
+    
+    if let userProfile = userProfile {
+        if userProfile.logins.count > 0 {
+            
+            DispatchQueue.concurrentPerform(iterations: userProfile.logins.count) { i in
+                let login: Login = userProfile.logins[i]
+                let passwordCharacters: [Character] = Array(login.password ?? "")
+                let lettersInPassword: [Character] = passwordCharacters.filter { character in
+                    return character.isLetter
+                }
+                let passwordWithOnlyLetters: String = String(lettersInPassword).lowercased()
+                
+                DispatchQueue.concurrentPerform(iterations: builtInWords.count) { i in
+                    if passwordWithOnlyLetters.contains(builtInWords[i]) {
+                        queue.async(flags: .barrier) {
+                            wordCount.updateValue((wordCount[builtInWords[i]] ?? 0) + 1, forKey: builtInWords[i])
+                        }
+                    }
+                }
             }
+        } else {
+            log("Password word analysis completed. No logins to analyze.")
         }
+    } else {
+        log("Password word analysis completed. No user profile to analyze.")
     }
     
     queue.async(flags: .barrier) {
@@ -44,13 +73,14 @@ public func analyzeForWords(password: String) -> [String] {
     semaphore.wait()
     
     log("""
-Password analysis completed.
-Words found: \(wordsFound.joined(separator: ","))
+Password word analysis completed.
+Words found: \(wordCount)
 """)
-    return wordsFound
 }
 
-public func updatePasswordStatistics() {
+/// Analyzes all user profile login passwords' character frequencies and counts.
+public func analyzePasswordCharacters() {
+    let queue = DispatchQueue(label: "updatePasswordStatistics", attributes: .concurrent)
     let semaphore = DispatchSemaphore(value: 0)
 
     averagePasswordLength = 0.0
@@ -62,61 +92,71 @@ public func updatePasswordStatistics() {
     freqNumbersCount = 0
     freqSymbols = 0.0
     freqSymbolsCount = 0
+    characterCount.removeAll()
+    symbolCount.removeAll()
     
     if let userProfile = userProfile {
-        
-        averagePasswordLength = Double(userProfile.logins.reduce(0) { partialResult, login in
-            return partialResult + (login.password ?? "").count
-        }) / Double(userProfile.logins.count)
-        
-        log("Analyzing \(userProfile.logins.count) password(s).")
-        
-        DispatchQueue.concurrentPerform(iterations: userProfile.logins.count) { i in
-            let login: Login = userProfile.logins[i]
-            let passwordCharacters: [Character] = Array(login.password ?? "")
-            var totalUppercase: Int = 0
-            var totalLowercase: Int = 0
-            var totalNumbers: Int = 0
-            var totalSymbols: Int = 0
-            let totalCharacters: Int = passwordCharacters.count
-                        
-            for character in passwordCharacters {
-                switch true {
-                case character.isUppercase: totalUppercase += 1
-                case character.isLowercase: totalLowercase += 1
-                case character.isNumber: totalNumbers += 1
-                case character.isSymbol,
-                    character.isPunctuation,
-                    character.isWhitespace,
-                    character.isCurrencySymbol,
-                    character.isMathSymbol: totalSymbols += 1
-                default: break
+        if userProfile.logins.count > 0 {
+                
+            averagePasswordLength = Double(userProfile.logins.reduce(0) { partialResult, login in
+                return partialResult + (login.password ?? "").count
+            }) / Double(userProfile.logins.count)
+            
+            log("Analyzing \(userProfile.logins.count) password(s)' characters.")
+            
+            DispatchQueue.concurrentPerform(iterations: userProfile.logins.count) { i in
+                let login: Login = userProfile.logins[i]
+                let passwordCharacters: [Character] = Array(login.password ?? "")
+                var totalUppercase: Int = 0
+                var totalLowercase: Int = 0
+                var totalNumbers: Int = 0
+                var totalSymbols: Int = 0
+                let totalCharacters: Int = passwordCharacters.count
+                            
+                for character in passwordCharacters {
+                    switch true {
+                    case character.isUppercase: totalUppercase += 1
+                    case character.isLowercase: totalLowercase += 1
+                    case character.isNumber: totalNumbers += 1
+                    case character.isSymbol,
+                        character.isPunctuation,
+                        character.isWhitespace,
+                        character.isCurrencySymbol,
+                        character.isMathSymbol:
+                        totalSymbols += 1
+                        symbolCount.updateValue((symbolCount[character] ?? 0) + 1, forKey: character)
+                    default: break
+                    }
+                    characterCount.updateValue((characterCount[character] ?? 0) + 1, forKey: character)
+                }
+                
+                queue.async(flags: .barrier) {
+                    freqUppercase += Double(totalUppercase) / Double(totalCharacters)
+                    freqUppercaseCount += totalUppercase
+                    freqLowercase += Double(totalLowercase) / Double(totalCharacters)
+                    freqLowercaseCount += totalLowercase
+                    freqNumbers += Double(totalNumbers) / Double(totalCharacters)
+                    freqNumbersCount += totalNumbers
+                    freqSymbols += Double(totalSymbols) / Double(totalCharacters)
+                    freqSymbolsCount += totalSymbols
                 }
             }
             
-            updatePasswordStatisticsQueue.async(flags: .barrier) {
-                freqUppercase += Double(totalUppercase) / Double(totalCharacters)
-                freqUppercaseCount += totalUppercase
-                freqLowercase += Double(totalLowercase) / Double(totalCharacters)
-                freqLowercaseCount += totalLowercase
-                freqNumbers += Double(totalNumbers) / Double(totalCharacters)
-                freqNumbersCount += totalNumbers
-                freqSymbols += Double(totalSymbols) / Double(totalCharacters)
-                freqSymbolsCount += totalSymbols
+            queue.async(flags: .barrier) {
+                freqUppercase /= Double(userProfile.logins.count)
+                freqLowercase /= Double(userProfile.logins.count)
+                freqNumbers /= Double(userProfile.logins.count)
+                freqSymbols /= Double(userProfile.logins.count)
+                semaphore.signal()
             }
+            semaphore.wait()
+            
+        } else {
+            log("Password character analysis completed. No logins to analyze.")
         }
-        
-        updatePasswordStatisticsQueue.async(flags: .barrier) {
-            freqUppercase /= Double(userProfile.logins.count)
-            freqLowercase /= Double(userProfile.logins.count)
-            freqNumbers /= Double(userProfile.logins.count)
-            freqSymbols /= Double(userProfile.logins.count)
-            semaphore.signal()
-        }
-        semaphore.wait()
         
         log("""
-Password analysis completed.
+Password character analysis completed.
 Average length of password: \(averagePasswordLength)
 Frequency of uppercase letters: \(freqUppercase)
 Frequency of lowercase letters: \(freqLowercase)
@@ -130,6 +170,6 @@ Total number of characters: \(totalCharacterCount)
 """)
         
     } else {
-        log("Password analysis completed. No user profile to analyze.")
+        log("Password character analysis completed. No user profile to analyze.")
     }
 }

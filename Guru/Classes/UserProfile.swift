@@ -45,38 +45,6 @@ public class UserProfile: NSObject {
         didSet { setValue(schoolName, forKey: "profile_schoolName", hasAuth: false, ignoresFunction: openingFromKeychain) }
     }
     
-    // Linguistic features in passwords
-    public var freqCharacters: [String:Double] = [:] {
-        didSet { setValue(freqCharacters, forKey: "profile_freqCharacters", hasAuth: false, ignoresFunction: openingFromKeychain) }
-    }
-    public var freqWords: [String:Double] = [:] {
-        didSet { setValue(freqWords, forKey: "profile_freqWords", hasAuth: false, ignoresFunction: openingFromKeychain) }
-    }
-    public var avgWordLength: Double = 0 {
-        didSet { setValue(avgWordLength, forKey: "profile_avgWordLength", hasAuth: false, ignoresFunction: openingFromKeychain) }
-    }
-    
-    // Usage habits of characters
-    public var freqLeet: Double = 0 {
-        didSet { setValue(freqLeet, forKey: "profile_freqLeet", hasAuth: false, ignoresFunction: openingFromKeychain) }
-    }
-    public var freqLeetCount: Int = 0 {
-        didSet { setValue(freqLeetCount, forKey: "profile_freqLeet_Count", hasAuth: false, ignoresFunction: openingFromKeychain) }
-    }
-    
-    // Usage habits of keyboard runs
-    public var freqRunningLetters: Double = 0 {
-        didSet { setValue(freqRunningLetters, forKey: "profile_freqRunningLetters", hasAuth: false, ignoresFunction: openingFromKeychain) }
-    }
-    public var freqRunningNumbers: Double = 0 {
-        didSet { setValue(freqRunningNumbers, forKey: "profile_freqRunningNumbers", hasAuth: false, ignoresFunction: openingFromKeychain) }
-    }
-    
-    // Count of use of symbols
-    public var preferredSymbols: [String:Int] = [:] {
-        didSet { setValue(preferredSymbols, forKey: "profile_preferredSymbols", hasAuth: false, ignoresFunction: openingFromKeychain) }
-    }
-    
     // Automatically learned behavior
     public var interests: [String] = [] {
         didSet { setValue(interests, forKey: "profiles_interests", hasAuth: false, ignoresFunction: openingFromKeychain) }
@@ -202,32 +170,7 @@ public class UserProfile: NSObject {
                         }
                     case "profile_companyName": companyName = value
                     case "profile_schoolName": schoolName = value
-                        
-                        // Password linguistic features
-                    case "profile_freqCharacters":
-                        if let dictionary = try? JSONDecoder().decode([String:Double].self, from: value.data(using: .utf8)!) {
-                            freqCharacters = dictionary
-                        }
-                    case "profile_freqWords":
-                        if let dictionary = try? JSONDecoder().decode([String:Double].self, from: value.data(using: .utf8)!) {
-                            freqWords = dictionary
-                        }
-                    case "profile_avgWordLength": avgWordLength = Double(value) ?? 0.0
-                        
-                        // Usage habits of characters
-                    case "profile_freqLeet": freqLeet = Double(value) ?? 0.0
-                    case "profile_freqLeet_count": freqLeetCount = Int(value) ?? 0
-                        
-                        // Usage habits of keyboard runs
-                    case "profile_freqRunningLetters": freqRunningLetters = Double(value) ?? 0.0
-                    case "profile_freqRunningNumbers": freqRunningNumbers = Double(value) ?? 0.0
-                        
-                        // Use of symbols
-                    case "profile_preferredSymbols":
-                        if let dictionary = try? JSONDecoder().decode([String:Int].self, from: value.data(using: .utf8)!) {
-                            preferredSymbols = dictionary
-                        }
-                        
+                    
                         // Automatically learned behavior
                     case "profiles_interests":
                         if value != "" {
@@ -263,13 +206,9 @@ public class UserProfile: NSObject {
                         a.accountName!.lowercased() < b.accountName!.lowercased()
                     }
                     log("A total of \(self.logins.count) login(s) were loaded.")
-                    
                     self.logAccess()
-                    
                     log("Opened user profile from Keychain.")
-                    
                     self.openingFromKeychain = false
-                    
                 }
                 
                 log("User profile open function is returning now!")
@@ -296,13 +235,6 @@ public class UserProfile: NSObject {
         setValue(birthday, forKey: "profile_birthday", hasAuth: false)
         setValue(companyName, forKey: "profile_companyName", hasAuth: false)
         setValue(schoolName, forKey: "profile_schoolName", hasAuth: false)
-        setValue(freqCharacters, forKey: "profile_freqCharacters", hasAuth: false)
-        setValue(freqWords, forKey: "profile_freqWords", hasAuth: false)
-        setValue(avgWordLength, forKey: "profile_avgWordLength", hasAuth: false)
-        setValue(freqLeet, forKey: "profile_freqLeet", hasAuth: false)
-        setValue(freqRunningLetters, forKey: "profile_freqRunningLetters", hasAuth: false)
-        setValue(freqRunningNumbers, forKey: "profile_freqRunningNumbers", hasAuth: false)
-        setValue(preferredSymbols, forKey: "profile_preferredSymbols", hasAuth: false)
         setValue(interests, forKey: "profiles_interests", hasAuth: false)
         setValue(preferredWords, forKey: "profile_preferredWords", hasAuth: false)
         
@@ -361,31 +293,6 @@ public class UserProfile: NSObject {
     public func language(_ name: String) -> String? {
         return languages.first { language in
             return language == name
-        }
-    }
-    
-    public func frequency(ofCharacter char: String) -> Double {
-        if let index = freqCharacters.index(forKey: char) {
-            return freqCharacters[index].value
-        } else {
-            return 0
-        }
-        
-    }
-    
-    public func frequency(ofWord word: String) -> Double {
-        if let index = freqWords.index(forKey: word) {
-            return freqWords[index].value
-        } else {
-            return 0
-        }
-    }
-    
-    public func preference(forSymbol symbol: String) -> Int {
-        if let index = preferredSymbols.index(forKey: symbol) {
-            return preferredSymbols[index].value
-        } else {
-            return 0
         }
     }
     
@@ -601,309 +508,6 @@ public class UserProfile: NSObject {
         }
     }
     
-    // MARK: CSV
-    
-    func csv(ofType type: CSVType) -> String {
-        
-        var csvContents: String = ""
-        var dataPoints: [String] = []
-        
-        log("Starting to create \(type) CSV.")
-        
-        // Set the header for the CSV
-        switch type {
-        case .Guru:
-            csvContents = "Name,LoginURL,ResetURL,Username,Password,OTPSecret"
-        case .Chromium:
-            csvContents = "Name,Url,Username,Password"
-        case .Safari:
-            csvContents = "Title,Url,Username,Password,OTPAuth"
-        case .OnePassword:
-            csvContents = "Title,Website,Username,Password"
-        case .None: break
-        }
-        
-        // Set the positions of the data
-        switch type {
-        case .Guru:
-            dataPoints.append("accountName")
-            dataPoints.append("loginURL")
-            dataPoints.append("passwordResetURL")
-            dataPoints.append("username")
-            dataPoints.append("password")
-            dataPoints.append("totpSecret")
-        case .Chromium, .OnePassword:
-            dataPoints.append("accountName")
-            dataPoints.append("domain")
-            dataPoints.append("username")
-            dataPoints.append("password")
-        case .Safari:
-            dataPoints.append("accountName")
-            dataPoints.append("domain")
-            dataPoints.append("username")
-            dataPoints.append("password")
-            dataPoints.append("totpSecret")
-        case .None: break
-        }
-        
-        // Enumeratre through logins and add data
-        for login in logins {
-            csvContents += "\n"
-            for dataPoint in dataPoints {
-                var dataPointText: String = ""
-                switch dataPoint {
-                case "accountName": dataPointText = login.accountName ?? ""
-                case "loginURL": dataPointText = login.loginURL ?? ""
-                case "passwordResetURL": dataPointText = login.passwordResetURL ?? ""
-                case "username": dataPointText = login.username ?? ""
-                case "password": dataPointText = login.password ?? ""
-                case "totpSecret": dataPointText = login.totpSecret ?? ""
-                case "domain":
-                    if let loginURL = login.loginURL, loginURL != "" {
-                        var url = loginURL
-                        if !url.starts(with: "https://") && !url.starts(with: "http://") {
-                            url = "https://\(url)"
-                        }
-                        if let url = URL(string: url) {
-                            dataPointText = url.host ?? ""
-                        }
-                    }
-                default: log("Unsupported data point: \(dataPoint)")
-                }
-                // Handle delimiters
-                if dataPointText.contains("\"") || dataPointText.contains(",") {
-                    dataPointText = dataPointText.replacingOccurrences(of: "\"", with: "\"\"")
-                    dataPointText = "\"\(dataPointText)\""
-                }
-                // Add the data point
-                csvContents += dataPointText
-                // Add comma if not last item
-                if dataPoints.last != dataPoint {
-                    csvContents += ","
-                }
-            }
-        }
-        
-        log("CSV generated successfully.")
-        log(csvContents)
-        
-        return csvContents
-    }
-    
-    func addLogins(fromCSV contents: String, progressReporter: ReportsProgress? = nil) -> (success: Bool, notImportedCount: Int) {
-        
-        let queue = DispatchQueue(label: "UserProfile.addLogins", attributes: .concurrent)
-        let csvByLines: [String] = contents.components(separatedBy: .newlines)
-        var csvType: CSVType = .None
-        var dataPoints: [String] = []
-        var notImportedCount: Int = 0
-        var progress: Int = 0
-        
-        log("Starting to load CSV.")
-        
-        // Set the header for the CSV
-        switch csvByLines[0].lowercased() {
-        case "name,loginurl,reseturl,username,password,otpsecret":
-            csvType = .Guru
-        case "name,url,username,password":
-            csvType = .Chromium
-        case "title,url,username,password,otpauth":
-            csvType = .Safari
-        case "title,website,username,password":
-            csvType = .OnePassword
-        default:
-            csvType = .None
-            return (false, csvByLines.count - 1)
-        }
-        
-        // Set the positions of the data
-        switch csvType {
-        case .Guru:
-            dataPoints.append("accountName")
-            dataPoints.append("loginURL")
-            dataPoints.append("passwordResetURL")
-            dataPoints.append("username")
-            dataPoints.append("password")
-            dataPoints.append("totpSecret")
-        case .Chromium, .OnePassword:
-            dataPoints.append("accountName")
-            dataPoints.append("domain")
-            dataPoints.append("username")
-            dataPoints.append("password")
-        case .Safari:
-            dataPoints.append("accountName")
-            dataPoints.append("domain")
-            dataPoints.append("username")
-            dataPoints.append("password")
-            dataPoints.append("totpSecret")
-        case .None: break
-        }
-        
-        // Parse CSV line
-        DispatchQueue.concurrentPerform(iterations: csvByLines.count - 1) { i in
-            let semaphore = DispatchSemaphore(value: 0)
-            
-            // Parse CSV
-            let splitLines: [String] = csvByLines[i + 1].components(separatedBy: ",")
-            var currentIndex: Int = 0
-            var currentString: String = ""
-            var lastStringHadStartAnchor: Bool = false
-            var willAddDataPoint: Bool = false
-            let login = Login()
-            
-            if splitLines.count < dataPoints.count {
-                
-            } else {
-                for splitString in splitLines {
-                    if lastStringHadStartAnchor, splitString.hasSuffix("\"") {
-                        currentString += "," + String(splitString.dropLast())
-                        lastStringHadStartAnchor = false
-                        willAddDataPoint = true
-                    } else if lastStringHadStartAnchor, !splitString.hasSuffix("\"") {
-                        currentString += "," + splitString
-                    } else if !lastStringHadStartAnchor, splitString.hasPrefix("\"") {
-                        currentString = String(splitString.dropFirst())
-                        currentString = currentString.replacingOccurrences(of: "\"\"", with: "\"")
-                        lastStringHadStartAnchor = true
-                    } else if !lastStringHadStartAnchor, !splitString.hasPrefix("\"") {
-                        currentString = splitString
-                        currentString = currentString.replacingOccurrences(of: "\"\"", with: "\"")
-                        lastStringHadStartAnchor = false
-                        willAddDataPoint = true
-                    }
-                    if willAddDataPoint {
-                        let dataPointText: String = dataPoints[currentIndex]
-                        switch dataPointText {
-                        case "accountName":
-                            switch csvType {
-                            case .Guru, .Chromium, .OnePassword:
-                                login.accountName = currentString
-                            case .Safari:
-                                login.accountName = currentString.components(separatedBy: " ")[0]
-                            case .None: break
-                            }
-                        case "loginURL": login.loginURL = (currentString == "" ? nil : currentString)
-                        case "domain": login.loginURL = (currentString == "" ? nil : currentString)
-                        case "passwordResetURL": login.passwordResetURL = (currentString == "" ? nil : currentString)
-                        case "username": login.username = (currentString == "" ? nil : currentString)
-                        case "password": login.password = currentString
-                        case "totpSecret": login.totpSecret = (currentString == "" ? nil : parseOTP(code: currentString))
-                        default: log("Unsupported data point: \(dataPointText)")
-                        }
-                        currentString = ""
-                        currentIndex += 1
-                        willAddDataPoint = false
-                    }
-                }
-                
-                if !logins.contains(where: { existingLogin in
-                    return existingLogin.accountName == login.accountName
-                }) {
-                    // Set login icon
-                    login.setAccountIcon {
-                        semaphore.signal()
-                    }
-                    semaphore.wait()
-                    
-                    // Add login
-                    queue.async(flags: .barrier) {
-                        if !self.logins.contains(where: { existingLogin in
-                            return existingLogin.accountName == login.accountName
-                        }) {
-                                self.add(login: login)
-                        } else {
-                            notImportedCount += 1
-                            log("Login already exists, will not replace.")
-                        }
-                    }
-                } else {
-                    notImportedCount += 1
-                    log("Login already exists, will not replace.")
-                }
-                queue.sync(flags: .barrier) {
-                    log("Finished processing login at index \(i).")
-                    // Report progress
-                    if let progressReporter = progressReporter {
-                        progress += 1
-                        progressReporter.updateProgress(progress: Double(progress), total: Double(csvByLines.count - 1))
-                    }
-                }
-            }
-            
-        }
-        
-        return (true, notImportedCount)
-    }
-    
-    // MARK: Import Data
-    
-    func importTwitter(data: TwitterData, progressReporter: ReportsProgress? = nil) -> (success: Bool, notImportedCount: Int) {
-        
-        var currentCount: Int = 0
-        var dataPointCount: Int = 0
-        
-        if data.languages != nil { dataPointCount += data.languages!.count }
-        if data.interests != nil { dataPointCount += data.interests!.count }
-        if data.shows != nil { dataPointCount += data.shows!.count }
-        
-        if let languages = data.languages {
-            for language in languages {
-                if let name = language.language,
-                    let isDisabled = language.isDisabled,
-                   (!name.containsNonLatinCharacters() && !isDisabled),
-                   builtInLanguages.contains(where: { builtInLanguage in
-                    return name.lowercased().contains(builtInLanguage.lowercased())
-                }),
-                   !self.languages.contains(name.capitalized) {
-                    log("Appending \(name.lowercased()) to languages.")
-                    self.languages.append(name.capitalized)
-                }
-                currentCount += 1
-                progressReporter?.updateProgress(progress: Double(currentCount), total: Double(dataPointCount))
-            }
-        }
-        
-        if let interests = data.interests {
-            for interest in interests {
-                if let name = interest.name,
-                    let isDisabled = interest.isDisabled,
-                   (!name.containsNonLatinCharacters() && !isDisabled) {
-                    if let newInterest = builtInInterests.first(where: { builtInInterest in
-                        return name.lowercased() == builtInInterest.name.lowercased() || builtInInterest.words.contains(where: { word in
-                            return word.lowercased() == name.lowercased()
-                        })
-                    }),
-                        !self.interests.contains(newInterest.name.lowercased()) {
-                        log("Appending \(name.lowercased()) to interests.")
-                        self.interests.append(newInterest.name.lowercased())
-                    }
-                }
-                currentCount += 1
-                progressReporter?.updateProgress(progress: Double(currentCount), total: Double(dataPointCount))
-            }
-        }
-        
-        if let shows = data.shows {
-            for show in shows {
-                if !show.containsNonLatinCharacters() {
-                    if preferredWords.keys.contains(show.lowercased()) {
-                        let count: Int = preferredWords[show.lowercased()]!
-                        log("Updating \(show.lowercased()) to preferred words with count \(count + 1).")
-                        preferredWords.updateValue(count + 1, forKey: show.lowercased())
-                    } else {
-                        log("Adding \(show.lowercased()) to preferred words with count 1.")
-                        preferredWords.updateValue(1, forKey: show.lowercased())
-                    }
-                }
-                currentCount += 1
-                progressReporter?.updateProgress(progress: Double(currentCount), total: Double(dataPointCount))
-            }
-        }
-        
-        return (true, dataPointCount - currentCount)
-        
-    }
-    
     // MARK: Helper Functions
     
     func loginKey(accountName: String) -> String {
@@ -915,35 +519,19 @@ public class UserProfile: NSObject {
         return """
         --- User Profile Object Descriptor ---
         
-        > Basic Information
         Full Name: \(fullName ?? "nil")
         Region: \(region ?? "nil")
         Languages\(languages)
         Age: \(birthdayString() ?? "nil")
         Company Name: \(companyName ?? "nil")
         School Name: \(schoolName ?? "nil")
+        
         Logins:
         \(logins)
         
-        --- Prediction Profile  ---
-        
-        > Linguistic Features
-        Frequent Characters:
-        \(freqCharacters.description)
-        Frequent Words:
-        \(freqWords.description)
-        Average Word Length: \(avgWordLength)
-        
-        > Usage Habits
-        Frequency of Leet: \(freqLeet)
-        Frequency of Running Letters: \(freqRunningLetters)
-        Frequency of Running Numbers: \(freqRunningNumbers)
-        
-        > Preferences
-        Preferred Symbols:
-        \(preferredSymbols.description)
         Interests:
         \(interests.description)
+        
         Preferred Words:
         \(preferredWords.description)
         """

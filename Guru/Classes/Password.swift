@@ -35,15 +35,6 @@ public class Password: NSObject {
         regenerate()
     }
     
-    init(forPolicies policies: [PasswordCharacterPolicy], userProfile: UserProfile) {
-        super.init()
-        
-        let chars: String = characterSet(forPolicies: policies)
-        
-        self.policies = policies
-        
-    }
-    
     init(passphraseWithWordCount count: Int, withMinLength lengthMin: Int, withMaxLength lengthMax: Int) {
         super.init()
         policies = [.ContainsLowercase, .ContainsSpaces]

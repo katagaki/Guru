@@ -130,7 +130,11 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
                     if cSCoinFlip() { policies.append(.ContainsBasicSymbols)}
                 }
                 log("Creating new enhanced password with policy: \(policies).")
-                enhancedPassword = Password(forPolicies: policies, withMinLength: Int(averagePasswordLength) - 4, withMaxLength: Int(averagePasswordLength) + 4)
+                if averagePasswordLength > 0.0 {
+                    enhancedPassword = Password(forPolicies: policies, withMinLength: Int(averagePasswordLength) - 4, withMaxLength: Int(averagePasswordLength) + 4)
+                } else {
+                    enhancedPassword = Password(forPolicies: [.ContainsUppercase, .ContainsLowercase, .ContainsBasicSymbols], withMinLength: 8, withMaxLength: 16)
+                }
                 
                 // Configure enhanced mode interests
                 enhancedRecommendedInterests.removeAll()
