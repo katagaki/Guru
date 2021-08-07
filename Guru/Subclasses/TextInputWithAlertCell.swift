@@ -20,7 +20,7 @@ class TextInputWithAlertCell: UITableViewCell, UITextFieldDelegate {
     // MARK: Interface Builder
     
     @IBAction func textChanged(_ sender: Any) {
-        if textField.text! != "" {
+        if defaults.bool(forKey: "Feature.BreachDetection.Password") && textField.text! != "" {
             checkBreaches(password: textField.text!) { breached, hasError in
                 if !hasError, let breached = breached {
                     self.queue.async(flags: .barrier) {
@@ -28,6 +28,8 @@ class TextInputWithAlertCell: UITableViewCell, UITextFieldDelegate {
                             self.alertButton.isHidden = !breached
                         }
                     }
+                } else {
+                    self.alertButton.isHidden = true
                 }
             }
         } else {

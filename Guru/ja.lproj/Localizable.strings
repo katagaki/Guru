@@ -115,6 +115,9 @@
 "AccountSafeText" = "このアカウントのメールアドレスは情報漏洩インシデントに検出されませんでした。";
 
 /* Generator */
+"BasicMode" = "ポリシー";
+"EnhancedMode" = "パーソナライズ";
+"CustomMode" = "カスタマイズ";
 "NewPassword" = "新規パスワード";
 "NewPasswordHint" = "他の種類のパスワードを作成するには、「@$」を長押ししてください。";
 "GenerateNewPassword" = "新規パスワードを作成";
@@ -304,8 +307,13 @@
 "InformationAboutYouTitle" = "あなたについての情報";
 "InformationAboutYouText" = "様々な情報を提供していただけると、Guruはあなたについての情報を使ってパスワードを作成することができます。\n提供された情報はお客様の端末外に送ったりサーバーに保存したりすることはありません。\n情報を追加するには、「設定」＞「プロフィール」の順にタップし、「編集」をタップします。他のサービスからインポートしたい場合、「設定」＞「インポート/エクスポート」の順に選択します。";
 "PasswordQuestionnaireTitle" = "パスワードのアンケート";
-"PasswordQuestionnaireText" = "Guruは今パスワードについてのアンケートをとります。\nアンケートに入力されたパスワードはGuruのインテリジェンスのために使用します。そのパスワードを保存することはありません。";
+"PasswordQuestionnaireText" = "Guruは今パスワードについてのアンケートをとります。\nアンケートに入力されたパスワードはGuruのインテリジェンスのために使用します。";
 "SkipPasswordQuestionnaire" = "やめておく";
+"LearningTitle" = "設定中";
+"LearningText" = "Guruは提供された情報を使用して設定しています。";
+"OnboardingCompletionTitle" = "設定完了";
+"OnboardingCompletionText" = "Guruの設定は完了しました。この後、設定タブでさらに個人情報を追加することができます。";
+"OnboardingCompletionButton" = "Guruを使い始める";
 
 /* OTP */
 "OTPExplainer" = "iPhoneのカメラをパソコンの画面に表示されているQRコードに向けてください。";
@@ -333,3 +341,5 @@
 "Back" = "戻る";
 "Skip" = "スキップ";
 "Delete" = "削除";
+"FeatureUnavailableTitle" = "機能が使用できない";
+"FeatureUnavailableText" = "この機能はまだ実装していないので、現在使用できません。";

@@ -9,8 +9,17 @@ import UIKit
 
 class LearningViewController: UIViewController {
     
-    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
+    
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        
+        // Localization
+        navigationItem.title = NSLocalizedString("LearningTitle", comment: "Onboarding")
+        contentLabel.text = NSLocalizedString("LearningText", comment: "Onboarding")
+        
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

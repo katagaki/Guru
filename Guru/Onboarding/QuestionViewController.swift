@@ -18,12 +18,11 @@ class QuestionViewController: OnboardingViewController {
     // MARK: UIViewController
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         // Localization
-        
         skipButton.title = NSLocalizedString("Skip", comment: "General")
-        
         primaryButton.setTitle(NSLocalizedString("Continue", comment: "General"), for: .normal)
         
     }

@@ -26,6 +26,7 @@ class SettingsTableViewController: UITableViewController, SFSafariViewController
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        log("\(self.className) has appeared.")
         tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
     }
     

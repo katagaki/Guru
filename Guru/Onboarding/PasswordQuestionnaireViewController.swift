@@ -18,13 +18,9 @@ class PasswordQuestionnaireViewController: OnboardingViewController {
         super.viewDidLoad()
         
         // Localization
-        
         navigationItem.title = NSLocalizedString("PasswordQuestionnaireTitle", comment: "Onboarding")
-        
         contentLabel.text = NSLocalizedString("PasswordQuestionnaireText", comment: "Onboarding")
-        
         skipButton.setTitle(NSLocalizedString("SkipPasswordQuestionnaire", comment: "Onboarding"), for: .normal)
-        
         primaryButton.setTitle(NSLocalizedString("Continue", comment: "General"), for: .normal)
         
     }

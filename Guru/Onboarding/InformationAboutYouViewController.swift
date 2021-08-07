@@ -37,10 +37,8 @@ class InformationAboutYouViewController: OnboardingViewController {
         }
         
         // Localization
-        
         navigationItem.title = NSLocalizedString("InformationAboutYouTitle", comment: "Onboarding")
         contentLabel.text = NSLocalizedString("InformationAboutYouText", comment: "Onboarding")
-        
         primaryButton.setTitle(NSLocalizedString("Continue", comment: "General"), for: .normal)
         
     }

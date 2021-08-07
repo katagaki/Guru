@@ -115,6 +115,9 @@
 "AccountSafeText" = "The email address of this login was not included in a data breach.";
 
 /* Generator */
+"BasicMode" = "Policy";
+"EnhancedMode" = "Personalize";
+"CustomMode" = "Customize";
 "NewPassword" = "New Password";
 "NewPasswordHint" = "Long press @$ to see more options.";
 "GenerateNewPassword" = "Generate New Password";
@@ -304,8 +307,13 @@
 "InformationAboutYouTitle" = "Information About You";
 "InformationAboutYouText" = "Guru can learn from your data to personalize your passwords.\nInformation you add is stored on your device and is never sent to a server.\nYou can add your information later in Settings > Profile, or import eixsting information in Settings > Import.";
 "PasswordQuestionnaireTitle" = "Password Questionnaire";
-"PasswordQuestionnaireText" = "Guru will now ask you a few questions about how you set your passwords.\nKeep in mind that the passwords you enter during the questionnaire will not be stored, and will only be used to train Guru to recognize how you set your passwords.";
+"PasswordQuestionnaireText" = "Guru will now ask you a few questions about how you set your passwords.\nKeep in mind that the passwords you enter during the questionnaire will only be used to train Guru to recognize how you set your passwords.";
 "SkipPasswordQuestionnaire" = "Skip This";
+"LearningTitle" = "Learning...";
+"LearningText" = "Guru is now learning from the information you provided.";
+"OnboardingCompletionTitle" = "All Set!";
+"OnboardingCompletionText" = "Guru is now fully set up. You can head into the Settings to add additional information about yourself.";
+"OnboardingCompletionButton" = "Start Using Guru";
 
 /* OTP */
 "OTPExplainer" = "Point your iPhone at the QR code displayed on the 2FA setup page of the website/app.";
@@ -333,3 +341,5 @@
 "Back" = "Back";
 "Skip" = "Skip";
 "Delete" = "Delete";
+"FeatureUnavailableTitle" = "Feature Unavailable";
+"FeatureUnavailableText" = "This feature is currently unavailable.";

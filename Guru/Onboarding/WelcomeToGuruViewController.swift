@@ -34,7 +34,6 @@ class WelcomeToGuruViewController: OnboardingViewController, SFSafariViewControl
         
         tosButton.setTitle(NSLocalizedString("TermsOfService", comment: "General"), for: .normal)
         privacyPolicyButton.setTitle(NSLocalizedString("PrivacyPolicy", comment: "General"), for: .normal)
-        
         primaryButton.setTitle(NSLocalizedString("Continue", comment: "General"), for: .normal)
         
     }

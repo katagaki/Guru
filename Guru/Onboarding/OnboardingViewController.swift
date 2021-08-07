@@ -23,6 +23,11 @@ class OnboardingViewController: UIViewController {
         scrollView.verticalScrollIndicatorInsets.bottom = visualEffectView.frame.height
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        log("\(self.className) has appeared.")
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let backButton = UIBarButtonItem()
         backButton.title = NSLocalizedString("Back", comment: "General")

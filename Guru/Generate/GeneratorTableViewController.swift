@@ -26,6 +26,7 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
     let basicPolicyMaxLengths: [Int] = [20, 16, 16, 6]
     
     // Enhanced mode variables
+    var enhancedRecommendedInterests: [Interest] = []
     var enhancedSelectedInterests: [Interest] = []
     
     // Custom mode variables
@@ -67,11 +68,15 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
         
         // Localization
         navigationItem.title = NSLocalizedString("Generate", comment: "Views")
+        segmentControl.setTitle(NSLocalizedString("BasicMode", comment: "Generator"), forSegmentAt: 0)
+        segmentControl.setTitle(NSLocalizedString("EnhancedMode", comment: "Generator"), forSegmentAt: 1)
+        segmentControl.setTitle(NSLocalizedString("CustomMode", comment: "Generator"), forSegmentAt: 2)
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        log("\(self.className) has appeared.")
         switch segmentControl.selectedSegmentIndex {
         case 1: tableView.reloadSections(IndexSet(integer: 2), with: .none)
         case 2: tableView.reloadSections(IndexSet(integer: 4), with: .none)
@@ -96,6 +101,26 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
     // MARK: Interface Builder
     
     @IBAction func segmentChanged(_ sender: Any) {
+        switch segmentControl.selectedSegmentIndex {
+        case 1:
+            enhancedRecommendedInterests.removeAll()
+            if let userProfile = userProfile {
+                let countOfInterestsToRecommend: Int = (userProfile.interests.count >= 3 ? 3 : userProfile.interests.count)
+                while enhancedRecommendedInterests.count != countOfInterestsToRecommend {
+                    let randomInterest: Interest? = builtInInterests.first { builtInInterest in
+                        return builtInInterest.name == userProfile.interests.randomElement()!
+                    }
+                    if let randomInterest = randomInterest {
+                        if !enhancedRecommendedInterests.contains(where: { enhancedRecommendedInterest in
+                            return enhancedRecommendedInterest.name == randomInterest.name
+                        }) {
+                            enhancedRecommendedInterests.append(randomInterest)
+                        }
+                    }
+                }
+            }
+        default: break
+        }
         tableView.reloadData()
         updateSaveButton()
         updateFloatingView()
@@ -131,12 +156,7 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
             switch section {
             case 0: return 1
             case 1: return 2
-            case 2:
-                if let userProfile = userProfile {
-                    return userProfile.interests.count
-                } else {
-                    return 0
-                }
+            case 2: return enhancedRecommendedInterests.count
             default: return 0
             }
         case 2:
@@ -280,20 +300,14 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
                 return cell
             case 2:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "InterestCell")!
-                if let userProfile = userProfile {
-                    cell.textLabel!.text = userProfile.interests[indexPath.row].capitalized
-                    if let interest = builtInInterests.first(where: { interest in
-                        return interest.name == userProfile.interests[indexPath.row].lowercased()
-                    }) {
-                        cell.detailTextLabel!.text = interest.words.joined(separator: ", ")
-                    }
-                    if enhancedSelectedInterests.contains(where: { interest in
-                        return interest.name == userProfile.interests[indexPath.row]
-                    }) {
-                        cell.accessoryType = .checkmark
-                    } else {
-                        cell.accessoryType = .none
-                    }
+                cell.textLabel!.text = enhancedRecommendedInterests[indexPath.row].name.capitalized
+                cell.detailTextLabel!.text = enhancedRecommendedInterests[indexPath.row].words.joined(separator: ", ")
+                if enhancedSelectedInterests.contains(where: { interest in
+                    return interest.name == enhancedRecommendedInterests[indexPath.row].name
+                }) {
+                    cell.accessoryType = .checkmark
+                } else {
+                    cell.accessoryType = .none
                 }
                 return cell
             default: return UITableViewCell()
@@ -386,20 +400,14 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
         case 1:
             switch indexPath.section {
             case 2:
-                if let userProfile = userProfile {
-                    if enhancedSelectedInterests.contains(where: { interest in
-                        return interest.name == userProfile.interests[indexPath.row]
-                    }) {
-                        enhancedSelectedInterests.removeAll(where: { interest in
-                            return interest.name == userProfile.interests[indexPath.row]
-                        })
-                    } else {
-                        if let interest = builtInInterests.first(where: { interest in
-                            return interest.name == userProfile.interests[indexPath.row].lowercased()
-                        }) {
-                            enhancedSelectedInterests.append(interest)
-                        }
-                    }
+                if enhancedSelectedInterests.contains(where: { interest in
+                    return interest.name == enhancedRecommendedInterests[indexPath.row].name
+                }) {
+                    enhancedSelectedInterests.removeAll(where: { interest in
+                        return interest.name == enhancedRecommendedInterests[indexPath.row].name
+                    })
+                } else {
+                    enhancedSelectedInterests.append(enhancedRecommendedInterests[indexPath.row])
                 }
                 tableView.reloadRows(at: [indexPath], with: .none)
             default: break
@@ -461,15 +469,15 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
                                                             image: UIImage(systemName: "text.book.closed")) { action in
                         switch self.segmentControl.selectedSegmentIndex {
                         case 0:
-                            self.basicPassword = Password(passphraseWithWordCount: 4,
+                            self.basicPassword = Password(passphraseWithWordCount: cSRandomNumber(from: 3, to: 5),
                                                           withMinLength: self.basicPassword.minLength,
                                                           withMaxLength: self.basicPassword.maxLength)
                         case 1:
-                            self.enhancedPassword = Password(passphraseWithWordCount: 4,
+                            self.enhancedPassword = Password(passphraseWithWordCount: cSRandomNumber(from: 3, to: 5),
                                                              withMinLength: self.enhancedPassword.minLength,
                                                              withMaxLength: self.enhancedPassword.maxLength)
                         case 2:
-                            self.customPassword = Password(passphraseWithWordCount: 4,
+                            self.customPassword = Password(passphraseWithWordCount: cSRandomNumber(from: 3, to: 5),
                                                            withMinLength: self.customPassword.minLength,
                                                            withMaxLength: self.customPassword.maxLength)
                         default: break

@@ -263,7 +263,7 @@ public class UserProfile: NSObject {
                         // Automatically learned behavior
                     case "profiles_interests":
                         if value != "" {
-                            interests = value.components(separatedBy: ",")
+                            interests = value.components(separatedBy: ",").sorted()
                         } else {
                             interests = []
                         }

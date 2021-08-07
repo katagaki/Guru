@@ -66,6 +66,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        log("\(self.className) has appeared.")
         if unlockImmediately {
             unlock(unlockButton!)
         }

@@ -42,8 +42,8 @@ public func showInputAlert(title: String,
 }
 
 public func featureUnavailableAlert(_ sender: Any) {
-    let featureUnavailableAlert = UIAlertController(title: "Feature Unavailable",
-                                           message: "This feature is currently unavailable.",
+    let featureUnavailableAlert = UIAlertController(title: NSLocalizedString("FeatureUnavailableTitle", comment: "General"),
+                                           message: NSLocalizedString("FeatureUnavailableText", comment: "General"),
                                            preferredStyle: .alert)
     featureUnavailableAlert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "General"),
                                            style: .default,

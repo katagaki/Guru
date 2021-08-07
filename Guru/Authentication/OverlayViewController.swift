@@ -18,4 +18,9 @@ class OverlayViewController: UIViewController {
         contentLabel.text = NSLocalizedString("OverlayText", comment: "Authentication")
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        log("\(self.className) has appeared.")
+    }
+    
 }
