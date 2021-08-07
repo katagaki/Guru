@@ -140,7 +140,7 @@ class ImportTableViewController: UITableViewController {
             case 2:
                 performSegue(withIdentifier: "ShowImportInterests", sender: tableView.cellForRow(at: indexPath))
             default:
-                log("Feature temporarily unavailable.")
+                featureUnavailableAlert(self)
             }
             
         default: break

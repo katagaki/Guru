@@ -143,7 +143,8 @@ class SettingsTableViewController: UITableViewController, SFSafariViewController
             case 0:
                 performSegue(withIdentifier: "OpenProfileSettings", sender: tableView.cellForRow(at: indexPath)!)
             case 1:
-                performSegue(withIdentifier: "OpenPersonalizationSettings", sender: tableView.cellForRow(at: indexPath)!)
+                featureUnavailableAlert(self)
+                //performSegue(withIdentifier: "OpenPersonalizationSettings", sender: tableView.cellForRow(at: indexPath)!)
 //            case 2:
 //                performSegue(withIdentifier: "ShowiCloudSyncSettings", sender: tableView.cellForRow(at: indexPath)!)
             case 2:

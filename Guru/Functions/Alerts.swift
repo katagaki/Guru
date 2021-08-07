@@ -40,3 +40,13 @@ public func showInputAlert(title: String,
     }))
     (sender as! UIViewController).present(alert, animated: true, completion: nil)
 }
+
+public func featureUnavailableAlert(_ sender: Any) {
+    let featureUnavailableAlert = UIAlertController(title: "Feature Unavailable",
+                                           message: "This feature is currently unavailable.",
+                                           preferredStyle: .alert)
+    featureUnavailableAlert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "General"),
+                                           style: .default,
+                                           handler: nil))
+    (sender as! UIViewController).present(featureUnavailableAlert, animated: true, completion: nil)
+}

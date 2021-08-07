@@ -63,10 +63,10 @@ class ImportInterestsTableViewController: UITableViewController, SFSafariViewCon
             switch indexPath.row {
             case 0:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ExplainerCell")!
+                cell.textLabel!.text = "View the download page for \(guideCode) to download a copy of your data."
                 return cell
             case 1:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "OpenSupportPageCell")!
-                cell.textLabel!.text = "View the download page for \(guideCode) to download a copy of your data."
                 return cell
             default: return UITableViewCell()
             }
@@ -74,7 +74,7 @@ class ImportInterestsTableViewController: UITableViewController, SFSafariViewCon
             switch indexPath.row {
             case 0:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "FileNameToUploadCell")!
-                cell.textLabel!.text = "Once you have obtained an archive of your data, extract if and select the file named '\(filename)'."
+                cell.textLabel!.text = "Once you have obtained an archive of your data, extract it and select the file named '\(filename)'."
                 return cell
             case 1:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "SelectFileCell")!
