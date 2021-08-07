@@ -10,4 +10,5 @@ import UIKit
 protocol HandlesTextField: AnyObject {
     func handleTextFieldShouldReturn()
     func handleTextFieldBeginEditing(_ sender: UITextField)
+    func handleTextFieldEditingChanged(text: String, sender: Any)
 }

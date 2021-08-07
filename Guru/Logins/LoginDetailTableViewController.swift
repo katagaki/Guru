@@ -113,22 +113,12 @@ class LoginDetailTableViewController: UITableViewController, SFSafariViewControl
     // MARK: Interface Builder
     
     @IBAction func toggleEditing(_ sender: Any) {
-        if isEditingLogin {
-            if let loginURLCell = tableView.cellForRow(at: IndexPath(row: 0, section: 1 - offset)) as? TextInputCell {
-                login!.loginURL = loginURLCell.textField.text ?? ""
-                userProfile!.setLoginProperty(forAccount: login!.accountName!, loginURL: loginURLCell.textField.text ?? "")
-            }
-            if let resetURLCell = tableView.cellForRow(at: IndexPath(row: 1, section: 1 - offset)) as? TextInputCell {
-                login!.passwordResetURL = resetURLCell.textField.text ?? ""
-                userProfile!.setLoginProperty(forAccount: login!.accountName!, passwordResetURL: resetURLCell.textField.text ?? "")
-            }
-            if let usernameCell = tableView.cellForRow(at: IndexPath(row: 0, section: 2 - offset)) as? TextInputCell {
-                login!.username = usernameCell.textField.text ?? ""
-                userProfile!.setLoginProperty(forAccount: login!.accountName!, username: usernameCell.textField.text ?? "")
-            }
-            if let passwordCell = tableView.cellForRow(at: IndexPath(row: 1, section: 2 - offset)) as? TextInputCell {
-                login!.password = passwordCell.textField.text ?? ""
-                userProfile!.setLoginProperty(forAccount: login!.accountName!, password: passwordCell.textField.text ?? "")
+        if let login = login {
+            if isEditingLogin {
+                userProfile!.setLoginProperty(forAccount: login.accountName!, loginURL: login.loginURL ?? "")
+                userProfile!.setLoginProperty(forAccount: login.accountName!, passwordResetURL: login.passwordResetURL ?? "")
+                userProfile!.setLoginProperty(forAccount: login.accountName!, username: login.username ?? "")
+                userProfile!.setLoginProperty(forAccount: login.accountName!, password: login.password!)
             }
         }
         isEditingLogin = !isEditingLogin
@@ -141,14 +131,16 @@ class LoginDetailTableViewController: UITableViewController, SFSafariViewControl
     }
     
     @IBAction func editAccountName(_ sender: Any) {
-        if let userProfile = userProfile, let login = login, let accountName = login.accountName {
-            showInputAlert(title: NSLocalizedString("AccountName", comment: "Logins"),
-                           message: "", textType: .unspecified, keyboardType: .asciiCapable, capitalizationType: .words, placeholder: NSLocalizedString("AccountName", comment: "Logins"), defaultText: accountName, self) { newName in
-                if let newName = newName {
-                    userProfile.setLoginProperty(forAccount: accountName, accountName: newName)
-                    self.login = userProfile.login(withName: newName)
-                    self.tableView.reloadData()
-                    self.accountNameLabel.text = newName
+        if !isEditingLogin {
+            if let userProfile = userProfile, let login = login, let accountName = login.accountName {
+                showInputAlert(title: NSLocalizedString("AccountName", comment: "Logins"),
+                               message: "", textType: .unspecified, keyboardType: .asciiCapable, capitalizationType: .words, placeholder: NSLocalizedString("AccountName", comment: "Logins"), defaultText: accountName, self) { newName in
+                    if let newName = newName {
+                        userProfile.setLoginProperty(forAccount: accountName, accountName: newName)
+                        self.login = userProfile.login(withName: newName)
+                        self.tableView.reloadData()
+                        self.accountNameLabel.text = newName
+                    }
                 }
             }
         }
@@ -463,6 +455,26 @@ class LoginDetailTableViewController: UITableViewController, SFSafariViewControl
     func handleTextFieldBeginEditing(_ sender: UITextField) {
         log("Text field with tag \(currentViewTag) started editing.")
         currentViewTag = sender.tag
+    }
+    
+    func handleTextFieldEditingChanged(text: String, sender: Any) {
+        if let login = login, let sender = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: sender) {
+            switch indexPath.section {
+            case 1 - offset:
+                switch indexPath.row {
+                case 0: login.loginURL = text
+                case 1: login.passwordResetURL = text
+                default: break
+                }
+            case 2 - offset:
+                switch indexPath.row {
+                case 0: login.username = text
+                case 1: login.password = text
+                default: break
+                }
+            default: break
+            }
+        }
     }
     
     // MARK: Helper Functions

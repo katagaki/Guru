@@ -14,6 +14,14 @@ class TextInputCell: UITableViewCell, UITextFieldDelegate {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
     
+    // MARK: Interface Builder
+    
+    @IBAction func textChanged(_ sender: Any) {
+        textFieldHandler?.handleTextFieldEditingChanged(text: textField.text!, sender: self)
+    }
+    
+    // MARK: UITextFieldDelegate
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textFieldHandler?.handleTextFieldBeginEditing(textField)
     }

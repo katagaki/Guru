@@ -170,4 +170,8 @@ class ExportTableViewController: UITableViewController, HandlesTextField {
         // No action required
     }
     
+    func handleTextFieldEditingChanged(text: String, sender: Any) {
+        // No action required
+    }
+    
 }

@@ -654,88 +654,8 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="LoginPageTextFieldCell" id="Fpf-QB-g2g" customClass="TextInputCell" customModule="Guru" customModuleProvider="target">
-                                <rect key="frame" x="20" y="576.00000381469727" width="350" height="43.333332061767578"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Fpf-QB-g2g" id="9rl-aI-8HT">
-                                    <rect key="frame" x="0.0" y="0.0" width="350" height="43.333332061767578"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <textField opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Login Page (Optional)" textAlignment="right" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H7E-Wm-dl5">
-                                            <rect key="frame" x="103.66666666666667" y="0.0" width="226.33333333333331" height="43.333333333333336"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="43" id="SqJ-bU-aNI"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                            <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" smartDashesType="no" smartQuotesType="no" textContentType="url"/>
-                                            <connections>
-                                                <outlet property="delegate" destination="Fpf-QB-g2g" id="q2r-uA-loX"/>
-                                            </connections>
-                                        </textField>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login Page" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oTk-9l-03d">
-                                            <rect key="frame" x="20" y="10.999999999999998" width="71.666666666666671" height="21.333333333333329"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="H7E-Wm-dl5" firstAttribute="leading" secondItem="oTk-9l-03d" secondAttribute="trailingMargin" constant="20" id="BgR-vy-N4I"/>
-                                        <constraint firstAttribute="bottom" secondItem="H7E-Wm-dl5" secondAttribute="bottom" id="Fcj-t1-Lrl"/>
-                                        <constraint firstItem="oTk-9l-03d" firstAttribute="leading" secondItem="9rl-aI-8HT" secondAttribute="leadingMargin" id="IOl-6P-Qj7"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="H7E-Wm-dl5" secondAttribute="trailing" id="Jxf-MY-Hsb"/>
-                                        <constraint firstItem="H7E-Wm-dl5" firstAttribute="top" secondItem="9rl-aI-8HT" secondAttribute="top" id="Nhp-9S-Bt1"/>
-                                        <constraint firstItem="oTk-9l-03d" firstAttribute="top" secondItem="9rl-aI-8HT" secondAttribute="topMargin" id="OYq-pw-yTa"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="oTk-9l-03d" secondAttribute="bottom" id="rdO-2W-fHi"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="textField" destination="H7E-Wm-dl5" id="gtC-Hf-rkt"/>
-                                    <outlet property="titleLabel" destination="oTk-9l-03d" id="4iU-P9-0i8"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ResetPageTextFieldCell" id="FM4-Ri-SVU" customClass="TextInputCell" customModule="Guru" customModuleProvider="target">
-                                <rect key="frame" x="20" y="619.33333587646484" width="350" height="43.333332061767578"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FM4-Ri-SVU" id="JCA-42-JyM">
-                                    <rect key="frame" x="0.0" y="0.0" width="350" height="43.333332061767578"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <textField opaque="NO" tag="200" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password Reset Page (Optional)" textAlignment="right" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sNC-8k-8pZ">
-                                            <rect key="frame" x="170.66666666666663" y="0.0" width="159.33333333333337" height="43.333333333333336"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="43" id="KKu-Bs-iz8"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                            <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" smartDashesType="no" smartQuotesType="no" textContentType="url"/>
-                                            <connections>
-                                                <outlet property="delegate" destination="FM4-Ri-SVU" id="EIM-dW-t4T"/>
-                                            </connections>
-                                        </textField>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password Reset Page" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E3Q-6b-dKa">
-                                            <rect key="frame" x="20" y="10.999999999999998" width="138.66666666666666" height="21.333333333333329"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="sNC-8k-8pZ" secondAttribute="trailing" id="9zl-3I-8eq"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="E3Q-6b-dKa" secondAttribute="bottom" id="Kmu-C0-gVL"/>
-                                        <constraint firstAttribute="bottom" secondItem="sNC-8k-8pZ" secondAttribute="bottom" id="O9y-Tk-LS9"/>
-                                        <constraint firstItem="E3Q-6b-dKa" firstAttribute="top" secondItem="JCA-42-JyM" secondAttribute="topMargin" id="TdE-z2-LCi"/>
-                                        <constraint firstItem="E3Q-6b-dKa" firstAttribute="leading" secondItem="JCA-42-JyM" secondAttribute="leadingMargin" id="YAF-bB-tc0"/>
-                                        <constraint firstItem="sNC-8k-8pZ" firstAttribute="top" secondItem="JCA-42-JyM" secondAttribute="top" id="ZNz-AY-lrF"/>
-                                        <constraint firstItem="sNC-8k-8pZ" firstAttribute="leading" secondItem="E3Q-6b-dKa" secondAttribute="trailingMargin" constant="20" id="daQ-kg-DwI"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="textField" destination="sNC-8k-8pZ" id="cfO-Td-Qr2"/>
-                                    <outlet property="titleLabel" destination="E3Q-6b-dKa" id="GEF-Cb-fNN"/>
-                                </connections>
-                            </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="UsernameTextFieldCell" id="L5E-ok-x1y" customClass="TextInputCell" customModule="Guru" customModuleProvider="target">
-                                <rect key="frame" x="20" y="662.66666793823242" width="350" height="43.333332061767578"/>
+                                <rect key="frame" x="20" y="576.00000381469727" width="350" height="43.333332061767578"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="L5E-ok-x1y" id="rdU-Ov-hPk">
                                     <rect key="frame" x="0.0" y="0.0" width="350" height="43.333332061767578"/>
@@ -749,6 +669,7 @@
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" textContentType="username"/>
                                             <connections>
+                                                <action selector="textChanged:" destination="L5E-ok-x1y" eventType="editingDidEnd" id="c4z-iK-HgF"/>
                                                 <outlet property="delegate" destination="L5E-ok-x1y" id="m3j-ft-jqU"/>
                                             </connections>
                                         </textField>
@@ -775,7 +696,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="PasswordTextFieldCell" id="WzE-WC-fpF" customClass="TextInputCell" customModule="Guru" customModuleProvider="target">
-                                <rect key="frame" x="20" y="706" width="350" height="43.333332061767578"/>
+                                <rect key="frame" x="20" y="619.33333587646484" width="350" height="43.333332061767578"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WzE-WC-fpF" id="olO-Aw-t7K">
                                     <rect key="frame" x="0.0" y="0.0" width="350" height="43.333332061767578"/>
@@ -789,6 +710,7 @@
                                             <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="16"/>
                                             <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" smartDashesType="no" smartQuotesType="no" textContentType="password"/>
                                             <connections>
+                                                <action selector="textChanged:" destination="WzE-WC-fpF" eventType="editingDidEnd" id="thL-Ni-2Ea"/>
                                                 <outlet property="delegate" destination="WzE-WC-fpF" id="0lL-Pa-p1L"/>
                                             </connections>
                                         </textField>
@@ -812,6 +734,88 @@
                                 <connections>
                                     <outlet property="textField" destination="qyf-TF-pwv" id="NR8-av-KJd"/>
                                     <outlet property="titleLabel" destination="h5E-LG-r2p" id="uOX-ga-EXW"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="LoginPageTextFieldCell" id="Fpf-QB-g2g" customClass="TextInputCell" customModule="Guru" customModuleProvider="target">
+                                <rect key="frame" x="20" y="662.66666793823242" width="350" height="43.333332061767578"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Fpf-QB-g2g" id="9rl-aI-8HT">
+                                    <rect key="frame" x="0.0" y="0.0" width="350" height="43.333332061767578"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textField opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Login Page (Optional)" textAlignment="right" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H7E-Wm-dl5">
+                                            <rect key="frame" x="103.66666666666667" y="0.0" width="226.33333333333331" height="43.333333333333336"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="43" id="SqJ-bU-aNI"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" smartDashesType="no" smartQuotesType="no" textContentType="url"/>
+                                            <connections>
+                                                <action selector="textChanged:" destination="Fpf-QB-g2g" eventType="editingDidEnd" id="RPm-65-xA1"/>
+                                                <outlet property="delegate" destination="Fpf-QB-g2g" id="q2r-uA-loX"/>
+                                            </connections>
+                                        </textField>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login Page" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oTk-9l-03d">
+                                            <rect key="frame" x="20" y="10.999999999999998" width="71.666666666666671" height="21.333333333333329"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="H7E-Wm-dl5" firstAttribute="leading" secondItem="oTk-9l-03d" secondAttribute="trailingMargin" constant="20" id="BgR-vy-N4I"/>
+                                        <constraint firstAttribute="bottom" secondItem="H7E-Wm-dl5" secondAttribute="bottom" id="Fcj-t1-Lrl"/>
+                                        <constraint firstItem="oTk-9l-03d" firstAttribute="leading" secondItem="9rl-aI-8HT" secondAttribute="leadingMargin" id="IOl-6P-Qj7"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="H7E-Wm-dl5" secondAttribute="trailing" id="Jxf-MY-Hsb"/>
+                                        <constraint firstItem="H7E-Wm-dl5" firstAttribute="top" secondItem="9rl-aI-8HT" secondAttribute="top" id="Nhp-9S-Bt1"/>
+                                        <constraint firstItem="oTk-9l-03d" firstAttribute="top" secondItem="9rl-aI-8HT" secondAttribute="topMargin" id="OYq-pw-yTa"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="oTk-9l-03d" secondAttribute="bottom" id="rdO-2W-fHi"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="textField" destination="H7E-Wm-dl5" id="gtC-Hf-rkt"/>
+                                    <outlet property="titleLabel" destination="oTk-9l-03d" id="4iU-P9-0i8"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ResetPageTextFieldCell" id="FM4-Ri-SVU" customClass="TextInputCell" customModule="Guru" customModuleProvider="target">
+                                <rect key="frame" x="20" y="706" width="350" height="43.333332061767578"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FM4-Ri-SVU" id="JCA-42-JyM">
+                                    <rect key="frame" x="0.0" y="0.0" width="350" height="43.333332061767578"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textField opaque="NO" tag="200" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password Reset Page (Optional)" textAlignment="right" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sNC-8k-8pZ">
+                                            <rect key="frame" x="170.66666666666663" y="0.0" width="159.33333333333337" height="43.333333333333336"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="43" id="KKu-Bs-iz8"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" smartDashesType="no" smartQuotesType="no" textContentType="url"/>
+                                            <connections>
+                                                <action selector="textChanged:" destination="FM4-Ri-SVU" eventType="editingDidEnd" id="42d-BD-5Yf"/>
+                                                <outlet property="delegate" destination="FM4-Ri-SVU" id="EIM-dW-t4T"/>
+                                            </connections>
+                                        </textField>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password Reset Page" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E3Q-6b-dKa">
+                                            <rect key="frame" x="20" y="10.999999999999998" width="138.66666666666666" height="21.333333333333329"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="sNC-8k-8pZ" secondAttribute="trailing" id="9zl-3I-8eq"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="E3Q-6b-dKa" secondAttribute="bottom" id="Kmu-C0-gVL"/>
+                                        <constraint firstAttribute="bottom" secondItem="sNC-8k-8pZ" secondAttribute="bottom" id="O9y-Tk-LS9"/>
+                                        <constraint firstItem="E3Q-6b-dKa" firstAttribute="top" secondItem="JCA-42-JyM" secondAttribute="topMargin" id="TdE-z2-LCi"/>
+                                        <constraint firstItem="E3Q-6b-dKa" firstAttribute="leading" secondItem="JCA-42-JyM" secondAttribute="leadingMargin" id="YAF-bB-tc0"/>
+                                        <constraint firstItem="sNC-8k-8pZ" firstAttribute="top" secondItem="JCA-42-JyM" secondAttribute="top" id="ZNz-AY-lrF"/>
+                                        <constraint firstItem="sNC-8k-8pZ" firstAttribute="leading" secondItem="E3Q-6b-dKa" secondAttribute="trailingMargin" constant="20" id="daQ-kg-DwI"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="textField" destination="sNC-8k-8pZ" id="cfO-Td-Qr2"/>
+                                    <outlet property="titleLabel" destination="E3Q-6b-dKa" id="GEF-Cb-fNN"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Disable2FACell" textLabel="THs-ag-A5S" style="IBUITableViewCellStyleDefault" id="BiI-fx-wAz">
@@ -995,17 +999,17 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="PasswordTextFieldCell" id="ZuU-eS-BeK" customClass="TextInputWithCopyCell" customModule="Guru" customModuleProvider="target">
-                                <rect key="frame" x="20" y="212.9999942779541" width="350" height="261.66665649414062"/>
+                                <rect key="frame" x="20" y="212.9999942779541" width="350" height="262"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZuU-eS-BeK" id="bgQ-Yl-fqG">
-                                    <rect key="frame" x="0.0" y="0.0" width="350" height="261.66665649414062"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="350" height="262"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="4gB-cC-yHz">
-                                            <rect key="frame" x="20" y="0.0" width="310" height="261.66666666666669"/>
+                                            <rect key="frame" x="20" y="0.0" width="310" height="262"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" keyboardDismissMode="onDrag" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cd8-LR-oro" customClass="CenteredTextView" customModule="Guru" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="230.66666666666666" height="261.66666666666669"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="230.66666666666666" height="262"/>
                                                     <color key="textColor" systemColor="labelColor"/>
                                                     <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="new-password"/>
@@ -1014,7 +1018,7 @@
                                                     </connections>
                                                 </textView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hts-8J-qtM">
-                                                    <rect key="frame" x="246.66666666666671" y="0.0" width="63.333333333333343" height="261.66666666666669"/>
+                                                    <rect key="frame" x="246.66666666666671" y="0.0" width="63.333333333333343" height="262"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <state key="normal" image="square.on.square" catalog="system"/>
                                                     <connections>
@@ -1039,7 +1043,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RegenerateCell" textLabel="opn-W5-5jd" style="IBUITableViewCellStyleDefault" id="ggu-G7-7kA">
-                                <rect key="frame" x="20" y="474.66665077209473" width="350" height="43.666667938232422"/>
+                                <rect key="frame" x="20" y="474.9999942779541" width="350" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ggu-G7-7kA" id="iHL-AC-mdr">
                                     <rect key="frame" x="0.0" y="0.0" width="350" height="43.666667938232422"/>
@@ -1056,7 +1060,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CharacterCountCell" id="dLl-Iw-jCd" customClass="SliderCell" customModule="Guru" customModuleProvider="target">
-                                <rect key="frame" x="20" y="518.33331871032715" width="350" height="81.333335876464844"/>
+                                <rect key="frame" x="20" y="518.66666221618652" width="350" height="81.333335876464844"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dLl-Iw-jCd" id="eAt-79-Jqv">
                                     <rect key="frame" x="0.0" y="0.0" width="350" height="81.333335876464844"/>
@@ -1115,7 +1119,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="OptionCell" textLabel="PZz-Tp-1be" detailTextLabel="CBx-kt-tUu" style="IBUITableViewCellStyleSubtitle" id="evH-rb-Gfh">
-                                <rect key="frame" x="20" y="599.66665458679199" width="350" height="49.666667938232422"/>
+                                <rect key="frame" x="20" y="599.99999809265137" width="350" height="49.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="evH-rb-Gfh" id="bWh-G7-bdt">
                                     <rect key="frame" x="0.0" y="0.0" width="350" height="49.666667938232422"/>
@@ -1139,7 +1143,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="InterestCell" textLabel="fUC-Wf-eV1" detailTextLabel="zGr-sB-7oB" style="IBUITableViewCellStyleSubtitle" id="8WQ-8F-B1a">
-                                <rect key="frame" x="20" y="649.33332252502441" width="350" height="49.666667938232422"/>
+                                <rect key="frame" x="20" y="649.66666603088379" width="350" height="49.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8WQ-8F-B1a" id="CnT-5d-gfI">
                                     <rect key="frame" x="0.0" y="0.0" width="350" height="49.666667938232422"/>
@@ -1163,7 +1167,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="NoInterestsCell" textLabel="ucN-Lj-7mY" style="IBUITableViewCellStyleDefault" id="dPV-Gz-4NL">
-                                <rect key="frame" x="20" y="698.99999046325684" width="350" height="55.666667938232422"/>
+                                <rect key="frame" x="20" y="699.33333396911621" width="350" height="55.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dPV-Gz-4NL" id="mEh-3Z-u0x">
                                     <rect key="frame" x="0.0" y="0.0" width="350" height="55.666667938232422"/>
@@ -3884,6 +3888,7 @@ This information is only used to teach Guru about your habits, and is not stored
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="next"/>
                                             <connections>
+                                                <action selector="textChanged:" destination="hAG-At-dcf" eventType="editingChanged" id="Lv9-oZ-Sze"/>
                                                 <outlet property="delegate" destination="hAG-At-dcf" id="c76-WE-sCf"/>
                                             </connections>
                                         </textField>
@@ -3914,6 +3919,7 @@ This information is only used to teach Guru about your habits, and is not stored
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" textContentType="username"/>
                                             <connections>
+                                                <action selector="textChanged:" destination="QFA-hB-l4L" eventType="editingChanged" id="cYn-xh-J8H"/>
                                                 <outlet property="delegate" destination="QFA-hB-l4L" id="LUL-g0-hxV"/>
                                             </connections>
                                         </textField>
@@ -3995,6 +4001,7 @@ This information is only used to teach Guru about your habits, and is not stored
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" textContentType="url"/>
                                             <connections>
+                                                <action selector="textChanged:" destination="iaD-9p-Mzg" eventType="editingChanged" id="dvf-wA-ael"/>
                                                 <outlet property="delegate" destination="iaD-9p-Mzg" id="KXe-Kc-plJ"/>
                                             </connections>
                                         </textField>
@@ -4025,6 +4032,7 @@ This information is only used to teach Guru about your habits, and is not stored
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" textContentType="url"/>
                                             <connections>
+                                                <action selector="textChanged:" destination="Dve-ke-LmO" eventType="editingChanged" id="CNr-hf-5dg"/>
                                                 <outlet property="delegate" destination="Dve-ke-LmO" id="aEo-jn-Vxt"/>
                                             </connections>
                                         </textField>
@@ -4152,22 +4160,22 @@ This information is only used to teach Guru about your habits, and is not stored
             <objects>
                 <viewController id="TSi-bd-CPK" customClass="OTPScannerViewController" customModule="Guru" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qsd-e9-irh">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3tJ-dR-67O">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                             </imageView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cjg-iV-VXn">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="132"/>
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="164"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="BVa-wj-GND">
-                                    <rect key="frame" x="0.0" y="0.0" width="390" height="132"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="164"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <blurEffect style="systemMaterial"/>
                             </visualEffectView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mRM-cY-S5g">
-                                <rect key="frame" x="0.0" y="56" width="390" height="76"/>
+                                <rect key="frame" x="0.0" y="88" width="390" height="76"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Point your iPhone at the QR code displayed on the 2FA setup page of the website/app." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dui-Dd-6ah">
                                         <rect key="frame" x="20" y="20" width="350" height="36"/>
@@ -4185,15 +4193,15 @@ This information is only used to teach Guru about your habits, and is not stored
                                 </constraints>
                             </view>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5UJ-rI-08Z">
-                                <rect key="frame" x="0.0" y="701" width="390" height="89"/>
+                                <rect key="frame" x="0.0" y="672" width="390" height="172"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="leW-sJ-5Ns">
-                                    <rect key="frame" x="0.0" y="0.0" width="390" height="89"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="172"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <blurEffect style="systemMaterial"/>
                             </visualEffectView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tcT-nK-YJJ">
-                                <rect key="frame" x="0.0" y="701" width="390" height="89"/>
+                                <rect key="frame" x="0.0" y="672" width="390" height="89"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MBD-kk-09t" customClass="StylizedButton" customModule="Guru" customModuleProvider="target">
                                         <rect key="frame" x="20" y="20" width="350" height="49"/>
@@ -5117,7 +5125,7 @@ This information is only used to teach Guru about your habits, and is not stored
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="xDK-H9-jHw"/>
-        <segue reference="KLf-9f-EBf"/>
+        <segue reference="R9V-Tn-KJY"/>
         <segue reference="HwA-Gy-KD7"/>
         <segue reference="yPk-vy-8ap"/>
         <segue reference="UlA-NV-chT"/>

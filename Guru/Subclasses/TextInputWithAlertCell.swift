@@ -7,19 +7,16 @@
 
 import UIKit
 
-class TextInputWithAlertCell: UITableViewCell, UITextFieldDelegate {
+class TextInputWithAlertCell: TextInputCell {
     
     let queue = DispatchQueue(label: "TextInputWithAlertCell", attributes: .concurrent)
-
-    weak var textFieldHandler: HandlesTextField? = nil
     
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var alertButton: UIButton!
     
     // MARK: Interface Builder
     
-    @IBAction func textChanged(_ sender: Any) {
+    @IBAction override func textChanged(_ sender: Any) {
+        super.textChanged(sender)
         if defaults.bool(forKey: "Feature.BreachDetection.Password") && textField.text! != "" {
             checkBreaches(password: textField.text!) { breached, hasError in
                 if !hasError, let breached = breached {
@@ -39,17 +36,6 @@ class TextInputWithAlertCell: UITableViewCell, UITextFieldDelegate {
     
     @IBAction func alertButtonTapped(_ sender: Any) {
         log("Breached Password button tapped.")
-    }
-    
-    // MARK: UITextFieldDelegate
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        textFieldHandler?.handleTextFieldBeginEditing(textField)
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textFieldHandler?.handleTextFieldShouldReturn()
-        return true
     }
     
 }

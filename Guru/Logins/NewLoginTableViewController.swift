@@ -14,6 +14,13 @@ class NewLoginTableViewController: UITableViewController, ReceivesQRCodeResult, 
     var keywords: [String: String] = [:]
     var icons: [String] = []
     var websiteIcon: UIImage = UIImage()
+    
+    
+    var accountName: String = ""
+    var username: String = ""
+    var password: String = ""
+    var loginURL: String = ""
+    var passwordResetURL: String = ""
     var totpSecret: String = ""
     
     var usesWebsiteIcon: Bool = true
@@ -78,13 +85,6 @@ class NewLoginTableViewController: UITableViewController, ReceivesQRCodeResult, 
     }
     
     @IBAction func add(_ sender: Any) {
-        
-        let accountName: String = (tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! TextInputCell).textField.text!
-        let username: String = (tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as! TextInputCell).textField.text!
-        let password: String = (tableView.cellForRow(at: IndexPath(row: 1, section: 1)) as! TextInputWithAlertCell).textField.text!
-        let loginURL: String = (tableView.cellForRow(at: IndexPath(row: 0, section: 2)) as! TextInputCell).textField.text!
-        let passwordResetURL: String = (tableView.cellForRow(at: IndexPath(row: 1, section: 2)) as! TextInputCell).textField.text!
-        
         let login: Login = Login()
         
         if let userProfile = userProfile {
@@ -388,6 +388,31 @@ class NewLoginTableViewController: UITableViewController, ReceivesQRCodeResult, 
     func handleTextFieldBeginEditing(_ sender: UITextField) {
         log("Text field with tag \(sender.tag) started editing.")
         currentViewTag = sender.tag
+    }
+    
+    func handleTextFieldEditingChanged(text: String, sender: Any) {
+        if let sender = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: sender) {
+            switch indexPath.section {
+            case 0:
+                switch indexPath.row {
+                case 0: accountName = text
+                default: break
+                }
+            case 1:
+                switch indexPath.row {
+                case 0: username = text
+                case 1: password = text
+                default: break
+                }
+            case 2:
+                switch indexPath.row {
+                case 0: loginURL = text
+                case 1: passwordResetURL = text
+                default: break
+                }
+            default: break
+            }
+        }
     }
     
     // MARK: Helper Functions
