@@ -175,9 +175,9 @@ public class UserProfile: NSObject {
                         default: break
                         }
                     }
-                    log("Found \(keychainItem.key) in keychain.")
                     keychainItems.append(keychainItem)
                 }
+                log("Found \(keychainItems.count) keychain item(s).")
                 
                 openingFromKeychain = true
                 

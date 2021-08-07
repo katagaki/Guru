@@ -69,6 +69,8 @@ public func updatePasswordStatistics() {
             return partialResult + (login.password ?? "").count
         }) / Double(userProfile.logins.count)
         
+        log("Analyzing \(userProfile.logins.count) password(s).")
+        
         DispatchQueue.concurrentPerform(iterations: userProfile.logins.count) { i in
             let login: Login = userProfile.logins[i]
             let passwordCharacters: [Character] = Array(login.password ?? "")
@@ -77,9 +79,7 @@ public func updatePasswordStatistics() {
             var totalNumbers: Int = 0
             var totalSymbols: Int = 0
             let totalCharacters: Int = passwordCharacters.count
-            
-            log("Analyzing password \(i).")
-            
+                        
             for character in passwordCharacters {
                 switch true {
                 case character.isUppercase: totalUppercase += 1
@@ -95,7 +95,6 @@ public func updatePasswordStatistics() {
             }
             
             updatePasswordStatisticsQueue.async(flags: .barrier) {
-                log("Adding result for password \(i) to the total result.")
                 freqUppercase += Double(totalUppercase) / Double(totalCharacters)
                 freqUppercaseCount += totalUppercase
                 freqLowercase += Double(totalLowercase) / Double(totalCharacters)
