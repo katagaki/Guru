@@ -28,7 +28,7 @@ public func checkBreaches(emails: [String]) -> (breaches: [String:[Pwnage]], err
     var errorCount: Int = 0
 
     for email in uniqueEmails {
-        log("Checking \(email.prefix(3))<redacted> for breaches...")
+        log("Checking emails for breaches...")
         DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + .milliseconds(1500)) {
             checkBreaches(email: email) { breaches, hasError in
                 if hasError {
@@ -37,7 +37,7 @@ public func checkBreaches(emails: [String]) -> (breaches: [String:[Pwnage]], err
                 } else {
                     if let breaches = breaches {
                         result.updateValue(breaches, forKey: email)
-                        log("Added \(email.prefix(3))<redacted> to list of breached logins.")
+                        log("Added email to list of breached logins.")
                         semaphore.signal()
                     } else {
                         log("No breach detected on \(email.prefix(3))<redacted>.")
@@ -47,7 +47,7 @@ public func checkBreaches(emails: [String]) -> (breaches: [String:[Pwnage]], err
             }
         }
         semaphore.wait()
-        log("Done checking \(email.prefix(3))<redacted> for breaches.")
+        log("Done checking email for breaches.")
     }
     
     return (result, errorCount)
@@ -108,10 +108,12 @@ public func checkBreaches(passwords: [String]) -> (breaches: [String: Bool], has
     var dict: [String: Bool] = [:]
     var errorCount: Int = 0
     
+    log("Checking passwords for breaches.")
+    
     DispatchQueue.concurrentPerform(iterations: uniquePasswords.count) { i in
         let semaphore = DispatchSemaphore(value: 0)
         
-        log("Checking \(uniquePasswords[i].prefix(3))<redacted> for breaches...")
+        log("Checking password for breaches...")
         checkBreaches(password: uniquePasswords[i]) { breached, hasError in
             if hasError {
                 errorCount += 1
@@ -121,18 +123,18 @@ public func checkBreaches(passwords: [String]) -> (breaches: [String: Bool], has
                     if breached == true {
                         queue.async(flags: .barrier) {
                             dict.updateValue(breached, forKey: uniquePasswords[i])
-                            log("Added \(uniquePasswords[i].prefix(3))<redacted> to list of breached logins.")
+                            log("Added password \(i) to list of breached logins.")
                             semaphore.signal()
                         }
                     } else {
-                        log("No breach detected on \(uniquePasswords[i].prefix(3))<redacted>.")
+                        log("No breach detected on password \(i).")
                         semaphore.signal()
                     }
                 }
             }
         }
         semaphore.wait()
-        log("Done checking \(passwords[i].prefix(3))<redacted> for breaches.")
+        log("Done checking password \(i) for breaches.")
     }
     
     return (dict, errorCount)
@@ -165,7 +167,7 @@ public func checkBreaches(password: String, completion: @escaping (_ breached: B
                 var passwordPwned: Bool = false
                 for pwnedPassword in pwnedPasswords {
                     if pwnedPassword.starts(with: rightTrimHash) {
-                        log("Found \(password.prefix(3))<redacted> hash in breach list.")
+                        log("Found password hash in breach list.")
                         passwordPwned = true
                     }
                 }
