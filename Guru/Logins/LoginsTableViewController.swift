@@ -208,6 +208,7 @@ class LoginsTableViewController: UITableViewController, UISearchBarDelegate, UIS
                 reloadIndex()
                 tableView.deleteRows(at: [indexPath], with: .automatic)
             }
+            updatePasswordStatistics()
         }
     }
     

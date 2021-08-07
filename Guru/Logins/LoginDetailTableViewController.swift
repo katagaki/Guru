@@ -136,6 +136,7 @@ class LoginDetailTableViewController: UITableViewController, SFSafariViewControl
         willReloadTextInputFields = true
         tableView.reloadSections(IndexSet(integersIn: 0...(3 - offset)), with: .automatic)
         willReloadTextInputFields = false
+        updatePasswordStatistics()
     }
     
     @IBAction func editAccountName(_ sender: Any) {

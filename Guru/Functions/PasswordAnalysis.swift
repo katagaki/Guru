@@ -7,6 +7,7 @@
 
 import Foundation
 
+let updatePasswordStatisticsQueue = DispatchQueue(label: "updatePasswordStatistics", attributes: .concurrent)
 var averagePasswordLength: Double = 0.0
 var freqUppercase: Double = 0
 var freqUppercaseCount: Int = 0
@@ -49,10 +50,19 @@ Words found: \(wordsFound.joined(separator: ","))
     return wordsFound
 }
 
-public func analyzePasswords() {
-    let queue = DispatchQueue(label: "analyzePasswords", attributes: .concurrent)
+public func updatePasswordStatistics() {
     let semaphore = DispatchSemaphore(value: 0)
 
+    averagePasswordLength = 0.0
+    freqUppercase = 0.0
+    freqUppercaseCount = 0
+    freqLowercase = 0.0
+    freqLowercaseCount = 0
+    freqNumbers = 0.0
+    freqNumbersCount = 0
+    freqSymbols = 0.0
+    freqSymbolsCount = 0
+    
     if let userProfile = userProfile {
         
         averagePasswordLength = Double(userProfile.logins.reduce(0) { partialResult, login in
@@ -84,7 +94,7 @@ public func analyzePasswords() {
                 }
             }
             
-            queue.async(flags: .barrier) {
+            updatePasswordStatisticsQueue.async(flags: .barrier) {
                 log("Adding result for password \(i) to the total result.")
                 freqUppercase += Double(totalUppercase) / Double(totalCharacters)
                 freqUppercaseCount += totalUppercase
@@ -97,7 +107,7 @@ public func analyzePasswords() {
             }
         }
         
-        queue.async(flags: .barrier) {
+        updatePasswordStatisticsQueue.async(flags: .barrier) {
             freqUppercase /= Double(userProfile.logins.count)
             freqLowercase /= Double(userProfile.logins.count)
             freqNumbers /= Double(userProfile.logins.count)

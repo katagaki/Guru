@@ -88,7 +88,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
                 contentLockableDelegate?.unlockContent()
                 log("Performing analysis on passwords.")
                 DispatchQueue.global(qos: .background).async {
-                    analyzePasswords()
+                    updatePasswordStatistics()
                     DispatchQueue.main.async {
                         self.dismiss(animated: true, completion: nil)
                     }

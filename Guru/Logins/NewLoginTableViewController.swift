@@ -81,7 +81,7 @@ class NewLoginTableViewController: UITableViewController, ReceivesQRCodeResult, 
         
         let accountName: String = (tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! TextInputCell).textField.text!
         let username: String = (tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as! TextInputCell).textField.text!
-        let password: String = (tableView.cellForRow(at: IndexPath(row: 1, section: 1)) as! TextInputCell).textField.text!
+        let password: String = (tableView.cellForRow(at: IndexPath(row: 1, section: 1)) as! TextInputWithAlertCell).textField.text!
         let loginURL: String = (tableView.cellForRow(at: IndexPath(row: 0, section: 2)) as! TextInputCell).textField.text!
         let passwordResetURL: String = (tableView.cellForRow(at: IndexPath(row: 1, section: 2)) as! TextInputCell).textField.text!
         
@@ -157,6 +157,7 @@ class NewLoginTableViewController: UITableViewController, ReceivesQRCodeResult, 
                         }
                     }
                     userProfile.add(login: login)
+                    updatePasswordStatistics()
                     
                     DispatchQueue.main.async {
                         self.dismiss(animated: true) {

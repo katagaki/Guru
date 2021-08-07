@@ -40,7 +40,7 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
     var customSelectedInterests: [Interest] = []
     
     var basicPassword: Password = Password(forPolicies: [.ContainsUppercase, .ContainsLowercase, .ContainsNumbers, .ContainsBasicSymbols], withMinLength: 8, withMaxLength: 20)
-    var enhancedPassword: Password = Password(forPolicies: [.ContainsUppercase, .ContainsLowercase, .ContainsNumbers, .ContainsBasicSymbols], withMinLength: 8, withMaxLength: 16)
+    var enhancedPassword: Password = Password()
     var customPassword: Password = Password(forPolicies: [.ContainsLowercase, .ContainsUppercase, .ContainsNumbers], withMinLength: 8, withMaxLength: 8)
     
     // MARK: UIViewController
@@ -49,9 +49,8 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
         
         super.viewDidLoad()
         
-        basicPassword.generated = ""
-        enhancedPassword.generated = ""
-        customPassword.generated = ""
+        basicPassword.regenerate()
+        customPassword.regenerate()
         
         // Configure floating password view
         floatingPasswordView = floatingView(views: [floatingPasswordTitleLabel, floatingPasswordLabel], arrangeAs: .Vertical)
@@ -103,8 +102,38 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
     @IBAction func segmentChanged(_ sender: Any) {
         switch segmentControl.selectedSegmentIndex {
         case 1:
-            enhancedRecommendedInterests.removeAll()
             if let userProfile = userProfile {
+                
+                // Configure enhanced mode policies
+                var policies: [PasswordCharacterPolicy] = []
+                if freqUppercase > 0.25 {
+                    policies.append(.ContainsUppercase)
+                } else {
+                    if cSCoinFlip() { policies.append(.ContainsUppercase)}
+                }
+                if freqLowercase > 0.5 {
+                    policies.append(.ContainsLowercase)
+                } else {
+                    if cSCoinFlip() { policies.append(.ContainsLowercase)}
+                }
+                if freqNumbers > 0.1 {
+                    policies.append(.ContainsNumbers)
+                } else {
+                    if cSCoinFlip() { policies.append(.ContainsNumbers)}
+                }
+                if freqSymbols > 0.05 {
+                    policies.append(.ContainsBasicSymbols)
+                } else if freqSymbols > 0.2 {
+                    policies.append(.ContainsBasicSymbols)
+                    policies.append(.ContainsComplexSymbols)
+                } else {
+                    if cSCoinFlip() { policies.append(.ContainsBasicSymbols)}
+                }
+                log("Creating new enhanced password with policy: \(policies).")
+                enhancedPassword = Password(forPolicies: policies, withMinLength: Int(averagePasswordLength) - 4, withMaxLength: Int(averagePasswordLength) + 4)
+                
+                // Configure enhanced mode interests
+                enhancedRecommendedInterests.removeAll()
                 let countOfInterestsToRecommend: Int = (userProfile.interests.count >= 3 ? 3 : userProfile.interests.count)
                 while enhancedRecommendedInterests.count != countOfInterestsToRecommend {
                     let randomInterest: Interest? = builtInInterests.first { builtInInterest in
@@ -118,7 +147,10 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
                         }
                     }
                 }
+                
+                regeneratePassword()
             }
+            
         default: break
         }
         tableView.reloadData()
