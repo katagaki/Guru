@@ -304,7 +304,7 @@ public class UserProfile: NSObject {
                     
                 }
                 
-                log("User profile open function is returning NOW!")
+                log("User profile open function is returning now!")
                 
                 return true
                 

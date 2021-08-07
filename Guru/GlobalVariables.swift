@@ -20,9 +20,6 @@ let laContext = LAContext()
 
 var isFirstOpenOperationsDone: Bool = false
 
-/// Enable debug options to enable the Delete Profile button on the lock screen.
-let isDebugOptionsEnabled = false
-
 // MARK: User Profile
 
 var userProfile: UserProfile?
