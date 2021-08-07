@@ -7,7 +7,7 @@
 
 import UIKit
 
-public func resetProfile(viewController: UIViewController) {
+func resetProfile(viewController: UIViewController) {
     let resetProfileAlert = UIAlertController(title: NSLocalizedString("ConfirmationToResetTitle", comment: "ResetProfile"),
                                               message: NSLocalizedString("ConfirmationToResetText", comment: "ResetProfile"),
                                               preferredStyle: .alert)

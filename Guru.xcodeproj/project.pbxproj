@@ -405,9 +405,9 @@
 				E4DF795F26AC86E200C3FB5C /* SHA256Digest.swift */,
 				E4281DAD2692076E00949DAD /* String+Character.swift */,
 				E4247E4E26BEA43300CA8A0D /* String+RegEx.swift */,
+				E48F94EE26B56DD30050AD81 /* UINavigationController.swift */,
 				E4C3CCC52690512F0020942F /* UITextContentType.swift */,
 				E46AFF082661434B001F42EB /* UIView.swift */,
-				E48F94EE26B56DD30050AD81 /* UINavigationController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -469,12 +469,12 @@
 				E4DAB01F26B1928800540892 /* Alerts.swift */,
 				E4D6EF4026BD8BF700BF112B /* BuiltInData.swift */,
 				E4DAB02526B1930000540892 /* Crypto.swift */,
-				E48F94EA26B55EBE0050AD81 /* ViewGeneration.swift */,
 				E4DAB02126B192AA00540892 /* Logging.swift */,
 				E40638B126B25D2C009569CD /* ParseOTP.swift */,
+				E44FA4B826B6A4940010F9C7 /* PasswordAnalysis.swift */,
 				E46BB5182691ECF000BEE0AA /* Pwned.swift */,
 				E4DAB02326B192C500540892 /* ResetProfile.swift */,
-				E44FA4B826B6A4940010F9C7 /* PasswordAnalysis.swift */,
+				E48F94EA26B55EBE0050AD81 /* ViewGeneration.swift */,
 			);
 			path = Functions;
 			sourceTree = "<group>";
@@ -559,8 +559,8 @@
 				E4CEAD2926A3D39B0067796E /* Classes */,
 				E4DAB01E26B1927300540892 /* Functions */,
 				E4A0362A26A917870091F4A3 /* Enums */,
-				E4ED9FE72660AAF1003919C7 /* Guru.entitlements */,
 				E4EAB9FF2657E59E0054F310 /* Info.plist */,
+				E4ED9FE72660AAF1003919C7 /* Guru.entitlements */,
 				E4DAB03426B19F3400540892 /* APIKeys.plist */,
 				E46E9B1926B1118100238A72 /* Countries.txt */,
 				E45CBAA32686179000644ADE /* Interests.json */,

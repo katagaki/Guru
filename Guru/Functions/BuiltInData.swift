@@ -23,7 +23,7 @@ var interestWordAverage: Double = 0
 
 // MARK: Load Functions
 
-public func loadBuiltInData() {
+func loadBuiltInData() {
     
     // Load all resources concurrently to save time and synchronize before returning
     DispatchQueue.concurrentPerform(iterations: 6) { i in
@@ -40,7 +40,7 @@ public func loadBuiltInData() {
     
 }
 
-public func loadInterests() {
+func loadInterests() {
     let path = Bundle.main.path(forResource: "Interests", ofType: "json")!
     let interestsJSON = try! String(contentsOfFile: path, encoding: .utf8)
     let interestsJSONData = interestsJSON.data(using: .utf8)!
@@ -66,7 +66,7 @@ public func loadInterests() {
     log("Average length of stored interest words: \(interestWordAverage).")
 }
 
-public func loadLanguages() {
+func loadLanguages() {
     if let path = Bundle.main.path(forResource: "Languages", ofType: "txt"), let contents = try? String(contentsOfFile: path, encoding: .utf8) {
         log("Loading languages.")
         builtInLanguages = contents.components(separatedBy: .newlines)
@@ -77,7 +77,7 @@ public func loadLanguages() {
     }
 }
 
-public func loadWords() {
+func loadWords() {
     if let path = Bundle.main.path(forResource: "Wordlist", ofType: "txt"), let contents = try? String(contentsOfFile: path, encoding: .utf8) {
         log("Loading words.")
         builtInWords = contents.components(separatedBy: .newlines)
@@ -90,7 +90,7 @@ public func loadWords() {
     }
 }
 
-public func loadLeetlist() {
+func loadLeetlist() {
     if let path = Bundle.main.path(forResource: "Leetlist", ofType: "plist") {
         log("Loading leet list.")
         for (key, value) in NSDictionary(contentsOfFile: path)! {
@@ -102,7 +102,7 @@ public func loadLeetlist() {
     }
 }
 
-public func loadRunningSequences() {
+func loadRunningSequences() {
     if let path = Bundle.main.path(forResource: "RunningSequences", ofType: "plist"), let array = NSArray(contentsOfFile: path) as? [String] {
         log("Loading running sequences.")
         builtInRunningSequences = array
@@ -112,7 +112,7 @@ public func loadRunningSequences() {
     }
 }
 
-public func loadAPIKeys() {
+func loadAPIKeys() {
     if let path = Bundle.main.path(forResource: "APIKeys", ofType: "plist") {
         log("Loading API keys.")
         for (key, value) in NSDictionary(contentsOfFile: path)! {

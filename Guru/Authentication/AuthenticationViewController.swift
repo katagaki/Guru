@@ -8,12 +8,13 @@
 import LocalAuthentication
 import UIKit
 
-class AuthenticationViewController: UIViewController, UITextFieldDelegate {
+class AuthenticationViewController: UIViewController, UITextFieldDelegate, ReportsProgress {
     
     @IBOutlet weak var lockIconView: ExtendedImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var unlockButton: UIButton!
+    @IBOutlet weak var passwordAnalysisProgressView: UIProgressView!
     
     weak var contentLockableDelegate: ContentLockable? = nil
     var unlockImmediately: Bool = true
@@ -87,9 +88,12 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
                 lockIconView.image = UIImage(systemName: "lock.open.fill")
                 contentLockableDelegate?.unlockContent()
                 log("Performing analysis on passwords.")
-                DispatchQueue.global(qos: .background).async {
+                DispatchQueue.global(qos: .userInitiated).async {
+                    DispatchQueue.main.async {
+                        self.passwordAnalysisProgressView.isHidden = false
+                    }
                     analyzePasswordCharacters()
-                    analyzePasswordWords()
+                    analyzePasswordWords(progressReporter: self)
                     DispatchQueue.main.async {
                         self.dismiss(animated: true, completion: nil)
                     }
@@ -109,6 +113,14 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
                     Guru.resetProfile(viewController: self)
                 }
             }
+        }
+    }
+    
+    // MARK: ReportsProgress
+    
+    func updateProgress(progress: Double, total: Double) {
+        DispatchQueue.main.async {
+            self.passwordAnalysisProgressView.progress = Float(progress / total)
         }
     }
     

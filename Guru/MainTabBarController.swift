@@ -8,15 +8,20 @@
 import KeychainAccess
 import UIKit
 
-class MainTabBarController: UITabBarController, FinishesOnboarding, ContentLockable {
+class MainTabBarController: UITabBarController, UITabBarControllerDelegate, FinishesOnboarding, ContentLockable {
     
     var isLockScreenShowing: Bool = false
     var isLockManuallyTriggered: Bool = false
+    
+    var numberOfTimesSameIndexTapped: Int = 0
+    var hasScrolledToTop: Bool = true
     
     // MARK: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        delegate = self
         
         if defaults.bool(forKey: "Global.AppInstalled") {
             log("App has been run before, will not clear keychain.")
@@ -97,6 +102,34 @@ class MainTabBarController: UITabBarController, FinishesOnboarding, ContentLocka
             log("Preparations for showing authentication view completed.")
         default: break
         }
+    }
+    
+    // MARK: UITabBarController
+    
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        if let viewControllers = viewControllers {
+            if viewController == viewControllers[selectedIndex] {
+                if let navigationViewController = selectedViewController as? UINavigationController,
+                   let tableViewController = navigationViewController.viewControllers[0] as? UITableViewController {
+                    if navigationViewController.viewControllers.last == tableViewController {
+                        log("\(tableViewController.className) is scrolling to top.")
+                        tableViewController.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+                        hasScrolledToTop = true
+                    } else {
+                        log("\(navigationViewController.className) is going back to the first view controller.")
+                        navigationViewController.popViewController(animated: true)
+                        hasScrolledToTop = false
+                    }
+                    numberOfTimesSameIndexTapped += 1
+                    return true
+                }
+            } else {
+                log("Changing tabs.")
+                hasScrolledToTop = false
+                numberOfTimesSameIndexTapped = 0
+            }
+        }
+        return true
     }
     
     // MARK: ContentLockable

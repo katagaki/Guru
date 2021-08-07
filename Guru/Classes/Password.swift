@@ -27,12 +27,12 @@ public class Password: NSObject {
         generated = password
     }
     
-    init(forPolicies policies: [PasswordCharacterPolicy], withMinLength lengthMin: Int, withMaxLength lengthMax: Int) {
+    init(forPolicies policies: [PasswordCharacterPolicy], withMinLength lengthMin: Int, withMaxLength lengthMax: Int, ignoresSimilarity: Bool = false) {
         super.init()
         self.policies = policies
         minLength = lengthMin
         maxLength = lengthMax
-        regenerate()
+        regenerate(ignoresSimilarity: ignoresSimilarity)
     }
     
     init(passphraseWithWordCount count: Int, withMinLength lengthMin: Int, withMaxLength lengthMax: Int) {
@@ -47,14 +47,14 @@ public class Password: NSObject {
     // MARK: Functions for generating a new password
     
     /// Generates a fresh password from the currently set character policy set.
-    public func regenerate() {
+    public func regenerate(ignoresSimilarity: Bool = false) {
         repeat {
             let chars: String = characterSet(forPolicies: policies)
             let length: Int = cSRandomNumber(from: minLength, to: maxLength)
             generated = String((0..<length).compactMap{ _ in
                 chars.randomElement()
             })
-        } while (!acceptability(ofPassword: generated))
+        } while (!acceptability(ofPassword: generated) && (ignoresSimilarity ? true : !similarity(ofPassword: generated)))
     }
     
     /// Generates a passphrase from the currently set word count.
@@ -76,19 +76,27 @@ public class Password: NSObject {
     /// Returns a transformation of the current password by replacing characters from a frequent characters dictionary containing characters and the frequency of the character.
     /// - Parameter chars: A dictionary of characters and their frequency.
     /// - Returns: The transformed password.
-    public func transformed(withFrequentCharacters chars: [String:Double]) -> String {
+    public func transformed(withFrequentCharacters chars: [Character:Int]) -> String {
         if chars.count == 0 {
             return generated
         } else {
             var newPassword: String = ""
             
             let willUseMoreFrequentCharacters: Bool = cSRandomNumber(from: 0, to: 10) >= 2
-            let numberOfCharactersToReplace: Int = cSRandomNumber(to: Int(generated.count / 2))
+            let numberOfCharactersToReplace: Int = cSRandomNumber(to: Array(generated).filter({ char in
+                return char.isSymbol
+            }).count)
             var characterIndexes: [Int] = []
-            var characterSet: [String] = []
-            characterSet = Array(chars.filter({ key, value in
-                return (willUseMoreFrequentCharacters ? value >= 0.5 : value < 0.5)
-            }).keys)
+            let sortedCharacterSet: [(Character, Int)] = (willUseMoreFrequentCharacters ? chars.sorted(by: { a, b in
+                return a.value < b.value
+            }) : chars.sorted(by: { a, b in
+                return a.value > b.value
+            }))
+            let characterSet: [Character] = sortedCharacterSet.reduce([]) { partialResult, keyValuePair in
+                var newResult = partialResult
+                newResult.append(keyValuePair.0)
+                return newResult
+            }
             
             let maxTries: Int = numberOfCharactersToReplace * generated.count
             var currentTries: Int = 0
@@ -97,11 +105,12 @@ public class Password: NSObject {
                 newPassword = generated
                 
                 // Generate new indexes to replace
+                characterIndexes.removeAll()
                 for _ in 0..<numberOfCharactersToReplace {
                     var newIndex: Int = -1
                     repeat {
                         newIndex = cSRandomNumber(from: 0, to: generated.count)
-                    } while characterIndexes.contains(where: { index in
+                    } while !(Array(generated)[newIndex].isSymbol || Array(generated)[newIndex].isPunctuation || Array(generated)[newIndex].isWhitespace || Array(generated)[newIndex].isCurrencySymbol || Array(generated)[newIndex].isMathSymbol) && characterIndexes.contains(where: { index in
                         return index == newIndex
                     })
                     characterIndexes.append(newIndex)
@@ -109,10 +118,10 @@ public class Password: NSObject {
                 
                 // Replace characters at indexes
                 for characterIndex in characterIndexes {
-                    newPassword = newPassword.replacingCharacter(in: characterIndex, to: characterSet[cSRandomNumber(to: characterSet.count)].character(in: 0))
+                    newPassword = newPassword.replacingCharacter(in: characterIndex, to: characterSet[cSRandomNumber(to: characterSet.count)])
                 }
                 
-            } while (!acceptability(ofPassword: newPassword) && currentTries < maxTries)
+            } while (!acceptability(ofPassword: newPassword) && !similarity(ofPassword: newPassword) && currentTries < maxTries)
             
             if currentTries >= maxTries {
                 return generated
@@ -125,7 +134,7 @@ public class Password: NSObject {
     /// Transforms the current password by replacing characters from a frequent characters dictionary containing characters and the frequency of the character.
     /// - Parameter chars: A dictionary of characters and their frequency.
     /// - Returns: Whether the password was transformed.
-    @discardableResult public func transform(withFrequentCharacters chars: [String:Double]) -> Bool {
+    @discardableResult public func transform(withFrequentCharacters chars: [Character:Int]) -> Bool {
         let originalPassword: String = generated
         generated = transformed(withFrequentCharacters: chars)
         if originalPassword != generated {
@@ -159,7 +168,7 @@ public class Password: NSObject {
                 let indexToInsert: Int = cSRandomNumber(from: 0, to: generated.count - (selectedWord.count / 2))
                 
                 // Randomly capitalize first letter of word
-                if cSCoinFlip() {
+                if policies.contains(.ContainsUppercase) && cSCoinFlip() {
                     selectedWord = selectedWord.capitalized
                 }
                 
@@ -170,7 +179,7 @@ public class Password: NSObject {
                     }
                 }
                 
-            } while (!acceptability(ofPassword: newPassword) && currentTries < maxTries)
+            } while (!acceptability(ofPassword: newPassword) && !similarity(ofPassword: newPassword) && currentTries < maxTries)
             
             if currentTries >= maxTries {
                 return generated
@@ -245,6 +254,7 @@ public class Password: NSObject {
     public func acceptability(ofPassword password: String) -> Bool {
         var passwordAcceptable: Bool = true
         if password.trimmingCharacters(in: .whitespaces).count != password.count {
+            log("Acceptability of password generated: false")
             return false
         } else {
             for policy in policies {
@@ -252,8 +262,34 @@ public class Password: NSObject {
                     passwordAcceptable = false
                 }
             }
+            log("Acceptability of password generated: \(passwordAcceptable)")
             return passwordAcceptable
         }
+    }
+    
+    public func similarity(ofPassword password: String) -> Bool {
+        let characters: [Character] = Array(password)
+        let uppercaseLetters: [Character] = characters.filter { char in
+            return char.isUppercase
+        }
+        let lowercaseLetters: [Character] = characters.filter { char in
+            return char.isLowercase
+        }
+        let numbers: [Character] = characters.filter { char in
+            return char.isNumber || char.isWholeNumber
+        }
+        let symbols: [Character] = characters.filter { char in
+            return char.isSymbol || char.isPunctuation || char.isWhitespace || char.isCurrencySymbol || char.isMathSymbol
+        }
+        let uppercaseRatio: Double = Double(uppercaseLetters.count) / Double(characters.count)
+        let lowercaseRatio: Double = Double(lowercaseLetters.count) / Double(characters.count)
+        let numberRatio: Double = Double(numbers.count) / Double(characters.count)
+        let symbolRatio: Double = Double(symbols.count) / Double(characters.count)
+        log("Similarity of password generated: uppercase=\(uppercaseRatio), lowercase=\(lowercaseRatio), number=\(numberRatio), symbol=\(symbolRatio)")
+        return uppercaseRatio > averageUppercaseRatio - 0.175 && uppercaseRatio < averageUppercaseRatio + 0.175 &&
+        lowercaseRatio > averageLowercaseRatio - 0.25 && lowercaseRatio < averageLowercaseRatio + 0.25 &&
+        numberRatio > averageNumberRatio - 0.05 && numberRatio < averageNumberRatio + 0.05 &&
+        symbolRatio > averageSymbolRatio - 0.025 && symbolRatio < averageSymbolRatio + 0.025
     }
     
     // MARK: Helper Functions

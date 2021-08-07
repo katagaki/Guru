@@ -19,7 +19,7 @@ var passwordReuse: [String]?
 /// Checks whether a set of emails have been breached.
 /// - Parameter emails: The set of email addresses to check.
 /// - Returns: Returns a dictionary of the email addresses and whether they have been breached, and the number of email addresses that could not be checked.
-public func checkBreaches(emails: [String]) -> (breaches: [String:[Pwnage]], errorCount: Int) {
+func checkBreaches(emails: [String]) -> (breaches: [String:[Pwnage]], errorCount: Int) {
     
     let semaphore = DispatchSemaphore(value: 0)
     
@@ -28,7 +28,7 @@ public func checkBreaches(emails: [String]) -> (breaches: [String:[Pwnage]], err
     var errorCount: Int = 0
 
     for email in uniqueEmails {
-        log("Checking emails for breaches...")
+        log("Checking email for breaches...")
         DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + .milliseconds(1500)) {
             checkBreaches(email: email) { breaches, hasError in
                 if hasError {
@@ -58,7 +58,7 @@ public func checkBreaches(emails: [String]) -> (breaches: [String:[Pwnage]], err
 /// - Parameters:
 ///   - email: The email address to check.
 ///   - completion: Returns whether an email  has been breached, and whether an error occurred during the check.
-public func checkBreaches(email: String, completion: @escaping (_ breaches: [Pwnage]?, _ hasError: Bool) -> Void) {
+func checkBreaches(email: String, completion: @escaping (_ breaches: [Pwnage]?, _ hasError: Bool) -> Void) {
         
     let url = URL(string: "https://haveibeenpwned.com/api/v3/breachedaccount/\(email)")!
     var request = URLRequest(url: url)
@@ -101,7 +101,7 @@ public func checkBreaches(email: String, completion: @escaping (_ breaches: [Pwn
 /// Checks whether a set of passwords have been breached.
 /// - Parameter passwords: The set of passwords to check.
 /// - Returns: Returns a dictionary of the passwords and whether they have been breached, and the number of passwords that could not be checked.
-public func checkBreaches(passwords: [String]) -> (breaches: [String: Bool], hasError: Int) {
+func checkBreaches(passwords: [String]) -> (breaches: [String: Bool], hasError: Int) {
     
     let queue = DispatchQueue(label: "UserProfile.addLogins", attributes: .concurrent)
     let uniquePasswords = passwords.unique()
@@ -145,7 +145,7 @@ public func checkBreaches(passwords: [String]) -> (breaches: [String: Bool], has
 /// - Parameters:
 ///   - password: The password to check.
 ///   - completion: Returns whether a password has been breached, and whether an error occurred during the check.
-public func checkBreaches(password: String, completion: @escaping (_ breached: Bool?, _ hasError: Bool) -> Void) {
+func checkBreaches(password: String, completion: @escaping (_ breached: Bool?, _ hasError: Bool) -> Void) {
     
     let sha1Hash: String = Insecure.SHA1.hash(data: password.data(using: .utf8)!).hex.uppercased()
     let leftTrimHash: String = "" + sha1Hash.prefix(5)

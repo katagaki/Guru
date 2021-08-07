@@ -7,7 +7,7 @@
 
 import UIKit
 
-public func floatingView(views: [UIView], arrangeAs type: FloatingViewType, margins: Int = 20) -> UIVisualEffectView {
+func floatingView(views: [UIView], arrangeAs type: FloatingViewType, margins: Int = 20) -> UIVisualEffectView {
     let floatingView: UIVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .systemMaterial))
     floatingView.clipsToBounds = true
     floatingView.layer.cornerRadius = 12.0
@@ -61,14 +61,14 @@ public func floatingView(views: [UIView], arrangeAs type: FloatingViewType, marg
     return floatingView
 }
 
-public func center(view: UIView, in parentView: UIView) {
+func center(view: UIView, in parentView: UIView) {
     parentView.addSubview(view)
     view.translatesAutoresizingMaskIntoConstraints = false
     view.centerXAnchor.constraint(equalTo: parentView.centerXAnchor).isActive = true
     view.centerYAnchor.constraint(equalTo: parentView.centerYAnchor).isActive = true
 }
 
-public func float(view: UIView, below topView: UIView, in parentView: UIView, margins: Int = 20) {
+func float(view: UIView, below topView: UIView, in parentView: UIView, margins: Int = 20) {
     parentView.addSubview(view)
     view.translatesAutoresizingMaskIntoConstraints = false
     view.topAnchor.constraint(equalTo: topView.bottomAnchor, constant: CGFloat(margins)).isActive = true
@@ -76,7 +76,7 @@ public func float(view: UIView, below topView: UIView, in parentView: UIView, ma
     view.rightAnchor.constraint(equalTo: parentView.rightAnchor, constant: CGFloat(-margins)).isActive = true
 }
 
-public func singleLinedLabel(withText text: String) -> UILabel {
+func singleLinedLabel(withText text: String) -> UILabel {
     let label: UILabel = UILabel()
     label.text = text
     label.font = UIFont.preferredFont(forTextStyle: .body)
@@ -85,7 +85,7 @@ public func singleLinedLabel(withText text: String) -> UILabel {
     return label
 }
 
-public func singleLinedMonoLabel(withText text: String) -> UILabel {
+func singleLinedMonoLabel(withText text: String) -> UILabel {
     let label: UILabel = UILabel()
     label.text = text
     label.font = UIFontMetrics(forTextStyle: .largeTitle).scaledFont(for: UIFont(name: "Menlo", size: 16.0)!)

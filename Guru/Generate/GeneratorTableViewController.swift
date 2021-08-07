@@ -104,26 +104,28 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
         case 1:
             if let userProfile = userProfile {
                 
+                let currentPassword: String = enhancedPassword.generated
+                
                 // Configure enhanced mode policies
                 var policies: [PasswordCharacterPolicy] = []
-                if freqUppercase > 0.25 {
+                if averageUppercaseRatio > 0.25 {
                     policies.append(.ContainsUppercase)
                 } else {
                     if cSCoinFlip() { policies.append(.ContainsUppercase)}
                 }
-                if freqLowercase > 0.5 {
+                if averageLowercaseRatio > 0.5 {
                     policies.append(.ContainsLowercase)
                 } else {
                     if cSCoinFlip() { policies.append(.ContainsLowercase)}
                 }
-                if freqNumbers > 0.1 {
+                if averageNumberRatio > 0.1 {
                     policies.append(.ContainsNumbers)
                 } else {
                     if cSCoinFlip() { policies.append(.ContainsNumbers)}
                 }
-                if freqSymbols > 0.05 {
+                if averageSymbolRatio > 0.05 {
                     policies.append(.ContainsBasicSymbols)
-                } else if freqSymbols > 0.2 {
+                } else if averageSymbolRatio > 0.2 {
                     policies.append(.ContainsBasicSymbols)
                     policies.append(.ContainsComplexSymbols)
                 } else {
@@ -138,6 +140,7 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
                 
                 // Configure enhanced mode interests
                 enhancedRecommendedInterests.removeAll()
+                enhancedSelectedInterests.removeAll()
                 let countOfInterestsToRecommend: Int = (userProfile.interests.count >= 3 ? 3 : userProfile.interests.count)
                 while enhancedRecommendedInterests.count != countOfInterestsToRecommend {
                     let randomInterest: Interest? = builtInInterests.first { builtInInterest in
@@ -152,7 +155,7 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
                     }
                 }
                 
-                regeneratePassword()
+                enhancedPassword.generated = currentPassword
             }
             
         default: break
@@ -671,9 +674,12 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
         switch segmentControl.selectedSegmentIndex {
         case 0:
             log("Generating basic password.")
+            
+            let ignoresSimilarity: Bool = basicSelectedPolicyType == 3
             basicPassword = Password(forPolicies: basicPolicyGroups[basicSelectedPolicyType],
                                      withMinLength: basicPolicyMinLengths[basicSelectedPolicyType],
-                                     withMaxLength: basicPolicyMaxLengths[basicSelectedPolicyType])
+                                     withMaxLength: basicPolicyMaxLengths[basicSelectedPolicyType],
+                                     ignoresSimilarity: ignoresSimilarity)
             
             var availableInterests: [Interest] = []
             var availableInterestWordAverage: Int = 0
@@ -704,6 +710,11 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
                     let transformationSuccessful: Bool = basicPassword.transform(withInterest: availableInterests.randomElement()!)
                     log("Interest based transformation succeeded: \(transformationSuccessful).")
                 }
+                
+                if symbolFrequency.count >= 5 && cSCoinFlip() {
+                    let transformationSuccessful: Bool = basicPassword.transform(withFrequentCharacters: symbolFrequency)
+                    log("Frequent symbol transformation succeeded: \(transformationSuccessful).")
+                }
             } else {
                 log("No available interests, no transformation applied.")
             }
@@ -720,6 +731,11 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
                     let transformationSuccessful: Bool = enhancedPassword.transform(withInterest: enhancedSelectedInterests.randomElement()!)
                     log("Interest based transformation succeeded: \(transformationSuccessful).")
                 }
+            }
+            
+            if symbolFrequency.count >= 5 && cSCoinFlip() {
+                let transformationSuccessful: Bool = enhancedPassword.transform(withFrequentCharacters: symbolFrequency)
+                log("Frequent symbol transformation succeeded: \(transformationSuccessful).")
             }
             
         case 2:

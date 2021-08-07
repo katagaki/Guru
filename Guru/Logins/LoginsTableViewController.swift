@@ -209,6 +209,7 @@ class LoginsTableViewController: UITableViewController, UISearchBarDelegate, UIS
                 tableView.deleteRows(at: [indexPath], with: .automatic)
             }
             analyzePasswordCharacters()
+            analyzePasswordWords()
         }
     }
     
@@ -263,14 +264,18 @@ class LoginsTableViewController: UITableViewController, UISearchBarDelegate, UIS
     
     func reloadIndex() {
         if let userProfile = userProfile {
-            let accountNameFirstLetters = userProfile.logins.map { String(($0.accountName ?? " ").character(in: 0)).uppercased() }
+            let accountNameFirstLetters =  userProfile.logins.map { login in
+                return String(login.accountName ?? " ").character(in: 0).uppercased()
+            }
             indexNames = accountNameFirstLetters.unique()
             indexNames.sort()
             
             indexedLogins = indexNames.map { firstLetter in
-                return userProfile.logins
-                    .filter { String(($0.accountName ?? " ").character(in: 0)).uppercased() == firstLetter }
-                    .sorted { String(($0.accountName ?? " ").character(in: 0)).uppercased() < String(($1.accountName ?? " ").character(in: 0)).uppercased() }
+                return userProfile.logins.filter({ login in
+                    return String(login.accountName ?? " ").character(in: 0).uppercased() == firstLetter
+                }).sorted(by: { a, b in
+                    return String(a.accountName ?? " ").character(in: 0).uppercased() < String(b.accountName ?? " ").character(in: 0).uppercased()
+                })
             }
         }
     }

@@ -7,15 +7,15 @@
 
 import UIKit
 
-public func showInputAlert(title: String,
-                           message: String,
-                           textType: UITextContentType,
-                           keyboardType: UIKeyboardType,
-                           capitalizationType: UITextAutocapitalizationType,
-                           placeholder: String,
-                           defaultText: String,
-                           _ sender: Any,
-                           completion: @escaping (String?) -> Void) {
+func showInputAlert(title: String,
+                    message: String,
+                    textType: UITextContentType,
+                    keyboardType: UIKeyboardType,
+                    capitalizationType: UITextAutocapitalizationType,
+                    placeholder: String,
+                    defaultText: String,
+                    _ sender: Any,
+                    completion: @escaping (String?) -> Void) {
     let alert = UIAlertController(title: title,
                                   message: message,
                                   preferredStyle: .alert)
@@ -41,7 +41,7 @@ public func showInputAlert(title: String,
     (sender as! UIViewController).present(alert, animated: true, completion: nil)
 }
 
-public func featureUnavailableAlert(_ sender: Any) {
+func featureUnavailableAlert(_ sender: Any) {
     let featureUnavailableAlert = UIAlertController(title: NSLocalizedString("FeatureUnavailableTitle", comment: "General"),
                                            message: NSLocalizedString("FeatureUnavailableText", comment: "General"),
                                            preferredStyle: .alert)

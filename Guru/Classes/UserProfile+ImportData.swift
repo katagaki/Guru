@@ -31,7 +31,9 @@ extension UserProfile {
                     self.languages.append(name.capitalized)
                 }
                 currentCount += 1
-                progressReporter?.updateProgress(progress: Double(currentCount), total: Double(dataPointCount))
+                if let progressReporter = progressReporter {
+                    progressReporter.updateProgress(progress: Double(currentCount), total: Double(dataPointCount))
+                }
             }
         }
         
@@ -51,7 +53,9 @@ extension UserProfile {
                     }
                 }
                 currentCount += 1
-                progressReporter?.updateProgress(progress: Double(currentCount), total: Double(dataPointCount))
+                if let progressReporter = progressReporter {
+                    progressReporter.updateProgress(progress: Double(currentCount), total: Double(dataPointCount))
+                }
             }
         }
         
@@ -68,7 +72,9 @@ extension UserProfile {
                     }
                 }
                 currentCount += 1
-                progressReporter?.updateProgress(progress: Double(currentCount), total: Double(dataPointCount))
+                if let progressReporter = progressReporter {
+                    progressReporter.updateProgress(progress: Double(currentCount), total: Double(dataPointCount))
+                }
             }
         }
         

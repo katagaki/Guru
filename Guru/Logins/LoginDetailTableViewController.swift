@@ -69,7 +69,7 @@ class LoginDetailTableViewController: UITableViewController, SFSafariViewControl
         if !isBreachCheckDone {
             if defaults.bool(forKey: "Feature.BreachDetection.Email") {
                 if let login = login, let username = login.username, username.isValidEmail() {
-                    DispatchQueue.global(qos: .background).async {
+                    DispatchQueue(label: "LoginDetailTableViewController.viewDidAppear", qos: .background).async {
                         checkBreaches(email: username) { [weak self] breached, hasError in
                             if !hasError {
                                 if let breached = breached {
@@ -137,6 +137,7 @@ class LoginDetailTableViewController: UITableViewController, SFSafariViewControl
         tableView.reloadSections(IndexSet(integersIn: 0...(3 - offset)), with: .automatic)
         willReloadTextInputFields = false
         analyzePasswordCharacters()
+        analyzePasswordWords()
     }
     
     @IBAction func editAccountName(_ sender: Any) {
