@@ -63,10 +63,11 @@ class ImportInterestsTableViewController: UITableViewController, SFSafariViewCon
             switch indexPath.row {
             case 0:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ExplainerCell")!
-                cell.textLabel!.text = "View the download page for \(guideCode) to download a copy of your data."
+                cell.textLabel!.text = NSLocalizedString("DownloadDataFromWebsiteExplainer", comment: "ImportInterests").replacingOccurrences(of: "@$", with: guideCode)
                 return cell
             case 1:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "OpenSupportPageCell")!
+                cell.textLabel!.text = NSLocalizedString("OpenDataDownloadPage", comment: "ImportInterests")
                 return cell
             default: return UITableViewCell()
             }
@@ -74,11 +75,11 @@ class ImportInterestsTableViewController: UITableViewController, SFSafariViewCon
             switch indexPath.row {
             case 0:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "FileNameToUploadCell")!
-                cell.textLabel!.text = "Once you have obtained an archive of your data, extract it and select the file named '\(filename)'."
+                cell.textLabel!.text = NSLocalizedString("SelectInterestsFileExplainer", comment: "ImportInterests").replacingOccurrences(of: "@$", with: filename)
                 return cell
             case 1:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "SelectFileCell")!
-                cell.textLabel?.text = NSLocalizedString("SelectFile...", comment: "ImportInterests")
+                cell.textLabel?.text = NSLocalizedString("SelectFile...", comment: "General")
                 return cell
             default: return UITableViewCell()
             }

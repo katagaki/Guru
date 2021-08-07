@@ -156,7 +156,16 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
             switch section {
             case 0: return 1
             case 1: return 2
-            case 2: return enhancedRecommendedInterests.count
+            case 2:
+                if let userProfile = userProfile {
+                    if userProfile.interests.count == 0 {
+                        return 1
+                    } else {
+                        return enhancedRecommendedInterests.count
+                    }
+                } else {
+                    return 0
+                }
             default: return 0
             }
         case 2:
@@ -167,9 +176,13 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
             case 3: return 6
             case 4:
                 if let userProfile = userProfile {
-                    return userProfile.interests.count
+                    if userProfile.interests.count == 0 {
+                        return 1
+                    } else {
+                        return userProfile.interests.count
+                    }
                 } else {
-                    return 0
+                    return 1
                 }
             default: return 0
             }
@@ -299,17 +312,27 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
                 cell.titleLabel.text = NSLocalizedString("ExplainerEnhanced", comment: "Generator")
                 return cell
             case 2:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "InterestCell")!
-                cell.textLabel!.text = enhancedRecommendedInterests[indexPath.row].name.capitalized
-                cell.detailTextLabel!.text = enhancedRecommendedInterests[indexPath.row].words.joined(separator: ", ")
-                if enhancedSelectedInterests.contains(where: { interest in
-                    return interest.name == enhancedRecommendedInterests[indexPath.row].name
-                }) {
-                    cell.accessoryType = .checkmark
+                if let userProfile = userProfile {
+                    if userProfile.interests.count == 0 {
+                        let cell = tableView.dequeueReusableCell(withIdentifier: "NoInterestsCell")!
+                        cell.textLabel!.text = NSLocalizedString("GeneratorNoInterests", comment: "Generator")
+                        return cell
+                    } else {
+                        let cell = tableView.dequeueReusableCell(withIdentifier: "InterestCell")!
+                        cell.textLabel!.text = enhancedRecommendedInterests[indexPath.row].name.capitalized
+                        cell.detailTextLabel!.text = enhancedRecommendedInterests[indexPath.row].words.joined(separator: ", ")
+                        if enhancedSelectedInterests.contains(where: { interest in
+                            return interest.name == enhancedRecommendedInterests[indexPath.row].name
+                        }) {
+                            cell.accessoryType = .checkmark
+                        } else {
+                            cell.accessoryType = .none
+                        }
+                        return cell
+                    }
                 } else {
-                    cell.accessoryType = .none
+                    return UITableViewCell()
                 }
-                return cell
             default: return UITableViewCell()
             }
         case 2:
@@ -360,23 +383,31 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
                 }
                 return cell
             case 4:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "InterestCell")!
                 if let userProfile = userProfile {
-                    cell.textLabel!.text = userProfile.interests[indexPath.row].capitalized
-                    if let interest = builtInInterests.first(where: { interest in
-                        return interest.name == userProfile.interests[indexPath.row].lowercased()
-                    }) {
-                        cell.detailTextLabel!.text = interest.words.joined(separator: ", ")
-                    }
-                    if customSelectedInterests.contains(where: { interest in
-                        return interest.name == userProfile.interests[indexPath.row]
-                    }) {
-                        cell.accessoryType = .checkmark
+                    if userProfile.interests.count == 0 {
+                        let cell = tableView.dequeueReusableCell(withIdentifier: "NoInterestsCell")!
+                        cell.textLabel!.text = NSLocalizedString("GeneratorNoInterests", comment: "Generator")
+                        return cell
                     } else {
-                        cell.accessoryType = .none
+                        let cell = tableView.dequeueReusableCell(withIdentifier: "InterestCell")!
+                        cell.textLabel!.text = userProfile.interests[indexPath.row].capitalized
+                        if let interest = builtInInterests.first(where: { interest in
+                            return interest.name == userProfile.interests[indexPath.row].lowercased()
+                        }) {
+                            cell.detailTextLabel!.text = interest.words.joined(separator: ", ")
+                        }
+                        if customSelectedInterests.contains(where: { interest in
+                            return interest.name == userProfile.interests[indexPath.row]
+                        }) {
+                            cell.accessoryType = .checkmark
+                        } else {
+                            cell.accessoryType = .none
+                        }
+                        return cell
                     }
+                } else {
+                    return UITableViewCell()
                 }
-                return cell
             default: return UITableViewCell()
             }
         default: return UITableViewCell()
@@ -400,16 +431,20 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
         case 1:
             switch indexPath.section {
             case 2:
-                if enhancedSelectedInterests.contains(where: { interest in
-                    return interest.name == enhancedRecommendedInterests[indexPath.row].name
-                }) {
-                    enhancedSelectedInterests.removeAll(where: { interest in
-                        return interest.name == enhancedRecommendedInterests[indexPath.row].name
-                    })
-                } else {
-                    enhancedSelectedInterests.append(enhancedRecommendedInterests[indexPath.row])
+                if let userProfile = userProfile {
+                    if userProfile.interests.count > 0 {
+                        if enhancedSelectedInterests.contains(where: { interest in
+                            return interest.name == enhancedRecommendedInterests[indexPath.row].name
+                        }) {
+                            enhancedSelectedInterests.removeAll(where: { interest in
+                                return interest.name == enhancedRecommendedInterests[indexPath.row].name
+                            })
+                        } else {
+                            enhancedSelectedInterests.append(enhancedRecommendedInterests[indexPath.row])
+                        }
+                        tableView.reloadRows(at: [indexPath], with: .none)
+                    }
                 }
-                tableView.reloadRows(at: [indexPath], with: .none)
             default: break
             }
         case 2:
@@ -432,17 +467,19 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
                 tableView.reloadRows(at: [indexPath], with: .none)
             case 4:
                 if let userProfile = userProfile {
-                    if customSelectedInterests.contains(where: { interest in
-                        return interest.name == userProfile.interests[indexPath.row]
-                    }) {
-                        customSelectedInterests.removeAll(where: { interest in
+                    if userProfile.interests.count > 0 {
+                        if customSelectedInterests.contains(where: { interest in
                             return interest.name == userProfile.interests[indexPath.row]
-                        })
-                    } else {
-                        if let interest = builtInInterests.first(where: { interest in
-                            return interest.name == userProfile.interests[indexPath.row].lowercased()
                         }) {
-                            customSelectedInterests.append(interest)
+                            customSelectedInterests.removeAll(where: { interest in
+                                return interest.name == userProfile.interests[indexPath.row]
+                            })
+                        } else {
+                            if let interest = builtInInterests.first(where: { interest in
+                                return interest.name == userProfile.interests[indexPath.row].lowercased()
+                            }) {
+                                customSelectedInterests.append(interest)
+                            }
                         }
                     }
                 }
@@ -615,20 +652,24 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
                     }
                 }
             }
-            for interest in availableInterests {
-                for word in interest.words {
-                    wordCount += 1
-                    characterCount += word.count
+            if availableInterests.count != 0 {
+                for interest in availableInterests {
+                    for word in interest.words {
+                        wordCount += 1
+                        characterCount += word.count
+                    }
                 }
-            }
-            availableInterestWordAverage = Int(Double(characterCount) / Double(wordCount))
-            
-            var transformationsToApply: Int = basicPassword.generated.count / availableInterestWordAverage
-            transformationsToApply = cSRandomNumber(to: transformationsToApply)
-            log("Attempting to transform password \(transformationsToApply) times.")
-            for _ in 0..<transformationsToApply {
-                let transformationSuccessful: Bool = basicPassword.transform(withInterest: availableInterests.randomElement()!)
-                log("Interest based transformation succeeded: \(transformationSuccessful).")
+                availableInterestWordAverage = Int(Double(characterCount) / Double(wordCount))
+                
+                var transformationsToApply: Int = basicPassword.generated.count / availableInterestWordAverage
+                transformationsToApply = cSRandomNumber(to: transformationsToApply)
+                log("Attempting to transform password \(transformationsToApply) times.")
+                for _ in 0..<transformationsToApply {
+                    let transformationSuccessful: Bool = basicPassword.transform(withInterest: availableInterests.randomElement()!)
+                    log("Interest based transformation succeeded: \(transformationSuccessful).")
+                }
+            } else {
+                log("No available interests, no transformation applied.")
             }
             
         case 1:

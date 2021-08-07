@@ -12,9 +12,7 @@ class ProfileTableViewController: UITableViewController {
     @IBOutlet weak var editToggleButton: UIBarButtonItem!
     
     var languageSelectionActions: [UIAction] = []
-    var languageSelectionMenu: UIMenu?
     var interestSelectionActions: [UIAction] = []
-    var interestSelectionMenu: UIMenu?
     
     var isEditingProfile: Bool = false
 
@@ -33,7 +31,6 @@ class ProfileTableViewController: UITableViewController {
             }
             languageSelectionActions.append(languageAction)
         }
-        languageSelectionMenu = UIMenu(title: NSLocalizedString("AddLanguage", comment: "Profile"), children: languageSelectionActions)
         
         for interest in builtInInterests {
             let interestAction = UIAction(title: interest.name.capitalized, image: UIImage(systemName: "star")) { [weak self] _ in
@@ -44,7 +41,6 @@ class ProfileTableViewController: UITableViewController {
             }
             interestSelectionActions.append(interestAction)
         }
-        interestSelectionMenu = UIMenu(title: NSLocalizedString("AddInterest", comment: "Profile"), children: interestSelectionActions)
         
         // Localization
         navigationItem.title = NSLocalizedString("Profile", comment: "Views")
@@ -172,8 +168,17 @@ class ProfileTableViewController: UITableViewController {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "AddLanguageCell") as! ButtonWithMenuCell
                     cell.primaryButton.setTitle(NSLocalizedString("AddLanguage", comment: "Profile"), for: .normal)
                     cell.primaryButton.showsMenuAsPrimaryAction = true
-                    cell.primaryButton.menu = languageSelectionMenu
+                    cell.primaryButton.menu = UIMenu(title: NSLocalizedString("AddLanguage", comment: "Profile"), children: languageSelectionActions.filter({ action in
+                        if let userProfile = userProfile {
+                            return !userProfile.languages.contains(action.title)
+                        } else {
+                            return false
+                        }
+                    }))
                     cell.primaryButton.contentHorizontalAlignment = .left
+                    if #available(iOS 15.0, *) { } else {
+                        cell.primaryButton.contentEdgeInsets.left = CGFloat(17.0)
+                    }
                     return cell
                 case 3 + languages.count:
                     let cell = tableView.dequeueReusableCell(withIdentifier: "BirthdayCell") as! DatePickerCell
@@ -259,8 +264,13 @@ class ProfileTableViewController: UITableViewController {
                         let cell = tableView.dequeueReusableCell(withIdentifier: "AddInterestCell") as! ButtonWithMenuCell
                         cell.primaryButton.setTitle(NSLocalizedString("AddInterest", comment: "Profile"), for: .normal)
                         cell.primaryButton.showsMenuAsPrimaryAction = true
-                        cell.primaryButton.menu = interestSelectionMenu
+                        cell.primaryButton.menu = UIMenu(title: NSLocalizedString("AddInterest", comment: "Profile"), children: interestSelectionActions.filter({ action in
+                            return !userProfile.interests.contains(action.title.lowercased())
+                        }))
                         cell.primaryButton.contentHorizontalAlignment = .left
+                        if #available(iOS 15.0, *) { } else {
+                            cell.primaryButton.contentEdgeInsets.left = CGFloat(17.0)
+                        }
                         return cell
                     case 0..<userProfile.interests.count:
                         let cell = tableView.dequeueReusableCell(withIdentifier: "InterestDetailCell")!

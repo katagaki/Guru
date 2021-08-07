@@ -157,6 +157,7 @@
 "LengthSecure" = "安全レベル：高い";
 "LengthVerySecure" = "安全レベル：すばらしい";
 "PasswordFloatingPrefix" = "作成されたパスワード：";
+"GeneratorNoInterests" = "興味はまだ追加されていません。興味を追加するには、「設定」＞「プロフィール」の順にタップし、「編集」をタップします。";
 
 /* Settings */
 "General" = "一般";
@@ -190,7 +191,7 @@
 "AddLanguage" = "言語を追加";
 "Interests" = "興味";
 "AddInterest" = "興味を追加";
-"NoInterests" = "興味はまだ追加されていません。編集ボタンをタップし、興味を追加することができます。";
+"NoInterests" = "興味はまだ追加されていません。「編集」をタップし、興味を追加することができます。";
 "UnknownInterest" = "未知興味";
 "AddTitle" = "@$を追加";
 "DeleteWarning" = "個人情報やアカウントを完全に削除します。削除すると、復元できなくなります。";
@@ -238,15 +239,15 @@
 "GuruStep3" = "「Guruアプリに書き出す」をクリックし、保存先を選択してからiPhoneに転送します。転送するには、クラウドストレージまたはAirDropでできます。";
 "GuruStep4" = "下の「ファイルを選択...」を選択し、書き出したファイルを選択します。";
 "EdgeStep1" = "Microsoft Edgeアプリを開き、edge://settings/passwordsを開きます。";
-"EdgeStep2" = "「保存されたパスワード」にスクロールし、「…」のボタンをクリックします。";
+"EdgeStep2" = "「保存されたパスワード」にスクロールし、「…」ボタンをクリックします。";
 "EdgeStep3" = "「パスワードをエクスポート」を選択し、保存先を選択してからiPhoneに転送します。転送するには、クラウドストレージまたはAirDropでできます。";
 "EdgeStep4" = "下の「ファイルを選択...」を選択し、書き出したファイルを選択します。";
 "ChromeStep1" = "Google Chromeアプリを開き、chrome://settings/passwordsを開きます。";
-"ChromeStep2" = "「保存されたパスワード」にスクロールし、「…」のボタンをクリックします。";
+"ChromeStep2" = "「保存されたパスワード」にスクロールし、「…」ボタンをクリックします。";
 "ChromeStep3" = "「パスワードをエクスポート」を選択し、保存先を選択してからiPhoneに転送します。転送するには、クラウドストレージまたはAirDropでできます。";
 "ChromeStep4" = "下の「ファイルを選択...」を選択し、書き出したファイルを選択します。";
 "SafariStep1" = "システム環境設定アプリを開き、「パスワード」をクリックします。\n注意：パスワードの書き出しは、macOS Monterey以上のバージョンだけ対応しています。";
-"SafariStep2" = "Touch IDまたはパスワードを使って解除し、下の「…」のボタンをクリックします。";
+"SafariStep2" = "Touch IDまたはパスワードを使って解除し、下の「…」ボタンをクリックします。";
 "SafariStep3" = "「パスワードを書き出す...」を選択し、保存先を選択してからiPhoneに転送します。転送するには、クラウドストレージまたはAirDropでできます。";
 "SafariStep4" = "下の「ファイルを選択...」を選択し、書き出したファイルを選択します。";
 "SelectFile..." = "ファイルを選択...";
@@ -259,7 +260,10 @@
 
 /* ImportInterests */
 "DownloadDataFromWebsite" = "①　個人情報をダウンロード";
-"SelectInterestsFile" = "② ファイルを選択";
+"DownloadDataFromWebsiteExplainer" = "@$のダウンロードページでデータをダウンロードしてください。ダウンロードページを開くには、サインインする必要があります。";
+"OpenDataDownloadPage" = "ダウンロードページを開く";
+"SelectInterestsFile" = "②　ファイルを選択";
+"SelectInterestsFileExplainer" = "データのアーカイブをダウンロードすると、アーカイブを解凍してから、「ファイルを選択...」をタップし、「@$」を選択します。";
 "ImportingInterestsProgress" = "個人情報をインポート中... @$";
 "ImportInterestsCompletedTitle" = "インポート完成";
 "ImportInterestsCompletedText" = "@$個の個人情報は正常にインポートされました。";

@@ -157,6 +157,7 @@
 "LengthSecure" = "Security: Secure";
 "LengthVerySecure" = "Security: Extreme";
 "PasswordFloatingPrefix" = "New Password:";
+"GeneratorNoInterests" = "No interests added. You can add interests from Settings > Profile.";
 
 /* Settings */
 "General" = "General";
@@ -249,7 +250,6 @@
 "SafariStep2" = "Unlock the Passwords page using Touch ID or your password, then click the ... button at the bottom of the list.";
 "SafariStep3" = "Click 'Export Passwords', then save the file and transfer it to a location you can access on your iPhone, or AirDrop it to your iPhone directly.";
 "SafariStep4" = "Tap 'Select File...' below and select the saved file to import your logins.";
-"SelectFile..." = "Select File ...";
 "ImportingLoginsProgress" = "Importing logins... @$";
 "ImportLoginsCompletedTitle" = "Login Import Complete";
 "ImportLoginsCompletedText" = "Imported a total of @$ login(s).";
@@ -259,7 +259,10 @@
 
 /* ImportInterests */
 "DownloadDataFromWebsite" = "1. Download Your Data";
+"DownloadDataFromWebsiteExplainer" = "View the download page for @$ to download a copy of your data. You may need to sign in before you can view the page.";
+"OpenDataDownloadPage" = "Open Data Download Page";
 "SelectInterestsFile" = "2. Select Interests File";
+"SelectInterestsFileExplainer" = "Once you have obtained an archive of your data, extract its contents, then tap 'Select File...' below and select the file named '@$'.";
 "ImportingInterestsProgress" = "Importing interests... @$";
 "ImportInterestsCompletedTitle" = "Import Complete";
 "ImportInterestsCompletedText" = "Processed a total of @$ interest(s).";
@@ -341,5 +344,6 @@
 "Back" = "Back";
 "Skip" = "Skip";
 "Delete" = "Delete";
+"SelectFile..." = "Select File...";
 "FeatureUnavailableTitle" = "Feature Unavailable";
 "FeatureUnavailableText" = "This feature is currently unavailable.";

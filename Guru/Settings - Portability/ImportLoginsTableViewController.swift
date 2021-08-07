@@ -57,7 +57,7 @@ class ImportLoginsTableViewController: UITableViewController, UIDocumentPickerDe
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SelectFileCell")!
-            cell.textLabel?.text = NSLocalizedString("SelectFile...", comment: "ImportLogins")
+            cell.textLabel?.text = NSLocalizedString("SelectFile...", comment: "General")
             return cell
         default: return UITableViewCell()
         }
