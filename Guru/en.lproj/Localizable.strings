@@ -8,6 +8,7 @@
 
 /* Authentication */
 "UnlockGuru" = "Guru Is Locked";
+"UnlockingGuru" = "Unlocking Guru";
 "UseFaceIDToUnlock" = "Use Face ID to unlock Guru. \nIf you are wearing a mask, or if Face ID is disabled, iOS will ask you for your passcode.";
 "UseTouchIDToUnlock" = "Use Touch ID to unlock Guru.";
 "UseBiometricsToUnlock" = "Use biometrics to unlock Guru. If biometrics are not set or disabled, you will be asked for your passcode.";

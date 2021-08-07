@@ -79,6 +79,8 @@ class SystemOptionsTableViewController: UITableViewController {
                 defaults.set(false, forKey: "Onboarding.Completed")
                 defaults.synchronize()
                 tableView.reloadSections(IndexSet(integer: 1), with: .automatic)
+            case 1:
+                defaults.set(nil, forKey: "Feature.Intelligence.AnalyzedPasswords.Words")
             default: break
             }
         default: break

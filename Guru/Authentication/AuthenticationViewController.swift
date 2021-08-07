@@ -85,6 +85,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, Repor
             userProfile.prepareKeychains()
             if userProfile.open() {
                 log("Successful authentication, user profile opened.")
+                titleLabel.text = NSLocalizedString("UnlockingGuru", comment: "Authentication")
                 lockIconView.image = UIImage(systemName: "lock.open.fill")
                 contentLockableDelegate?.unlockContent()
                 log("Performing analysis on passwords.")

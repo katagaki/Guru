@@ -8,6 +8,7 @@
 
 /* Authentication */
 "UnlockGuru" = "Guruがロックされています";
+"UnlockingGuru" = "ロックを解除しています";
 "UseFaceIDToUnlock" = "Face IDを使用してGuruを解除します。\nFace IDがiOSにより禁止されるまたはマスクを着用する場合、パスコードを求めます。";
 "UseTouchIDToUnlock" = "Touch IDを使用してGuruを解除します。";
 "UseBiometricsToUnlock" = "生体認証を使用してGuruを解除します。";
