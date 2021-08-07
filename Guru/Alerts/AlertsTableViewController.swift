@@ -29,6 +29,10 @@ class AlertsTableViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         log("\(self.className) has appeared.")
+        if !isCheckingEmailsForBreaches && !isCheckingPasswordsForBreaches {
+            refreshControl?.endRefreshing()
+        }
+        tableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

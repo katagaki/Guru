@@ -55,12 +55,12 @@ class LoginsTableViewController: UITableViewController, UISearchBarDelegate, UIS
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        log("\(self.className) has appeared.")
         reloadIndex()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        log("\(self.className) has appeared.")
         tableView.reloadData()
     }
     
