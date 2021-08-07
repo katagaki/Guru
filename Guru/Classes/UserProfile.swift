@@ -332,9 +332,13 @@ public class UserProfile: NSObject {
         setValue(freqWords, forKey: "profile_freqWords", hasAuth: false)
         setValue(avgWordLength, forKey: "profile_avgWordLength", hasAuth: false)
         setValue(freqUppercase, forKey: "profile_freqUppercase", hasAuth: false)
+        setValue(freqUppercaseCount, forKey: "profile_freqUppercase_count", hasAuth: false)
         setValue(freqLowercase, forKey: "profile_freqLowercase", hasAuth: false)
+        setValue(freqLowercaseCount, forKey: "profile_freqLowercase_count", hasAuth: false)
         setValue(freqNumbers, forKey: "profile_freqNumbers", hasAuth: false)
+        setValue(freqNumbersCount, forKey: "profile_freqNumbers_count", hasAuth: false)
         setValue(freqSymbols, forKey: "profile_freqSymbols", hasAuth: false)
+        setValue(freqSymbolsCount, forKey: "profile_freqSymbols_count", hasAuth: false)
         setValue(freqLeet, forKey: "profile_freqLeet", hasAuth: false)
         setValue(freqRunningLetters, forKey: "profile_freqRunningLetters", hasAuth: false)
         setValue(freqRunningNumbers, forKey: "profile_freqRunningNumbers", hasAuth: false)
@@ -841,16 +845,16 @@ public class UserProfile: NSObject {
                     }
                     semaphore.wait()
                     
-                    if !logins.contains(where: { existingLogin in
-                        return existingLogin.accountName == login.accountName
-                    }) {
-                        // Add login
-                        queue.async(flags: .barrier) {
-                            self.add(login: login)
+                    // Add login
+                    queue.async(flags: .barrier) {
+                        if !self.logins.contains(where: { existingLogin in
+                            return existingLogin.accountName == login.accountName
+                        }) {
+                                self.add(login: login)
+                        } else {
+                            notImportedCount += 1
+                            log("Login already exists, will not replace.")
                         }
-                    } else {
-                        notImportedCount += 1
-                        log("Login already exists, will not replace.")
                     }
                 } else {
                     notImportedCount += 1
