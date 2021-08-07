@@ -220,15 +220,17 @@ class NewLoginTableViewController: UITableViewController, ReceivesQRCodeResult, 
                 cell.textFieldHandler = self
                 return cell
             case 1:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "PasswordTextFieldCell") as! TextInputCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "PasswordTextFieldCell") as! TextInputWithAlertCell
                 cell.textField.placeholder = NSLocalizedString("Password", comment: "Logins")
                 cell.textField.font = UIFontMetrics(forTextStyle: .largeTitle).scaledFont(for: UIFont(name: "Menlo", size: 16.0)!)
                 if presetPassword != "" {
                     cell.textField.text = presetPassword
                     presetPassword = ""
+                    cell.textChanged(cell.textField!)
                 }
                 cell.textField.isEnabled = !isBusy
                 cell.textFieldHandler = self
+                cell.alertButton.setTitle(NSLocalizedString("UnsafePassword", comment: "Logins"), for: .normal)
                 return cell
             default: return UITableViewCell()
             }
@@ -369,7 +371,7 @@ class NewLoginTableViewController: UITableViewController, ReceivesQRCodeResult, 
     
     // MARK: HandlesCellTextField
     
-    func handleTextField() {
+    func handleTextFieldShouldReturn() {
         if let view = view.viewWithTag(currentViewTag + 100) as? UITextField {
             log("Handling text field should return with tag \(currentViewTag).")
             currentViewTag += 100

@@ -8,6 +8,6 @@
 import UIKit
 
 protocol HandlesTextField: AnyObject {
-    func handleTextField()
+    func handleTextFieldShouldReturn()
     func handleTextFieldBeginEditing(_ sender: UITextField)
 }

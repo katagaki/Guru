@@ -19,7 +19,7 @@ class TextInputCell: UITableViewCell, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textFieldHandler?.handleTextField()
+        textFieldHandler?.handleTextFieldShouldReturn()
         return true
     }
     

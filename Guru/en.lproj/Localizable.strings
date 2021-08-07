@@ -84,6 +84,7 @@
 "Credentials" = "Credentials";
 "Username" = "Username";
 "Password" = "Password";
+"UnsafePassword" = "Unsafe Password";
 "ServiceURLs" = "Service URLs";
 "LoginURL" = "Login URL";
 "PasswordResetURL" = "Password Reset URL";

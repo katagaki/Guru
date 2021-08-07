@@ -51,7 +51,12 @@ class LoginDetailTableViewController: UITableViewController, SFSafariViewControl
         floatingCopiedView = floatingView(views: [floatingCopiedLabel], arrangeAs: .Vertical, margins: 10)
         center(view: floatingCopiedView, in: navigationController!.view)
         
-        offset = ((login?.username ?? "").isValidEmail() ? 0 : 1)
+        if defaults.bool(forKey: "Feature.BreachDetection.Email") {
+            offset = ((login?.username ?? "").isValidEmail() ? 0 : 1)
+        } else {
+            offset = 1
+            isBreachCheckDone = true
+        }
         
         // Localization
         editToggleButton.title = NSLocalizedString("Edit", comment: "General")
@@ -60,29 +65,33 @@ class LoginDetailTableViewController: UITableViewController, SFSafariViewControl
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         if !isBreachCheckDone {
-            if let login = login, let username = login.username, username.isValidEmail() {
-                DispatchQueue.global(qos: .background).async {
-                    checkBreaches(email: username) { [weak self] breached, hasError in
-                        if !hasError {
-                            if let breached = breached {
-                                self?.isLoginBreached = breached.count > 0
+            if defaults.bool(forKey: "Feature.BreachDetection.Email") {
+                if let login = login, let username = login.username, username.isValidEmail() {
+                    DispatchQueue.global(qos: .background).async {
+                        checkBreaches(email: username) { [weak self] breached, hasError in
+                            if !hasError {
+                                if let breached = breached {
+                                    self?.isLoginBreached = breached.count > 0
+                                } else {
+                                    self?.isLoginBreached = false
+                                }
                             } else {
+                                log("An error occurred while checking for breaches from LoginDetailTableViewController.")
                                 self?.isLoginBreached = false
                             }
-                        } else {
-                            log("An error occurred while checking for breaches from LoginDetailTableViewController.")
-                            self?.isLoginBreached = false
-                        }
-                        self?.isBreachCheckDone = true
-                        DispatchQueue.main.async {
-                            self?.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+                            self?.isBreachCheckDone = true
+                            DispatchQueue.main.async {
+                                self?.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+                            }
                         }
                     }
                 }
             }
         }
         registerTimer()
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -104,7 +113,6 @@ class LoginDetailTableViewController: UITableViewController, SFSafariViewControl
     // MARK: Interface Builder
     
     @IBAction func toggleEditing(_ sender: Any) {
-
         if isEditingLogin {
             if let loginURLCell = tableView.cellForRow(at: IndexPath(row: 0, section: 1 - offset)) as? TextInputCell {
                 login!.loginURL = loginURLCell.textField.text ?? ""
@@ -179,11 +187,7 @@ class LoginDetailTableViewController: UITableViewController, SFSafariViewControl
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         if let _ = userProfile, let _ = login {
-            if (login?.username ?? "").isValidEmail() {
-                return 4
-            } else {
-                return 3
-            }
+            return 4 - offset
         } else {
             return 0
         }
@@ -444,7 +448,7 @@ class LoginDetailTableViewController: UITableViewController, SFSafariViewControl
     
     // MARK: HandlesCellTextField
     
-    func handleTextField() {
+    func handleTextFieldShouldReturn() {
         log("Handling text field should return with tag \(currentViewTag).")
         if let view = view.viewWithTag(currentViewTag + 100) {
             currentViewTag += 100
@@ -470,14 +474,13 @@ class LoginDetailTableViewController: UITableViewController, SFSafariViewControl
     }
     
     @objc func updateOTP() {
-        offset = ((login?.username ?? "").isValidEmail() ? 0 : 1)
-        
-        time = 30 - (Calendar.current.component(.second, from: Date()) % 30)
-        
-        if userProfile != nil {
-            tableView.reloadRows(at: [IndexPath(row: 0, section: 3 - offset)], with: .none)
-        } else {
-            otp = nil
+        if let login = login, let totpSecret = login.totpSecret, totpSecret != "" {
+            time = 30 - (Calendar.current.component(.second, from: Date()) % 30)
+            if userProfile != nil {
+                tableView.reloadRows(at: [IndexPath(row: 0, section: 3 - offset)], with: .none)
+            } else {
+                otp = nil
+            }
         }
     }
     

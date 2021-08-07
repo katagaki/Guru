@@ -162,7 +162,7 @@ class ExportTableViewController: UITableViewController, HandlesTextField {
     
     // MARK: HandlesCellTextField
     
-    func handleTextField() {
+    func handleTextFieldShouldReturn() {
         view.endEditing(false)
     }
     

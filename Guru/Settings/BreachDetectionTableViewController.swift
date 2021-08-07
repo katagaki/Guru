@@ -122,6 +122,8 @@ class BreachDetectionTableViewController: UITableViewController, SFSafariViewCon
     @objc func setBreachDetection(sender: UISwitch) {
         log("Setting Breach Detection settings.")
         defaults.set(sender.isOn, forKey: "Feature.BreachDetection")
+        defaults.set(sender.isOn, forKey: "Feature.BreachDetection.Email")
+        defaults.set(sender.isOn, forKey: "Feature.BreachDetection.Password")
         tableView.reloadSections(IndexSet(integer: 3), with: .automatic)
     }
     

@@ -165,7 +165,7 @@ public func checkBreaches(password: String, completion: @escaping (_ breached: B
                 var passwordPwned: Bool = false
                 for pwnedPassword in pwnedPasswords {
                     if pwnedPassword.starts(with: rightTrimHash) {
-                        log("Found \(password.prefix(3))<redacted> hash in breach list...")
+                        log("Found \(password.prefix(3))<redacted> hash in breach list.")
                         passwordPwned = true
                     }
                 }

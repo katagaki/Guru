@@ -637,57 +637,6 @@ public class UserProfile: NSObject {
         }
     }
     
-    // MARK: Helper Functions
-    
-    func loginKey(accountName: String) -> String {
-        let data = Data(accountName.utf8)
-        return "login_" + SHA256.hash(data: data).string().lowercased()
-    }
-    
-    public override var description: String {
-        return """
-        --- User Profile Object Descriptor ---
-        
-        > Basic Information
-        Full Name: \(fullName ?? "nil")
-        Region: \(region ?? "nil")
-        Languages\(languages)
-        Age: \(birthdayString() ?? "nil")
-        Company Name: \(companyName ?? "nil")
-        School Name: \(schoolName ?? "nil")
-        Logins:
-        \(logins)
-        
-        --- Prediction Profile  ---
-        
-        > Linguistic Features
-        Frequent Characters:
-        \(freqCharacters.description)
-        Frequent Words:
-        \(freqWords.description)
-        Average Word Length: \(avgWordLength)
-        
-        > Usage Habits
-        Frequency of Uppercase Letters: \(freqUppercase)
-        Frequency of Lowercase Letters: \(freqLowercase)
-        Frequency of Numbers: \(freqNumbers)
-        Frequency of Symbols: \(freqSymbols)
-        Frequency of Leet: \(freqLeet)
-        Frequency of Running Letters: \(freqRunningLetters)
-        Frequency of Running Numbers: \(freqRunningNumbers)
-        
-        > Preferences
-        Preferred Symbols:
-        \(preferredSymbols.description)
-        Interests:
-        \(interests.description)
-        Preferred Words:
-        \(preferredWords.description)
-        
-        
-        """
-    }
-    
     // MARK: CSV
     
     func csv(ofType type: CSVType) -> String {
@@ -935,9 +884,13 @@ public class UserProfile: NSObject {
         
         if let languages = data.languages {
             for language in languages {
-                if let name = language.language, let isDisabled = language.isDisabled, (!name.containsNonLatinCharacters() && !isDisabled), builtInLanguages.contains(where: { builtInLanguage in
+                if let name = language.language,
+                    let isDisabled = language.isDisabled,
+                   (!name.containsNonLatinCharacters() && !isDisabled),
+                   builtInLanguages.contains(where: { builtInLanguage in
                     return name.lowercased().contains(builtInLanguage.lowercased())
-                }) {
+                }),
+                   !self.languages.contains(name.capitalized) {
                     log("Appending \(name.lowercased()) to languages.")
                     self.languages.append(name.capitalized)
                 }
@@ -948,12 +901,15 @@ public class UserProfile: NSObject {
         
         if let interests = data.interests {
             for interest in interests {
-                if let name = interest.name, let isDisabled = interest.isDisabled, (!name.containsNonLatinCharacters() && !isDisabled) {
+                if let name = interest.name,
+                    let isDisabled = interest.isDisabled,
+                   (!name.containsNonLatinCharacters() && !isDisabled) {
                     if let newInterest = builtInInterests.first(where: { builtInInterest in
                         return name.lowercased() == builtInInterest.name.lowercased() || builtInInterest.words.contains(where: { word in
                             return word.lowercased() == name.lowercased()
                         })
-                    }), !self.interests.contains(newInterest.name.lowercased()) {
+                    }),
+                        !self.interests.contains(newInterest.name.lowercased()) {
                         log("Appending \(name.lowercased()) to interests.")
                         self.interests.append(newInterest.name.lowercased())
                     }
@@ -982,6 +938,55 @@ public class UserProfile: NSObject {
         
         return (true, dataPointCount - currentCount)
         
+    }
+    
+    // MARK: Helper Functions
+    
+    func loginKey(accountName: String) -> String {
+        let data = Data(accountName.utf8)
+        return "login_" + SHA256.hash(data: data).string().lowercased()
+    }
+    
+    public override var description: String {
+        return """
+        --- User Profile Object Descriptor ---
+        
+        > Basic Information
+        Full Name: \(fullName ?? "nil")
+        Region: \(region ?? "nil")
+        Languages\(languages)
+        Age: \(birthdayString() ?? "nil")
+        Company Name: \(companyName ?? "nil")
+        School Name: \(schoolName ?? "nil")
+        Logins:
+        \(logins)
+        
+        --- Prediction Profile  ---
+        
+        > Linguistic Features
+        Frequent Characters:
+        \(freqCharacters.description)
+        Frequent Words:
+        \(freqWords.description)
+        Average Word Length: \(avgWordLength)
+        
+        > Usage Habits
+        Frequency of Uppercase Letters: \(freqUppercase)
+        Frequency of Lowercase Letters: \(freqLowercase)
+        Frequency of Numbers: \(freqNumbers)
+        Frequency of Symbols: \(freqSymbols)
+        Frequency of Leet: \(freqLeet)
+        Frequency of Running Letters: \(freqRunningLetters)
+        Frequency of Running Numbers: \(freqRunningNumbers)
+        
+        > Preferences
+        Preferred Symbols:
+        \(preferredSymbols.description)
+        Interests:
+        \(interests.description)
+        Preferred Words:
+        \(preferredWords.description)
+        """
     }
     
 }

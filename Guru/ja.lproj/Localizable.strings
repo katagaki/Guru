@@ -84,6 +84,7 @@
 "Credentials" = "ログイン情報";
 "Username" = "ユーザーネーム";
 "Password" = "パスワード";
+"UnsafePassword" = "漏洩されたパスワード";
 "ServiceURLs" = "リンク";
 "LoginURL" = "ログインページ";
 "PasswordResetURL" = "パスワードリセットページ";
