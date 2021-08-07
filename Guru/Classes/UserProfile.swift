@@ -57,30 +57,6 @@ public class UserProfile: NSObject {
     }
     
     // Usage habits of characters
-    public var freqUppercase: Double = 0 {
-        didSet { setValue(freqUppercase, forKey: "profile_freqUppercase", hasAuth: false, ignoresFunction: openingFromKeychain) }
-    }
-    public var freqUppercaseCount: Int = 0 {
-        didSet { setValue(freqUppercaseCount, forKey: "profile_freqUppercase_Count", hasAuth: false, ignoresFunction: openingFromKeychain) }
-    }
-    public var freqLowercase: Double = 0 {
-        didSet { setValue(freqLowercase, forKey: "profile_freqLowercase", hasAuth: false, ignoresFunction: openingFromKeychain) }
-    }
-    public var freqLowercaseCount: Int = 0 {
-        didSet { setValue(freqLowercaseCount, forKey: "profile_freqLowercase_Count", hasAuth: false, ignoresFunction: openingFromKeychain) }
-    }
-    public var freqNumbers: Double = 0 {
-        didSet { setValue(freqNumbers, forKey: "profile_freqNumbers", hasAuth: false, ignoresFunction: openingFromKeychain) }
-    }
-    public var freqNumbersCount: Int = 0 {
-        didSet { setValue(freqNumbersCount, forKey: "profile_freqNumbers_Count", hasAuth: false, ignoresFunction: openingFromKeychain) }
-    }
-    public var freqSymbols: Double = 0 {
-        didSet { setValue(freqSymbols, forKey: "profile_freqSymbols", hasAuth: false, ignoresFunction: openingFromKeychain) }
-    }
-    public var freqSymbolsCount: Int = 0 {
-        didSet { setValue(freqSymbolsCount, forKey: "profile_freqSymbols_Count", hasAuth: false, ignoresFunction: openingFromKeychain) }
-    }
     public var freqLeet: Double = 0 {
         didSet { setValue(freqLeet, forKey: "profile_freqLeet", hasAuth: false, ignoresFunction: openingFromKeychain) }
     }
@@ -199,7 +175,7 @@ public class UserProfile: NSObject {
                         default: break
                         }
                     }
-                    log("Adding \(keychainItem.key) to data point array.")
+                    log("Found \(keychainItem.key) in keychain.")
                     keychainItems.append(keychainItem)
                 }
                 
@@ -239,14 +215,6 @@ public class UserProfile: NSObject {
                     case "profile_avgWordLength": avgWordLength = Double(value) ?? 0.0
                         
                         // Usage habits of characters
-                    case "profile_freqUppercase": freqUppercase = Double(value) ?? 0.0
-                    case "profile_freqUppercase_count": freqUppercaseCount = Int(value) ?? 0
-                    case "profile_freqLowercase": freqLowercase = Double(value) ?? 0.0
-                    case "profile_freqLowercase_count": freqLowercaseCount = Int(value) ?? 0
-                    case "profile_freqNumbers": freqNumbers = Double(value) ?? 0.0
-                    case "profile_freqNumbers_count": freqNumbersCount = Int(value) ?? 0
-                    case "profile_freqSymbols": freqSymbols = Double(value) ?? 0.0
-                    case "profile_freqSymbols_count": freqSymbolsCount = Int(value) ?? 0
                     case "profile_freqLeet": freqLeet = Double(value) ?? 0.0
                     case "profile_freqLeet_count": freqLeetCount = Int(value) ?? 0
                         
@@ -331,14 +299,6 @@ public class UserProfile: NSObject {
         setValue(freqCharacters, forKey: "profile_freqCharacters", hasAuth: false)
         setValue(freqWords, forKey: "profile_freqWords", hasAuth: false)
         setValue(avgWordLength, forKey: "profile_avgWordLength", hasAuth: false)
-        setValue(freqUppercase, forKey: "profile_freqUppercase", hasAuth: false)
-        setValue(freqUppercaseCount, forKey: "profile_freqUppercase_count", hasAuth: false)
-        setValue(freqLowercase, forKey: "profile_freqLowercase", hasAuth: false)
-        setValue(freqLowercaseCount, forKey: "profile_freqLowercase_count", hasAuth: false)
-        setValue(freqNumbers, forKey: "profile_freqNumbers", hasAuth: false)
-        setValue(freqNumbersCount, forKey: "profile_freqNumbers_count", hasAuth: false)
-        setValue(freqSymbols, forKey: "profile_freqSymbols", hasAuth: false)
-        setValue(freqSymbolsCount, forKey: "profile_freqSymbols_count", hasAuth: false)
         setValue(freqLeet, forKey: "profile_freqLeet", hasAuth: false)
         setValue(freqRunningLetters, forKey: "profile_freqRunningLetters", hasAuth: false)
         setValue(freqRunningNumbers, forKey: "profile_freqRunningNumbers", hasAuth: false)
@@ -975,10 +935,6 @@ public class UserProfile: NSObject {
         Average Word Length: \(avgWordLength)
         
         > Usage Habits
-        Frequency of Uppercase Letters: \(freqUppercase)
-        Frequency of Lowercase Letters: \(freqLowercase)
-        Frequency of Numbers: \(freqNumbers)
-        Frequency of Symbols: \(freqSymbols)
         Frequency of Leet: \(freqLeet)
         Frequency of Running Letters: \(freqRunningLetters)
         Frequency of Running Numbers: \(freqRunningNumbers)

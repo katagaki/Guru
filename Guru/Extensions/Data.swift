@@ -24,7 +24,7 @@ extension Data {
             try data.write(to: URL(fileURLWithPath: filePath))
             return NSURL(fileURLWithPath: filePath)
         } catch {
-            print("\(error.localizedDescription)")
+            log("Data.dataToFile: \(error.localizedDescription)")
         }
         return nil
         

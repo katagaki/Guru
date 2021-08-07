@@ -86,7 +86,13 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
                 log("Successful authentication, user profile opened.")
                 lockIconView.image = UIImage(systemName: "lock.open.fill")
                 contentLockableDelegate?.unlockContent()
-                dismiss(animated: true, completion: nil)
+                log("Performing analysis on passwords.")
+                DispatchQueue.global(qos: .background).async {
+                    analyzePasswords()
+                    DispatchQueue.main.async {
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                }
             } else {
                 log("Authentication failed, no user profile opened.")
                 unlockButton.isEnabled = true

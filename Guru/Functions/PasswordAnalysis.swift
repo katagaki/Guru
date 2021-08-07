@@ -7,6 +7,19 @@
 
 import Foundation
 
+var averagePasswordLength: Double = 0.0
+var freqUppercase: Double = 0
+var freqUppercaseCount: Int = 0
+var freqLowercase: Double = 0
+var freqLowercaseCount: Int = 0
+var freqNumbers: Double = 0
+var freqNumbersCount: Int = 0
+var freqSymbols: Double = 0
+var freqSymbolsCount: Int = 0
+var totalCharacterCount: Int {
+    return freqUppercaseCount + freqLowercaseCount + freqNumbersCount + freqSymbolsCount
+}
+
 /// Analyzes a password for words.
 /// - Parameter password: The password to analyze.
 /// - Returns: An array of words.
@@ -36,26 +49,16 @@ Words found: \(wordsFound.joined(separator: ","))
     return wordsFound
 }
 
-public func analyzeCharacters() -> (freqUppercase: Double,
-                                    freqUppercaseCount: Int,
-                                    freqLowercase: Double,
-                                    freqLowercaseCount: Int,
-                                    freqNumbers: Double,
-                                    freqNumbersCount: Int,
-                                    freqSymbols: Double,
-                                    freqSymbolsCount: Int) {
-    let queue = DispatchQueue(label: "analyzeCharacters", attributes: .concurrent)
+public func analyzePasswords() {
+    let queue = DispatchQueue(label: "analyzePasswords", attributes: .concurrent)
     let semaphore = DispatchSemaphore(value: 0)
-    var freqUppercase: Double = 0
-    var freqUppercaseCount: Int = 0
-    var freqLowercase: Double = 0
-    var freqLowercaseCount: Int = 0
-    var freqNumbers: Double = 0
-    var freqNumbersCount: Int = 0
-    var freqSymbols: Double = 0
-    var freqSymbolsCount: Int = 0
 
     if let userProfile = userProfile {
+        
+        averagePasswordLength = Double(userProfile.logins.reduce(0) { partialResult, login in
+            return partialResult + (login.password ?? "").count
+        }) / Double(userProfile.logins.count)
+        
         DispatchQueue.concurrentPerform(iterations: userProfile.logins.count) { i in
             let login: Login = userProfile.logins[i]
             let passwordCharacters: [Character] = Array(login.password ?? "")
@@ -65,7 +68,7 @@ public func analyzeCharacters() -> (freqUppercase: Double,
             var totalSymbols: Int = 0
             let totalCharacters: Int = passwordCharacters.count
             
-            log("Analyzing password \((login.password ?? "").prefix(3))<redacted>.")
+            log("Analyzing password \(i).")
             
             for character in passwordCharacters {
                 switch true {
@@ -82,7 +85,7 @@ public func analyzeCharacters() -> (freqUppercase: Double,
             }
             
             queue.async(flags: .barrier) {
-                log("Adding result for password \((login.password ?? "").prefix(3))<redacted> to the total result.")
+                log("Adding result for password \(i) to the total result.")
                 freqUppercase += Double(totalUppercase) / Double(totalCharacters)
                 freqUppercaseCount += totalUppercase
                 freqLowercase += Double(totalLowercase) / Double(totalCharacters)
@@ -105,6 +108,7 @@ public func analyzeCharacters() -> (freqUppercase: Double,
         
         log("""
 Password analysis completed.
+Average length of password: \(averagePasswordLength)
 Frequency of uppercase letters: \(freqUppercase)
 Frequency of lowercase letters: \(freqLowercase)
 Frequency of numbers: \(freqNumbers)
@@ -113,9 +117,10 @@ Number of uppercase letters: \(freqUppercaseCount)
 Number of lowercase letters: \(freqLowercaseCount)
 Number of numbers: \(freqNumbersCount)
 Number of symbols: \(freqSymbolsCount)
+Total number of characters: \(totalCharacterCount)
 """)
-        return (freqUppercase, freqUppercaseCount, freqLowercase, freqLowercaseCount, freqNumbers, freqNumbersCount, freqSymbols, freqSymbolsCount)
+        
     } else {
-        return (0, 0, 0, 0, 0, 0, 0, 0)
+        log("Password analysis completed. No user profile to analyze.")
     }
 }
