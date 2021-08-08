@@ -11,7 +11,7 @@ import os
 let loggingQueue = DispatchQueue(label: "log", attributes: .concurrent)
 let versionNumber: String = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? String ?? "Dev"
 let buildNumber: String = Bundle.main.infoDictionary!["CFBundleVersion"] as? String ?? "Dev"
-var appLogs: String = "Guru Version \(versionNumber) Build \(buildNumber)"
+var appLogs: String = "Guru Version \(versionNumber) Build \(buildNumber) (\(Locale.current.languageCode!))"
 
 /// Passes a string to the app log, and console.
 /// - Parameter text: The text to append to the log.

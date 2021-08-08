@@ -13,7 +13,12 @@ class AppLogsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         reloadLogs()
+        
+        // Localization
+        navigationItem.title = NSLocalizedString("AppLogs", comment: "UnderTheHood")
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
