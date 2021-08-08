@@ -17,6 +17,10 @@
 		E40638B726B28ED5009569CD /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E87C76268CD90A00CD6832 /* GlobalVariables.swift */; };
 		E41B2ACB268D76340076B19F /* OTPScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41B2ACA268D76340076B19F /* OTPScannerViewController.swift */; };
 		E41B2ACD268D7BC00076B19F /* ReceivesQRCodeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41B2ACC268D7BC00076B19F /* ReceivesQRCodeResult.swift */; };
+		E41C501626C021F600CDB4C3 /* UserProfile+Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C501526C021F600CDB4C3 /* UserProfile+Modifiers.swift */; };
+		E41C501826C0223700CDB4C3 /* UserProfile+Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C501726C0223700CDB4C3 /* UserProfile+Keychain.swift */; };
+		E41C501926C0225300CDB4C3 /* UserProfile+Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C501726C0223700CDB4C3 /* UserProfile+Keychain.swift */; };
+		E41C501A26C022E900CDB4C3 /* UserProfile+Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C501526C021F600CDB4C3 /* UserProfile+Modifiers.swift */; };
 		E4247E4B26BEA34E00CA8A0D /* UserProfile+ImportData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4247E4A26BEA34E00CA8A0D /* UserProfile+ImportData.swift */; };
 		E4247E4D26BEA37100CA8A0D /* UserProfile+CSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4247E4C26BEA37100CA8A0D /* UserProfile+CSV.swift */; };
 		E4247E4F26BEA43300CA8A0D /* String+RegEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4247E4E26BEA43300CA8A0D /* String+RegEx.swift */; };
@@ -205,6 +209,8 @@
 		E40638B426B26026009569CD /* ReportsProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsProgress.swift; sourceTree = "<group>"; };
 		E41B2ACA268D76340076B19F /* OTPScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPScannerViewController.swift; sourceTree = "<group>"; };
 		E41B2ACC268D7BC00076B19F /* ReceivesQRCodeResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivesQRCodeResult.swift; sourceTree = "<group>"; };
+		E41C501526C021F600CDB4C3 /* UserProfile+Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserProfile+Modifiers.swift"; sourceTree = "<group>"; };
+		E41C501726C0223700CDB4C3 /* UserProfile+Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserProfile+Keychain.swift"; sourceTree = "<group>"; };
 		E4247E4A26BEA34E00CA8A0D /* UserProfile+ImportData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserProfile+ImportData.swift"; sourceTree = "<group>"; };
 		E4247E4C26BEA37100CA8A0D /* UserProfile+CSV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserProfile+CSV.swift"; sourceTree = "<group>"; };
 		E4247E4E26BEA43300CA8A0D /* String+RegEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+RegEx.swift"; sourceTree = "<group>"; };
@@ -460,6 +466,8 @@
 				E4C78ED02687114200128F9B /* UserProfile.swift */,
 				E4247E4C26BEA37100CA8A0D /* UserProfile+CSV.swift */,
 				E4247E4A26BEA34E00CA8A0D /* UserProfile+ImportData.swift */,
+				E41C501726C0223700CDB4C3 /* UserProfile+Keychain.swift */,
+				E41C501526C021F600CDB4C3 /* UserProfile+Modifiers.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -768,6 +776,7 @@
 				E4CEAD2B26A3D3CE0067796E /* UserProfile.swift in Sources */,
 				E4D6EF4326BD8F3300BF112B /* TwitterInterest.swift in Sources */,
 				E4CEAD2D26A3D3D10067796E /* Login.swift in Sources */,
+				E41C501926C0225300CDB4C3 /* UserProfile+Keychain.swift in Sources */,
 				E4DA29C826BFD577005272F4 /* StylizedButton.swift in Sources */,
 				E48F94F026B56FB90050AD81 /* Pwned.swift in Sources */,
 				E4DF796126AC86E200C3FB5C /* SHA256Digest.swift in Sources */,
@@ -787,6 +796,7 @@
 				E4CEAC4E26A2EACB0067796E /* RoundedImageView.swift in Sources */,
 				E4DAB02E26B194D600540892 /* Interest.swift in Sources */,
 				E40638B626B26173009569CD /* ReportsProgress.swift in Sources */,
+				E41C501A26C022E900CDB4C3 /* UserProfile+Modifiers.swift in Sources */,
 				E4D6EF4426BD8F3500BF112B /* TwitterLanguage.swift in Sources */,
 				E48F94F326B570560050AD81 /* Digest.swift in Sources */,
 			);
@@ -811,6 +821,7 @@
 				E4EDA0082660C138003919C7 /* ProfileTableViewController.swift in Sources */,
 				E4D54E1F26BD63E000CBB76F /* ImportInterestsTableViewController.swift in Sources */,
 				E4F9D2C126960E5D00867B42 /* ThirdPartyLibrariesViewController.swift in Sources */,
+				E41C501626C021F600CDB4C3 /* UserProfile+Modifiers.swift in Sources */,
 				E4DF795526AC845B00C3FB5C /* Interest.swift in Sources */,
 				E4F9D2BB2695E73100867B42 /* ImportTableViewController.swift in Sources */,
 				E4CDEF0F2674AAF900F5F01A /* InformationAboutYouViewController.swift in Sources */,
@@ -871,6 +882,7 @@
 				E4E87C77268CD90A00CD6832 /* GlobalVariables.swift in Sources */,
 				E4EABA5626599B560054F310 /* GeneratorTableViewController.swift in Sources */,
 				E4EABA5826599D830054F310 /* CenteredTextView.swift in Sources */,
+				E41C501826C0223700CDB4C3 /* UserProfile+Keychain.swift in Sources */,
 				E48F94EB26B55EBE0050AD81 /* ViewGeneration.swift in Sources */,
 				E46BB4FD2691B5D400BEE0AA /* OnboardingNavigationController.swift in Sources */,
 				E46E9B1D26B12D1F00238A72 /* SliderCell.swift in Sources */,
