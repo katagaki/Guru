@@ -88,8 +88,8 @@ func analyzePasswordWords(progressReporter: ReportsProgress? = nil) {
                     }
                     queue.async(flags: .barrier) {
                         wordCountPerPassword.updateValue(analyzedPasswordWordCount, forKey: passwordHash)
-                        log("Updating password analysis cache.")
                         defaults.set(wordCountPerPassword, forKey: "Feature.Intelligence.AnalyzedPasswords.Words")
+                        log("Storing analysis for password \(i).")
                         currentCount += 1
                         if let progressReporter = progressReporter {
                             progressReporter.updateProgress(progress: Double(currentCount), total: Double(totalCount))
@@ -143,7 +143,7 @@ Average word length: \(averageWordLength)
 }
 
 /// Analyzes all user profile login passwords' character frequencies and counts.
-func analyzePasswordCharacters() {
+func analyzePasswordCharacters(progressReporter: ReportsProgress? = nil) {
     let queue = DispatchQueue(label: "updatePasswordStatistics", attributes: .concurrent)
     let semaphore = DispatchSemaphore(value: 0)
 
@@ -161,7 +161,9 @@ func analyzePasswordCharacters() {
     
     if let userProfile = userProfile {
         if userProfile.logins.count > 0 {
-                
+            var currentCount: Int = 0
+            let totalCount: Int = userProfile.logins.count
+
             averagePasswordLength = Double(userProfile.logins.reduce(0) { partialResult, login in
                 return partialResult + (login.password ?? "").count
             }) / Double(userProfile.logins.count)
@@ -207,6 +209,10 @@ func analyzePasswordCharacters() {
                     numbersCount += totalNumbers
                     averageSymbolRatio += Double(totalSymbols) / Double(totalCharacters)
                     symbolsCount += totalSymbols
+                    currentCount += 1
+                    if let progressReporter = progressReporter {
+                        progressReporter.updateProgress(progress: Double(currentCount), total: Double(totalCount))
+                    }
                 }
             }
             
@@ -220,6 +226,9 @@ func analyzePasswordCharacters() {
             semaphore.wait()
             
         } else {
+            if let progressReporter = progressReporter {
+                progressReporter.updateProgress(progress: 1.0, total: 1.0)
+            }
             log("Password character analysis completed. No logins to analyze.")
         }
         
@@ -238,6 +247,9 @@ Total number of characters: \(totalCharacterCount)
 """)
         
     } else {
+        if let progressReporter = progressReporter {
+            progressReporter.updateProgress(progress: 1.0, total: 1.0)
+        }
         log("Password character analysis completed. No user profile to analyze.")
     }
 }

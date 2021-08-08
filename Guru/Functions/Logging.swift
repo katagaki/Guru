@@ -17,8 +17,8 @@ var appLogs: String = "Guru Version \(versionNumber) Build \(buildNumber)"
 /// - Parameter text: The text to append to the log.
 public func log(_ text: String) {
     let dateString = String(Date().timeIntervalSince1970).components(separatedBy: ".")[0]
+    os_log("%s", log: .default, type: .info, text)
     loggingQueue.async(flags: .barrier) {
         appLogs.append(contentsOf: "\n[\(dateString)] \(text)")
-        os_log("%s", log: .default, type: .info, text)
     }
 }

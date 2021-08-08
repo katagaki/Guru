@@ -37,7 +37,20 @@ public class Password: NSObject {
     
     init(passphraseWithWordCount count: Int, withMinLength lengthMin: Int, withMaxLength lengthMax: Int) {
         super.init()
-        policies = [.ContainsLowercase, .ContainsSpaces]
+        policies.removeAll()
+        if cSCoinFlip() {
+            policies.append(.ContainsUppercase)
+        }
+        if cSCoinFlip() {
+            policies.append(.ContainsSpaces)
+        } else {
+            if cSCoinFlip() {
+                policies.append(.ContainsComplexSymbols)
+            } else {
+                policies.append(.ContainsBasicSymbols)
+            }
+        }
+        policies.append(.ContainsLowercase)
         minLength = lengthMin
         maxLength = lengthMax
         wordCount = count
@@ -65,9 +78,16 @@ public class Password: NSObject {
         repeat {
             var wordsToInclude: [String] = []
             for _ in 0..<wordCount {
-                wordsToInclude.append(filteredWords[cSRandomNumber(to: filteredWords.count)])
+                var wordToAppend: String = filteredWords[cSRandomNumber(to: filteredWords.count)]
+                
+                // Randomly capitalize first letter of word
+                if policies.contains(.ContainsUppercase) && cSCoinFlip() {
+                    wordToAppend = wordToAppend.capitalized
+                }
+                
+                wordsToInclude.append(wordToAppend)
             }
-            generated = wordsToInclude.joined(separator: " ")
+            generated = wordsToInclude.joined(separator: [" ", "-", ".", "+", "_"].randomElement()!)
         } while (!(acceptability(ofPassword: generated) && generated.count >= minLength && generated.count <= maxLength))
     }
     
@@ -254,7 +274,6 @@ public class Password: NSObject {
     public func acceptability(ofPassword password: String) -> Bool {
         var passwordAcceptable: Bool = true
         if password.trimmingCharacters(in: .whitespaces).count != password.count {
-            log("Acceptability of password generated: false")
             return false
         } else {
             for policy in policies {
@@ -262,7 +281,6 @@ public class Password: NSObject {
                     passwordAcceptable = false
                 }
             }
-            log("Acceptability of password generated: \(passwordAcceptable)")
             return passwordAcceptable
         }
     }
@@ -285,7 +303,6 @@ public class Password: NSObject {
         let lowercaseRatio: Double = Double(lowercaseLetters.count) / Double(characters.count)
         let numberRatio: Double = Double(numbers.count) / Double(characters.count)
         let symbolRatio: Double = Double(symbols.count) / Double(characters.count)
-        log("Similarity of password generated: uppercase=\(uppercaseRatio), lowercase=\(lowercaseRatio), number=\(numberRatio), symbol=\(symbolRatio)")
         return uppercaseRatio > averageUppercaseRatio - 0.175 && uppercaseRatio < averageUppercaseRatio + 0.175 &&
         lowercaseRatio > averageLowercaseRatio - 0.25 && lowercaseRatio < averageLowercaseRatio + 0.25 &&
         numberRatio > averageNumberRatio - 0.05 && numberRatio < averageNumberRatio + 0.05 &&
