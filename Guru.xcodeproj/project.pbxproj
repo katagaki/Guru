@@ -87,6 +87,7 @@
 		E4D6EF4426BD8F3500BF112B /* TwitterLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D6EF3C26BD6EFB00BF112B /* TwitterLanguage.swift */; };
 		E4D6EF4526BD8F4A00BF112B /* BuiltInData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D6EF4026BD8BF700BF112B /* BuiltInData.swift */; };
 		E4D6EF4726BE1AC300BF112B /* TextInputWithAlertCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D6EF4626BE1AC300BF112B /* TextInputWithAlertCell.swift */; };
+		E4DA29C826BFD577005272F4 /* StylizedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C3CCBA26902B920020942F /* StylizedButton.swift */; };
 		E4DAB02026B1928800540892 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DAB01F26B1928800540892 /* Alerts.swift */; };
 		E4DAB02226B192AA00540892 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DAB02126B192AA00540892 /* Logging.swift */; };
 		E4DAB02426B192C500540892 /* ResetProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DAB02326B192C500540892 /* ResetProfile.swift */; };
@@ -767,6 +768,7 @@
 				E4CEAD2B26A3D3CE0067796E /* UserProfile.swift in Sources */,
 				E4D6EF4326BD8F3300BF112B /* TwitterInterest.swift in Sources */,
 				E4CEAD2D26A3D3D10067796E /* Login.swift in Sources */,
+				E4DA29C826BFD577005272F4 /* StylizedButton.swift in Sources */,
 				E48F94F026B56FB90050AD81 /* Pwned.swift in Sources */,
 				E4DF796126AC86E200C3FB5C /* SHA256Digest.swift in Sources */,
 				E4D6EF4226BD8F3000BF112B /* TwitterData.swift in Sources */,
@@ -1134,7 +1136,7 @@
 				CODE_SIGN_ENTITLEMENTS = Guru/Guru.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = YYM4Z6MU8F;
 				INFOPLIST_FILE = Guru/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
@@ -1161,7 +1163,7 @@
 				CODE_SIGN_ENTITLEMENTS = Guru/Guru.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = YYM4Z6MU8F;
 				INFOPLIST_FILE = Guru/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;

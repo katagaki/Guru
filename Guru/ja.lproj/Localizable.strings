@@ -330,6 +330,10 @@
 "ConfirmDisableOTPTitle" = "認証コードを無効化";
 "ConfirmDisableOTPText" = "認証コードを無効にしてよろしいですか？認証コードを無効にしても、ウェブサイトまたはサービスの2ファクタ認証が自動的にオフになりません。";
 
+/* AutoFill */
+"AutoFillLogins" = "アカウント";
+"AutoFillSuggestedLogins" = "おすすめ";
+
 /* General */
 "Add" = "追加";
 "CloseGuru" = "Guruを閉じる";

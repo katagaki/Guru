@@ -330,6 +330,10 @@
 "ConfirmDisableOTPTitle" = "Disable One Time Password";
 "ConfirmDisableOTPText" = "Are you sure you want to disable one time passwords for @$? This will not disable 2-factor authentication for the account.";
 
+/* AutoFill */
+"AutoFillLogins" = "Logins";
+"AutoFillSuggestedLogins" = "Suggested";
+
 /* General */
 "Add" = "Add";
 "CloseGuru" = "Close Guru";
