@@ -19,8 +19,6 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, Repor
     weak var contentLockableDelegate: ContentLockable? = nil
     var unlockImmediately: Bool = true
     
-    var completedProgress: Float = 0.0
-    
     var activeField: UITextField?
     
     // MARK: UIViewController
@@ -95,9 +93,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, Repor
                     DispatchQueue.main.async {
                         self.passwordAnalysisProgressView.isHidden = false
                     }
-                    self.completedProgress = 0.0
                     analyzePasswordCharacters(progressReporter: self)
-                    self.completedProgress = 0.5
                     analyzePasswordWords(progressReporter: self)
                     DispatchQueue.main.async {
                         self.dismiss(animated: true, completion: nil)
@@ -125,7 +121,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, Repor
     
     func updateProgress(progress: Double, total: Double) {
         DispatchQueue.main.async {
-            self.passwordAnalysisProgressView.progress = Float(progress / total) + self.completedProgress
+            self.passwordAnalysisProgressView.progress = Float(progress / total)
         }
     }
     

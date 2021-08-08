@@ -52,6 +52,7 @@ func analyzePasswordWords(progressReporter: ReportsProgress? = nil) {
     if let wordCountPerPasswordFromUserDefaults = defaults.object(forKey: "Feature.Intelligence.AnalyzedPasswords.Words") {
         wordCountPerPassword = wordCountPerPasswordFromUserDefaults as! [String : [String : Int]]
     }
+    let existingAnalyses: [String] = Array(wordCountPerPassword.keys)
     averageWordLength = 0.0
     
     if let userProfile = userProfile {
@@ -75,7 +76,7 @@ func analyzePasswordWords(progressReporter: ReportsProgress? = nil) {
                 let passwordWithOnlyLetters: String = String(lettersInPassword).lowercased()
                 var analyzedPasswordWordCount: [String:Int] = [:]
                 
-                if wordCountPerPassword[passwordHash] == nil {
+                if !existingAnalyses.contains(passwordHash) {
                     let wordsInPassword: [String] = filteredWords.filter { word in
                         return passwordWithOnlyLetters.contains(word)
                     }
@@ -134,12 +135,7 @@ func analyzePasswordWords(progressReporter: ReportsProgress? = nil) {
     }
     semaphore.wait()
     
-    log("""
-Password word analysis completed.
-Passwords analyzed: \(wordCountPerPassword.count)
-Words found: \(wordCountCombined.count)
-Average word length: \(averageWordLength)
-""")
+    log("Password word analysis completed. \(wordCountPerPassword.count) password(s) analyzed with \(wordCountCombined.count) word(s). Average word length: \(averageWordLength).")
 }
 
 /// Analyzes all user profile login passwords' character frequencies and counts.
@@ -232,19 +228,7 @@ func analyzePasswordCharacters(progressReporter: ReportsProgress? = nil) {
             log("Password character analysis completed. No logins to analyze.")
         }
         
-        log("""
-Password character analysis completed.
-Average length of password: \(averagePasswordLength)
-Frequency of uppercase letters: \(averageUppercaseRatio)
-Frequency of lowercase letters: \(averageLowercaseRatio)
-Frequency of numbers: \(averageNumberRatio)
-Frequency of symbols: \(averageSymbolRatio)
-Number of uppercase letters: \(uppercaseCount)
-Number of lowercase letters: \(lowercaseCount)
-Number of numbers: \(numbersCount)
-Number of symbols: \(symbolsCount)
-Total number of characters: \(totalCharacterCount)
-""")
+        log("Password character analysis completed. Average length of password: \(averagePasswordLength). Frequency of uppercase letters: \(averageUppercaseRatio). Frequency of lowercase letters: \(averageLowercaseRatio). Frequency of numbers: \(averageNumberRatio). Frequency of symbols: \(averageSymbolRatio). Number of uppercase letters: \(uppercaseCount). Number of lowercase letters: \(lowercaseCount). Number of numbers: \(numbersCount). Number of symbols: \(symbolsCount). Total number of characters: \(totalCharacterCount).")
         
     } else {
         if let progressReporter = progressReporter {
