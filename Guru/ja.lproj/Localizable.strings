@@ -170,7 +170,7 @@
 "Acknowledgements" = "謝辞";
 "Debug" = "システムオプション";
 "ThirdPartyLibraries" = "著作権情報";
-"LockApp" = "アプリをロック";
+"LockApp" = "画面をロック";
 "Version" = "バージョン@$1、ビルド@$2（ベータ版）";
 
 /* Profile */
