@@ -25,7 +25,6 @@ class NewLoginTableViewController: UITableViewController, ReceivesQRCodeResult, 
     
     var usesWebsiteIcon: Bool = true
     
-    var presetPassword: String = ""
     var isBusy: Bool = false
     var currentViewTag: Int = 0
     
@@ -210,6 +209,7 @@ class NewLoginTableViewController: UITableViewController, ReceivesQRCodeResult, 
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "AccountNameTextFieldCell") as! TextInputCell
             cell.textField.placeholder = NSLocalizedString("AccountName", comment: "Logins")
+            cell.textField.text = accountName
             cell.textField.isEnabled = !isBusy
             cell.textFieldHandler = self
             return cell
@@ -218,6 +218,7 @@ class NewLoginTableViewController: UITableViewController, ReceivesQRCodeResult, 
             case 0:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "UsernameTextFieldCell") as! TextInputCell
                 cell.textField.placeholder = NSLocalizedString("Username", comment: "Logins") + NSLocalizedString("Optional", comment: "Logins")
+                cell.textField.text = username
                 cell.textField.isEnabled = !isBusy
                 cell.textFieldHandler = self
                 return cell
@@ -225,11 +226,7 @@ class NewLoginTableViewController: UITableViewController, ReceivesQRCodeResult, 
                 let cell = tableView.dequeueReusableCell(withIdentifier: "PasswordTextFieldCell") as! TextInputWithAlertCell
                 cell.textField.placeholder = NSLocalizedString("Password", comment: "Logins")
                 cell.textField.font = UIFontMetrics(forTextStyle: .largeTitle).scaledFont(for: UIFont(name: "Menlo", size: 16.0)!)
-                if presetPassword != "" {
-                    cell.textField.text = presetPassword
-                    presetPassword = ""
-                    cell.textChanged(cell.textField!)
-                }
+                cell.textField.text = password
                 cell.textField.isEnabled = !isBusy
                 cell.textFieldHandler = self
                 cell.alertButton.setTitle(NSLocalizedString("UnsafePassword", comment: "Logins"), for: .normal)
@@ -241,12 +238,14 @@ class NewLoginTableViewController: UITableViewController, ReceivesQRCodeResult, 
             case 0:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "LoginPageTextFieldCell") as! TextInputCell
                 cell.textField.placeholder = NSLocalizedString("LoginURL", comment: "Logins") + (usesWebsiteIcon ? "" : NSLocalizedString("Optional", comment: "Logins"))
+                cell.textField.text = loginURL
                 cell.textField.isEnabled = !isBusy
                 cell.textFieldHandler = self
                 return cell
             case 1:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ResetPageTextFieldCell") as! TextInputCell
                 cell.textField.placeholder = NSLocalizedString("PasswordResetURL", comment: "Logins") + NSLocalizedString("Optional", comment: "Logins")
+                cell.textField.text = passwordResetURL
                 cell.textField.isEnabled = !isBusy
                 cell.textFieldHandler = self
                 return cell

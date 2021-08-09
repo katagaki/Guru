@@ -89,7 +89,7 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
             if let navigationController = segue.destination as? UINavigationController {
                 if let destination = navigationController.viewControllers[0] as? NewLoginTableViewController {
                     if let passwordCell = tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as? TextInputWithCopyCell {
-                        destination.presetPassword = passwordCell.textView.text
+                        destination.password = passwordCell.textView.text
                     }
                 }
             }
