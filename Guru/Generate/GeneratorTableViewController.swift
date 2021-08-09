@@ -197,7 +197,7 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
             case 1: return 2
             case 2:
                 if let userProfile = userProfile {
-                    if userProfile.interests.count == 0 {
+                    if userProfile.interests.isEmpty {
                         return 1
                     } else {
                         return enhancedRecommendedInterests.count
@@ -215,7 +215,7 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
             case 3: return 6
             case 4:
                 if let userProfile = userProfile {
-                    if userProfile.interests.count == 0 {
+                    if userProfile.interests.isEmpty {
                         return 1
                     } else {
                         return userProfile.interests.count
@@ -352,7 +352,7 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
                 return cell
             case 2:
                 if let userProfile = userProfile {
-                    if userProfile.interests.count == 0 {
+                    if userProfile.interests.isEmpty {
                         let cell = tableView.dequeueReusableCell(withIdentifier: "NoInterestsCell")!
                         cell.textLabel!.text = NSLocalizedString("GeneratorNoInterests", comment: "Generator")
                         return cell
@@ -423,7 +423,7 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
                 return cell
             case 4:
                 if let userProfile = userProfile {
-                    if userProfile.interests.count == 0 {
+                    if userProfile.interests.isEmpty {
                         let cell = tableView.dequeueReusableCell(withIdentifier: "NoInterestsCell")!
                         cell.textLabel!.text = NSLocalizedString("GeneratorNoInterests", comment: "Generator")
                         return cell
@@ -545,17 +545,49 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
                                                             image: UIImage(systemName: "text.book.closed")) { action in
                         switch self.segmentControl.selectedSegmentIndex {
                         case 0:
-                            self.basicPassword = Password(passphraseWithWordCount: cSRandomNumber(from: 3, to: 5),
-                                                          withMinLength: self.basicPassword.minLength,
-                                                          withMaxLength: self.basicPassword.maxLength)
+                            if let userProfile = userProfile {
+                                var basicInterests: [Interest] = []
+                                for interest in userProfile.interests {
+                                    if let interest = builtInInterests.first(where: { builtInInterest in
+                                        builtInInterest.name == interest
+                                    }) {
+                                        basicInterests.append(interest)
+                                    }
+                                }
+                                self.basicPassword = Password(passphraseWithWordCount: cSRandomNumber(from: 3, to: 5),
+                                                              withMinLength: self.basicPassword.minLength,
+                                                              withMaxLength: self.basicPassword.maxLength,
+                                                              withInterests: basicInterests,
+                                                              usingPreferredWords: userProfile.preferredWords)
+                            } else {
+                                self.basicPassword = Password(passphraseWithWordCount: cSRandomNumber(from: 3, to: 5),
+                                                              withMinLength: self.basicPassword.minLength,
+                                                              withMaxLength: self.basicPassword.maxLength)
+                            }
                         case 1:
-                            self.enhancedPassword = Password(passphraseWithWordCount: cSRandomNumber(from: 3, to: 5),
-                                                             withMinLength: self.enhancedPassword.minLength,
-                                                             withMaxLength: self.enhancedPassword.maxLength)
+                            if let userProfile = userProfile {
+                                self.enhancedPassword = Password(passphraseWithWordCount: cSRandomNumber(from: 3, to: 5),
+                                                                 withMinLength: self.enhancedPassword.minLength,
+                                                                 withMaxLength: self.enhancedPassword.maxLength,
+                                                                 withInterests: self.enhancedSelectedInterests,
+                                                                 usingPreferredWords: userProfile.preferredWords)
+                            } else {
+                                self.enhancedPassword = Password(passphraseWithWordCount: cSRandomNumber(from: 3, to: 5),
+                                                                 withMinLength: self.enhancedPassword.minLength,
+                                                                 withMaxLength: self.enhancedPassword.maxLength)
+                            }
                         case 2:
-                            self.customPassword = Password(passphraseWithWordCount: cSRandomNumber(from: 3, to: 5),
-                                                           withMinLength: self.customPassword.minLength,
-                                                           withMaxLength: self.customPassword.maxLength)
+                            if let userProfile = userProfile {
+                                self.customPassword = Password(passphraseWithWordCount: cSRandomNumber(from: 3, to: 5),
+                                                               withMinLength: self.customPassword.minLength,
+                                                               withMaxLength: self.customPassword.maxLength,
+                                                               withInterests: self.customSelectedInterests,
+                                                               usingPreferredWords: userProfile.preferredWords)
+                            } else {
+                                self.customPassword = Password(passphraseWithWordCount: cSRandomNumber(from: 3, to: 5),
+                                                               withMinLength: self.customPassword.minLength,
+                                                               withMaxLength: self.customPassword.maxLength)
+                            }
                         default: break
                         }
                         self.updatePasswordCell()
@@ -694,7 +726,7 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
                     }
                 }
             }
-            if availableInterests.count != 0 {
+            if !availableInterests.isEmpty {
                 for interest in availableInterests {
                     for word in interest.words {
                         wordCount += 1
@@ -723,7 +755,7 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
             log("Generating enhanced password.")
             enhancedPassword = Password(forPolicies: [.ContainsUppercase, .ContainsLowercase, .ContainsNumbers, .ContainsBasicSymbols], withMinLength: 8, withMaxLength: 20)
             
-            if enhancedSelectedInterests.count != 0 {
+            if !enhancedSelectedInterests.isEmpty {
                 var transformationsToApply: Int = enhancedPassword.generated.count / Int(interestWordAverage)
                 transformationsToApply = cSRandomNumber(to: transformationsToApply)
                 log("Attempting to transform password \(transformationsToApply) times.")
@@ -751,7 +783,7 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
             customPassword = Password(forPolicies: characterPolicies, withMinLength: customCharacterCount, withMaxLength: customCharacterCount)
             
             if let userProfile = userProfile, userProfile.interests.count > 0 {
-                if customSelectedInterests.count != 0 {
+                if !customSelectedInterests.isEmpty {
                     var transformationsToApply: Int = customPassword.generated.count / Int(interestWordAverage)
                     transformationsToApply = cSRandomNumber(to: transformationsToApply)
                     log("Attempting to transform password \(transformationsToApply) times.")

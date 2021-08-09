@@ -96,7 +96,7 @@ class ProfileTableViewController: UITableViewController {
                 case true:
                     return 1 + userProfile.interests.count
                 case false:
-                    if userProfile.interests.count == 0 {
+                    if userProfile.interests.isEmpty {
                         return 1
                     } else {
                         return userProfile.interests.count
@@ -284,7 +284,7 @@ class ProfileTableViewController: UITableViewController {
                     default: return UITableViewCell()
                     }
                 } else {
-                    if userProfile.interests.count == 0 {
+                    if userProfile.interests.isEmpty {
                         let cell = tableView.dequeueReusableCell(withIdentifier: "NoInterestsCell")!
                         cell.textLabel?.text = NSLocalizedString("NoInterests", comment: "Profile")
                         return cell

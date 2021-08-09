@@ -35,7 +35,7 @@ public class Password: NSObject {
         regenerate(ignoresSimilarity: ignoresSimilarity)
     }
     
-    init(passphraseWithWordCount count: Int, withMinLength lengthMin: Int, withMaxLength lengthMax: Int) {
+    init(passphraseWithWordCount count: Int, withMinLength lengthMin: Int, withMaxLength lengthMax: Int, withInterests interests: [Interest] = [], usingPreferredWords preferredWords: [String:Int] = [:]) {
         super.init()
         policies.removeAll()
         if cSCoinFlip() {
@@ -54,7 +54,7 @@ public class Password: NSObject {
         minLength = lengthMin
         maxLength = lengthMax
         wordCount = count
-        regeneratePassphrase()
+        regeneratePassphrase(withInterests: interests, usingPreferredWords: preferredWords)
     }
     
     // MARK: Functions for generating a new password
@@ -71,7 +71,7 @@ public class Password: NSObject {
     }
     
     /// Generates a passphrase from the currently set word count.
-    public func regeneratePassphrase() {
+    public func regeneratePassphrase(withInterests interests: [Interest] = [], usingPreferredWords preferredWords: [String:Int] = [:]) {
         let filteredWords: [String] = builtInWords.filter { word in
             return word.count <= ((maxLength - wordCount + 1) / wordCount) + (wordCount / 2)
         }
@@ -80,13 +80,24 @@ public class Password: NSObject {
             for _ in 0..<wordCount {
                 var wordToAppend: String = filteredWords[cSRandomNumber(to: filteredWords.count)]
                 
-                // Randomly capitalize first letter of word
-                if policies.contains(.ContainsUppercase) && cSCoinFlip() {
-                    wordToAppend = wordToAppend.capitalized
+                // Randomly make into interest words
+                if !interests.isEmpty && (cSRandomNumber(to: 10) >= 2) {
+                    wordToAppend = interests.randomElement()!.words.randomElement()!
                 }
                 
                 wordsToInclude.append(wordToAppend)
             }
+            
+            // Randomly capitalize first letter of word
+            if policies.contains(.ContainsUppercase) {
+                wordsToInclude[cSRandomNumber(to: wordsToInclude.count)] = wordsToInclude[cSRandomNumber(to: wordsToInclude.count)].capitalized
+            }
+            
+            // Randomly make a word in the array a preferred word
+            if !preferredWords.isEmpty && (cSRandomNumber(to: 10) >= 3) {
+                wordsToInclude[cSRandomNumber(to: wordsToInclude.count)] = preferredWords.randomElement()!.key
+            }
+            
             generated = wordsToInclude.joined(separator: [" ", "-", ".", "+", "_"].randomElement()!)
         } while (!(acceptability(ofPassword: generated) && generated.count >= minLength && generated.count <= maxLength))
     }
@@ -97,7 +108,7 @@ public class Password: NSObject {
     /// - Parameter chars: A dictionary of characters and their frequency.
     /// - Returns: The transformed password.
     public func transformed(withFrequentCharacters chars: [Character:Int]) -> String {
-        if chars.count == 0 {
+        if chars.isEmpty {
             return generated
         } else {
             var newPassword: String = ""

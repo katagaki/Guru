@@ -69,7 +69,7 @@ extension UserProfile {
             
             let keychainItemKeyValuePairs = keychain.allItems()
             
-            if keychainItemKeyValuePairs.count == 0 {
+            if keychainItemKeyValuePairs.isEmpty {
                 log("No items found in keychain, user may have cancelled authentication, or keychain settings may be invalid.")
                 return false
             } else {

@@ -131,7 +131,7 @@ class CredentialProviderViewController: ASCredentialProviderViewController, UITa
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let userProfile = userProfile {
-            if scopedLogins.count == 0 {
+            if scopedLogins.isEmpty {
                 return userProfile.logins.count
             } else {
                 switch section {
@@ -146,7 +146,7 @@ class CredentialProviderViewController: ASCredentialProviderViewController, UITa
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        if scopedLogins.count == 0 {
+        if scopedLogins.isEmpty {
             return 1
         } else {
             return 2
@@ -157,7 +157,7 @@ class CredentialProviderViewController: ASCredentialProviderViewController, UITa
         if userProfile == nil {
             return ""
         }
-        if scopedLogins.count == 0 {
+        if scopedLogins.isEmpty {
             return NSLocalizedString("AutoFillLogins", comment: "AutoFill")
         } else {
             switch section {

@@ -71,7 +71,7 @@ class AlertsTableViewController: UITableViewController {
                         return 1
                     }
                     if let emailPwnage = emailPwnage {
-                        if emailPwnage.count == 0 {
+                        if emailPwnage.isEmpty {
                             return 1
                         } else {
                             return emailPwnage.count
@@ -84,7 +84,7 @@ class AlertsTableViewController: UITableViewController {
                         return 1
                     }
                     if let passwordPwnage = passwordPwnage {
-                        if passwordPwnage.count == 0 {
+                        if passwordPwnage.isEmpty {
                             return 1
                         } else {
                             return passwordPwnage.count
@@ -148,7 +148,7 @@ class AlertsTableViewController: UITableViewController {
                     return cell
                 } else {
                     if let emailPwnage = emailPwnage {
-                        if emailPwnage.count == 0 {
+                        if emailPwnage.isEmpty {
                             let cell = tableView.dequeueReusableCell(withIdentifier: "NoBreachDetectedCell")!
                             cell.textLabel?.text = NSLocalizedString("NoBreachDetected", comment: "Alerts")
                             cell.detailTextLabel?.text = NSLocalizedString("EmailNoAlert", comment: "Alerts")
@@ -180,7 +180,7 @@ class AlertsTableViewController: UITableViewController {
                     return cell
                 } else {
                     if let passwordPwnage = passwordPwnage {
-                        if passwordPwnage.count == 0 {
+                        if passwordPwnage.isEmpty {
                             let cell = tableView.dequeueReusableCell(withIdentifier: "NoBreachDetectedCell")!
                             cell.textLabel?.text = NSLocalizedString("NoBreachDetected", comment: "Alerts")
                             cell.detailTextLabel?.text = NSLocalizedString("PasswordNoAlert", comment: "Alerts")
