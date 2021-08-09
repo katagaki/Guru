@@ -35,22 +35,9 @@ public class Password: NSObject {
         regenerate(ignoresSimilarity: ignoresSimilarity)
     }
     
-    init(passphraseWithWordCount count: Int, withMinLength lengthMin: Int, withMaxLength lengthMax: Int, withInterests interests: [Interest] = [], usingPreferredWords preferredWords: [String:Int] = [:]) {
+    init(passphraseWithWordCount count: Int, forPolicies policies: [PasswordCharacterPolicy], withMinLength lengthMin: Int, withMaxLength lengthMax: Int, withInterests interests: [Interest] = [], usingPreferredWords preferredWords: [String:Int] = [:]) {
         super.init()
-        policies.removeAll()
-        if cSCoinFlip() {
-            policies.append(.ContainsUppercase)
-        }
-        if cSCoinFlip() {
-            policies.append(.ContainsSpaces)
-        } else {
-            if cSCoinFlip() {
-                policies.append(.ContainsComplexSymbols)
-            } else {
-                policies.append(.ContainsBasicSymbols)
-            }
-        }
-        policies.append(.ContainsLowercase)
+        self.policies = policies
         minLength = lengthMin
         maxLength = lengthMax
         wordCount = count
@@ -77,6 +64,7 @@ public class Password: NSObject {
         }
         repeat {
             var wordsToInclude: [String] = []
+            var validSeparators: [String] = [""]
             for _ in 0..<wordCount {
                 var wordToAppend: String = filteredWords[cSRandomNumber(to: filteredWords.count)]
                 
@@ -88,17 +76,33 @@ public class Password: NSObject {
                 wordsToInclude.append(wordToAppend)
             }
             
-            // Randomly capitalize first letter of word
-            if policies.contains(.ContainsUppercase) {
-                wordsToInclude[cSRandomNumber(to: wordsToInclude.count)] = wordsToInclude[cSRandomNumber(to: wordsToInclude.count)].capitalized
-            }
-            
             // Randomly make a word in the array a preferred word
             if !preferredWords.isEmpty && (cSRandomNumber(to: 10) >= 3) {
                 wordsToInclude[cSRandomNumber(to: wordsToInclude.count)] = preferredWords.randomElement()!.key
             }
             
-            generated = wordsToInclude.joined(separator: [" ", "-", ".", "+", "_"].randomElement()!)
+            // Randomly capitalize first letter of word
+            if policies.contains(.ContainsUppercase) {
+                let index: Int = cSRandomNumber(to: wordsToInclude.count)
+                wordsToInclude[index] = wordsToInclude[index].capitalized
+            }
+            
+            if policies.contains(.ContainsSpaces) {
+                validSeparators.append(" ")
+            }
+            if policies.contains(.ContainsBasicSymbols) {
+                validSeparators.append(contentsOf: ["-", ".", "_"])
+            }
+            if policies.contains(.ContainsComplexSymbols) {
+                validSeparators.append("+")
+            }
+            generated = wordsToInclude.joined(separator: validSeparators.randomElement()!)
+            
+            // Randomly convert to symbols/numbers
+            if policies.contains(.ContainsNumbers) {
+                leetify()
+            }
+            
         } while (!(acceptability(ofPassword: generated) && generated.count >= minLength && generated.count <= maxLength))
     }
     
@@ -240,7 +244,7 @@ public class Password: NSObject {
     public func leetified() -> String {
         var leetified = Array(generated)
         for i: Int in 0..<leetified.count {
-            if cSCoinFlip() {
+            if cSRandomNumber(to: 10) >= 7 {
                 if let value = builtInLeetList[String(leetified[i])] {
                     leetified[i] = value.character(in: 0)
                 }

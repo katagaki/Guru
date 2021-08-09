@@ -539,70 +539,11 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
                                                   actionProvider: { suggestedActions in
                     let generatePasswordAction = UIAction(title: NSLocalizedString("GenerateNewPassword", comment: "Generator"),
                                                           image: UIImage(systemName: "ellipsis.rectangle")) { action in
-                        self.regeneratePassword()
+                        self.regeneratePassword(mayBePassphrase: false)
                     }
                     let generatePassphraseAction = UIAction(title: NSLocalizedString("GenerateNewPassphrase", comment: "Generator"),
                                                             image: UIImage(systemName: "text.book.closed")) { action in
-                        switch self.segmentControl.selectedSegmentIndex {
-                        case 0:
-                            if let userProfile = userProfile {
-                                var basicInterests: [Interest] = []
-                                
-                                if defaults.bool(forKey: "Feature.Personalization.Interests") {
-                                    for interest in userProfile.interests {
-                                        if let interest = builtInInterests.first(where: { builtInInterest in
-                                            builtInInterest.name == interest
-                                        }) {
-                                            basicInterests.append(interest)
-                                        }
-                                    }
-                                }
-                                
-                                self.basicPassword = Password(passphraseWithWordCount: cSRandomNumber(from: 3, to: 5),
-                                                              withMinLength: self.basicPassword.minLength,
-                                                              withMaxLength: self.basicPassword.maxLength,
-                                                              withInterests: basicInterests,
-                                                              usingPreferredWords: (defaults.bool(forKey: "Feature.Personalization.Intelligence") ?
-                                                                                    userProfile.preferredWords :
-                                                                                        [:]))
-                            } else {
-                                self.basicPassword = Password(passphraseWithWordCount: cSRandomNumber(from: 3, to: 5),
-                                                              withMinLength: self.basicPassword.minLength,
-                                                              withMaxLength: self.basicPassword.maxLength)
-                            }
-                        case 1:
-                            if let userProfile = userProfile {
-                                self.enhancedPassword = Password(passphraseWithWordCount: cSRandomNumber(from: 3, to: 5),
-                                                                 withMinLength: self.enhancedPassword.minLength,
-                                                                 withMaxLength: self.enhancedPassword.maxLength,
-                                                                 withInterests: self.enhancedSelectedInterests,
-                                                                 usingPreferredWords: (defaults.bool(forKey: "Feature.Personalization.Intelligence") ?
-                                                                                       userProfile.preferredWords :
-                                                                                        [:]))
-                            } else {
-                                self.enhancedPassword = Password(passphraseWithWordCount: cSRandomNumber(from: 3, to: 5),
-                                                                 withMinLength: self.enhancedPassword.minLength,
-                                                                 withMaxLength: self.enhancedPassword.maxLength)
-                            }
-                        case 2:
-                            if let userProfile = userProfile {
-                                self.customPassword = Password(passphraseWithWordCount: cSRandomNumber(from: 3, to: 5),
-                                                               withMinLength: self.customPassword.minLength,
-                                                               withMaxLength: self.customPassword.maxLength,
-                                                               withInterests: self.customSelectedInterests,
-                                                               usingPreferredWords: (defaults.bool(forKey: "Feature.Personalization.Intelligence") ?
-                                                                                     userProfile.preferredWords :
-                                                                                        [:]))
-                            } else {
-                                self.customPassword = Password(passphraseWithWordCount: cSRandomNumber(from: 3, to: 5),
-                                                               withMinLength: self.customPassword.minLength,
-                                                               withMaxLength: self.customPassword.maxLength)
-                            }
-                        default: break
-                        }
-                        self.updatePasswordCell()
-                        self.updateSaveButton()
-                        self.updateFloatingView()
+                        self.regeneratePassphrase()
                     }
                     let transformPasswordAction = UIAction(title: NSLocalizedString("TransformPassword", comment: "Generator"),
                                                            image: UIImage(systemName: "wand.and.stars")) { action in
@@ -622,7 +563,7 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
                     var children: [UIAction] = [generatePasswordAction]
                     switch self.segmentControl.selectedSegmentIndex {
                     case 0:
-                        if self.basicPassword.maxLength >= 15 {
+                        if self.basicPassword.maxLength >= 15 && (self.basicSelectedPolicyType != 3) {
                             children.append(generatePassphraseAction)
                         }
                         if self.basicPassword.generated != "" {
@@ -636,7 +577,7 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
                             children.append(transformPasswordAction)
                         }
                     case 2:
-                        if self.customPassword.maxLength >= 15 {
+                        if self.customPassword.maxLength >= 15 && self.customContainsLowercase {
                             children.append(generatePassphraseAction)
                         }
                         if self.customPassword.generated != "" {
@@ -712,78 +653,91 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
     
     // MARK: Helper Functions
     
-    func regeneratePassword() {
+    func regeneratePassword(mayBePassphrase: Bool = true) {
         switch segmentControl.selectedSegmentIndex {
         case 0:
             log("Generating basic password.")
             
-            let ignoresSimilarity: Bool = basicSelectedPolicyType == 3
-            basicPassword = Password(forPolicies: basicPolicyGroups[basicSelectedPolicyType],
-                                     withMinLength: basicPolicyMinLengths[basicSelectedPolicyType],
-                                     withMaxLength: basicPolicyMaxLengths[basicSelectedPolicyType],
-                                     ignoresSimilarity: ignoresSimilarity)
-            
-            if defaults.bool(forKey: "Feature.Personalization.Interests") {
-                var availableInterests: [Interest] = []
-                var availableInterestWordAverage: Int = 0
-                var wordCount: Int = 0
-                var characterCount: Int = 0
-                if let userProfile = userProfile {
-                    for interestName in userProfile.interests {
-                        if let foundInterest = builtInInterests.first(where: { interest in
-                            return interest.name == interestName
-                        }) {
-                            availableInterests.append(foundInterest)
+            // Randomly convert to passphrase
+            if mayBePassphrase && basicSelectedPolicyType != 3 && cSRandomNumber(to: 9) >= 4 {
+                log("Converted basic password to passphrase.")
+                regeneratePassphrase()
+            } else {
+                let ignoresSimilarity: Bool = basicSelectedPolicyType == 3
+                basicPassword = Password(forPolicies: basicPolicyGroups[basicSelectedPolicyType],
+                                         withMinLength: basicPolicyMinLengths[basicSelectedPolicyType],
+                                         withMaxLength: basicPolicyMaxLengths[basicSelectedPolicyType],
+                                         ignoresSimilarity: ignoresSimilarity)
+                
+                if defaults.bool(forKey: "Feature.Personalization.Interests") {
+                    var availableInterests: [Interest] = []
+                    var availableInterestWordAverage: Int = 0
+                    var wordCount: Int = 0
+                    var characterCount: Int = 0
+                    if let userProfile = userProfile {
+                        for interestName in userProfile.interests {
+                            if let foundInterest = builtInInterests.first(where: { interest in
+                                return interest.name == interestName
+                            }) {
+                                availableInterests.append(foundInterest)
+                            }
                         }
                     }
-                }
-                if !availableInterests.isEmpty {
-                    for interest in availableInterests {
-                        for word in interest.words {
-                            wordCount += 1
-                            characterCount += word.count
+                    if !availableInterests.isEmpty {
+                        for interest in availableInterests {
+                            for word in interest.words {
+                                wordCount += 1
+                                characterCount += word.count
+                            }
                         }
+                        availableInterestWordAverage = Int(Double(characterCount) / Double(wordCount))
+                        
+                        var transformationsToApply: Int = basicPassword.generated.count / availableInterestWordAverage
+                        transformationsToApply = cSRandomNumber(to: transformationsToApply)
+                        log("Attempting to transform password \(transformationsToApply) times.")
+                        for _ in 0..<transformationsToApply {
+                            let transformationSuccessful: Bool = basicPassword.transform(withInterest: availableInterests.randomElement()!)
+                            log("Interest based transformation succeeded: \(transformationSuccessful).")
+                        }
+                        
+                    } else {
+                        log("No available interests, no transformation applied.")
                     }
-                    availableInterestWordAverage = Int(Double(characterCount) / Double(wordCount))
-                    
-                    var transformationsToApply: Int = basicPassword.generated.count / availableInterestWordAverage
-                    transformationsToApply = cSRandomNumber(to: transformationsToApply)
-                    log("Attempting to transform password \(transformationsToApply) times.")
-                    for _ in 0..<transformationsToApply {
-                        let transformationSuccessful: Bool = basicPassword.transform(withInterest: availableInterests.randomElement()!)
-                        log("Interest based transformation succeeded: \(transformationSuccessful).")
-                    }
-                    
-                } else {
-                    log("No available interests, no transformation applied.")
                 }
-            }
-            
-            if defaults.bool(forKey: "Feature.Personalization.Habits") {
-                if symbolFrequency.count >= 5 && cSCoinFlip() {
-                    let transformationSuccessful: Bool = basicPassword.transform(withFrequentCharacters: symbolFrequency)
-                    log("Frequent symbol transformation succeeded: \(transformationSuccessful).")
+                
+                if defaults.bool(forKey: "Feature.Personalization.Habits") {
+                    if symbolFrequency.count >= 5 && cSCoinFlip() {
+                        let transformationSuccessful: Bool = basicPassword.transform(withFrequentCharacters: symbolFrequency)
+                        log("Frequent symbol transformation succeeded: \(transformationSuccessful).")
+                    }
                 }
             }
             
         case 1:
             log("Generating enhanced password.")
-            enhancedPassword = Password(forPolicies: [.ContainsUppercase, .ContainsLowercase, .ContainsNumbers, .ContainsBasicSymbols], withMinLength: 8, withMaxLength: 20)
             
-            if !enhancedSelectedInterests.isEmpty {
-                var transformationsToApply: Int = enhancedPassword.generated.count / Int(interestWordAverage)
-                transformationsToApply = cSRandomNumber(to: transformationsToApply)
-                log("Attempting to transform password \(transformationsToApply) times.")
-                for _ in 0..<transformationsToApply {
-                    let transformationSuccessful: Bool = enhancedPassword.transform(withInterest: enhancedSelectedInterests.randomElement()!)
-                    log("Interest based transformation succeeded: \(transformationSuccessful).")
+            // Randomly convert to passphrase
+            if mayBePassphrase && cSRandomNumber(to: 9) >= 3 {
+                log("Converted enhanced password to passphrase.")
+                regeneratePassphrase()
+            } else {
+                enhancedPassword = Password(forPolicies: [.ContainsUppercase, .ContainsLowercase, .ContainsNumbers, .ContainsBasicSymbols], withMinLength: 8, withMaxLength: 20)
+                
+                if !enhancedSelectedInterests.isEmpty {
+                    var transformationsToApply: Int = enhancedPassword.generated.count / Int(interestWordAverage)
+                    transformationsToApply = cSRandomNumber(to: transformationsToApply)
+                    log("Attempting to transform password \(transformationsToApply) times.")
+                    for _ in 0..<transformationsToApply {
+                        let transformationSuccessful: Bool = enhancedPassword.transform(withInterest: enhancedSelectedInterests.randomElement()!)
+                        log("Interest based transformation succeeded: \(transformationSuccessful).")
+                    }
                 }
-            }
-            
-            if defaults.bool(forKey: "Feature.Personalization.Habits") {
-                if symbolFrequency.count >= 5 && cSCoinFlip() {
-                    let transformationSuccessful: Bool = enhancedPassword.transform(withFrequentCharacters: symbolFrequency)
-                    log("Frequent symbol transformation succeeded: \(transformationSuccessful).")
+                
+                if defaults.bool(forKey: "Feature.Personalization.Habits") {
+                    if symbolFrequency.count >= 5 && cSCoinFlip() {
+                        let transformationSuccessful: Bool = enhancedPassword.transform(withFrequentCharacters: symbolFrequency)
+                        log("Frequent symbol transformation succeeded: \(transformationSuccessful).")
+                    }
                 }
             }
             
@@ -818,6 +772,83 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
         updatePasswordCell()
         updateSaveButton()
         updateFloatingView()
+    }
+    
+    func regeneratePassphrase() {
+        switch self.segmentControl.selectedSegmentIndex {
+        case 0:
+            if let userProfile = userProfile {
+                var basicInterests: [Interest] = []
+                
+                if defaults.bool(forKey: "Feature.Personalization.Interests") {
+                    for interest in userProfile.interests {
+                        if let interest = builtInInterests.first(where: { builtInInterest in
+                            builtInInterest.name == interest
+                        }) {
+                            basicInterests.append(interest)
+                        }
+                    }
+                }
+                
+                self.basicPassword = Password(passphraseWithWordCount: cSRandomNumber(from: 3, to: 5),
+                                              forPolicies: basicPolicyGroups[basicSelectedPolicyType],
+                                              withMinLength: self.basicPassword.minLength,
+                                              withMaxLength: self.basicPassword.maxLength,
+                                              withInterests: basicInterests,
+                                              usingPreferredWords: (defaults.bool(forKey: "Feature.Personalization.Intelligence") ?
+                                                                    userProfile.preferredWords :
+                                                                        [:]))
+            } else {
+                self.basicPassword = Password(passphraseWithWordCount: cSRandomNumber(from: 3, to: 5),
+                                              forPolicies: basicPolicyGroups[basicSelectedPolicyType],
+                                              withMinLength: self.basicPassword.minLength,
+                                              withMaxLength: self.basicPassword.maxLength)
+            }
+        case 1:
+            if let userProfile = userProfile {
+                self.enhancedPassword = Password(passphraseWithWordCount: cSRandomNumber(from: 3, to: 5),
+                                                 forPolicies: [.ContainsUppercase, .ContainsLowercase, .ContainsNumbers, .ContainsBasicSymbols],
+                                                 withMinLength: self.enhancedPassword.minLength,
+                                                 withMaxLength: self.enhancedPassword.maxLength,
+                                                 withInterests: self.enhancedSelectedInterests,
+                                                 usingPreferredWords: (defaults.bool(forKey: "Feature.Personalization.Intelligence") ?
+                                                                       userProfile.preferredWords :
+                                                                        [:]))
+            } else {
+                self.enhancedPassword = Password(passphraseWithWordCount: cSRandomNumber(from: 3, to: 5),
+                                                 forPolicies: [.ContainsUppercase, .ContainsLowercase, .ContainsNumbers, .ContainsBasicSymbols],
+                                                 withMinLength: self.enhancedPassword.minLength,
+                                                 withMaxLength: self.enhancedPassword.maxLength)
+            }
+        case 2:
+            var characterPolicies: [PasswordCharacterPolicy] = []
+            if customContainsLowercase { characterPolicies.append(.ContainsLowercase) }
+            if customContainsUppercase { characterPolicies.append(.ContainsUppercase) }
+            if customContainsNumbers { characterPolicies.append(.ContainsNumbers) }
+            if customContainsSymbols { characterPolicies.append(.ContainsBasicSymbols) }
+            if customContainsExtraSymbols { characterPolicies.append(.ContainsComplexSymbols) }
+            if customContainsSpaces { characterPolicies.append(.ContainsSpaces) }
+            
+            if let userProfile = userProfile {
+                self.customPassword = Password(passphraseWithWordCount: cSRandomNumber(from: 3, to: 5),
+                                               forPolicies: characterPolicies,
+                                               withMinLength: self.customPassword.minLength,
+                                               withMaxLength: self.customPassword.maxLength,
+                                               withInterests: self.customSelectedInterests,
+                                               usingPreferredWords: (defaults.bool(forKey: "Feature.Personalization.Intelligence") ?
+                                                                     userProfile.preferredWords :
+                                                                        [:]))
+            } else {
+                self.customPassword = Password(passphraseWithWordCount: cSRandomNumber(from: 3, to: 5),
+                                               forPolicies: characterPolicies,
+                                               withMinLength: self.customPassword.minLength,
+                                               withMaxLength: self.customPassword.maxLength)
+            }
+        default: break
+        }
+        self.updatePasswordCell()
+        self.updateSaveButton()
+        self.updateFloatingView()
     }
     
     func updatePasswordCell() {
