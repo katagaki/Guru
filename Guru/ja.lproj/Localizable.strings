@@ -260,6 +260,7 @@
 "SafariStep3" = "「パスワードを書き出す...」を選択し、保存先を選択してからiPhoneに転送します。転送するには、クラウドストレージまたはAirDropでできます。";
 "SafariStep4" = "下の「ファイルを選択...」を選択し、書き出したファイルを選択します。";
 "ImportingLoginsProgress" = "アカウントをインポート中... @$";
+"ImportingLoginsProgressAnalyzing" = "分析中... @$";
 "ImportLoginsCompletedTitle" = "インポート完成";
 "ImportLoginsCompletedText" = "@$個のアカウントは正常にインポートされました。";
 "ImportIncompleteText" = "@$1個のアカウントは正常にインポートされました。@$2個のアカウントは既にあるため、インポートされませんでした。";

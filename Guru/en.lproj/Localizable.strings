@@ -260,6 +260,7 @@
 "SafariStep3" = "Click 'Export Passwords', then save the file and transfer it to a location you can access on your iPhone, or AirDrop it to your iPhone directly.";
 "SafariStep4" = "Tap 'Select File...' below and select the saved file to import your logins.";
 "ImportingLoginsProgress" = "Importing logins... @$";
+"ImportingLoginsProgressAnalyzing" = "Analyzing passwords... @$";
 "ImportLoginsCompletedTitle" = "Login Import Complete";
 "ImportLoginsCompletedText" = "Imported a total of @$ login(s).";
 "ImportIncompleteText" = "Imported a total of @$1 login(s). @$2 login(s) already exist and were not imported.";

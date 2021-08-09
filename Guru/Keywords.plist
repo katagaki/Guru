@@ -512,6 +512,8 @@
 	<string>SV.Microsoft</string>
 	<key>microsoft.com</key>
 	<string>SV.Microsoft</string>
+	<key>mihoyo.com</key>
+	<string>AI.001</string>
 	<key>mona.co</key>
 	<string>SV.Monaco</string>
 	<key>m1.com.sg</key>

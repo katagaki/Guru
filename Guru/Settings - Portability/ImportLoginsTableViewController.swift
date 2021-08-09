@@ -18,7 +18,7 @@ class ImportLoginsTableViewController: UITableViewController, UIDocumentPickerDe
     
     var isImporting: Bool = false
     var importCount: Int = 0
-    
+    var currentProgressText: String = ""
     // MARK: UIViewController
     
     override func viewDidLoad() {
@@ -95,7 +95,10 @@ class ImportLoginsTableViewController: UITableViewController, UIDocumentPickerDe
                 } completion: { _ in
                     UIApplication.shared.isIdleTimerDisabled = true
                     DispatchQueue.global(qos: .background).async {
+                        self.currentProgressText = NSLocalizedString("ImportingLoginsProgress", comment: "ImportLogins")
                         let addCSVResult = userProfile.addLogins(fromCSV: contents, progressReporter: self)
+                        self.currentProgressText = NSLocalizedString("ImportingLoginsProgressAnalyzing", comment: "ImportLogins")
+                        analyzePasswordWords(progressReporter: self)
                         if addCSVResult.success {
                             let importAlertText: String = (addCSVResult.notImportedCount == 0 ? NSLocalizedString("ImportLoginsCompletedText", comment: "ImportLogins").replacingOccurrences(of: "@$", with: String(self.importCount)) : NSLocalizedString("ImportIncompleteText", comment: "ImportLogins").replacingOccurrences(of: "@$1", with: String(self.importCount)).replacingOccurrences(of: "@$2", with: String(addCSVResult.notImportedCount)))
                             DispatchQueue.main.async {
@@ -153,7 +156,7 @@ class ImportLoginsTableViewController: UITableViewController, UIDocumentPickerDe
     func updateProgress(progress: Double, total: Double) {
         importCount = Int(total)
         DispatchQueue.main.async {
-            self.floatingActivityLabel.text = NSLocalizedString("ImportingLoginsProgress", comment: "ImportLogins").replacingOccurrences(of: "@$", with: "\(Int((progress / total) * 100))%")
+            self.floatingActivityLabel.text = self.currentProgressText.replacingOccurrences(of: "@$", with: "\(Int((progress / total) * 100))%")
         }
     }
     
