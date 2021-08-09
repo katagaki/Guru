@@ -324,6 +324,30 @@
 "OnboardingCompletionTitle" = "All Set!";
 "OnboardingCompletionText" = "Guru is now fully set up. You can head into the Settings to add additional information about yourself.";
 "OnboardingCompletionButton" = "Start Using Guru";
+"QuestionnaireTitle" = "Question @$";
+"QuestionnaireTextFieldPlaceholder" = "Password";
+"QuestionnaireQuestionA1" = "Set a password for an email account which is registered to your social media accounts. This information is only used to teach Guru about your password habits, and is not stored.";
+"QuestionnaireQuestionA2" = "Set a password for an email account which is registered to your online streaming service accounts. This information is only used to teach Guru about your password habits, and is not stored.";
+"QuestionnaireQuestionA3" = "Set a password for an email account which is registered to your online banking accounts. This information is only used to teach Guru about your password habits, and is not stored.";
+"QuestionnaireQuestionA4" = "Set a password for an email account which you use to share information with your friends. This information is only used to teach Guru about your password habits, and is not stored.";
+"QuestionnaireQuestionA5" = "Set a password for an online banking account where you keep your savings. This information is only used to teach Guru about your password habits, and is not stored.";
+"QuestionnaireQuestionA6" = "Set a password for an online banking account where you keep your spending money. This information is only used to teach Guru about your password habits, and is not stored.";
+"QuestionnaireQuestionA7" = "Set a password for an online trading account where you keep your investments. This information is only used to teach Guru about your password habits, and is not stored.";
+"QuestionnaireQuestionA8" = "Set a password for an e-commerce site where you buy your groceries. This information is only used to teach Guru about your password habits, and is not stored.";
+"QuestionnaireQuestionA9" = "Set a password for an e-commerce site where you buy entertainment goods. This information is only used to teach Guru about your password habits, and is not stored.";
+"QuestionnaireQuestionA10" = "Set a password for an e-commerce site where you sell your used goods. This information is only used to teach Guru about your password habits, and is not stored.";
+"QuestionnaireQuestionB1" = "Set a password for a social media account where you share your personal photos with your friends. This information is only used to teach Guru about your password habits, and is not stored.";
+"QuestionnaireQuestionB2" = "Set a password for a social media account where you share you daily life with your friends. This information is only used to teach Guru about your password habits, and is not stored.";
+"QuestionnaireQuestionB3" = "Set a password for a social media account where you talk with your friends in private. This information is only used to teach Guru about your password habits, and is not stored.";
+"QuestionnaireQuestionB4" = "Set a password for a news site which you read daily. This information is only used to teach Guru about your password habits, and is not stored.";
+"QuestionnaireQuestionB5" = "Set a password for a news site which you read a few times a week. This information is only used to teach Guru about your password habits, and is not stored.";
+"QuestionnaireQuestionB6" = "Set a password for a video sharing site where you share videos occasionally. This information is only used to teach Guru about your password habits, and is not stored.";
+"QuestionnaireQuestionB7" = "Set a password for a video sharing site where you watch videos. This information is only used to teach Guru about your password habits, and is not stored.";
+"QuestionnaireQuestionC1" = "Set a password for a work account which you use to sign in to your work computer. This information is only used to teach Guru about your password habits, and is not stored.";
+"QuestionnaireQuestionC2" = "Set a password for a work account which you use to sign in to your work computer remotely. This information is only used to teach Guru about your password habits, and is not stored.";
+"QuestionnaireQuestionC3" = "Set a password for a work account which you use to sign in to your work email. This information is only used to teach Guru about your password habits, and is not stored.";
+"QuestionnaireQuestionC4" = "Set a password for a school account which you use to sign in to your school’s online learning platform. This information is only used to teach Guru about your password habits, and is not stored.";
+"QuestionnaireQuestionC5" = "Set a password for a school account which you use to sign in to your school email. This information is only used to teach Guru about your password habits, and is not stored.";
 
 /* OTP */
 "OTPExplainer" = "Point your iPhone at the QR code displayed on the 2FA setup page of the website/app.";

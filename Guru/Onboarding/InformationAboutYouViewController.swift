@@ -15,6 +15,7 @@ class InformationAboutYouViewController: OnboardingViewController {
         
         super.viewDidLoad()
         
+        // Set up new user profile
         if userProfile == nil {
             if laContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil) {
                 userProfile = UserProfile(usesBiometryType: laContext.biometryType, syncsWithiCloud: defaults.bool(forKey: "Feature.iCloudSync"))
@@ -24,16 +25,7 @@ class InformationAboutYouViewController: OnboardingViewController {
         }
         
         if let userProfile = userProfile {
-            if !defaults.bool(forKey: "Onboarding.UserProfileCreated") {
-                userProfile.new()
-                defaults.set(true, forKey: "Onboarding.UserProfileCreated")
-            } else {
-                if userProfile.open() {
-                    log("Existing user profile opened from onboarding.")
-                } else {
-                    log("Unable to open existing user profile from onboarding.")
-                }
-            }
+            userProfile.new()
         }
         
         // Localization

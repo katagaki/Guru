@@ -15,13 +15,29 @@ class QuestionViewController: OnboardingViewController {
     
     var activeField: UITextField?
     
+    let login: Login = Login()
+    var questions: [String] = []
+    
     // MARK: UIViewController
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
+        // Set temporary login name
+        var accountName: String = "onboarding_\(cSRandomNumber(from: 10000000, to: 99999999))"
+        if let userProfile = userProfile {
+            repeat {
+                accountName = "onboarding_\(cSRandomNumber(from: 10000000, to: 99999999))"
+            } while (userProfile.login(withName: accountName) != nil)
+        }
+        login.accountName = accountName
+        
+        contentLabel.text = questions.first!
+        
         // Localization
+        navigationItem.title = NSLocalizedString("QuestionnaireTitle", comment: "Personalization").replacingOccurrences(of: "@$", with: String(4 - questions.count))
+        passwordTextField.placeholder = NSLocalizedString("QuestionnaireTextFieldPlaceholder", comment: "Onboarding")
         skipButton.title = NSLocalizedString("Skip", comment: "General")
         primaryButton.setTitle(NSLocalizedString("Continue", comment: "General"), for: .normal)
         
@@ -36,15 +52,13 @@ class QuestionViewController: OnboardingViewController {
         if segue.identifier == "ShowNextQuestion" {
             if let userProfile = userProfile {
                 log("Saving questionnaire answer for \(navigationItem.title!).")
-                let login: Login = Login()
-                var accountName: String = ""
-                repeat {
-                    accountName = "onboarding_\(cSRandomNumber(from: 10000000, to: 99999999))"
-                } while (userProfile.login(withName: accountName) != nil)
-                login.accountName = accountName
                 login.password = passwordTextField.text!
+                userProfile.remove(login: login.accountName!)
                 userProfile.add(login: login)
             }
+        }
+        if let destination = segue.destination as? QuestionViewController {
+            destination.questions = Array(questions.dropFirst())
         }
     }
     

@@ -189,7 +189,7 @@ extension UserProfile {
     // MARK: Removers
     
     public func remove(login accountName: String) {
-        log("Removing login_\(accountName).")
+        log("Removing \(loginKey(accountName: accountName)).")
         remove(key: loginKey(accountName: accountName))
         logins.removeAll { login in
             return login.accountName == accountName
