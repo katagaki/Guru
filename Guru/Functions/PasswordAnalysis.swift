@@ -83,6 +83,7 @@ func analyzePasswordWords(progressReporter: ReportsProgress? = nil) {
                     for word in wordsInPassword {
                         queueInner.async(flags: .barrier) {
                             analyzedPasswordWordCount.updateValue((analyzedPasswordWordCount[word] ?? 0) + 1, forKey: word)
+                            userProfile.preferredWords.updateValue((userProfile.preferredWords[word] ?? 0) + 1, forKey: word)
                             semaphore.signal()
                         }
                         semaphore.wait()
@@ -90,7 +91,7 @@ func analyzePasswordWords(progressReporter: ReportsProgress? = nil) {
                     queue.async(flags: .barrier) {
                         wordCountPerPassword.updateValue(analyzedPasswordWordCount, forKey: passwordHash)
                         defaults.set(wordCountPerPassword, forKey: "Feature.Intelligence.AnalyzedPasswords.Words")
-                        log("Storing analysis for password \(i).")
+                        log("Stored analysis for password \(i).")
                         currentCount += 1
                         if let progressReporter = progressReporter {
                             progressReporter.updateProgress(progress: Double(currentCount), total: Double(totalCount))
