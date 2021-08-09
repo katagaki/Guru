@@ -60,11 +60,11 @@ public class Password: NSObject {
     /// Generates a passphrase from the currently set word count.
     public func regeneratePassphrase(withInterests interests: [Interest] = [], usingPreferredWords preferredWords: [String:Int] = [:]) {
         let filteredWords: [String] = builtInWords.filter { word in
-            return word.count <= ((maxLength - wordCount + 1) / wordCount) + (wordCount / 2)
+            return word.count >= ((minLength - wordCount + 1) / wordCount) && word.count <= ((maxLength - wordCount + 1) / wordCount)
         }
         repeat {
             var wordsToInclude: [String] = []
-            var validSeparators: [String] = [""]
+            var validSeparators: [String] = []
             for _ in 0..<wordCount {
                 var wordToAppend: String = filteredWords[cSRandomNumber(to: filteredWords.count)]
                 
@@ -95,6 +95,9 @@ public class Password: NSObject {
             }
             if policies.contains(.ContainsComplexSymbols) {
                 validSeparators.append("+")
+            }
+            if !policies.contains(.ContainsSpaces) && !policies.contains(.ContainsBasicSymbols) && !policies.contains(.ContainsComplexSymbols) {
+                validSeparators.append("")
             }
             generated = wordsToInclude.joined(separator: validSeparators.randomElement()!)
             
@@ -318,10 +321,11 @@ public class Password: NSObject {
         let lowercaseRatio: Double = Double(lowercaseLetters.count) / Double(characters.count)
         let numberRatio: Double = Double(numbers.count) / Double(characters.count)
         let symbolRatio: Double = Double(symbols.count) / Double(characters.count)
-        return uppercaseRatio > averageUppercaseRatio - 0.175 && uppercaseRatio < averageUppercaseRatio + 0.175 &&
+        let similarity: Bool = uppercaseRatio > averageUppercaseRatio - 0.175 && uppercaseRatio < averageUppercaseRatio + 0.175 &&
         lowercaseRatio > averageLowercaseRatio - 0.25 && lowercaseRatio < averageLowercaseRatio + 0.25 &&
         numberRatio > averageNumberRatio - 0.05 && numberRatio < averageNumberRatio + 0.05 &&
         symbolRatio > averageSymbolRatio - 0.025 && symbolRatio < averageSymbolRatio + 0.025
+        return similarity
     }
     
     // MARK: Helper Functions
