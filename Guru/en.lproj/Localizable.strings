@@ -59,12 +59,7 @@
 "BreachedEmails" = "Breached Emails";
 "BreachedPasswords" = "Breached Passwords";
 "EmailTitle" = "Email Breach Alert";
-"EmailAlert" = "@$1 of your email was included in a data breach. Tap here to change its password now.";
-"EmailsAlert" = "@$1 of your emails were included in a data breach. Tap here to change their passwords now.";
 "EmailNoAlert" = "None of your emails were included in a data breach.";
-"PasswordTitle" = "Password Breach Alert";
-"PasswordAlert" = "@$1 of your password was included in a data breach. Tap here to change it now.";
-"PasswordsAlert" = "@$1 of your passwords were included in a data breach. Tap here to change them now.";
 "PasswordNoAlert" = "None of your passwords were included in a data breach.";
 "NoBreachDetected" = "No Breach Detected";
 "ErrorCheckingBreachesTitle" = "Could Not Check for Breaches";
@@ -203,12 +198,25 @@
 "PersonalizePasswords" = "Personalize Passwords";
 "Categories" = "Categories";
 "CategoryExplainer" = "Select the categories of information you want Guru to use when suggesting new passwords.";
+"CategoryOffExplainer" = "Turn on Personalize Passwords to configure your categories.";
 "PersonalInformation" = "Personal Information";
 "InterestsTopics" = "Interests";
 "ExistingPasswords" = "Password Habits";
 "AutomaticallyLearnedKnowledge" = "Intelligence";
 "KnowledgeExplainer" = "Manage information Guru has automatically learned about you.";
-"ManageKnowledge" = "Manage Knowledge";
+"ManageKnowledge" = "Manage Intelligence";
+"HistoricallyUsedWords" = "Historically Used Words";
+"HistoricallyUsedWordsExplainer" = "Guru automatically detects and stores words you use in your passwords, and suggests these words again when generating new passwords. Words are also analyzed and stored when you import data from your social media or Internet accounts.";
+"HistoricallyUsedWordSubtitle" = "Used @$1 time";
+"HistoricallyUsedWordSubtitles" = "Used @$1 times";
+"DeleteKnowledgeData" = "Delete Intelligence Data";
+"DeleteKnowledgeDataExplainer" = "Delete all information Guru has automatically learned about you. Your passwords will be automatically re-analyzed the next time you unlock Guru.";
+"DeleteKnowledgeDataAlertTitle" = "Delete Intelligence Data";
+"DeleteKnowledgeDataAlertText" = "Are you sure you want to delete all information Guru has learned about you? Generated passwords may not be as easy to remember if you do so.";
+"DeleteKnowledgeDataAlertYes" = "Delete";
+"DeleteKnowledgeDataAlertNo" = "Cancel";
+"ConfirmationOfKnowledgeDataDeletionTitle" = "Intelligence Data Deleted";
+"ConfirmationOfKnowledgeDataDeletionText" = "Intelligence data has been deleted successfully. Your passwords will be automatically re-analyzed the next time you unlock Guru.";
 
 /* CloudSync */
 "CloudSyncExplainer" = "Turn on iCloud syncing to sync your data to iCloud.\n\nTo delete your iCloud data, turn iCloud syncing off.";
@@ -296,12 +304,9 @@
 "DetectBreachedPasswords" = "Detect Breached Passwords";
 
 /* UnderTheHood */
-"UnderTheHoodExplainer" = "WARNING: These options may break Guru and cause data loss. Only use these options when told to do so by a support representative.";
-"InternalPreferences" = "Internal Preferences";
-"ResetOnboarding" = "Reset Onboarding";
+"UnderTheHoodExplainer" = "See what's happening behind the scenes.";
 "Logging" = "Logging";
 "AppLogs" = "App Logs";
-"ClearPasswordAnalysis" = "Clear Password Analysis";
 
 /* Onboarding */
 "WelcomeTitle" = "Welcome to Guru";

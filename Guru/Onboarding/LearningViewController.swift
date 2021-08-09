@@ -23,12 +23,12 @@ class LearningViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        UIView.animateKeyframes(withDuration: 1.0, delay: 2.0, options: .allowUserInteraction, animations: {
-        }) { _ in
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime(uptimeNanoseconds: 3000)) {
-                self.performSegue(withIdentifier: "ShowAllSet", sender: self)
-            }
+        if let userProfile = userProfile {
+            analyzePasswordWords(progressReporter: nil)
+            userProfile.logins.removeAll()
+            userProfile.save()
         }
+        performSegue(withIdentifier: "ShowAllSet", sender: self)
     }
     
 }

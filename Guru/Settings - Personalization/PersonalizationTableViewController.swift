@@ -26,7 +26,7 @@ class PersonalizationTableViewController: UITableViewController {
         switch section {
         case 0: return 1
         case 1: return 1
-        case 2: return 4
+        case 2: return (defaults.bool(forKey: "Feature.Personalization") ? 4 : 0)
         case 3: return 1
         default: return 0
         }
@@ -45,7 +45,7 @@ class PersonalizationTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         switch section {
-        case 2: return NSLocalizedString("CategoryExplainer", comment: "Personalization")
+        case 2: return (defaults.bool(forKey: "Feature.Personalization") ?  NSLocalizedString("CategoryExplainer", comment: "Personalization") : NSLocalizedString("CategoryOffExplainer", comment: "Personalization"))
         case 3: return NSLocalizedString("KnowledgeExplainer", comment: "Personalization")
         default: return ""
         }
@@ -61,16 +61,25 @@ class PersonalizationTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MasterToggleCell")!
             cell.textLabel?.text = NSLocalizedString("PersonalizePasswords", comment: "Personalization")
             let switchView: UISwitch = UISwitch(frame: CGRect.zero)
-            switchView.setOn(true, animated: false)
+            switchView.setOn(defaults.bool(forKey: "Feature.Personalization"), animated: false)
+            switchView.addTarget(self, action: #selector(setPersonalization(sender:)), for: .valueChanged)
             cell.accessoryView = switchView
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "OptionCell")!
             switch indexPath.row {
-            case 0: cell.textLabel?.text = NSLocalizedString("PersonalInformation", comment: "Personalization")
-            case 1: cell.textLabel?.text = NSLocalizedString("InterestsTopics", comment: "Personalization")
-            case 2: cell.textLabel?.text = NSLocalizedString("ExistingPasswords", comment: "Personalization")
-            case 3: cell.textLabel?.text = NSLocalizedString("AutomaticallyLearnedKnowledge", comment: "Personalization")
+            case 0:
+                cell.textLabel?.text = NSLocalizedString("PersonalInformation", comment: "Personalization")
+                cell.accessoryType = (defaults.bool(forKey: "Feature.Personalization.ProfileInfo") ? .checkmark : .none)
+            case 1:
+                cell.textLabel?.text = NSLocalizedString("InterestsTopics", comment: "Personalization")
+                cell.accessoryType = (defaults.bool(forKey: "Feature.Personalization.Interests") ? .checkmark : .none)
+            case 2:
+                cell.textLabel?.text = NSLocalizedString("ExistingPasswords", comment: "Personalization")
+                cell.accessoryType = (defaults.bool(forKey: "Feature.Personalization.Habits") ? .checkmark : .none)
+            case 3:
+                cell.textLabel?.text = NSLocalizedString("AutomaticallyLearnedKnowledge", comment: "Personalization")
+                cell.accessoryType = (defaults.bool(forKey: "Feature.Personalization.Intelligence") ? .checkmark : .none)
             default: break
             }
             return cell
@@ -83,6 +92,22 @@ class PersonalizationTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 2:
+            let cell = tableView.cellForRow(at: indexPath)!
+            switch indexPath.row {
+            case 0:
+                featureUnavailableAlert(self)
+                defaults.set(false, forKey: "Feature.Personalization.ProfileInfo")
+                //defaults.set(!(cell.accessoryType == .checkmark), forKey: "Feature.Personalization.ProfileInfo")
+            case 1: defaults.set(!(cell.accessoryType == .checkmark), forKey: "Feature.Personalization.Interests")
+            case 2: defaults.set(!(cell.accessoryType == .checkmark), forKey: "Feature.Personalization.Habits")
+            case 3: defaults.set(!(cell.accessoryType == .checkmark), forKey: "Feature.Personalization.Intelligence")
+            default: break
+            }
+            tableView.reloadRows(at: [indexPath], with: .none)
+        default: break
+        }
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -92,6 +117,16 @@ class PersonalizationTableViewController: UITableViewController {
         let cell: UITableViewCell = tableView.cellForRow(at: indexPath)!
         let switchView: UISwitch = cell.accessoryView as! UISwitch
         switchView.setOn(value, animated: animated)
+    }
+    
+    @objc func setPersonalization(sender: UISwitch) {
+        log("Setting Personalization settings.")
+        defaults.set(sender.isOn, forKey: "Feature.Personalization")
+        defaults.set(false, forKey: "Feature.Personalization.ProfileInfo")
+        defaults.set(sender.isOn, forKey: "Feature.Personalization.Interests")
+        defaults.set(sender.isOn, forKey: "Feature.Personalization.Habits")
+        defaults.set(sender.isOn, forKey: "Feature.Personalization.Intelligence")
+        tableView.reloadSections(IndexSet(integer: 2), with: .automatic)
     }
     
 }

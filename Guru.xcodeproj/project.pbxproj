@@ -27,6 +27,7 @@
 		E4247E5026BEA7A900CA8A0D /* String+RegEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4247E4E26BEA43300CA8A0D /* String+RegEx.swift */; };
 		E4281DAC2691FAF900949DAD /* NSMutableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4281DAB2691FAF900949DAD /* NSMutableAttributedString.swift */; };
 		E4281DAE2692076E00949DAD /* String+Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4281DAD2692076E00949DAD /* String+Character.swift */; };
+		E43454A626C0E3E30019B5F6 /* ManageIntelligenceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43454A526C0E3E30019B5F6 /* ManageIntelligenceTableViewController.swift */; };
 		E44FA4B526B69D410010F9C7 /* PasswordTransformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44FA4B426B69D410010F9C7 /* PasswordTransformation.swift */; };
 		E44FA4B726B69DD70010F9C7 /* RunningSequences.plist in Resources */ = {isa = PBXBuildFile; fileRef = E44FA4B626B69DD70010F9C7 /* RunningSequences.plist */; };
 		E44FA4B926B6A4940010F9C7 /* PasswordAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44FA4B826B6A4940010F9C7 /* PasswordAnalysis.swift */; };
@@ -217,6 +218,7 @@
 		E4281DA92691F0E400949DAD /* Pwnage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pwnage.swift; sourceTree = "<group>"; };
 		E4281DAB2691FAF900949DAD /* NSMutableAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedString.swift; sourceTree = "<group>"; };
 		E4281DAD2692076E00949DAD /* String+Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Character.swift"; sourceTree = "<group>"; };
+		E43454A526C0E3E30019B5F6 /* ManageIntelligenceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageIntelligenceTableViewController.swift; sourceTree = "<group>"; };
 		E44FA4B426B69D410010F9C7 /* PasswordTransformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTransformation.swift; sourceTree = "<group>"; };
 		E44FA4B626B69DD70010F9C7 /* RunningSequences.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RunningSequences.plist; sourceTree = "<group>"; };
 		E44FA4B826B6A4940010F9C7 /* PasswordAnalysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordAnalysis.swift; sourceTree = "<group>"; };
@@ -361,6 +363,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E43454A426C0E3CF0019B5F6 /* Settings - Personalization */ = {
+			isa = PBXGroup;
+			children = (
+				E4EABA4426597ADC0054F310 /* PersonalizationTableViewController.swift */,
+				E43454A526C0E3E30019B5F6 /* ManageIntelligenceTableViewController.swift */,
+			);
+			path = "Settings - Personalization";
+			sourceTree = "<group>";
+		};
 		E4593CE5266A538D001DF782 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -515,7 +526,6 @@
 				E46BB5002691BB8300BEE0AA /* SettingsNavigationController.swift */,
 				E4EABA3F265977CB0054F310 /* SettingsTableViewController.swift */,
 				E4EDA0072660C138003919C7 /* ProfileTableViewController.swift */,
-				E4EABA4426597ADC0054F310 /* PersonalizationTableViewController.swift */,
 				E4C3CCC3269045B60020942F /* iCloudSyncTableViewController.swift */,
 				E4F9D2B72695C70C00867B42 /* AppLockTableViewController.swift */,
 				E4F9D2A426952E3800867B42 /* BreachDetectionTableViewController.swift */,
@@ -559,6 +569,7 @@
 				E4E87C7A268CF51F00CD6832 /* Logins */,
 				E4E87C7B268CF53100CD6832 /* Generate */,
 				E4E87C7C268CF54000CD6832 /* Settings */,
+				E43454A426C0E3CF0019B5F6 /* Settings - Personalization */,
 				E4F9D2B92695E70C00867B42 /* Settings - Portability */,
 				E4F9D2AC2695ABB800867B42 /* Settings - System Options */,
 				E4593CE8266A701D001DF782 /* Onboarding */,
@@ -841,6 +852,7 @@
 				E4DAB03026B19E4700540892 /* Digest.swift in Sources */,
 				E4DF796726AD478700C3FB5C /* DetailWithLargeImageCell.swift in Sources */,
 				E4DAB03226B19E7F00540892 /* Pwned.swift in Sources */,
+				E43454A626C0E3E30019B5F6 /* ManageIntelligenceTableViewController.swift in Sources */,
 				E4E87C75268CC6E600CD6832 /* IconCollectionViewCell.swift in Sources */,
 				E4EABA47265986960054F310 /* MainTabBarController.swift in Sources */,
 				E4C3CCC62690512F0020942F /* UITextContentType.swift in Sources */,

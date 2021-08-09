@@ -26,8 +26,8 @@
 "ConfirmationToResetText" = "Guruのプロフィールを削除してよろしいですか？アカウントや他のデータは完全に削除され、復元できなくなります。";
 "ConfirmationToResetYes" = "削除";
 "ConfirmationToResetNo" = "キャンセル";
-"ConfirmationOfResetTitle" = "プロフィールが削除しました";
-"ConfirmationOfResetText" = "お客様のプロフィールが削除しました。ご利用ありがとうございました。";
+"ConfirmationOfResetTitle" = "プロフィールが削除されました";
+"ConfirmationOfResetText" = "お客様のプロフィールが削除されました。ご利用ありがとうございました。";
 
 /* Tabs */
 "AlertsTab" = "アラート";
@@ -47,35 +47,30 @@
 "Personalization" = "パーソナライズ";
 "iCloudSync" = "iCloud同期";
 "ImportExport" = "インポート/エクスポート";
-"ImportLogins" = "アカウントを読み込む";
-"ExportLogins" = "アカウントを書き出す";
+"ImportLogins" = "アカウントをインポート";
+"ExportLogins" = "アカウントをエクスポート";
 "AppLock" = "画面ロック";
 "BreachDetection" = "情報漏洩検出";
-"ThirdPartyLibraries" = "サードパーティーライブラリー";
+"ThirdPartyLibraries" = "著作権情報";
 "UnderTheHood" = "システムオプション";
 
 /* Alerts */
-"AlertsExplainer" = "下にスワイプしてメールアドレスとパスワードを検査します。";
+"AlertsExplainer" = "下にスワイプすると、メールアドレスとパスワードを自動的に検出されます。";
 "BreachedEmails" = "漏洩されたメールアドレス";
 "BreachedPasswords" = "漏洩されたパスワード";
 "EmailTitle" = "メール漏洩アラート";
-"EmailAlert" = "@$1個のメールアドレスは情報漏洩インシデントに検出されました。漏洩されたメールアドレスに関するアカウントのパスワードを変更することをおすすめします。";
-"EmailsAlert" = "@$1個のメールアドレスは情報漏洩インシデントに検出されました。漏洩されたメールアドレスに関するアカウントのパスワードを変更することをおすすめします。";
 "EmailNoAlert" = "漏洩されたメールアドレスはありません。";
-"PasswordTitle" = "パスワード漏洩アラート";
-"PasswordAlert" = "@$1個のパスワードは情報漏洩インシデントに検出されました。漏洩されたパスワードを変更することをおすすめします。";
-"PasswordsAlert" = "@$1個のパスワードは情報漏洩インシデントに検出されました。漏洩されたパスワードを変更することをおすすめします。";
 "PasswordNoAlert" = "漏洩されたパスワードはありません。";
 "NoBreachDetected" = "情報漏洩は検出しませんでした";
 "Detecting" = "アカウントの情報を検査中…";
 "ErrorCheckingBreachesTitle" = "エラーが発生しました";
 "ErrorCheckingBreachesText" = "検査中にエラーが発生しました。もう一度試してください。";
 "IncludedIn" = "@$などに含まれている";
-"BreachExplainer" = "下のアカウントは漏洩された情報を使われています。アカウントの情報を確認することをお勧めします。";
-"BreachExplainerEmail" = "「@$」は多くの情報と共に漏洩されました。下のアカウントはそのメールアドレスを使われています。メールのセキュリティー機能を確認することをお勧めします。";
-"BreachExplainerPassword" = "「@$」は多くの情報と共に漏洩されました。下のアカウントはそのパスワードを使われています。早めにパスワードを変更することをお勧めします。";
-"EmailCheckingTakesTime" = "メールアドレスの検査は時間がかかります。";
-"AffectedLogins" = "影響されたアカウント";
+"BreachExplainer" = "下のアカウントは漏洩された情報を使用されています。アカウントの情報を確認することをお勧めします。";
+"BreachExplainerEmail" = "下のアカウントは漏洩されたメールアドレス「@$」を使用されています。悪用される可能性が高いので、メールのセキュリティー機能を確認することをお勧めします。";
+"BreachExplainerPassword" = "下のアカウントは漏洩されたパスワード「@$」を使用されています。悪用される可能性が高いので、お早めにパスワードを変更することをお勧めします。";
+"EmailCheckingTakesTime" = "メールアドレスの検査は時間がかかることがあります。";
+"AffectedLogins" = "漏洩された情報を使用しているアカウント";
 
 /* Logins */
 "SearchResults" = "検索結果";
@@ -99,7 +94,7 @@
 "AccountNameRequiredTitle" = "アカウント名が必要です";
 "AccountNameRequiredText" = "アカウント名を入力してからもう一度試してください。";
 "LoginAlreadyExistsTitle" = "アカウントは既にあります";
-"LoginAlreadyExistsText" = "このアカウント名は既に追加されています。アカウント名をもう一度確認してください。";
+"LoginAlreadyExistsText" = "このアカウント名は既に使用されています。アカウント名をもう一度確認してください。";
 "PasswordRequiredTitle" = "パスワードが必要です";
 "PasswordRequiredText" = "パスワードを入力してからもう一度試してください。";
 "LoginPageRequiredTitle" = "ログインページが必要です";
@@ -111,9 +106,9 @@
 "OneTimePassword" = "認証コード";
 "Delete2FA" = "認証コードを無効化";
 "AccountAdvisoryTitle" = "安全警告";
-"AccountAdvisoryText" = "このアカウントのメールアドレスは情報漏洩インシデントに検出されました。詳しくは、「アラート」をタップしてください。";
+"AccountAdvisoryText" = "漏洩されたメールアドレスを使用されています。悪用される可能性が高いので、メールのセキュリティー機能を確認することをお勧めします。詳しくは、「アラート」をタップしてください。";
 "AccountSafeTitle" = "メールアドレスは安全です";
-"AccountSafeText" = "このアカウントのメールアドレスは情報漏洩インシデントに検出されませんでした。";
+"AccountSafeText" = "メールアドレスが漏洩されたことはありません。";
 
 /* Generator */
 "BasicMode" = "ポリシー";
@@ -121,43 +116,43 @@
 "CustomMode" = "カスタマイズ";
 "NewPassword" = "新規パスワード";
 "NewPasswordHint" = "他の種類のパスワードを作成するには、「@$」を長押ししてください。";
-"GenerateNewPassword" = "新規パスワードを作成";
-"GenerateNewPassphrase" = "新規パスフレーズを作成";
-"TransformPassword" = "パスワードをトランスフォーム";
+"GenerateNewPassword" = "パスワードを作成";
+"GenerateNewPassphrase" = "パスフレーズを作成";
+"TransformPassword" = "パスワードを変化";
 "PasswordPolicy" = "パスワードポリシー";
 "PasswordPolicyExplainer" = "適当なパスワードポリシーを選択します。";
 "RecommendedTopics" = "おすすめのトピック";
-"RecommendedTopicsExplainer" = "好きなトピックを選択します。選択されたトピックに関する単語がパスワードに含まれます。";
-"CharactersToInclude" = "含めるキャラクター";
-"CharactersToIncludeExplainer" = "含めたいキャラクターを選択します。";
-"TopicsToInclude" = "含めるトピック";
-"TopicsToIncludeExplainer" = "含めたいトピックを選択します。選択されたトピックに関する単語がパスワードに含まれます。";
+"RecommendedTopicsExplainer" = "選択したトピックに関する単語がパスワードに含まれます。";
+"CharactersToInclude" = "文字タイプ";
+"CharactersToIncludeExplainer" = "含めたい文字タイプを選択します。";
+"TopicsToInclude" = "トピック";
+"TopicsToIncludeExplainer" = "選択されたトピックに関する単語がパスワードに含まれます。";
 "ExplainerBasic" = "組織、学校、インターネットサービスなどのパスワードポリシーによりパスワードを作成します。";
-"ExplainerEnhanced" = "提供された個人情報、追加されたパスワード、Guruが学んだ習慣などデータポイントによりパスワードを作成します。使われるデータポイントは設定タブで選択できます。";
-"ExplainerCustom" = "条件を選択してパスワードを作成します。";
+"ExplainerEnhanced" = "提供された個人情報、追加されたパスワード、インテリジェンスなどによりパスワードを作成します。";
+"ExplainerCustom" = "お好みの文字タイプ、文字数、トピックを選択してパスワードを作成します。";
 "WorkSchool" = "組織・学校";
-"WorkSchoolPolicy" = "小文字と大文字の英文字が必要\n1つ以上の数字が必要\n1つ以上の特集記号が必要\n長さは8文字以上";
+"WorkSchoolPolicy" = "小文字と大文字の英文字\n1文字以上の数字\n1文字以上の特集記号\n8文字以上の長さ";
 "SensitivityLevel2" = "銀行口座、インターネットサービス、個人情報が保存されるアカウントなど";
-"SensitivityLevel2Policy" = "小文字と大文字の英文字が必要\n1つ以上の数字または特集記号が必要\n長さは8文字以上";
+"SensitivityLevel2Policy" = "小文字と大文字の英文字\n1文字以上の数字または特集記号\n8文字以上の長さ";
 "SensitivityLevel3" = "SNS、電子掲示板など";
-"SensitivityLevel3Policy" = "小文字と大文字の英文字が必要\n長さは8文字以上";
+"SensitivityLevel3Policy" = "小文字と大文字の英文字\n8文字以上の長さ";
 "PIN" = "暗証番号";
-"PINPolicy" = "数字のみ\n長さは6文字以上";
+"PINPolicy" = "数字のみ\n6文字";
 "Examples" = "含まれる言葉：@$1、@$2、@$3など";
-"Lowercase" = "小文字の英文字";
-"Uppercase" = "大文字の英文字";
+"Lowercase" = "英字（小文字）";
+"Uppercase" = "英字（大文字）";
 "Numbers" = "数字";
 "Symbols" = "特集記号";
 "ExtraSymbols" = "特集記号（拡張）";
 "ExtraSymbolsDisclaimer" = "\n※これらの特集記号は、アプリやサイトによる禁止される場合があります。";
 "WhiteSpaces" = "空白・スペース";
-"NumberOfCharacters" = "キャラクター数";
+"NumberOfCharacters" = "文字数";
 "LengthNotSecure" = "安全レベル：低い";
 "LengthAverage" = "安全レベル：普通";
 "LengthModerate" = "安全レベル：やや高い";
 "LengthSecure" = "安全レベル：高い";
 "LengthVerySecure" = "安全レベル：すばらしい";
-"PasswordFloatingPrefix" = "作成されたパスワード：";
+"PasswordFloatingPrefix" = "作成したパスワード：";
 "GeneratorNoInterests" = "興味はまだ追加されていません。興味を追加するには、「設定」＞「プロフィール」の順にタップし、「編集」をタップします。";
 
 /* Settings */
@@ -174,12 +169,12 @@
 "FAQs" = "よくある質問";
 "Acknowledgements" = "謝辞";
 "Debug" = "システムオプション";
-"ThirdPartyLibraries" = "サードパーティーライブラリー";
-"LockApp" = "ロック";
-"Version" = "バージョン@$1 ビルド@$2（ベータ版）";
+"ThirdPartyLibraries" = "著作権情報";
+"LockApp" = "アプリをロック";
+"Version" = "バージョン@$1、ビルド@$2（ベータ版）";
 
 /* Profile */
-"ProfileExplainer" = "様々な個人情報を提供すると、Guruで作成したパスワードはその情報を使い、パソナライズすることができます。提供された情報は、いつでもこの画面で編集したり削除したりすることができます。\n\nお客様の個人情報はお客様の端末外に送ったりサーバーに保存されたりすることはありません。";
+"ProfileExplainer" = "様々な個人情報を提供すると、作成したパスワードはその情報を使い、パソナライズすることができます。提供された情報は、いつでもこの画面で編集したり削除したりすることができます。\n\nお客様の個人情報はこの端末外に送ったりサーバーに保管したりすることはありません。";
 "PII" = "個人情報";
 "FullName" = "名前";
 "Region" = "地域";
@@ -195,37 +190,50 @@
 "NoInterests" = "興味はまだ追加されていません。「編集」をタップし、興味を追加することができます。";
 "UnknownInterest" = "未知興味";
 "AddTitle" = "@$を追加";
-"DeleteWarning" = "個人情報やアカウントを完全に削除します。削除すると、復元できなくなります。";
+"DeleteWarning" = "すべてのアカウントと個人情報を完全に削除します。削除すると、復元できなくなります。";
 "DeleteProfile" = "プロフィールを削除";
 
 /* Personalization */
-"PersonalizationExplainer" = "パーソナライズされたパスワードをオンにすると、パスワードを作成するとき、データを含め、もっと適当なパスワードを作成することができます。\n\nパスワードを作成するとき、個人情報、パスワードを選択するときの習慣、興味などを使い、パスワードをパーソナライズされます。それに、インテリジェンスによりパスワードの習慣が自動的に変わったりします。\n\nインテリジェンスのデータはお客様の端末外に送ったりサーバーに保存されたりすることはありません。";
-"PersonalizePasswords" = "パーソナライズされたパスワード";
-"Categories" = "カテゴリー";
-"CategoryExplainer" = "パスワードを作成するときのデータを選ぶことができます。";
+"PersonalizationExplainer" = "パーソナライズしたパスワードをオンにすると、パスワードを作成するとき、データを含め、より適当なパスワードを作成することができます。\n\n個人情報と興味を使い、パスワードをパーソナライズされます。それに、分析による作成されたインテリジェンスを使用してパスワードを自動的に変化することがあります。\n\nインテリジェンスデータはこの端末外に送ったりサーバーに保管したりすることはありません。";
+"PersonalizePasswords" = "パーソナライズしたパスワード";
+"Categories" = "パーソナライズ方法";
+"CategoryExplainer" = "パスワードを作成するとき使用されるパーソナライズ方法を選ぶことができます。";
+"CategoryOffExplainer" = "パーソナライズしたパスワードをオンにすると、パーソナライズ方法を設定することができます。";
 "PersonalInformation" = "個人情報";
 "InterestsTopics" = "興味";
 "ExistingPasswords" = "既存のパスワード";
 "AutomaticallyLearnedKnowledge" = "インテリジェンス";
-"KnowledgeExplainer" = "Guruに保存されたインテリジェンスを管理することができます。";
-"ManageKnowledge" = "インテリジェンスを管理";
+"KnowledgeExplainer" = "分析による作成されたインテリジェンスデータを管理することができます。";
+"ManageKnowledge" = "インテリジェンスデータを管理";
+"HistoricallyUsedWords" = "使用した言葉の履歴";
+"HistoricallyUsedWordsExplainer" = "分析によるパスワードに検出した言葉を保存し、検出した言葉が新しく作成されたパスワードに含めることがあります。個人情報をインポートする時、データに検出した言葉を保存することもあります。";
+"HistoricallyUsedWordSubtitle" = "@$1回使用されました";
+"HistoricallyUsedWordSubtitles" = "@$1回使用されました";
+"DeleteKnowledgeData" = "インテリジェンスデータをクリア";
+"DeleteKnowledgeDataExplainer" = "インテリジェンスのデータをすべて削除することができます。インテリジェンスのデータを削除すると、次回ロックを解除する時、保存したパスワードの分析を自動的に行います。";
+"DeleteKnowledgeDataAlertTitle" = "インテリジェンスデータをクリア";
+"DeleteKnowledgeDataAlertText" = "インテリジェンスのデータをすべて削除してよろしいですか？新しく作成されたパスワードの覚えやすさが下がるかもしれません。";
+"DeleteKnowledgeDataAlertYes" = "削除";
+"DeleteKnowledgeDataAlertNo" = "キャンセル";
+"ConfirmationOfKnowledgeDataDeletionTitle" = "インテリジェンスデータを削除しました";
+"ConfirmationOfKnowledgeDataDeletionText" = "インテリジェンスのデータをすべて削除しました。次回ロックを解除する時、保存したパスワードの分析を自動的に行います。";
 
 /* CloudSync */
-"CloudSyncExplainer" = "iCloudに同期をオンにすると、個人情報やアカウントは自動的にiCloudに同期されます。\n\niCloudに同期をオフにすると、iCloudに同期が停止され、同期されたデータが削除されます。";
-"CloudSyncUnavailableExplainer" = "iCloudにサインインされない、または管理者が禁止されたため、iCloudはたった今使用できません。";
-"CloudSync" = "iCloudに同期";
-"DeleteCloudData" = "iCloudに同期されたデータを完全に削除します。";
+"CloudSyncExplainer" = "iCloud同期をオンにすると、個人情報やアカウントは自動的にiCloudに同期されます。\n\niCloud同期をオフにすると、iCloud同期が停止され、同期されたデータが削除されます。";
+"CloudSyncUnavailableExplainer" = "iCloudにサインインしていない、または管理者が禁止されたため、iCloudはたった今使用できません。";
+"CloudSync" = "iCloud同期";
+"DeleteCloudData" = "iCloudに同期されたデータをすべて削除します。";
 
 /* Portability */
-"PortabilityExplainer" = "Guruのアカウントを書き出すまたは他のパスワードマネージャーから読み込むことができます。次のオプションを選択してください。";
+"PortabilityExplainer" = "Guruのアカウントをエクスポートするまたは他のブラウザーやパスワードマネージャーからアカウントをインポートすることができます。";
 "Import" = "インポート";
 "Export" = "エクスポート";
-"ImportExplainer" = "読み込みたいファイルの元のソース（アプリまたはサービス）を選択してください。";
+"ImportExplainer" = "エクスポートしたファイルの元のソース（ブラウザーやパスワードマネージャー）を選択してください。";
 "ImportLogins" = "ログインをインポート";
 "ImportInterests" = "個人情報をインポート";
 "ImportFrom" = "@$からインポート";
-"ExportExplainer" = "アカウントを書き出す後、どのアプリやサービスに読み込むかを選択し、「書き出す」を選択するとファイルを書き出します。\n暗号化されたZIPアーカイブに保存したい場合、パスワードを入力してください。";
-"ExportDestination" = "アプリ・サービス";
+"ExportExplainer" = "アカウントのエクスポート先（ブラウザーやパスワードマネージャー）を選択し、「エクスポート」を選択するとファイルを書き出します。\n暗号化されたZIPアーカイブに保存したい場合、パスワードを入力してください。";
+"ExportDestination" = "ブラウザーやパスワードマネージャー";
 "ExportPassword" = "ZIPアーカイブパスワード（任意）";
 "ExportFilename" = "パスワード";
 
@@ -272,8 +280,8 @@
 "ImportInterestsErrorText" = "インポート中、エラーが発生しました。@$個の個人情報は正常にインポートされました。";
 
 /* AppLock */
-"AppLockFaceIDExplainer" = "Face IDがiOSにより禁止されるまたはマスクを着用する場合、パスコードを求めます。Face IDに登録された顔が変わっても、データをアクセスすることができます。";
-"AppLockTouchIDExplainer" = "Touch IDがiOSにより禁止される場合、パスコードを求めます。Touch IDに登録された指紋が変わっても、データをアクセスすることができます。";
+"AppLockFaceIDExplainer" = "Face IDがiOSにより禁止されるまたはマスクを着用する場合、パスコードを求めます。Face IDに登録されている顔が変わっても、データにアクセスすることができます。";
+"AppLockTouchIDExplainer" = "Touch IDがiOSにより禁止される場合、パスコードを求めます。Touch IDに登録されている指紋が変わっても、データにアクセスすることができます。";
 "UseFaceID" = "Face IDを使用";
 "UseTouchID" = "Touch IDを使用";
 "UsePasscode" = "パスコードを使用";
@@ -287,37 +295,34 @@
 "Timeout10" = "10分後";
 
 /* BreachDetection */
-"BreachDetectionExplainer" = "情報漏洩検出をオンにすると、メールアドレスやパスワードの漏洩はHave I Been Pwnedにより自動的に検出されます。\n新しいアカウントを作成するときのみ漏洩を検出されます。アカウントを全て検出するには、「アラート」をタップしてください。";
+"BreachDetectionExplainer" = "情報漏洩検出をオンにすると、メールアドレスとパスワードはHave I Been Pwnedにより自動的に検査されます。\nパスワードの検査はアカウントを新しく作成するときのみ行います。メールアドレスの検査はアカウントを閲覧するとき行います。アカウントをすべて検査するには、「アラート」タブをタップしてください。";
 "BreachDetectionToggle" = "情報漏洩検出を使用";
-"HaveIBeenPwnedTitle" = "情報漏洩のデータはHave I Been Pwnedによる提供します。";
+"HaveIBeenPwnedTitle" = "情報漏洩のデータはHave I Been Pwnedにより提供します。";
 "HaveIBeenPwnedLearnMore" = "詳細";
 "DetectionTypes" = "検出設定";
 "DetectBreachedEmails" = "漏洩されたメールアドレスを検出";
 "DetectBreachedPasswords" = "漏洩されたパスワードを検出";
 
 /* UnderTheHood */
-"UnderTheHoodExplainer" = "こちらの設定はアプリを使えないようにして、データにアクセスできなくなることがあります。サポートからのリクエスト以外はお気をつけください。";
-"InternalPreferences" = "内部設定";
-"ResetOnboarding" = "セットアップをリセット";
+"UnderTheHoodExplainer" = "システムの作動を見ることができます。";
 "Logging" = "ロギング";
 "AppLogs" = "アプリログ";
-"ClearPasswordAnalysis" = "パスワード分析をクリア";
 
 /* Onboarding */
 "WelcomeTitle" = "Guruへようこそ";
-"WelcomeText" = "Guruは覚えやすい安全なパスワードを作成したり、保存したりすることができます。\n始めるには、継続をタップしてください。";
-"WelcomeTextPasscodeRequired" = "Guruは、覚えやすい安全なパスワードを作成したり、保存したりすることができます。\nGuruを使うには、パスコードが必要です。";
+"WelcomeText" = "Guruは覚えやすい安全なパスワードを作成したり、保存したりすることができます。\n始めるには、「続ける」をタップしてください。";
+"WelcomeTextPasscodeRequired" = "Guruは覚えやすい安全なパスワードを作成したり、保存したりすることができます。\nGuruを使うには、パスコードが必要です。";
 "TermsOfService" = "利用規約";
 "PrivacyPolicy" = "プライバシーポリシー";
 "InformationAboutYouTitle" = "あなたについての情報";
-"InformationAboutYouText" = "様々な情報を提供していただけると、Guruはあなたについての情報を使ってパスワードを作成することができます。\n提供された情報はお客様の端末外に送ったりサーバーに保存したりすることはありません。\n情報を追加するには、「設定」＞「プロフィール」の順にタップし、「編集」をタップします。他のサービスからインポートしたい場合、「設定」＞「インポート/エクスポート」の順に選択します。";
+"InformationAboutYouText" = "様々な情報を提供していただけると、Guruはその情報を使用してより適当なパスワードを作成します。\n提供された情報はこの端末外に送ったりサーバーに保管したりすることはありません。。\n情報を追加するには、「設定」＞「プロフィール」の順にタップし、「編集」をタップします。他のサービスからインポートしたい場合、「設定」＞「インポート/エクスポート」の順に選択します。";
 "PasswordQuestionnaireTitle" = "パスワードのアンケート";
 "PasswordQuestionnaireText" = "Guruは今パスワードについてのアンケートをとります。\nアンケートに入力されたパスワードはGuruのインテリジェンスのために使用します。";
 "SkipPasswordQuestionnaire" = "やめておく";
 "LearningTitle" = "設定中";
 "LearningText" = "Guruは提供された情報を使用して設定しています。";
 "OnboardingCompletionTitle" = "設定完了";
-"OnboardingCompletionText" = "Guruの設定は完了しました。この後、設定タブでさらに個人情報を追加することができます。";
+"OnboardingCompletionText" = "Guruの設定は完了しました。この後、「設定」タブでさらに情報を追加することができます。";
 "OnboardingCompletionButton" = "Guruを使い始める";
 
 /* OTP */
@@ -326,7 +331,7 @@
 "NoCameraTitle" = "QRコードはスキャンできません";
 "NoCameraText" = "お使いのデバイスはQRコードのスキャニングに対応しないので、セットアップコードを手動に入力してください。";
 "InvalidOTPTitle" = "無効なセットアップコード";
-"InvalidOTPText" = "スキャンされたまたは入力されたセットアップコードは無効です。確認してからもう一度試してください。";
+"InvalidOTPText" = "スキャンしたまたは入力したセットアップコードは無効です。確認してからもう一度試してください。";
 "ConfirmDisableOTPTitle" = "認証コードを無効化";
 "ConfirmDisableOTPText" = "認証コードを無効にしてよろしいですか？認証コードを無効にしても、ウェブサイトまたはサービスの2ファクタ認証が自動的にオフになりません。";
 

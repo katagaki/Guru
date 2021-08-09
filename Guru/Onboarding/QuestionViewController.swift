@@ -32,6 +32,22 @@ class QuestionViewController: OnboardingViewController {
         registerForKeyboardNotifications()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowNextQuestion" {
+            if let userProfile = userProfile {
+                log("Saving questionnaire answer for \(navigationItem.title!).")
+                let login: Login = Login()
+                var accountName: String = ""
+                repeat {
+                    accountName = "onboarding_\(cSRandomNumber(from: 10000000, to: 99999999))"
+                } while (userProfile.login(withName: accountName) != nil)
+                login.accountName = accountName
+                login.password = passwordTextField.text!
+                userProfile.add(login: login)
+            }
+        }
+    }
+    
     override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
         deregisterFromKeyboardNotifications()
         super.dismiss(animated: flag, completion: completion)

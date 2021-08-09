@@ -66,7 +66,6 @@ func analyzePasswordWords(progressReporter: ReportsProgress? = nil) {
             log("Analyzing \(userProfile.logins.count) password(s)' words.")
             
             DispatchQueue.concurrentPerform(iterations: userProfile.logins.count) { i in
-                let queueInner = DispatchQueue(label: "analyzePasswordWords.dispatchQueue", attributes: .concurrent)
                 let login: Login = userProfile.logins[i]
                 let passwordCharacters: [Character] = Array(login.password ?? "")
                 let passwordHash: String = SHA256.hash(data: String(passwordCharacters).data(using: .utf8)!).string().lowercased()
@@ -81,7 +80,7 @@ func analyzePasswordWords(progressReporter: ReportsProgress? = nil) {
                         return passwordWithOnlyLetters.contains(word)
                     }
                     for word in wordsInPassword {
-                        queueInner.async(flags: .barrier) {
+                        queue.async(flags: .barrier) {
                             analyzedPasswordWordCount.updateValue((analyzedPasswordWordCount[word] ?? 0) + 1, forKey: word)
                             userProfile.preferredWords.updateValue((userProfile.preferredWords[word] ?? 0) + 1, forKey: word)
                             semaphore.signal()

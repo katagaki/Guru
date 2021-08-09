@@ -23,8 +23,7 @@ class SystemOptionsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0: return 1
-        case 1: return 2
-        case 2: return 1
+        case 1: return 1
         default: return 0
         }
     }
@@ -35,8 +34,7 @@ class SystemOptionsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
-        case 1: return NSLocalizedString("InternalPreferences", comment: "UnderTheHood")
-        case 2: return NSLocalizedString("Logging", comment: "UnderTheHood")
+        case 1: return NSLocalizedString("Logging", comment: "UnderTheHood")
         default: return ""
         }
     }
@@ -50,18 +48,6 @@ class SystemOptionsTableViewController: UITableViewController {
         case 1:
             switch indexPath.row {
             case 0:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "OnboardingCompletedCell")!
-                cell.textLabel!.text = NSLocalizedString("ResetOnboarding", comment: "UnderTheHood")
-                return cell
-            case 1:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "ClearAnalysisCell")!
-                cell.textLabel!.text = NSLocalizedString("ClearPasswordAnalysis", comment: "UnderTheHood")
-                return cell
-            default: return UITableViewCell()
-            }
-        case 2:
-            switch indexPath.row {
-            case 0:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AppLogsCell")!
                 cell.textLabel!.text = NSLocalizedString("AppLogs", comment: "UnderTheHood")
                 return cell
@@ -72,19 +58,6 @@ class SystemOptionsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.section {
-        case 1:
-            switch indexPath.row {
-            case 0:
-                defaults.set(false, forKey: "Onboarding.Completed")
-                defaults.synchronize()
-                tableView.reloadSections(IndexSet(integer: 1), with: .automatic)
-            case 1:
-                defaults.set(nil, forKey: "Feature.Intelligence.AnalyzedPasswords.Words")
-            default: break
-            }
-        default: break
-        }
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
