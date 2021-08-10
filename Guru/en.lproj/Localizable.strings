@@ -121,11 +121,11 @@
 "TransformPassword" = "Transform Password";
 "PasswordPolicy" = "Password Policy";
 "PasswordPolicyExplainer" = "Select a password policy based on the password you'd like to generate.";
-"RecommendedTopics" = "Recommended Topics";
+"RecommendedTopics" = "Recommended Interest Topics";
 "RecommendedTopicsExplainer" = "Select a topic you'd like to use in your password. Words relevant to the topic will be included.";
 "CharactersToInclude" = "Characters to Include";
 "CharactersToIncludeExplainer" = "Select the type of characters to include in your password.";
-"TopicsToInclude" = "Topics to Include";
+"TopicsToInclude" = "Interest Topics to Include";
 "TopicsToIncludeExplainer" = "Select the topics you'd like to use in your password. Words relevant to the topic will be included.";
 "ExplainerBasic" = "Generate a password based on the password policies for your work or school PC, important accounts, and other services.";
 "ExplainerEnhanced" = "Generate a password based on data from your personal information, existing passwords, and other habits. You can customize these options from the Settings tab.";
@@ -186,8 +186,8 @@
 "TapToAdd" = "Tap to Add";
 "AddLanguage" = "Add Language";
 "Interests" = "Interests";
-"AddInterest" = "Add Interest";
-"NoInterests" = "No interests added. Tap Edit on the top right to add one now.";
+"AddInterest" = "Add Interest Topic";
+"NoInterests" = "No interest topics added. Tap Edit on the top right to add one now.";
 "UnknownInterest" = "Unknown Interest";
 "AddTitle" = "Add @$";
 "DeleteWarning" = "Permanently delete all your data from Guru. This action cannot be undone.";
@@ -273,7 +273,7 @@
 "OpenDataDownloadPage" = "Open Data Download Page";
 "SelectInterestsFile" = "2. Select Interests File";
 "SelectInterestsFileExplainer" = "Once you have obtained an archive of your data, extract its contents, then tap 'Select File...' below and select the file named '@$'.";
-"ImportingInterestsProgress" = "Importing interests... @$";
+"ImportingInterestsProgress" = "Processing interests... @$";
 "ImportInterestsCompletedTitle" = "Import Complete";
 "ImportInterestsCompletedText" = "Processed a total of @$ interest(s).";
 "ImportInterestsIncompleteText" = "Processed a total of @$1 interest(s). @$2 interest(s) already exist and were not processed.";

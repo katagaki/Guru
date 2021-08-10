@@ -273,7 +273,7 @@
 "OpenDataDownloadPage" = "ダウンロードページを開く";
 "SelectInterestsFile" = "②　ファイルを選択";
 "SelectInterestsFileExplainer" = "データのアーカイブをダウンロードすると、アーカイブを解凍してから、「ファイルを選択...」をタップし、「@$」を選択します。";
-"ImportingInterestsProgress" = "個人情報をインポート中... @$";
+"ImportingInterestsProgress" = "個人情報を処理中... @$";
 "ImportInterestsCompletedTitle" = "インポート完成";
 "ImportInterestsCompletedText" = "@$個の個人情報は正常にインポートされました。";
 "ImportInterestsIncompleteText" = "@$1個の個人情報は正常にインポートされました。@$2個の情報は既にあるため、インポートされませんでした。";

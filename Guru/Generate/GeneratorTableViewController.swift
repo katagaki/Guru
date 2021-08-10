@@ -464,7 +464,7 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
                 let previousSelectedPolicyType: Int = basicSelectedPolicyType
                 basicSelectedPolicyType = indexPath.row
                 tableView.reloadRows(at: [IndexPath(row: previousSelectedPolicyType, section: 2), indexPath], with: .none)
-                regeneratePassword()
+                if basicSelectedPolicyType != 3 { regeneratePassphrase() } else { regeneratePassword(mayBePassphrase: false) }
             default: break
             }
         case 1:

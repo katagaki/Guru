@@ -59,54 +59,60 @@ public class Password: NSObject {
     
     /// Generates a passphrase from the currently set word count.
     public func regeneratePassphrase(withInterests interests: [Interest] = [], usingPreferredWords preferredWords: [String:Int] = [:]) {
+        let minWordLength = (minLength - wordCount + 1) / wordCount
+        let maxWordLength = (maxLength - wordCount + 1) / wordCount
         let filteredWords: [String] = builtInWords.filter { word in
-            return word.count >= ((minLength - wordCount + 1) / wordCount) && word.count <= ((maxLength - wordCount + 1) / wordCount)
+            return word.count >= minWordLength && word.count <= maxWordLength
         }
-        repeat {
-            var wordsToInclude: [String] = []
-            var validSeparators: [String] = []
-            for _ in 0..<wordCount {
-                var wordToAppend: String = filteredWords[cSRandomNumber(to: filteredWords.count)]
-                
-                // Randomly make into interest words
-                if !interests.isEmpty && (cSRandomNumber(to: 10) >= 2) {
-                    wordToAppend = interests.randomElement()!.words.randomElement()!
+        if !filteredWords.isEmpty {
+            repeat {
+                var wordsToInclude: [String] = []
+                var validSeparators: [String] = []
+                for _ in 0..<wordCount {
+                    var wordToAppend: String = filteredWords[cSRandomNumber(to: filteredWords.count)]
+                    
+                    // Randomly make into interest words
+                    if !interests.isEmpty && (cSRandomNumber(to: 10) >= 2) {
+                        wordToAppend = interests.randomElement()!.words.randomElement()!
+                    }
+                    
+                    wordsToInclude.append(wordToAppend)
                 }
                 
-                wordsToInclude.append(wordToAppend)
-            }
-            
-            // Randomly make a word in the array a preferred word
-            if !preferredWords.isEmpty && (cSRandomNumber(to: 10) >= 3) {
-                wordsToInclude[cSRandomNumber(to: wordsToInclude.count)] = preferredWords.randomElement()!.key
-            }
-            
-            // Randomly capitalize first letter of word
-            if policies.contains(.ContainsUppercase) {
-                let index: Int = cSRandomNumber(to: wordsToInclude.count)
-                wordsToInclude[index] = wordsToInclude[index].capitalized
-            }
-            
-            if policies.contains(.ContainsSpaces) {
-                validSeparators.append(" ")
-            }
-            if policies.contains(.ContainsBasicSymbols) {
-                validSeparators.append(contentsOf: ["-", ".", "_"])
-            }
-            if policies.contains(.ContainsComplexSymbols) {
-                validSeparators.append("+")
-            }
-            if !policies.contains(.ContainsSpaces) && !policies.contains(.ContainsBasicSymbols) && !policies.contains(.ContainsComplexSymbols) {
-                validSeparators.append("")
-            }
-            generated = wordsToInclude.joined(separator: validSeparators.randomElement()!)
-            
-            // Randomly convert to symbols/numbers
-            if policies.contains(.ContainsNumbers) {
-                leetify()
-            }
-            
-        } while (!(acceptability(ofPassword: generated) && generated.count >= minLength && generated.count <= maxLength))
+                // Randomly make a word in the array a preferred word
+                if !preferredWords.isEmpty && (cSRandomNumber(to: 10) >= 3) {
+                    wordsToInclude[cSRandomNumber(to: wordsToInclude.count)] = preferredWords.randomElement()!.key
+                }
+                
+                // Randomly capitalize first letter of word
+                if policies.contains(.ContainsUppercase) {
+                    let index: Int = cSRandomNumber(to: wordsToInclude.count)
+                    wordsToInclude[index] = wordsToInclude[index].capitalized
+                }
+                
+                if policies.contains(.ContainsSpaces) {
+                    validSeparators.append(" ")
+                }
+                if policies.contains(.ContainsBasicSymbols) {
+                    validSeparators.append(contentsOf: ["-", ".", "_"])
+                }
+                if policies.contains(.ContainsComplexSymbols) {
+                    validSeparators.append("+")
+                }
+                if !policies.contains(.ContainsSpaces) && !policies.contains(.ContainsBasicSymbols) && !policies.contains(.ContainsComplexSymbols) {
+                    validSeparators.append("")
+                }
+                generated = wordsToInclude.joined(separator: validSeparators.randomElement()!)
+                
+                // Randomly convert to symbols/numbers
+                if policies.contains(.ContainsNumbers) {
+                    leetify()
+                }
+                
+            } while (!(acceptability(ofPassword: generated) && generated.count >= minLength && generated.count <= maxLength))
+        } else {
+            regeneratePassphrase(withInterests: interests, usingPreferredWords: preferredWords)
+        }
     }
     
     // MARK: Functions for transforming the password

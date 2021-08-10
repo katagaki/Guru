@@ -7,13 +7,19 @@
 
 import UIKit
 
-class ProfileTableViewController: UITableViewController {
+class ProfileTableViewController: UITableViewController, HandlesTextField {
     
     @IBOutlet weak var editToggleButton: UIBarButtonItem!
     
     var languageSelectionActions: [UIAction] = []
     var interestSelectionActions: [UIAction] = []
     
+    var fullName: String = ""
+    var region: String = ""
+    var company: String = ""
+    var school: String = ""
+    
+    var currentViewTag: Int = 0
     var isEditingProfile: Bool = false
 
     // MARK: UIViewController
@@ -58,19 +64,22 @@ class ProfileTableViewController: UITableViewController {
     @IBAction func toggleEditing(_ sender: Any) {
         if isEditingProfile {
             if let userProfile = userProfile {
-                if let nameCell = tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as? TextInputCell,
-                    let regionCell = tableView.cellForRow(at: IndexPath(row: 1, section: 1)) as? TextInputCell,
-                    let birthdayCell = tableView.cellForRow(at: IndexPath(row: 3 + userProfile.languages.count, section: 1)) as? DatePickerCell,
-                   let companyNameCell = tableView.cellForRow(at: IndexPath(row: 4 + userProfile.languages.count, section: 1)) as? TextInputCell,
-                   let schoolNameCell = tableView.cellForRow(at: IndexPath(row: 5 + userProfile.languages.count, section: 1)) as? TextInputCell {
-                let dateFormatter:DateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "yyyy/MM/dd"
-                userProfile.fullName = (nameCell.textField.text == "" ? nil : nameCell.textField.text)
-                userProfile.region = (regionCell.textField.text == "" ? nil : regionCell.textField.text)
-                userProfile.set(birthday: dateFormatter.string(for: birthdayCell.datePicker.date)!)
-                userProfile.companyName = (companyNameCell.textField.text == "" ? nil : companyNameCell.textField.text)
-                userProfile.schoolName = (schoolNameCell.textField.text == "" ? nil : schoolNameCell.textField.text)
+                userProfile.fullName = fullName
+                userProfile.region = region
+                if let birthdayCell = tableView.cellForRow(at: IndexPath(row: 3 + userProfile.languages.count, section: 1)) as? DatePickerCell {
+                    let dateFormatter:DateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy/MM/dd"
+                    userProfile.set(birthday: dateFormatter.string(for: birthdayCell.datePicker.date)!)
                 }
+                userProfile.companyName = company
+                userProfile.schoolName = school
+            }
+        } else {
+            if let userProfile = userProfile {
+                fullName = userProfile.fullName ?? ""
+                region = userProfile.region ?? ""
+                company = userProfile.companyName ?? ""
+                school = userProfile.schoolName ?? ""
             }
         }
         isEditingProfile = !isEditingProfile
@@ -149,20 +158,16 @@ class ProfileTableViewController: UITableViewController {
                 case 0:
                     let cell = tableView.dequeueReusableCell(withIdentifier: "NameTextFieldCell") as! TextInputCell
                     cell.titleLabel.text = NSLocalizedString("FullName", comment: "Profile")
-                    if let userProfile = userProfile {
-                        cell.textField.text = userProfile.fullName ?? ""
-                    } else {
-                        cell.textField.text = ""
-                    }
+                    cell.textField.text = fullName
+                    cell.textField.placeholder = NSLocalizedString("FullName", comment: "Profile")
+                    cell.textFieldHandler = self
                     return cell
                 case 1:
                     let cell = tableView.dequeueReusableCell(withIdentifier: "RegionTextFieldCell") as! TextInputCell
                     cell.titleLabel.text = NSLocalizedString("Region", comment: "Profile")
-                    if let userProfile = userProfile {
-                        cell.textField.text = userProfile.region ?? ""
-                    } else {
-                        cell.textField.text = ""
-                    }
+                    cell.textField.text = region
+                    cell.textField.placeholder = NSLocalizedString("Region", comment: "Profile")
+                    cell.textFieldHandler = self
                     return cell
                 case 2 + languages.count:
                     let cell = tableView.dequeueReusableCell(withIdentifier: "AddLanguageCell") as! ButtonWithMenuCell
@@ -187,25 +192,22 @@ class ProfileTableViewController: UITableViewController {
                 case 4 + languages.count:
                     let cell = tableView.dequeueReusableCell(withIdentifier: "CompanyTextFieldCell") as! TextInputCell
                     cell.titleLabel.text = NSLocalizedString("Company", comment: "Profile")
-                    if let userProfile = userProfile {
-                        cell.textField.text = userProfile.companyName ?? ""
-                    } else {
-                        cell.textField.text = ""
-                    }
+                    cell.textField.text = company
+                    cell.textField.placeholder = NSLocalizedString("Company", comment: "Profile")
+                    cell.textFieldHandler = self
                     return cell
                 case 5 + languages.count:
                     let cell = tableView.dequeueReusableCell(withIdentifier: "SchoolTextFieldCell") as! TextInputCell
                     cell.titleLabel.text = NSLocalizedString("School", comment: "Profile")
-                    if let userProfile = userProfile {
-                        cell.textField.text = userProfile.schoolName ?? ""
-                    } else {
-                        cell.textField.text = ""
-                    }
+                    cell.textField.text = school
+                    cell.textField.placeholder = NSLocalizedString("School", comment: "Profile")
+                    cell.textFieldHandler = self
                     return cell
                 case 2...2 + languages.count:
                     let cell = tableView.dequeueReusableCell(withIdentifier: "LanguageTextFieldCell") as! TextInputCell
                     cell.titleLabel.text = NSLocalizedString("Language", comment: "Profile")
                     cell.textField.text = languages[indexPath.row - 2]
+                    cell.textFieldHandler = self
                     return cell
                 default: return UITableViewCell()
                 }
@@ -352,6 +354,45 @@ class ProfileTableViewController: UITableViewController {
                 default: break
                 }
                 tableView.deleteRows(at: [indexPath], with: .automatic)
+            }
+        }
+    }
+    
+    // MARK: HandlesTextField
+    
+    func handleTextFieldShouldReturn() {
+        if let view = view.viewWithTag(currentViewTag + 100) as? UITextField {
+            log("Handling text field should return with tag \(currentViewTag).")
+            currentViewTag += 100
+            view.becomeFirstResponder()
+        } else {
+            log("Text field with tag \(currentViewTag + 100) not found.")
+            currentViewTag = 0
+            view.endEditing(false)
+        }
+    }
+    
+    func handleTextFieldBeginEditing(_ sender: UITextField) {
+        log("Text field with tag \(sender.tag) started editing.")
+        currentViewTag = sender.tag
+    }
+    
+    func handleTextFieldEditingChanged(text: String, sender: Any) {
+        if let sender = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: sender) {
+            var languages: [String] = []
+            if let userProfile = userProfile {
+                languages = userProfile.languages
+            }
+            switch indexPath.section {
+            case 1:
+                switch indexPath.row {
+                case 0: fullName = text
+                case 1: region = text
+                case 3 + languages.count: company = text
+                case 4 + languages.count: school = text
+                default: break
+                }
+            default: break
             }
         }
     }
