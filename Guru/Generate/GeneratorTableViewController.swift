@@ -461,10 +461,11 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
         case 0:
             switch indexPath.section {
             case 2:
+                basicPassword = Password()
                 let previousSelectedPolicyType: Int = basicSelectedPolicyType
                 basicSelectedPolicyType = indexPath.row
                 tableView.reloadRows(at: [IndexPath(row: previousSelectedPolicyType, section: 2), indexPath], with: .none)
-                if basicSelectedPolicyType != 3 { regeneratePassphrase() } else { regeneratePassword(mayBePassphrase: false) }
+                regeneratePassword()
             default: break
             }
         case 1:
@@ -484,11 +485,13 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
                         tableView.reloadRows(at: [indexPath], with: .none)
                     }
                 }
+                regeneratePassword()
             default: break
             }
         case 2:
             switch indexPath.section {
             case 3:
+                customPassword = Password()
                 switch indexPath.row {
                 case 0: customContainsLowercase = !customContainsLowercase
                 case 1: customContainsUppercase = !customContainsUppercase
@@ -505,6 +508,7 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
                 regeneratePassword()
                 tableView.reloadRows(at: [indexPath], with: .none)
             case 4:
+                customPassword = Password()
                 if let userProfile = userProfile {
                     if userProfile.interests.count > 0 {
                         if customSelectedInterests.contains(where: { interest in
@@ -522,6 +526,7 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
                         }
                     }
                 }
+                regeneratePassword()
                 tableView.reloadRows(at: [indexPath], with: .none)
             default: break
             }
