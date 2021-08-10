@@ -59,17 +59,29 @@ public class Password: NSObject {
     
     /// Generates a passphrase from the currently set word count.
     public func regeneratePassphrase(withInterests interests: [Interest] = [], usingPreferredWords preferredWords: [String:Int] = [:]) {
-        let minWordLength = (minLength - wordCount + 1) / wordCount
-        let maxWordLength = (maxLength - wordCount + 1) / wordCount
-        let filteredWords: [String] = builtInWords.filter { word in
-            return word.count >= minWordLength && word.count <= maxWordLength
-        }
-        if !filteredWords.isEmpty {
-            repeat {
+        
+        let queue = DispatchQueue(label: "Password.regeneratePassphrase", attributes: .concurrent)
+        var validPasswords: [String] = []
+        var passwordIterationCount: Int = 0
+        
+        log("Begin passphrase generation.")
+        repeat {
+            
+            // Always concurrently generate 4 passwords for checking
+            DispatchQueue.concurrentPerform(iterations: 16) { _ in
+                
+                var newPassword: String = ""
                 var wordsToInclude: [String] = []
                 var validSeparators: [String] = []
                 for _ in 0..<wordCount {
-                    var wordToAppend: String = filteredWords[cSRandomNumber(to: filteredWords.count)]
+                    var wordToAppend: String = ""
+                    
+                    repeat {
+                        let randomWord: String = builtInWords[cSRandomNumber(to: builtInWords.count)]
+                        if randomWord.count >= minLength / wordCount && randomWord.count <= maxLength / wordCount {
+                            wordToAppend = randomWord
+                        }
+                    } while wordToAppend == ""
                     
                     // Randomly make into interest words
                     if !interests.isEmpty && (cSRandomNumber(to: 10) >= 2) {
@@ -90,6 +102,7 @@ public class Password: NSObject {
                     wordsToInclude[index] = wordsToInclude[index].capitalized
                 }
                 
+                // Apply separator
                 if policies.contains(.ContainsSpaces) {
                     validSeparators.append(" ")
                 }
@@ -102,17 +115,31 @@ public class Password: NSObject {
                 if !policies.contains(.ContainsSpaces) && !policies.contains(.ContainsBasicSymbols) && !policies.contains(.ContainsComplexSymbols) {
                     validSeparators.append("")
                 }
-                generated = wordsToInclude.joined(separator: validSeparators.randomElement()!)
+                newPassword = wordsToInclude.joined(separator: validSeparators.randomElement()!)
                 
                 // Randomly convert to symbols/numbers
                 if policies.contains(.ContainsNumbers) {
-                    leetify()
+                    newPassword = leetified(newPassword)
                 }
                 
-            } while (!(acceptability(ofPassword: generated) && generated.count >= minLength && generated.count <= maxLength))
-        } else {
-            regeneratePassphrase(withInterests: interests, usingPreferredWords: preferredWords)
-        }
+                queue.async(flags: .barrier) {
+                    if self.acceptability(ofPassword: newPassword) && newPassword.count >= self.minLength && newPassword.count <= self.maxLength {
+                        validPasswords.append(newPassword)
+                    }
+                }
+            }
+            passwordIterationCount += 16
+            
+            let semaphore = DispatchSemaphore(value: 0)
+            queue.async(flags: .barrier) {
+                semaphore.signal()
+            }
+            semaphore.wait()
+            
+        } while validPasswords.isEmpty
+        
+        log("Picked valid passphrase after \(passwordIterationCount) iteration(s).")
+        generated = validPasswords.randomElement()!
     }
     
     // MARK: Functions for transforming the password
@@ -251,7 +278,13 @@ public class Password: NSObject {
     /// Returns a leetified (l33tifi3d) transformation of the current password by randomly replacing characters in the password.
     /// - Returns: The transformed password.
     public func leetified() -> String {
-        var leetified = Array(generated)
+        return leetified(generated)
+    }
+    
+    /// Returns a leetified (l33tifi3d) transformation of the current password by randomly replacing characters in the password.
+    /// - Returns: The transformed password.
+    public func leetified(_ password: String) -> String {
+        var leetified = Array(password)
         for i: Int in 0..<leetified.count {
             if cSRandomNumber(to: 10) >= 7 {
                 if let value = builtInLeetList[String(leetified[i])] {
