@@ -56,7 +56,7 @@ class ManageIntelligenceTableViewController: UITableViewController {
             if let userProfile = userProfile {
                 let numberOfTimesUsed: Int = Array(userProfile.preferredWords.values)[indexPath.row]
                 cell.textLabel!.text = Array(userProfile.preferredWords.keys)[indexPath.row]
-                cell.detailTextLabel!.text = (numberOfTimesUsed > 1 ? NSLocalizedString("HistoricallyUsedWordSubtitles", comment: "Personalization").replacingOccurrences(of: "@$1", with: String(numberOfTimesUsed)) : NSLocalizedString("HistoricallyUsedWordSubtitles", comment: "Personalization").replacingOccurrences(of: "@$1", with: String(numberOfTimesUsed)))
+                cell.detailTextLabel!.text = (numberOfTimesUsed > 1 ? NSLocalizedString("HistoricallyUsedWordSubtitles", comment: "Personalization").replacingOccurrences(of: "@$1", with: String(numberOfTimesUsed)) : NSLocalizedString("HistoricallyUsedWordSubtitle", comment: "Personalization").replacingOccurrences(of: "@$1", with: String(numberOfTimesUsed)))
             }
             return cell
         case 1:
