@@ -37,21 +37,21 @@ class ImportTableViewController: UITableViewController {
         case "ShowImportInterests":
             if let sender = sender as? UITableViewCell, let destination = segue.destination as? ImportInterestsTableViewController {
                 switch tableView.indexPath(for: sender)!.row {
+//                case 0:
+//                    destination.guideCode = "Google"
+//                    destination.filename = ""
+//                case 1:
+//                    destination.guideCode = "Microsoft"
+//                    destination.filename = "SearchRequestsAndQuery.csv"
                 case 0:
-                    destination.guideCode = "Google"
-                    destination.filename = ""
-                case 1:
-                    destination.guideCode = "Microsoft"
-                    destination.filename = "SearchRequestsAndQuery.csv"
-                case 2:
                     destination.guideCode = "Twitter"
                     destination.filename = "personalization.js"
-                case 3:
-                    destination.guideCode = "Facebook"
-                    destination.filename = "your_topics.json"
-                case 4:
-                    destination.guideCode = "Instagram"
-                    destination.filename = "your_topics.json"
+//                case 3:
+//                    destination.guideCode = "Facebook"
+//                    destination.filename = "your_topics.json"
+//                case 4:
+//                    destination.guideCode = "Instagram"
+//                    destination.filename = "your_topics.json"
                 default: break
                 }
             }
@@ -65,7 +65,7 @@ class ImportTableViewController: UITableViewController {
         switch section {
         case 0: return 1
         case 1: return 4
-        case 2: return 5
+        case 2: return 1
         default: return 0
         }
     }
@@ -109,21 +109,21 @@ class ImportTableViewController: UITableViewController {
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ImportSourceCell") as! DetailWithImageCell
             switch indexPath.row {
+//            case 0:
+//                cell.titleLabel.text = "Google"
+//                cell.iconView.image = UIImage(named: "SV.Google")
+//            case 1:
+//                cell.titleLabel.text = "Microsoft"
+//                cell.iconView.image = UIImage(named: "SV.Microsoft")
             case 0:
-                cell.titleLabel.text = "Google"
-                cell.iconView.image = UIImage(named: "SV.Google")
-            case 1:
-                cell.titleLabel.text = "Microsoft"
-                cell.iconView.image = UIImage(named: "SV.Microsoft")
-            case 2:
                 cell.titleLabel.text = "Twitter"
                 cell.iconView.image = UIImage(named: "SV.Twitter")
-            case 3:
-                cell.titleLabel.text = "Facebook"
-                cell.iconView.image = UIImage(named: "SV.Facebook")
-            case 4:
-                cell.titleLabel.text = "Instagram"
-                cell.iconView.image = UIImage(named: "SV.Instagram")
+//            case 3:
+//                cell.titleLabel.text = "Facebook"
+//                cell.iconView.image = UIImage(named: "SV.Facebook")
+//            case 4:
+//                cell.titleLabel.text = "Instagram"
+//                cell.iconView.image = UIImage(named: "SV.Instagram")
             default: break
             }
             return cell
@@ -137,7 +137,7 @@ class ImportTableViewController: UITableViewController {
             performSegue(withIdentifier: "ShowImportLogins", sender: tableView.cellForRow(at: indexPath))
         case 2:
             switch indexPath.row {
-            case 2:
+            case 0:
                 performSegue(withIdentifier: "ShowImportInterests", sender: tableView.cellForRow(at: indexPath))
             default:
                 featureUnavailableAlert(self)
