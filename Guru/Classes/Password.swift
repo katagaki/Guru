@@ -14,7 +14,7 @@ public class Password: NSObject {
     public var maxLength: Int = 16
     public var policies: [PasswordCharacterPolicy] = [.ContainsUppercase, .ContainsLowercase, .ContainsNumbers, .ContainsBasicSymbols]
     
-    public var wordCount: Int = 1
+    public var wordCount: Int = 4
     
     // MARK: Initializers
     

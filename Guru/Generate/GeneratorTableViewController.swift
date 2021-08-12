@@ -469,7 +469,6 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
                 default: break
                 }
             case 2:
-                basicPassword = Password()
                 let previousSelectedPolicyType: Int = basicSelectedPolicyType
                 basicSelectedPolicyType = indexPath.row
                 tableView.reloadRows(at: [IndexPath(row: previousSelectedPolicyType, section: 2), indexPath], with: .none)
@@ -507,7 +506,6 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
                 default: break
                 }
             case 3:
-                customPassword = Password()
                 switch indexPath.row {
                 case 0: customContainsLowercase = !customContainsLowercase
                 case 1: customContainsUppercase = !customContainsUppercase
@@ -523,7 +521,6 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
                 }
                 tableView.reloadRows(at: [indexPath], with: .none)
             case 4:
-                customPassword = Password()
                 if let userProfile = userProfile {
                     if userProfile.interests.count > 0 {
                         if customSelectedInterests.contains(where: { interest in
@@ -558,7 +555,7 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
                                                   actionProvider: { suggestedActions in
                     let generatePasswordAction = UIAction(title: NSLocalizedString("GenerateNewPassword", comment: "Generator"),
                                                           image: UIImage(systemName: "ellipsis.rectangle")) { action in
-                        self.regeneratePassword(mayBePassphrase: false)
+                        self.regeneratePassword()
                     }
                     let generatePassphraseAction = UIAction(title: NSLocalizedString("GenerateNewPassphrase", comment: "Generator"),
                                                             image: UIImage(systemName: "text.book.closed")) { action in
@@ -671,7 +668,7 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
     
     // MARK: Helper Functions
     
-    func regeneratePassword(mayBePassphrase: Bool = true) {
+    func regeneratePassword() {
         switch segmentControl.selectedSegmentIndex {
         case 0:
             log("Generating basic password.")
@@ -695,7 +692,10 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
             if customContainsSpaces { characterPolicies.append(.ContainsSpaces) }
             
             log("Generating custom password based on policies: \(characterPolicies).")
-            customPassword = Password(forPolicies: characterPolicies, withMinLength: customCharacterCount, withMaxLength: customCharacterCount)
+            customPassword.policies = characterPolicies
+            customPassword.minLength = customCharacterCount
+            customPassword.maxLength = customCharacterCount
+            customPassword.regenerate()
             
             if let userProfile = userProfile, userProfile.interests.count > 0 {
                 if !customSelectedInterests.isEmpty {
@@ -766,19 +766,20 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
             if customContainsSpaces { characterPolicies.append(.ContainsSpaces) }
             
             if let userProfile = userProfile {
-                customPassword = Password(passphraseWithWordCount: cSRandomNumber(from: 3, to: 5),
-                                               forPolicies: characterPolicies,
-                                               withMinLength: customPassword.minLength,
-                                               withMaxLength: customPassword.maxLength,
-                                               withInterests: customSelectedInterests,
-                                               usingPreferredWords: (defaults.bool(forKey: "Feature.Personalization.Intelligence") ?
-                                                                     userProfile.preferredWords :
-                                                                        [:]))
+                customPassword.wordCount = cSRandomNumber(from: 3, to: 5)
+                customPassword.policies = characterPolicies
+                customPassword.minLength = customCharacterCount
+                customPassword.maxLength = customCharacterCount
+                customPassword.regeneratePassphrase(withInterests: customSelectedInterests,
+                                                    usingPreferredWords: defaults.bool(forKey: "Feature.Personalization.Intelligence") ?
+                                                    userProfile.preferredWords :
+                                                        [:])
             } else {
-                customPassword = Password(passphraseWithWordCount: cSRandomNumber(from: 3, to: 5),
-                                               forPolicies: characterPolicies,
-                                               withMinLength: customPassword.minLength,
-                                               withMaxLength: customPassword.maxLength)
+                customPassword.wordCount = cSRandomNumber(from: 3, to: 5)
+                customPassword.policies = characterPolicies
+                customPassword.minLength = customCharacterCount
+                customPassword.maxLength = customCharacterCount
+                customPassword.regeneratePassphrase()
             }
         default: break
         }
