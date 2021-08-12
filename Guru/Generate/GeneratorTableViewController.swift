@@ -711,6 +711,10 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
                 log("One or more conditions not met, no interest based transformation applied.")
             }
             
+            if customPassword.generated.rangeOfCharacter(from: CharacterSet.symbols.union(CharacterSet.punctuationCharacters)) != nil {
+                customPassword.transform(withFrequentCharacters: symbolFrequency)
+            }
+            
         default: break
         }
         updatePasswordCell()
