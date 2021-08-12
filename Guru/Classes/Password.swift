@@ -14,7 +14,7 @@ public class Password: NSObject {
     public var maxLength: Int = 16
     public var policies: [PasswordCharacterPolicy] = [.ContainsUppercase, .ContainsLowercase, .ContainsNumbers, .ContainsBasicSymbols]
     
-    private var wordCount: Int = 1
+    public var wordCount: Int = 1
     
     // MARK: Initializers
     
@@ -93,7 +93,13 @@ public class Password: NSObject {
                 
                 // Randomly make a word in the array a preferred word
                 if !preferredWords.isEmpty && (cSRandomNumber(to: 10) >= 3) {
-                    wordsToInclude[cSRandomNumber(to: wordsToInclude.count)] = preferredWords.randomElement()!.key
+                    let sortedPreferredWords = userProfile?.preferredWords.sorted(by: { a, b in
+                        return a.value >= b.value
+                    })
+                    let wordSelected: String = (cSRandomNumber(to: 10) >= 3 ?
+                                                sortedPreferredWords!.prefix(upTo: 10).randomElement()!.key :
+                                                    sortedPreferredWords!.randomElement()!.key)
+                    wordsToInclude[cSRandomNumber(to: wordsToInclude.count)] = wordSelected
                 }
                 
                 // Randomly capitalize first letter of word

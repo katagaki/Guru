@@ -90,6 +90,7 @@
 "UseWebsiteIcon" = "ウェブサイトのアイコンを使用";
 "Optional" = "（任意）";
 "GettingWebsiteIcon" = "アイコンを読み込み中";
+"Saving" = "アカウントを保存中";
 "WebsiteIconIsLongRunning" = "アイコンの読み込みは時間がかかる場合、キャンセルすることができます。";
 "AccountNameRequiredTitle" = "アカウント名が必要です";
 "AccountNameRequiredText" = "アカウント名を入力してからもう一度試してください。";
@@ -171,7 +172,7 @@
 "Debug" = "システムオプション";
 "ThirdPartyLibraries" = "著作権情報";
 "LockApp" = "画面をロック";
-"Version" = "バージョン@$1、ビルド@$2（ベータ版）";
+"Version" = "バージョン@$1、ビルド@$2";
 
 /* Profile */
 "ProfileExplainer" = "様々な個人情報を提供すると、作成したパスワードはその情報を使い、パソナライズすることができます。提供された情報は、いつでもこの画面で編集したり削除したりすることができます。\n\nお客様の個人情報はこの端末外に送ったりサーバーに保管したりすることはありません。";

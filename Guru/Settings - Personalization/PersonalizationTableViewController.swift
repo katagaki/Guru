@@ -26,7 +26,7 @@ class PersonalizationTableViewController: UITableViewController {
         switch section {
         case 0: return 1
         case 1: return 1
-        case 2: return (defaults.bool(forKey: "Feature.Personalization") ? 4 : 0)
+        case 2: return (defaults.bool(forKey: "Feature.Personalization") ? 3 : 0)
         case 3: return 1
         default: return 0
         }
@@ -68,16 +68,16 @@ class PersonalizationTableViewController: UITableViewController {
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "OptionCell")!
             switch indexPath.row {
+//            case 0:
+//                cell.textLabel?.text = NSLocalizedString("PersonalInformation", comment: "Personalization")
+//                cell.accessoryType = (defaults.bool(forKey: "Feature.Personalization.ProfileInfo") ? .checkmark : .none)
             case 0:
-                cell.textLabel?.text = NSLocalizedString("PersonalInformation", comment: "Personalization")
-                cell.accessoryType = (defaults.bool(forKey: "Feature.Personalization.ProfileInfo") ? .checkmark : .none)
-            case 1:
                 cell.textLabel?.text = NSLocalizedString("InterestsTopics", comment: "Personalization")
                 cell.accessoryType = (defaults.bool(forKey: "Feature.Personalization.Interests") ? .checkmark : .none)
-            case 2:
+            case 1:
                 cell.textLabel?.text = NSLocalizedString("ExistingPasswords", comment: "Personalization")
                 cell.accessoryType = (defaults.bool(forKey: "Feature.Personalization.Habits") ? .checkmark : .none)
-            case 3:
+            case 2:
                 cell.textLabel?.text = NSLocalizedString("AutomaticallyLearnedKnowledge", comment: "Personalization")
                 cell.accessoryType = (defaults.bool(forKey: "Feature.Personalization.Intelligence") ? .checkmark : .none)
             default: break

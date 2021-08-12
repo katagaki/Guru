@@ -9,11 +9,17 @@ import UIKit
 
 class ManageIntelligenceTableViewController: UITableViewController {
     
+    var sortedKeys: [String] = []
+    
     // MARK: UIViewController
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        if let userProfile = userProfile {
+            sortedKeys = userProfile.preferredWords.keys.sorted(by: <)
+        }
         
         // Localization
         navigationItem.title = NSLocalizedString("ManageKnowledge", comment: "Personalization")
@@ -24,7 +30,7 @@ class ManageIntelligenceTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 0: if let userProfile = userProfile { return userProfile.preferredWords.count } else { return 0 }
+        case 0: if let userProfile = userProfile { return sortedKeys.count } else { return 0 }
         case 1: return 1
         default: return 0
         }
@@ -54,8 +60,8 @@ class ManageIntelligenceTableViewController: UITableViewController {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCell")!
             if let userProfile = userProfile {
-                let numberOfTimesUsed: Int = Array(userProfile.preferredWords.values)[indexPath.row]
-                cell.textLabel!.text = Array(userProfile.preferredWords.keys)[indexPath.row]
+                let numberOfTimesUsed: Int = userProfile.preferredWords[sortedKeys[indexPath.row]]!
+                cell.textLabel!.text = sortedKeys[indexPath.row]
                 cell.detailTextLabel!.text = (numberOfTimesUsed > 1 ? NSLocalizedString("HistoricallyUsedWordSubtitles", comment: "Personalization").replacingOccurrences(of: "@$1", with: String(numberOfTimesUsed)) : NSLocalizedString("HistoricallyUsedWordSubtitle", comment: "Personalization").replacingOccurrences(of: "@$1", with: String(numberOfTimesUsed)))
             }
             return cell
@@ -102,7 +108,8 @@ class ManageIntelligenceTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete, let userProfile = userProfile {
-            userProfile.preferredWords.removeValue(forKey: Array(userProfile.preferredWords.keys)[indexPath.row])
+            userProfile.preferredWords.removeValue(forKey: sortedKeys[indexPath.row])
+            sortedKeys.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }

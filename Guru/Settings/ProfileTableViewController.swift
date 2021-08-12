@@ -388,8 +388,8 @@ class ProfileTableViewController: UITableViewController, HandlesTextField {
                 switch indexPath.row {
                 case 0: fullName = text
                 case 1: region = text
-                case 3 + languages.count: company = text
-                case 4 + languages.count: school = text
+                case 4 + languages.count: company = text
+                case 5 + languages.count: school = text
                 default: break
                 }
             default: break

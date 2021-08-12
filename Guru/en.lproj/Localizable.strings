@@ -90,6 +90,7 @@
 "UseWebsiteIcon" = "Use Website Icon";
 "Optional" = " (Optional)";
 "GettingWebsiteIcon" = "Getting Website Icon";
+"Saving" = "Saving Login";
 "WebsiteIconIsLongRunning" = "If this is taking a long time, you can cancel and try again.";
 "AccountNameRequiredTitle" = "Name Required";
 "AccountNameRequiredText" = "You will need to enter a name for this login.";
@@ -171,7 +172,7 @@
 "Debug" = "Under The Hood";
 "ThirdPartyLibraries" = "Third-Party Libraries";
 "LockApp" = "Lock App";
-"Version" = "Version @$1 Build @$2 (Beta)";
+"Version" = "Version @$1 Build @$2";
 
 /* Profile */
 "ProfileExplainer" = "You can provide additional information to Guru to improve your password suggestions. You are in control of this information, and you can tap Edit on the top right to edit/remove any of the information shown below.\n\nThis information is stored on your device and is never sent to a server.";

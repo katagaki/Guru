@@ -155,6 +155,9 @@ class NewLoginTableViewController: UITableViewController, ReceivesQRCodeResult, 
                             login.setAccountIcon(newIcon: (self.tableView.cellForRow(at: IndexPath(row: 0, section: 3)) as! IconCarousellCell).selectedIcon)
                         }
                     }
+                    DispatchQueue.main.async {
+                        self.navigationItem.title = NSLocalizedString("Saving", comment: "Logins")
+                    }
                     userProfile.add(login: login)
                     analyzePasswordCharacters()
                     analyzePasswordWords()
