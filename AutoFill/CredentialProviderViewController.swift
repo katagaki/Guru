@@ -189,19 +189,28 @@ class CredentialProviderViewController: ASCredentialProviderViewController, UITa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.section {
-        case 0:
-            let passwordCredential = ASPasswordCredential(user: scopedLogins[indexPath.row].username ?? "",
-                                                          password: scopedLogins[indexPath.row].password ?? "")
-            self.extensionContext.completeRequest(withSelectedCredential: passwordCredential, completionHandler: nil)
-        case 1:
+        if scopedLogins.count == 0 {
             if let userProfile = userProfile {
                 let passwordCredential = ASPasswordCredential(user: userProfile.logins[indexPath.row].username ?? "",
                                                               password: userProfile.logins[indexPath.row].password ?? "")
                 self.extensionContext.completeRequest(withSelectedCredential: passwordCredential, completionHandler: nil)
             }
-        default: break
+        } else {
+            switch indexPath.section {
+            case 0:
+                let passwordCredential = ASPasswordCredential(user: scopedLogins[indexPath.row].username ?? "",
+                                                              password: scopedLogins[indexPath.row].password ?? "")
+                self.extensionContext.completeRequest(withSelectedCredential: passwordCredential, completionHandler: nil)
+            case 1:
+                if let userProfile = userProfile {
+                    let passwordCredential = ASPasswordCredential(user: userProfile.logins[indexPath.row].username ?? "",
+                                                                  password: userProfile.logins[indexPath.row].password ?? "")
+                    self.extensionContext.completeRequest(withSelectedCredential: passwordCredential, completionHandler: nil)
+                }
+            default: break
+            }
         }
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
