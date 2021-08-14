@@ -60,9 +60,11 @@ class ManageIntelligenceTableViewController: UITableViewController {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCell")!
             if let userProfile = userProfile {
-                let numberOfTimesUsed: Int = userProfile.preferredWords[sortedKeys[indexPath.row]]!
-                cell.textLabel!.text = sortedKeys[indexPath.row]
-                cell.detailTextLabel!.text = (numberOfTimesUsed > 1 ? NSLocalizedString("HistoricallyUsedWordSubtitles", comment: "Personalization").replacingOccurrences(of: "@$1", with: String(numberOfTimesUsed)) : NSLocalizedString("HistoricallyUsedWordSubtitle", comment: "Personalization").replacingOccurrences(of: "@$1", with: String(numberOfTimesUsed)))
+                if let value = userProfile.preferredWords[sortedKeys[indexPath.row]] {
+                    let numberOfTimesUsed: Int = value
+                    cell.textLabel!.text = sortedKeys[indexPath.row]
+                    cell.detailTextLabel!.text = (numberOfTimesUsed > 1 ? NSLocalizedString("HistoricallyUsedWordSubtitles", comment: "Personalization").replacingOccurrences(of: "@$1", with: String(numberOfTimesUsed)) : NSLocalizedString("HistoricallyUsedWordSubtitle", comment: "Personalization").replacingOccurrences(of: "@$1", with: String(numberOfTimesUsed)))
+                }
             }
             return cell
         case 1:
@@ -89,6 +91,7 @@ class ManageIntelligenceTableViewController: UITableViewController {
                 if let userProfile = userProfile {
                     userProfile.preferredWords.removeAll()
                 }
+                self.sortedKeys.removeAll()
                 tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
                 let confirmationAlert = UIAlertController(title: NSLocalizedString("ConfirmationOfKnowledgeDataDeletionTitle", comment: "Personalization"), message: NSLocalizedString("ConfirmationOfKnowledgeDataDeletionText", comment: "Personalization"), preferredStyle: .alert)
                 confirmationAlert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "General"), style: .default, handler: nil))
