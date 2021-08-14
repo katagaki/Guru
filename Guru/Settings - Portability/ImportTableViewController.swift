@@ -17,7 +17,7 @@ class ImportTableViewController: UITableViewController {
         super.viewDidLoad()
         
         // Localization
-        navigationItem.title = NSLocalizedString("ImportLogins", comment: "Views")
+        navigationItem.title = NSLocalizedString("ImportView", comment: "Views")
         
     }
     

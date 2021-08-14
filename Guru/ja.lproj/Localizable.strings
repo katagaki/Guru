@@ -47,7 +47,7 @@
 "Personalization" = "パーソナライズ";
 "iCloudSync" = "iCloud同期";
 "ImportExport" = "インポート/エクスポート";
-"ImportLogins" = "アカウントをインポート";
+"ImportView" = "データをインポート";
 "ExportLogins" = "アカウントをエクスポート";
 "AppLock" = "画面ロック";
 "BreachDetection" = "情報漏洩検出";

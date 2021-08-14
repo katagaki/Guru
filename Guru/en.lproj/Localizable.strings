@@ -47,7 +47,7 @@
 "Personalization" = "Personalization";
 "iCloudSync" = "iCloud Sync";
 "ImportExport" = "Import/Export";
-"ImportLogins" = "Import Logins";
+"ImportView" = "Import Data";
 "ExportLogins" = "Export Logins";
 "AppLock" = "App Lock";
 "BreachDetection" = "Breach Detection";
