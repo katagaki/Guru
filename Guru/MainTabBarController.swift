@@ -113,12 +113,14 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate, Fini
                     if let navigationViewController = selectedViewController as? UINavigationController,
                        let tableViewController = navigationViewController.viewControllers[0] as? UITableViewController {
                         if navigationViewController.viewControllers.last == tableViewController {
-                            log("\(tableViewController.className) is scrolling to top.")
-                            tableViewController.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+                            if tableViewController.tableView.numberOfSections > 0, tableViewController.tableView.numberOfRows(inSection: 0) > 0 {
+                                log("\(tableViewController.className) is scrolling to top.")
+                                tableViewController.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+                            }
                             hasScrolledToTop = true
                         } else {
                             log("\(navigationViewController.className) is going back to the first view controller.")
-                            navigationViewController.popViewController(animated: true)
+                            navigationViewController.popToRootViewController(animated: true)
                             hasScrolledToTop = false
                         }
                         numberOfTimesSameIndexTapped += 1
