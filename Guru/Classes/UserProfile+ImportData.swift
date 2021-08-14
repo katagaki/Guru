@@ -82,4 +82,33 @@ extension UserProfile {
         
     }
     
+    func importFacebook(data: FacebookData, progressReporter: ReportsProgress? = nil) -> (success: Bool, notImportedCount: Int) {
+        
+        var currentCount: Int = 0
+        var dataPointCount: Int = 0
+        
+        if data.inferred_topics_v2 != nil { dataPointCount += data.inferred_topics_v2!.count }
+        
+        if let inferredTopics = data.inferred_topics_v2 {
+            for topic in inferredTopics {
+                if let newInterest = builtInInterests.first(where: { builtInInterest in
+                    return topic.lowercased() == builtInInterest.name.lowercased() || builtInInterest.words.contains(where: { word in
+                        return word.lowercased() == topic.lowercased()
+                    })
+                }),
+                   !self.interests.contains(newInterest.name.lowercased()) {
+                    log("Appending \(topic.lowercased()) to interests.")
+                    self.interests.append(newInterest.name.lowercased())
+                }
+                currentCount += 1
+                if let progressReporter = progressReporter {
+                    progressReporter.updateProgress(progress: Double(currentCount), total: Double(dataPointCount))
+                }
+            }
+        }
+        
+        return (true, dataPointCount - currentCount)
+        
+    }
+    
 }

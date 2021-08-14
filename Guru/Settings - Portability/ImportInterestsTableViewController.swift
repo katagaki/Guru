@@ -13,6 +13,8 @@ class ImportInterestsTableViewController: UITableViewController, SFSafariViewCon
     
     var guideCode: String = ""
     var filename: String = ""
+    var fileType: UTType = .plainText
+    var supportPageURL: String = ""
     
     var floatingActivityView: UIVisualEffectView = UIVisualEffectView()
     let floatingActivityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(style: .large)
@@ -91,20 +93,11 @@ class ImportInterestsTableViewController: UITableViewController, SFSafariViewCon
         if !isImporting {
             switch indexPath.section {
             case 0:
-                var supportPageURL: String = ""
-                switch guideCode {
-                case "Google": supportPageURL = "https://takeout.google.com"
-                case "Microsoft": supportPageURL = "https://account.microsoft.com/privacy/download-data"
-                case "Twitter": supportPageURL = "https://twitter.com/settings/download_your_data"
-                case "Facebook": supportPageURL = "https://www.facebook.com/dyi"
-                case "Instagram": supportPageURL = "https://www.instagram.com/download/request"
-                default: supportPageURL = "https://mypwd.guru/support"
-                }
                 let safariViewController = SFSafariViewController(url: URL(string: supportPageURL)!)
                 safariViewController.delegate = self
                 present(safariViewController, animated: true)
             case 1:
-                let documentTypes = UTType.types(tag: "js", tagClass: .filenameExtension, conformingTo: .javaScript)
+                let documentTypes = UTType.types(tag: filename.components(separatedBy: ".").last!, tagClass: .filenameExtension, conformingTo: fileType)
                 let documentPickerController = UIDocumentPickerViewController(forOpeningContentTypes: documentTypes)
                 documentPickerController.delegate = self
                 documentPickerController.isModalInPresentation = true
@@ -132,9 +125,28 @@ class ImportInterestsTableViewController: UITableViewController, SFSafariViewCon
                 } completion: { _ in
                     UIApplication.shared.isIdleTimerDisabled = true
                     DispatchQueue.global(qos: .background).async {
-                        let importFromTwitterResult = userProfile.importTwitter(data: TwitterData(fromContents: contents), progressReporter: self)
-                        if importFromTwitterResult.success {
-                            let importAlertText: String = (importFromTwitterResult.notImportedCount == 0 ? NSLocalizedString("ImportInterestsCompletedText", comment: "ImportInterests").replacingOccurrences(of: "@$", with: String(self.importCount)) : NSLocalizedString("ImportInterestsIncompleteText", comment: "ImportInterests").replacingOccurrences(of: "@$1", with: String(self.importCount)).replacingOccurrences(of: "@$2", with: String(importFromTwitterResult.notImportedCount)))
+                        var importSuccessful: Bool = false
+                        var notImportedCount: Int = 0
+                        var importAlertText: String = ""
+                        
+                        switch self.guideCode {
+                        case "Twitter":
+                            let importFromTwitterResult = userProfile.importTwitter(data: TwitterData(fromContents: contents), progressReporter: self)
+                            importSuccessful = importFromTwitterResult.success
+                            notImportedCount = importFromTwitterResult.notImportedCount
+                        case "Facebook":
+                            if let facebookData = try? JSONDecoder().decode(FacebookData.self, from: contents.data(using: .utf8)!) {
+                                let importFromFacebookResult = userProfile.importFacebook(data: facebookData, progressReporter: self)
+                                importSuccessful = importFromFacebookResult.success
+                                notImportedCount = importFromFacebookResult.notImportedCount
+                            }
+                            
+                        default: break
+                        }
+                        
+                        importAlertText = (notImportedCount == 0 ? NSLocalizedString("ImportInterestsCompletedText", comment: "ImportInterests").replacingOccurrences(of: "@$", with: String(self.importCount)) : NSLocalizedString("ImportInterestsIncompleteText", comment: "ImportInterests").replacingOccurrences(of: "@$1", with: String(self.importCount)).replacingOccurrences(of: "@$2", with: String(notImportedCount)))
+                        
+                        if importSuccessful {
                             DispatchQueue.main.async {
                                 UIView.animate(withDuration: 0.25, delay: 0.0, options: []) {
                                     self.floatingActivityView.layer.opacity = 0.0
