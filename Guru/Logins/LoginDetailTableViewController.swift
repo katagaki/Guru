@@ -292,7 +292,7 @@ class LoginDetailTableViewController: UITableViewController, SFSafariViewControl
                     case 1:
                         let cell = tableView.dequeueReusableCell(withIdentifier: "PasswordCell") as! DetailWithCopyCell
                         cell.titleLabel.text = NSLocalizedString("Password", comment: "Logins")
-                        cell.contentLabel.text = login.password
+                        cell.contentLabel.attributedText = attributedPassword(login.password!)
                         cell.contentLabel.font = UIFontMetrics(forTextStyle: .largeTitle).scaledFont(for: UIFont(name: "Menlo", size: 16.0)!)
                         cell.buttonHandler = self
                         return cell
