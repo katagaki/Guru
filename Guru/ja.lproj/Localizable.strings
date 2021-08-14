@@ -274,12 +274,12 @@
 "OpenDataDownloadPage" = "ダウンロードページを開く";
 "SelectInterestsFile" = "②　ファイルを選択";
 "SelectInterestsFileExplainer" = "データのアーカイブをダウンロードすると、アーカイブを解凍してから、「ファイルを選択...」をタップし、「@$」を選択します。";
-"ImportingInterestsProgress" = "個人情報を処理中... @$";
+"ImportingInterestsProgress" = "データを処理中... @$";
 "ImportInterestsCompletedTitle" = "インポート完成";
-"ImportInterestsCompletedText" = "@$個の個人情報は正常にインポートされました。";
-"ImportInterestsIncompleteText" = "@$1個の個人情報は正常にインポートされました。@$2個の情報は既にあるため、インポートされませんでした。";
+"ImportInterestsCompletedText" = "@$個のデータは正常にインポートされました。";
+"ImportInterestsIncompleteText" = "@$1個のデータは正常にインポートされました。@$2個のデータは既にあるため、インポートされませんでした。";
 "ImportInterestsErrorTitle" = "インポートエラー";
-"ImportInterestsErrorText" = "インポート中、エラーが発生しました。@$個の個人情報は正常にインポートされました。";
+"ImportInterestsErrorText" = "インポート中、エラーが発生しました。@$個のデータは正常にインポートされました。";
 
 /* AppLock */
 "AppLockFaceIDExplainer" = "Face IDがiOSにより禁止されるまたはマスクを着用する場合、パスコードを求めます。Face IDに登録されている顔が変わっても、データにアクセスすることができます。";

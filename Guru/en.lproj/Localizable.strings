@@ -274,12 +274,12 @@
 "OpenDataDownloadPage" = "Open Data Download Page";
 "SelectInterestsFile" = "2. Select Interests File";
 "SelectInterestsFileExplainer" = "Once you have obtained an archive of your data, extract its contents, then tap 'Select File...' below and select the file named '@$'.";
-"ImportingInterestsProgress" = "Processing interests... @$";
+"ImportingInterestsProgress" = "Processing data... @$";
 "ImportInterestsCompletedTitle" = "Import Complete";
-"ImportInterestsCompletedText" = "Processed a total of @$ interest(s).";
-"ImportInterestsIncompleteText" = "Processed a total of @$1 interest(s). @$2 interest(s) already exist and were not processed.";
+"ImportInterestsCompletedText" = "Processed a total of @$ item(s).";
+"ImportInterestsIncompleteText" = "Processed a total of @$1 item(s). @$2 item(s) already exist and were not processed.";
 "ImportInterestsErrorTitle" = "Import Error";
-"ImportInterestsErrorText" = "An error occurred while importing your interests. @$ interest(s) were successfully imported.";
+"ImportInterestsErrorText" = "An error occurred while importing your data. @$ item(s) were successfully imported.";
 
 /* AppLock */
 "AppLockFaceIDExplainer" = "If you are wearing a mask, or if Face ID is disabled, iOS will ask you for your passcode. Your logins remain accessible even if you set up Face ID again.";
