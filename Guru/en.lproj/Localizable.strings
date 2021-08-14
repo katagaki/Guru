@@ -306,8 +306,6 @@
 "DetectBreachedPasswords" = "Detect Breached Passwords";
 
 /* UnderTheHood */
-"UnderTheHoodExplainer" = "See what's happening behind the scenes.";
-"Logging" = "Logging";
 "AppLogs" = "App Logs";
 
 /* Onboarding */

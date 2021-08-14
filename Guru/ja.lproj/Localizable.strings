@@ -306,8 +306,6 @@
 "DetectBreachedPasswords" = "漏洩されたパスワードを検出";
 
 /* UnderTheHood */
-"UnderTheHoodExplainer" = "システムの作動を見ることができます。";
-"Logging" = "ロギング";
 "AppLogs" = "アプリログ";
 
 /* Onboarding */

@@ -157,7 +157,6 @@
 		E4F344FC26B1581900ABAC7A /* ZipArchive in Frameworks */ = {isa = PBXBuildFile; productRef = E4F344FB26B1581900ABAC7A /* ZipArchive */; };
 		E4F9D2A526952E3800867B42 /* BreachDetectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F9D2A426952E3800867B42 /* BreachDetectionTableViewController.swift */; };
 		E4F9D2A7269586C500867B42 /* AlertsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F9D2A6269586C500867B42 /* AlertsNavigationController.swift */; };
-		E4F9D2A92695A1AD00867B42 /* SystemOptionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F9D2A82695A1AD00867B42 /* SystemOptionsTableViewController.swift */; };
 		E4F9D2AB2695ABAB00867B42 /* AppLogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F9D2AA2695ABAB00867B42 /* AppLogsViewController.swift */; };
 		E4F9D2B22695B26F00867B42 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F9D2B12695B26F00867B42 /* Data.swift */; };
 		E4F9D2B42695BE9E00867B42 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4F9D2B32695BE9E00867B42 /* CloudKit.framework */; };
@@ -324,7 +323,6 @@
 		E4F9D2A22695283200867B42 /* Sequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sequence.swift; sourceTree = "<group>"; };
 		E4F9D2A426952E3800867B42 /* BreachDetectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreachDetectionTableViewController.swift; sourceTree = "<group>"; };
 		E4F9D2A6269586C500867B42 /* AlertsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsNavigationController.swift; sourceTree = "<group>"; };
-		E4F9D2A82695A1AD00867B42 /* SystemOptionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemOptionsTableViewController.swift; sourceTree = "<group>"; };
 		E4F9D2AA2695ABAB00867B42 /* AppLogsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogsViewController.swift; sourceTree = "<group>"; };
 		E4F9D2B12695B26F00867B42 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		E4F9D2B32695BE9E00867B42 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
@@ -529,6 +527,7 @@
 				E4C3CCC3269045B60020942F /* iCloudSyncTableViewController.swift */,
 				E4F9D2B72695C70C00867B42 /* AppLockTableViewController.swift */,
 				E4F9D2A426952E3800867B42 /* BreachDetectionTableViewController.swift */,
+				E4F9D2AA2695ABAB00867B42 /* AppLogsViewController.swift */,
 				E4F9D2C026960E5D00867B42 /* ThirdPartyLibrariesViewController.swift */,
 			);
 			path = Settings;
@@ -571,7 +570,6 @@
 				E4E87C7C268CF54000CD6832 /* Settings */,
 				E43454A426C0E3CF0019B5F6 /* Settings - Personalization */,
 				E4F9D2B92695E70C00867B42 /* Settings - Portability */,
-				E4F9D2AC2695ABB800867B42 /* Settings - System Options */,
 				E4593CE8266A701D001DF782 /* Onboarding */,
 				E4593CE5266A538D001DF782 /* Protocols */,
 				E46AFF072661433F001F42EB /* Extensions */,
@@ -627,15 +625,6 @@
 				E4ED9FE92660AAF1003919C7 /* AuthenticationServices.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		E4F9D2AC2695ABB800867B42 /* Settings - System Options */ = {
-			isa = PBXGroup;
-			children = (
-				E4F9D2A82695A1AD00867B42 /* SystemOptionsTableViewController.swift */,
-				E4F9D2AA2695ABAB00867B42 /* AppLogsViewController.swift */,
-			);
-			path = "Settings - System Options";
 			sourceTree = "<group>";
 		};
 		E4F9D2B92695E70C00867B42 /* Settings - Portability */ = {
@@ -905,7 +894,6 @@
 				E4F9D2AB2695ABAB00867B42 /* AppLogsViewController.swift in Sources */,
 				E4EABA0C2657F39C0054F310 /* RoundedImageView.swift in Sources */,
 				E4E87C79268CEEEA00CD6832 /* ReloadsUserProfileData.swift in Sources */,
-				E4F9D2A92695A1AD00867B42 /* SystemOptionsTableViewController.swift in Sources */,
 				E46BB5072691E13400BEE0AA /* OnboardingViewController.swift in Sources */,
 				E4DF796326AC932900C3FB5C /* DatePickerCell.swift in Sources */,
 				E4EABA5A2659A01C0054F310 /* ProfileHeaderCell.swift in Sources */,
