@@ -129,7 +129,6 @@ public class Password: NSObject {
                 if policies.contains(.ContainsNumbers) {
                     newPassword = leetified(newPassword)
                 }
-                print("\(newPassword) -> \(newPassword.count)")
                 
                 queue.async(flags: .barrier) {
                     if self.acceptability(ofPassword: newPassword) && newPassword.count >= self.minLength && newPassword.count <= self.maxLength {
@@ -243,20 +242,30 @@ public class Password: NSObject {
                 currentTries += 1
                 newPassword = generated
                 
-                // Get word and index to insert into the password
-                var selectedWord: String = availableWords[cSRandomNumber(to: availableWords.count)]
-                let indexToInsert: Int = cSRandomNumber(from: 0, to: generated.count - (selectedWord.count / 2))
+                let averageLengthOfInterestWords: Double = Double(interest.words.reduce(0) { partialResult, word in
+                    return partialResult + word.count
+                }) / Double(interest.words.count)
+                let maxNumberOfWords: Int = Int(Double(newPassword.count) / averageLengthOfInterestWords)
+                let numberOfWordsToAdd: Int = cSRandomNumber(from: 1, to: maxNumberOfWords)
                 
-                // Randomly capitalize first letter of word
-                if policies.contains(.ContainsUppercase) && cSCoinFlip() {
-                    selectedWord = selectedWord.capitalized
-                }
-                
-                // Insert word into password without changing length
-                for i: Int in indexToInsert..<newPassword.count {
-                    if i < indexToInsert + selectedWord.count {
-                        newPassword = newPassword.replacingCharacter(in: i, to: selectedWord.character(in: i - indexToInsert))
+                for _ in 0..<numberOfWordsToAdd {
+                    
+                    // Get word and index to insert into the password
+                    var selectedWord: String = availableWords[cSRandomNumber(to: availableWords.count)]
+                    let indexToInsert: Int = cSRandomNumber(from: 0, to: generated.count - (selectedWord.count / 2))
+                    
+                    // Randomly capitalize first letter of word
+                    if policies.contains(.ContainsUppercase) && cSCoinFlip() {
+                        selectedWord = selectedWord.capitalized
                     }
+                    
+                    // Insert word into password without changing length
+                    for i: Int in indexToInsert..<newPassword.count {
+                        if i < indexToInsert + selectedWord.count {
+                            newPassword = newPassword.replacingCharacter(in: i, to: selectedWord.character(in: i - indexToInsert))
+                        }
+                    }
+                    
                 }
                 
             } while (!acceptability(ofPassword: newPassword) && !similarity(ofPassword: newPassword) && currentTries < maxTries)
