@@ -47,7 +47,9 @@ public class UserProfile: NSObject {
     
     // Automatically learned behavior
     public var interests: [String] = [] {
-        didSet { setValue(interests, forKey: "profiles_interests", hasAuth: false, ignoresFunction: openingFromKeychain) }
+        didSet { interests = interests.sorted()
+            setValue(interests.sorted(), forKey: "profiles_interests", hasAuth: false, ignoresFunction: openingFromKeychain)
+        }
     }
     public var preferredWords: [String:Int] = [:] {
         didSet { setValue(preferredWords, forKey: "profile_preferredWords", hasAuth: false, ignoresFunction: openingFromKeychain) }
