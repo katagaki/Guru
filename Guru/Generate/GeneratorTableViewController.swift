@@ -50,8 +50,13 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
         super.viewDidLoad()
         
         basicPassword.regeneratePassphrase()
-        enhancedPassword.minLength = Int(averagePasswordLength <= 18 ? averagePasswordLength : averagePasswordLength - 10)
-        enhancedPassword.maxLength = Int(averagePasswordLength + 10)
+        if averagePasswordLength != 0 {
+            enhancedPassword.minLength = Int(averagePasswordLength <= 18 ? averagePasswordLength : averagePasswordLength - 10)
+            enhancedPassword.maxLength = Int(averagePasswordLength + 10)
+        } else {
+            enhancedPassword.minLength = 12
+            enhancedPassword.maxLength = 20
+        }
         if let userProfile = userProfile {
             enhancedPassword.regeneratePassphrase(withInterests: enhancedSelectedInterests,
                                                   usingPreferredWords: defaults.bool(forKey: "Feature.Personalization.Intelligence") ?

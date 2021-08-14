@@ -58,17 +58,15 @@ public class Password: NSObject {
     public func regeneratePassphrase(withInterests interests: [Interest] = [], usingPreferredWords preferredWords: [String:Int] = [:]) {
         
         let queue = DispatchQueue(label: "Password.regeneratePassphrase", attributes: .concurrent)
-        let minWordCount = 3 + (minLength / 10)
-        let maxWordCount = 3 + (maxLength / 10)
+        let wordCount = cSRandomNumber(from: 2 + (minLength / 10), to: 3 + (maxLength / 10))
+        let wordMinLength = ((minLength - (wordCount - 1)) / wordCount) + 1
+        let wordMaxLength = ((maxLength - (wordCount - 1)) / wordCount)
         var validPasswords: [String] = []
         var passwordIterationCount: Int = 0
+
+        log("Beginning passphrase generation with \(wordCount) words between \(wordMinLength) to \(wordMaxLength) characters.")
         
-        log("Begin passphrase generation.")
         repeat {
-            let wordCount = cSRandomNumber(from: minWordCount, to: maxWordCount)
-            let wordMinLength = ((minLength - (wordCount - 1)) / wordCount) - 1
-            let wordMaxLength = ((maxLength - (wordCount - 1) / wordCount)) - 1
-            
             // Always concurrently generate 4 passwords for checking
             DispatchQueue.concurrentPerform(iterations: 16) { i in
                 
