@@ -28,6 +28,7 @@
 		E4281DAC2691FAF900949DAD /* NSMutableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4281DAB2691FAF900949DAD /* NSMutableAttributedString.swift */; };
 		E4281DAE2692076E00949DAD /* String+Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4281DAD2692076E00949DAD /* String+Character.swift */; };
 		E43454A626C0E3E30019B5F6 /* ManageIntelligenceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43454A526C0E3E30019B5F6 /* ManageIntelligenceTableViewController.swift */; };
+		E4449C8B26C7D4A50019E26A /* FacebookData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4449C8A26C7D4A50019E26A /* FacebookData.swift */; };
 		E44FA4B526B69D410010F9C7 /* PasswordTransformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44FA4B426B69D410010F9C7 /* PasswordTransformation.swift */; };
 		E44FA4B726B69DD70010F9C7 /* RunningSequences.plist in Resources */ = {isa = PBXBuildFile; fileRef = E44FA4B626B69DD70010F9C7 /* RunningSequences.plist */; };
 		E44FA4B926B6A4940010F9C7 /* PasswordAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44FA4B826B6A4940010F9C7 /* PasswordAnalysis.swift */; };
@@ -218,6 +219,7 @@
 		E4281DAB2691FAF900949DAD /* NSMutableAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedString.swift; sourceTree = "<group>"; };
 		E4281DAD2692076E00949DAD /* String+Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Character.swift"; sourceTree = "<group>"; };
 		E43454A526C0E3E30019B5F6 /* ManageIntelligenceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageIntelligenceTableViewController.swift; sourceTree = "<group>"; };
+		E4449C8A26C7D4A50019E26A /* FacebookData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookData.swift; sourceTree = "<group>"; };
 		E44FA4B426B69D410010F9C7 /* PasswordTransformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTransformation.swift; sourceTree = "<group>"; };
 		E44FA4B626B69DD70010F9C7 /* RunningSequences.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RunningSequences.plist; sourceTree = "<group>"; };
 		E44FA4B826B6A4940010F9C7 /* PasswordAnalysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordAnalysis.swift; sourceTree = "<group>"; };
@@ -463,6 +465,7 @@
 		E4CEAD2926A3D39B0067796E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				E4449C8A26C7D4A50019E26A /* FacebookData.swift */,
 				E45CBAA8268619D300644ADE /* Interest.swift */,
 				E4C3CCC9269068E70020942F /* KeychainItem.swift */,
 				E4593CCD2668F18B001DF782 /* Login.swift */,
@@ -843,6 +846,7 @@
 				E4DAB03226B19E7F00540892 /* Pwned.swift in Sources */,
 				E43454A626C0E3E30019B5F6 /* ManageIntelligenceTableViewController.swift in Sources */,
 				E4E87C75268CC6E600CD6832 /* IconCollectionViewCell.swift in Sources */,
+				E4449C8B26C7D4A50019E26A /* FacebookData.swift in Sources */,
 				E4EABA47265986960054F310 /* MainTabBarController.swift in Sources */,
 				E4C3CCC62690512F0020942F /* UITextContentType.swift in Sources */,
 				E4ED9FDE26609AC6003919C7 /* LoginDetailTableViewController.swift in Sources */,

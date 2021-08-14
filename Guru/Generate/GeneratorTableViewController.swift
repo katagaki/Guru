@@ -36,7 +36,6 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
     var customContainsSymbols: Bool = false
     var customContainsExtraSymbols: Bool = false
     var customContainsSpaces: Bool = false
-    var customCharacterCount: Int = 8
     var customSelectedInterests: [Interest] = []
     
     var basicPassword: Password = Password(forPolicies: [.ContainsUppercase, .ContainsLowercase, .ContainsNumbers, .ContainsBasicSymbols], withMinLength: 8, withMaxLength: 20)
@@ -50,7 +49,11 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
         super.viewDidLoad()
         
         basicPassword.regeneratePassphrase()
+        enhancedPassword.minLength = Int(averagePasswordLength <= 18 ? averagePasswordLength : averagePasswordLength - 10)
+        enhancedPassword.maxLength = Int(averagePasswordLength + 10)
         enhancedPassword.regeneratePassphrase()
+        customPassword.minLength = 8
+        customPassword.maxLength = 8
         customPassword.regenerate()
         
         // Configure floating password view
@@ -557,10 +560,6 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
                                                           image: UIImage(systemName: "ellipsis.rectangle")) { action in
                         self.regeneratePassword()
                     }
-                    let generatePassphraseAction = UIAction(title: NSLocalizedString("GenerateNewPassphrase", comment: "Generator"),
-                                                            image: UIImage(systemName: "text.book.closed")) { action in
-                        self.regeneratePassphrase()
-                    }
                     let transformPasswordAction = UIAction(title: NSLocalizedString("TransformPassword", comment: "Generator"),
                                                            image: UIImage(systemName: "wand.and.stars")) { action in
                         switch self.segmentControl.selectedSegmentIndex {
@@ -576,26 +575,19 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
                         self.updateSaveButton()
                         self.updateFloatingView()
                     }
-                    var children: [UIAction] = [generatePasswordAction]
+                    var children: [UIAction] = []
                     switch self.segmentControl.selectedSegmentIndex {
                     case 0:
-                        if self.basicPassword.maxLength >= 15 && (self.basicSelectedPolicyType != 3) {
-                            children.append(generatePassphraseAction)
-                        }
+                        children.append(generatePasswordAction)
                         if self.basicPassword.generated != "" {
                             children.append(transformPasswordAction)
                         }
                     case 1:
-                        if self.enhancedPassword.maxLength >= 15 {
-                            children.append(generatePassphraseAction)
-                        }
+                        children.append(generatePasswordAction)
                         if self.enhancedPassword.generated != "" {
                             children.append(transformPasswordAction)
                         }
                     case 2:
-                        if self.customPassword.maxLength >= 15 && self.customContainsLowercase {
-                            children.append(generatePassphraseAction)
-                        }
                         if self.customPassword.generated != "" {
                             children.append(transformPasswordAction)
                         }
@@ -645,24 +637,23 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
     // MARK: HandlesCellSliderValueChange
     
     func handleCellValueChange(value: Int, label: UILabel) {
-        if value != customCharacterCount {
-            customCharacterCount = value
-            if customCharacterCount >= 8 && customCharacterCount < 18 {
-                label.text = NSLocalizedString("LengthAverage", comment: "Generator")
-                label.textColor = .systemOrange
-            } else if customCharacterCount >= 18 && customCharacterCount < 24 {
-                label.text = NSLocalizedString("LengthModerate", comment: "Generator")
-                label.textColor = .systemYellow
-            } else if customCharacterCount >= 24 && customCharacterCount < 52 {
-                label.text = NSLocalizedString("LengthSecure", comment: "Generator")
-                label.textColor = .systemGreen
-            } else if customCharacterCount >= 52 {
-                label.text = NSLocalizedString("LengthVerySecure", comment: "Generator")
-                label.textColor = .systemBlue
-            } else {
-                label.text = NSLocalizedString("LengthNotSecure", comment: "Generator")
-                label.textColor = .systemRed
-            }
+        customPassword.minLength = value
+        customPassword.maxLength = value
+        if value >= 8 && value < 18 {
+            label.text = NSLocalizedString("LengthAverage", comment: "Generator")
+            label.textColor = .systemOrange
+        } else if value >= 18 && value < 24 {
+            label.text = NSLocalizedString("LengthModerate", comment: "Generator")
+            label.textColor = .systemYellow
+        } else if value >= 24 && value < 52 {
+            label.text = NSLocalizedString("LengthSecure", comment: "Generator")
+            label.textColor = .systemGreen
+        } else if value >= 52 {
+            label.text = NSLocalizedString("LengthVerySecure", comment: "Generator")
+            label.textColor = .systemBlue
+        } else {
+            label.text = NSLocalizedString("LengthNotSecure", comment: "Generator")
+            label.textColor = .systemRed
         }
     }
     
@@ -693,8 +684,6 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
             
             log("Generating custom password based on policies: \(characterPolicies).")
             customPassword.policies = characterPolicies
-            customPassword.minLength = customCharacterCount
-            customPassword.maxLength = customCharacterCount
             customPassword.regenerate()
             
             if let userProfile = userProfile, userProfile.interests.count > 0 {
@@ -737,7 +726,6 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
                     }
                 }
                 
-                basicPassword.wordCount = cSRandomNumber(from: 3, to: 5)
                 basicPassword.policies = basicPolicyGroups[basicSelectedPolicyType]
                 basicPassword.minLength = basicPolicyMinLengths[basicSelectedPolicyType]
                 basicPassword.maxLength = basicPolicyMaxLengths[basicSelectedPolicyType]
@@ -747,7 +735,6 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
                                                     [:])
                 
             } else {
-                basicPassword.wordCount = cSRandomNumber(from: 3, to: 5)
                 basicPassword.policies = basicPolicyGroups[basicSelectedPolicyType]
                 basicPassword.regenerate()
             }
@@ -770,19 +757,13 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
             if customContainsSpaces { characterPolicies.append(.ContainsSpaces) }
             
             if let userProfile = userProfile {
-                customPassword.wordCount = cSRandomNumber(from: 3, to: 5)
                 customPassword.policies = characterPolicies
-                customPassword.minLength = customCharacterCount
-                customPassword.maxLength = customCharacterCount
                 customPassword.regeneratePassphrase(withInterests: customSelectedInterests,
                                                     usingPreferredWords: defaults.bool(forKey: "Feature.Personalization.Intelligence") ?
                                                     userProfile.preferredWords :
                                                         [:])
             } else {
-                customPassword.wordCount = cSRandomNumber(from: 3, to: 5)
                 customPassword.policies = characterPolicies
-                customPassword.minLength = customCharacterCount
-                customPassword.maxLength = customCharacterCount
                 customPassword.regeneratePassphrase()
             }
         default: break

@@ -13,9 +13,7 @@ public class Password: NSObject {
     public var minLength: Int = 8
     public var maxLength: Int = 16
     public var policies: [PasswordCharacterPolicy] = [.ContainsUppercase, .ContainsLowercase, .ContainsNumbers, .ContainsBasicSymbols]
-    
-    public var wordCount: Int = 4
-    
+        
     // MARK: Initializers
     
     override init() {
@@ -35,12 +33,11 @@ public class Password: NSObject {
         regenerate(ignoresSimilarity: ignoresSimilarity)
     }
     
-    init(passphraseWithWordCount count: Int, forPolicies policies: [PasswordCharacterPolicy], withMinLength lengthMin: Int, withMaxLength lengthMax: Int, withInterests interests: [Interest] = [], usingPreferredWords preferredWords: [String:Int] = [:]) {
+    init(forPolicies policies: [PasswordCharacterPolicy], withMinLength lengthMin: Int, withMaxLength lengthMax: Int, withInterests interests: [Interest] = [], usingPreferredWords preferredWords: [String:Int] = [:]) {
         super.init()
         self.policies = policies
         minLength = lengthMin
         maxLength = lengthMax
-        wordCount = count
         regeneratePassphrase(withInterests: interests, usingPreferredWords: preferredWords)
     }
     
@@ -61,14 +58,19 @@ public class Password: NSObject {
     public func regeneratePassphrase(withInterests interests: [Interest] = [], usingPreferredWords preferredWords: [String:Int] = [:]) {
         
         let queue = DispatchQueue(label: "Password.regeneratePassphrase", attributes: .concurrent)
+        let minWordCount = 3 + (minLength / 10)
+        let maxWordCount = 3 + (maxLength / 10)
         var validPasswords: [String] = []
         var passwordIterationCount: Int = 0
         
         log("Begin passphrase generation.")
         repeat {
+            let wordCount = cSRandomNumber(from: minWordCount, to: maxWordCount)
+            let wordMinLength = ((minLength - (wordCount - 1)) / wordCount) - 1
+            let wordMaxLength = ((maxLength - (wordCount - 1) / wordCount)) - 1
             
             // Always concurrently generate 4 passwords for checking
-            DispatchQueue.concurrentPerform(iterations: 16) { _ in
+            DispatchQueue.concurrentPerform(iterations: 16) { i in
                 
                 var newPassword: String = ""
                 var wordsToInclude: [String] = []
@@ -78,7 +80,7 @@ public class Password: NSObject {
                     
                     repeat {
                         let randomWord: String = builtInWords[cSRandomNumber(to: builtInWords.count)]
-                        if randomWord.count >= minLength / wordCount && randomWord.count <= maxLength / wordCount {
+                        if randomWord.count >= wordMinLength && randomWord.count <= wordMaxLength {
                             wordToAppend = randomWord
                         }
                     } while wordToAppend == ""
@@ -127,6 +129,7 @@ public class Password: NSObject {
                 if policies.contains(.ContainsNumbers) {
                     newPassword = leetified(newPassword)
                 }
+                print("\(newPassword) -> \(newPassword.count)")
                 
                 queue.async(flags: .barrier) {
                     if self.acceptability(ofPassword: newPassword) && newPassword.count >= self.minLength && newPassword.count <= self.maxLength {
