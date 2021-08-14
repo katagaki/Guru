@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class GeneratorTableViewController: UITableViewController, UITextViewDelegate, HandlesCellButton, HandlesCellSliderValueChange {
     
@@ -51,7 +52,14 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
         basicPassword.regeneratePassphrase()
         enhancedPassword.minLength = Int(averagePasswordLength <= 18 ? averagePasswordLength : averagePasswordLength - 10)
         enhancedPassword.maxLength = Int(averagePasswordLength + 10)
-        enhancedPassword.regeneratePassphrase()
+        if let userProfile = userProfile {
+            enhancedPassword.regeneratePassphrase(withInterests: enhancedSelectedInterests,
+                                                  usingPreferredWords: defaults.bool(forKey: "Feature.Personalization.Intelligence") ?
+                                                  userProfile.preferredWords :
+                                                    [:])
+        } else {
+            enhancedPassword.regeneratePassphrase()
+        }
         customPassword.minLength = 8
         customPassword.maxLength = 8
         customPassword.regenerate()
@@ -138,9 +146,9 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
                 }
                 log("Creating new enhanced password with policy: \(policies).")
                 if averagePasswordLength > 0.0 {
-                    enhancedPassword = Password(forPolicies: policies, withMinLength: Int(averagePasswordLength) - 4, withMaxLength: Int(averagePasswordLength) + 4)
+                    enhancedPassword.policies = policies
                 } else {
-                    enhancedPassword = Password(forPolicies: [.ContainsUppercase, .ContainsLowercase, .ContainsBasicSymbols], withMinLength: 8, withMaxLength: 16)
+                    enhancedPassword.policies = [.ContainsUppercase, .ContainsLowercase, .ContainsBasicSymbols]
                 }
                 
                 // Configure enhanced mode interests
@@ -299,11 +307,11 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
             switch indexPath.row {
             case 0:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "PasswordTextFieldCell") as! TextInputWithCopyCell
-                cell.textView.font = UIFontMetrics(forTextStyle: .largeTitle).scaledFont(for: UIFont(name: "Menlo", size: 16.0)!)
+                cell.textView.font = UIFontMetrics(forTextStyle: .body).scaledFont(for: UIFont(name: "Menlo", size: 16.0)!)
                 switch segmentControl.selectedSegmentIndex {
-                case 0: cell.textView.text = basicPassword.generated
-                case 1: cell.textView.text = enhancedPassword.generated
-                case 2: cell.textView.text = customPassword.generated
+                case 0: cell.textView.attributedText = attributedPassword(basicPassword.generated)
+                case 1: cell.textView.attributedText = attributedPassword(enhancedPassword.generated)
+                case 2: cell.textView.attributedText = attributedPassword(customPassword.generated)
                 default: break
                 }
                 cell.buttonHandler = self
@@ -775,12 +783,18 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
     
     func updatePasswordCell() {
         if let passwordCell = tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as? TextInputWithCopyCell {
+            var currentPassword: String = ""
+            
+            // Get the current password
             switch segmentControl.selectedSegmentIndex {
-            case 0: passwordCell.textView.text = basicPassword.generated
-            case 1: passwordCell.textView.text = enhancedPassword.generated
-            case 2: passwordCell.textView.text = customPassword.generated
-            default: passwordCell.textView.text = ""
+            case 0: currentPassword = basicPassword.generated
+            case 1: currentPassword = enhancedPassword.generated
+            case 2: currentPassword = customPassword.generated
+            default: currentPassword = ""
             }
+            
+            // Make attributed string
+            passwordCell.textView.attributedText = attributedPassword(currentPassword)
         }
     }
     
@@ -803,6 +817,41 @@ class GeneratorTableViewController: UITableViewController, UITextViewDelegate, H
         if floatingPasswordLabel.text == "" {
             floatingPasswordLabel.text = "-"
         }
+    }
+    
+    func attributedPassword(_ password: String) -> NSAttributedString {
+        let charactersInPassword = Array(password)
+        let attributedText = NSMutableAttributedString(string: password)
+        
+        for i in 0..<charactersInPassword.count {
+            let char: Character = charactersInPassword[i]
+            let range: NSRange = NSRange(location: i, length: 1)
+            switch true {
+            case char.isUppercase:
+                let font: UIFont = UIFontMetrics(forTextStyle: .body).scaledFont(for: UIFont(name: "Menlo", size: 16.0)!)
+                let color: UIColor = .systemIndigo
+                attributedText.addAttribute(NSAttributedString.Key.font, value: font, range: range)
+                attributedText.addAttribute(NSAttributedString.Key.foregroundColor, value: color, range: range)
+            case char.isLowercase:
+                let font: UIFont = UIFontMetrics(forTextStyle: .body).scaledFont(for: UIFont(name: "Menlo", size: 16.0)!)
+                let color: UIColor = .systemBlue
+                attributedText.addAttribute(NSAttributedString.Key.font, value: font, range: range)
+                attributedText.addAttribute(NSAttributedString.Key.foregroundColor, value: color, range: range)
+            case char.isNumber:
+                let font: UIFont = UIFontMetrics(forTextStyle: .body).scaledFont(for: UIFont(name: "Menlo", size: 16.0)!)
+                let color: UIColor = .systemRed
+                attributedText.addAttribute(NSAttributedString.Key.font, value: font, range: range)
+                attributedText.addAttribute(NSAttributedString.Key.foregroundColor, value: color, range: range)
+            default:
+                let font: UIFont = UIFontMetrics(forTextStyle: .body).scaledFont(for: UIFont(name: "Menlo", size: 16.0)!)
+                let color: UIColor = .systemOrange
+                attributedText.addAttribute(NSAttributedString.Key.font, value: font, range: range)
+                attributedText.addAttribute(NSAttributedString.Key.foregroundColor, value: color, range: range)
+            }
+        }
+        
+        return attributedText
+        
     }
     
 }
