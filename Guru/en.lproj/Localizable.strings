@@ -245,8 +245,8 @@
 "Step3" = "Step 3";
 "Step4" = "Step 4";
 "GuruStep1" = "Open your browser, then unlock the Guru extension by clicking on the Guru icon on the menu bar.";
-"GuruStep2" = "Click 'Settings', then click 'Import/Export'.";
-"GuruStep3" = "Click 'Export to Guru', then save the file and transfer it to a location you can access on your iPhone, or AirDrop it to your iPhone directly.";
+"GuruStep2" = "Click 'Account', then scroll down to 'Import/Export'.";
+"GuruStep3" = "Click 'Export', then save the file and transfer it to a location you can access on your iPhone, or AirDrop it to your iPhone directly.";
 "GuruStep4" = "Tap 'Select File...' below and select the saved file to import your logins.";
 "EdgeStep1" = "Open Microsoft Edge, then go to edge://settings/passwords.";
 "EdgeStep2" = "Scroll down to 'Saved Passwords', then click on the ... button.";
