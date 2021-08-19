@@ -41,13 +41,13 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate, Fini
         // Set images for tab bar based on iOS version
         if #available(iOS 15.0, *) {
             log("Setting tab bar images for iOS 15 and above.")
-            tabBar.items![0].image = UIImage(systemName: "exclamationmark.shield")
+            tabBar.items![0].image = UIImage(systemName: "exclamationmark.shield.fill")
             tabBar.items![0].selectedImage = UIImage(systemName: "exclamationmark.shield.fill")
-            tabBar.items![1].image = UIImage(systemName: "key")
+            tabBar.items![1].image = UIImage(systemName: "key.fill")
             tabBar.items![1].selectedImage = UIImage(systemName: "key.fill")
-            tabBar.items![2].image = UIImage(systemName: "ellipsis.rectangle")
+            tabBar.items![2].image = UIImage(systemName: "ellipsis.rectangle.fill")
             tabBar.items![2].selectedImage = UIImage(systemName: "ellipsis.rectangle.fill")
-            tabBar.items![3].image = UIImage(systemName: "gearshape")
+            tabBar.items![3].image = UIImage(systemName: "gearshape.fill")
             tabBar.items![3].selectedImage = UIImage(systemName: "gearshape.fill")
         } else if #available(iOS 14.0, *) {
             log("Setting tab bar images for iOS 14.")

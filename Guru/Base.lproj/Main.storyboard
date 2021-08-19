@@ -920,7 +920,7 @@
         <scene sceneID="HND-zH-Pa0">
             <objects>
                 <navigationController id="gik-XB-7Ww" customClass="LoginsNavigationController" customModule="Guru" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Logins" image="key" catalog="system" selectedImage="key.fill" id="V5s-UB-Dpe"/>
+                    <tabBarItem key="tabBarItem" title="Logins" image="key.fill" catalog="system" selectedImage="key.fill" id="V5s-UB-Dpe"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Fx5-sY-Cec">
                         <rect key="frame" x="0.0" y="44" width="390" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -999,17 +999,17 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="PasswordTextFieldCell" id="ZuU-eS-BeK" customClass="TextInputWithCopyCell" customModule="Guru" customModuleProvider="target">
-                                <rect key="frame" x="20" y="212.9999942779541" width="350" height="267.66665649414062"/>
+                                <rect key="frame" x="20" y="212.9999942779541" width="350" height="268.66665649414062"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZuU-eS-BeK" id="bgQ-Yl-fqG">
-                                    <rect key="frame" x="0.0" y="0.0" width="350" height="267.66665649414062"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="350" height="268.66665649414062"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="4gB-cC-yHz">
-                                            <rect key="frame" x="20" y="0.0" width="310" height="267.66666666666669"/>
+                                            <rect key="frame" x="20" y="0.0" width="310" height="268.66666666666669"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" keyboardDismissMode="onDrag" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cd8-LR-oro" customClass="CenteredTextView" customModule="Guru" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="230.66666666666666" height="267.66666666666669"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="230.66666666666666" height="268.66666666666669"/>
                                                     <color key="textColor" systemColor="labelColor"/>
                                                     <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="new-password"/>
@@ -1018,7 +1018,7 @@
                                                     </connections>
                                                 </textView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hts-8J-qtM">
-                                                    <rect key="frame" x="246.66666666666671" y="0.0" width="63.333333333333343" height="267.66666666666669"/>
+                                                    <rect key="frame" x="246.66666666666671" y="0.0" width="63.333333333333343" height="268.66666666666669"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <state key="normal" image="square.on.square" catalog="system"/>
                                                     <connections>
@@ -1043,7 +1043,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RegenerateCell" textLabel="opn-W5-5jd" style="IBUITableViewCellStyleDefault" id="ggu-G7-7kA">
-                                <rect key="frame" x="20" y="480.66665077209473" width="350" height="43.666667938232422"/>
+                                <rect key="frame" x="20" y="481.66665077209473" width="350" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ggu-G7-7kA" id="iHL-AC-mdr">
                                     <rect key="frame" x="0.0" y="0.0" width="350" height="43.666667938232422"/>
@@ -1060,7 +1060,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CharacterCountCell" id="dLl-Iw-jCd" customClass="SliderCell" customModule="Guru" customModuleProvider="target">
-                                <rect key="frame" x="20" y="524.33331871032715" width="350" height="81.333335876464844"/>
+                                <rect key="frame" x="20" y="525.33331871032715" width="350" height="81.333335876464844"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dLl-Iw-jCd" id="eAt-79-Jqv">
                                     <rect key="frame" x="0.0" y="0.0" width="350" height="81.333335876464844"/>
@@ -1119,7 +1119,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="OptionCell" textLabel="PZz-Tp-1be" detailTextLabel="CBx-kt-tUu" style="IBUITableViewCellStyleSubtitle" id="evH-rb-Gfh">
-                                <rect key="frame" x="20" y="605.66665458679199" width="350" height="49.666667938232422"/>
+                                <rect key="frame" x="20" y="606.66665458679199" width="350" height="49.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="evH-rb-Gfh" id="bWh-G7-bdt">
                                     <rect key="frame" x="0.0" y="0.0" width="350" height="49.666667938232422"/>
@@ -1143,7 +1143,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="InterestCell" textLabel="fUC-Wf-eV1" detailTextLabel="zGr-sB-7oB" style="IBUITableViewCellStyleSubtitle" id="8WQ-8F-B1a">
-                                <rect key="frame" x="20" y="655.33332252502441" width="350" height="49.666667938232422"/>
+                                <rect key="frame" x="20" y="656.33332252502441" width="350" height="49.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8WQ-8F-B1a" id="CnT-5d-gfI">
                                     <rect key="frame" x="0.0" y="0.0" width="350" height="49.666667938232422"/>
@@ -1167,7 +1167,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="NoInterestsCell" textLabel="ucN-Lj-7mY" style="IBUITableViewCellStyleDefault" id="dPV-Gz-4NL">
-                                <rect key="frame" x="20" y="704.99999046325684" width="350" height="55.666667938232422"/>
+                                <rect key="frame" x="20" y="705.99999046325684" width="350" height="55.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dPV-Gz-4NL" id="mEh-3Z-u0x">
                                     <rect key="frame" x="0.0" y="0.0" width="350" height="55.666667938232422"/>
@@ -1210,7 +1210,7 @@
             <objects>
                 <navigationController id="gaE-VR-Mgg" customClass="GenerateNavigationController" customModule="Guru" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Generate" id="Hr0-ji-51e">
-                        <imageReference key="image" image="ellipsis.rectangle" catalog="system"/>
+                        <imageReference key="image" image="ellipsis.rectangle.fill" catalog="system"/>
                         <imageReference key="selectedImage" image="ellipsis.rectangle.fill" catalog="system"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Qtz-cJ-m3h">
@@ -1746,7 +1746,7 @@
         <scene sceneID="g23-q0-l9g">
             <objects>
                 <navigationController id="k8M-ke-6GE" customClass="SettingsNavigationController" customModule="Guru" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" image="gearshape" catalog="system" selectedImage="gearshape.fill" id="gpK-Gf-ndg"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="gearshape.fill" catalog="system" selectedImage="gearshape.fill" id="gpK-Gf-ndg"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="duV-ZE-A5H">
                         <rect key="frame" x="0.0" y="44" width="390" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -4418,7 +4418,7 @@
                 <navigationController id="xeX-II-Pan" customClass="AlertsNavigationController" customModule="Guru" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Alerts" id="D3c-u5-1oU">
                         <imageReference key="image" image="exclamationmark.shield.fill" catalog="system"/>
-                        <imageReference key="selectedImage" image="exclamationmark.shield" catalog="system"/>
+                        <imageReference key="selectedImage" image="exclamationmark.shield.fill" catalog="system"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="FxE-6B-6LC">
                         <rect key="frame" x="0.0" y="44" width="390" height="96"/>
@@ -5017,20 +5017,17 @@
         <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="doc.badge.plus" catalog="system" width="119" height="128"/>
         <image name="doc.plaintext" catalog="system" width="115" height="128"/>
-        <image name="ellipsis.rectangle" catalog="system" width="128" height="81"/>
         <image name="ellipsis.rectangle.fill" catalog="system" width="128" height="81"/>
         <image name="exclamationmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="exclamationmark.shield" catalog="system" width="128" height="118"/>
         <image name="exclamationmark.shield.fill" catalog="system" width="128" height="118"/>
         <image name="exclamationmark.triangle" catalog="system" width="128" height="112"/>
-        <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="hand.raised" catalog="system" width="128" height="128"/>
         <image name="hand.wave" catalog="system" width="128" height="128"/>
         <image name="heart.text.square" catalog="system" width="128" height="114"/>
         <image name="hourglass" catalog="system" width="102" height="128"/>
         <image name="icloud" catalog="system" width="128" height="88"/>
-        <image name="key" catalog="system" width="86" height="128"/>
         <image name="key.fill" catalog="system" width="83" height="128"/>
         <image name="keyboard" catalog="system" width="128" height="79"/>
         <image name="lock.doc" catalog="system" width="115" height="128"/>
