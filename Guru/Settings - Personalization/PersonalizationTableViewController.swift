@@ -96,13 +96,10 @@ class PersonalizationTableViewController: UITableViewController {
         case 2:
             let cell = tableView.cellForRow(at: indexPath)!
             switch indexPath.row {
-            case 0:
-                featureUnavailableAlert(self)
-                defaults.set(false, forKey: "Feature.Personalization.ProfileInfo")
-                //defaults.set(!(cell.accessoryType == .checkmark), forKey: "Feature.Personalization.ProfileInfo")
-            case 1: defaults.set(!(cell.accessoryType == .checkmark), forKey: "Feature.Personalization.Interests")
-            case 2: defaults.set(!(cell.accessoryType == .checkmark), forKey: "Feature.Personalization.Habits")
-            case 3: defaults.set(!(cell.accessoryType == .checkmark), forKey: "Feature.Personalization.Intelligence")
+//            case 0: defaults.set(!(cell.accessoryType == .checkmark), forKey: "Feature.Personalization.ProfileInfo")
+            case 0: defaults.set(!(cell.accessoryType == .checkmark), forKey: "Feature.Personalization.Interests")
+            case 1: defaults.set(!(cell.accessoryType == .checkmark), forKey: "Feature.Personalization.Habits")
+            case 2: defaults.set(!(cell.accessoryType == .checkmark), forKey: "Feature.Personalization.Intelligence")
             default: break
             }
             tableView.reloadRows(at: [indexPath], with: .none)
