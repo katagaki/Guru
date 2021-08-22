@@ -17,9 +17,7 @@ You may need to update the packages in the Swift Package Manager as well before 
 
 ## To-Do
 
-- Implement Basic and Enhanced password transformation features.
+- Implement Online Sources feature.
 - Implement adding of new logins from AutoFill.
-- Implement password questionnaire during onboarding.
-- Change Automatically Learned Knowledge to Online Sources.
 - Make import progress stick on all views.
 - Make breach detection report progress.
