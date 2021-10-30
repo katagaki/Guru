@@ -1,10 +1,6 @@
 # Guru
 Intelligent password manager for iOS
 
-## About
-
-You can learn more about Guru on [the Guru website](https://mypwd.guru). The website also contains links to TestFlight, and a list of changes and known issues.
-
 ## Compiling
 
 To compile Guru, open the project in Guru, you will need to prepare:
