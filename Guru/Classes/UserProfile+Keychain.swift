@@ -35,7 +35,7 @@ extension UserProfile {
         case .none:
             log("Setting biometry mode to None for user profile keychain.")
             keychain = Keychain(service: keychainServiceName, accessGroup: keychainAccessGroup).accessibility(.whenUnlocked, authenticationPolicy: .devicePasscode)
-        @unknown default:
+        default:
             log("Setting biometry mode to Unknown for user profile keychain.")
             keychain = Keychain(service: keychainServiceName, accessGroup: keychainAccessGroup).accessibility(.always, authenticationPolicy: .applicationPassword)
         }

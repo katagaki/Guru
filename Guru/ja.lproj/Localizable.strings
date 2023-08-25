@@ -51,8 +51,8 @@
 "ExportLogins" = "アカウントをエクスポート";
 "AppLock" = "画面ロック";
 "BreachDetection" = "情報漏洩検出";
-"ThirdPartyLibraries" = "著作権情報";
-"UnderTheHood" = "システムオプション";
+"ThirdPartyLibraries" = "著者権表記";
+"UnderTheHood" = "内部オプション";
 
 /* Alerts */
 "AlertsExplainer" = "下にスワイプすると、メールアドレスとパスワードを自動的に検出されます。";
@@ -169,8 +169,8 @@
 "GetSupport" = "お問合せ";
 "FAQs" = "よくある質問";
 "Acknowledgements" = "謝辞";
-"Debug" = "システムオプション";
-"ThirdPartyLibraries" = "著作権情報";
+"Debug" = "アプリログ";
+"ThirdPartyLibraries" = "著作権表記";
 "LockApp" = "画面をロック";
 "Version" = "バージョン@$1、ビルド@$2";
 
@@ -244,10 +244,6 @@
 "Step2" = "ステップ 2";
 "Step3" = "ステップ 3";
 "Step4" = "ステップ 4";
-"GuruStep1" = "ブラウザーを開き、メニューバーのGuruアイコンをクリックし、解除します。";
-"GuruStep2" = "「設定」をクリックし、「読み込む・書き出す」をクリックします。";
-"GuruStep3" = "「Guruアプリに書き出す」をクリックし、保存先を選択してからiPhoneに転送します。転送するには、クラウドストレージまたはAirDropでできます。";
-"GuruStep4" = "下の「ファイルを選択...」を選択し、書き出したファイルを選択します。";
 "EdgeStep1" = "Microsoft Edgeアプリを開き、edge://settings/passwordsを開きます。";
 "EdgeStep2" = "「保存されたパスワード」にスクロールし、「…」ボタンをクリックします。";
 "EdgeStep3" = "「パスワードをエクスポート」を選択し、保存先を選択してからiPhoneに転送します。転送するには、クラウドストレージまたはAirDropでできます。";

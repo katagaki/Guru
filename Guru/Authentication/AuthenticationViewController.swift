@@ -43,7 +43,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, Repor
                     log("No biometrics supported on this device. Configuring view for passcode.")
                     contentLabel.text = NSLocalizedString("UsePasswordToUnlock", comment: "Authentication")
                     unlockButton.setImage(UIImage(systemName: "key"), for: .normal)
-                @unknown default:
+                default:
                     contentLabel.text = NSLocalizedString("UseBiometricsToUnlock", comment: "Authentication")
                     unlockButton.setImage(UIImage(systemName: "figure.stand"), for: .normal)
                 }

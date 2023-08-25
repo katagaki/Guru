@@ -73,7 +73,7 @@ class AppLockTableViewController: UITableViewController {
             case .faceID: cell.titleLabel.text = NSLocalizedString("AppLockFaceIDExplainer", comment: "AppLock")
             case .touchID: cell.titleLabel.text = NSLocalizedString("AppLockTouchIDExplainer", comment: "AppLock")
             case .none: cell.titleLabel.text = ""
-            @unknown default: cell.titleLabel.text = ""
+            default: cell.titleLabel.text = ""
             }
             return cell
         case 1:
@@ -82,7 +82,7 @@ class AppLockTableViewController: UITableViewController {
             case .faceID: cell.textLabel?.text = NSLocalizedString("UseFaceID", comment: "AppLock")
             case .touchID: cell.textLabel?.text = NSLocalizedString("UseTouchID", comment: "AppLock")
             case .none: cell.textLabel?.text = NSLocalizedString("UsePasscode", comment: "AppLock")
-            @unknown default: cell.textLabel?.text = NSLocalizedString("UseBiometrics", comment: "AppLock")
+            default: cell.textLabel?.text = NSLocalizedString("UseBiometrics", comment: "AppLock")
             }
             switch isChangingSettings {
             case true:

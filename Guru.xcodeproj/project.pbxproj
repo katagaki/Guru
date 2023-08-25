@@ -73,7 +73,7 @@
 		E4CEAC3E26A2E9B60067796E /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4ED9FE92660AAF1003919C7 /* AuthenticationServices.framework */; };
 		E4CEAC4126A2E9B60067796E /* CredentialProviderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CEAC4026A2E9B60067796E /* CredentialProviderViewController.swift */; };
 		E4CEAC4426A2E9B60067796E /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4CEAC4226A2E9B60067796E /* MainInterface.storyboard */; };
-		E4CEAC4926A2E9B60067796E /* AutoFill.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E4CEAC3D26A2E9B60067796E /* AutoFill.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E4CEAC4926A2E9B60067796E /* AutoFill.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E4CEAC3D26A2E9B60067796E /* AutoFill.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E4CEAC4D26A2EAB60067796E /* DetailWithImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EABA082657F33E0054F310 /* DetailWithImageCell.swift */; };
 		E4CEAC4E26A2EACB0067796E /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EABA0B2657F39C0054F310 /* RoundedImageView.swift */; };
 		E4CEAC5926A304200067796E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E4C3CCC126903CB50020942F /* Localizable.strings */; };
@@ -190,15 +190,15 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E4ED9FFF2660B06E003919C7 /* Embed App Extensions */ = {
+		E4ED9FFF2660B06E003919C7 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				E4CEAC4926A2E9B60067796E /* AutoFill.appex in Embed App Extensions */,
+				E4CEAC4926A2E9B60067796E /* AutoFill.appex in Embed Foundation Extensions */,
 			);
-			name = "Embed App Extensions";
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -676,7 +676,7 @@
 				E4EAB9EA2657E59C0054F310 /* Sources */,
 				E4EAB9EB2657E59C0054F310 /* Frameworks */,
 				E4EAB9EC2657E59C0054F310 /* Resources */,
-				E4ED9FFF2660B06E003919C7 /* Embed App Extensions */,
+				E4ED9FFF2660B06E003919C7 /* Embed Foundation Extensions */,
 				E4593CE02668F39C001DF782 /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -702,8 +702,9 @@
 		E4EAB9E62657E59C0054F310 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1300;
-				LastUpgradeCheck = 1250;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					E4CEAC3C26A2E9B60067796E = {
 						CreatedOnToolsVersion = 13.0;
@@ -981,7 +982,7 @@
 				INFOPLIST_FILE = AutoFill/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = AutoFill;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1011,7 +1012,7 @@
 				INFOPLIST_FILE = AutoFill/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = AutoFill;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1032,6 +1033,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -1066,6 +1068,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1080,7 +1083,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1094,6 +1097,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -1128,6 +1132,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1136,7 +1141,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1156,15 +1161,15 @@
 				CODE_SIGN_ENTITLEMENTS = Guru/Guru.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 27;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = YYM4Z6MU8F;
 				INFOPLIST_FILE = Guru/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = 0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yorigami.Guru;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1183,15 +1188,15 @@
 				CODE_SIGN_ENTITLEMENTS = Guru/Guru.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 27;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = YYM4Z6MU8F;
 				INFOPLIST_FILE = Guru/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = 0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yorigami.Guru;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

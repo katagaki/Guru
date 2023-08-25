@@ -97,7 +97,7 @@ public class Password: NSObject {
                         return a.value >= b.value
                     })
                     let wordSelected: String = (cSRandomNumber(to: 10) >= 3 ?
-                                                sortedPreferredWords!.prefix(upTo: 10).randomElement()!.key :
+                                                sortedPreferredWords![0..<min(10, sortedPreferredWords!.count)].randomElement()!.key :
                                                     sortedPreferredWords!.randomElement()!.key)
                     wordsToInclude[cSRandomNumber(to: wordsToInclude.count)] = wordSelected
                 }

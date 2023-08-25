@@ -41,14 +41,14 @@ class WelcomeToGuruViewController: OnboardingViewController, SFSafariViewControl
     // MARK: Interface Builder
     
     @IBAction func openTOS(_ sender: Any) {
-        let safariViewController = SFSafariViewController(url: URL(string: "https://mypwd.guru/terms")!)
+        let safariViewController = SFSafariViewController(url: URL(string: "about:blank")!)
         safariViewController.delegate = self
         safariViewController.modalPresentationStyle = .pageSheet
         present(safariViewController, animated: true)
     }
     
     @IBAction func openPrivacyPolicy(_ sender: Any) {
-        let safariViewController = SFSafariViewController(url: URL(string: "https://mypwd.guru/privacy")!)
+        let safariViewController = SFSafariViewController(url: URL(string: "about:blank")!)
         safariViewController.delegate = self
         safariViewController.modalPresentationStyle = .pageSheet
         present(safariViewController, animated: true)

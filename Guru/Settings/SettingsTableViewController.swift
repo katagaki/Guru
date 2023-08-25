@@ -46,7 +46,7 @@ class SettingsTableViewController: UITableViewController, SFSafariViewController
             case 0: return 1
             case 1: return 3
             case 2: return 2
-            case 3: return 3
+            case 3: return 1
             case 4: return 1
             case 5: return 0
             default: return 0
@@ -117,12 +117,12 @@ class SettingsTableViewController: UITableViewController, SFSafariViewController
             let cell = tableView.dequeueReusableCell(withIdentifier: "SettingItemCell") as! DetailWithImageCell
             switch indexPath.row {
             case 0:
-                cell.iconView.image = UIImage(named: "SE.Support")
-                cell.titleLabel.text = NSLocalizedString("GetSupport", comment: "Settings")
-            case 1:
-                cell.iconView.image = UIImage(named: "SE.FAQ")
-                cell.titleLabel.text = NSLocalizedString("FAQs", comment: "Settings")
-            case 2:
+//                cell.iconView.image = UIImage(named: "SE.Support")
+//                cell.titleLabel.text = NSLocalizedString("GetSupport", comment: "Settings")
+//            case 1:
+//                cell.iconView.image = UIImage(named: "SE.FAQ")
+//                cell.titleLabel.text = NSLocalizedString("FAQs", comment: "Settings")
+//            case 2:
                 cell.iconView.image = UIImage(named: "SE.Debug")
                 cell.titleLabel.text = NSLocalizedString("Debug", comment: "Settings")
             default: break
@@ -162,14 +162,6 @@ class SettingsTableViewController: UITableViewController, SFSafariViewController
         case 3:
             switch indexPath.row {
             case 0:
-                let safariViewController = SFSafariViewController(url: URL(string: "https://mypwd.guru/support")!)
-                safariViewController.delegate = self
-                present(safariViewController, animated: true)
-            case 1:
-                let safariViewController = SFSafariViewController(url: URL(string: "https://mypwd.guru/faqs")!)
-                safariViewController.delegate = self
-                present(safariViewController, animated: true)
-            case 2:
                 performSegue(withIdentifier: "OpenDebug", sender: tableView.cellForRow(at: indexPath)!)
             default: break
             }

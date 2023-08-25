@@ -38,28 +38,15 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate, Fini
         URLSession.shared.configuration.timeoutIntervalForResource = 1.5
         URLSession.shared.configuration.waitsForConnectivity = false
         
-        // Set images for tab bar based on iOS version
-        if #available(iOS 15.0, *) {
-            log("Setting tab bar images for iOS 15 and above.")
-            tabBar.items![0].image = UIImage(systemName: "exclamationmark.shield.fill")
-            tabBar.items![0].selectedImage = UIImage(systemName: "exclamationmark.shield.fill")
-            tabBar.items![1].image = UIImage(systemName: "key.fill")
-            tabBar.items![1].selectedImage = UIImage(systemName: "key.fill")
-            tabBar.items![2].image = UIImage(systemName: "ellipsis.rectangle.fill")
-            tabBar.items![2].selectedImage = UIImage(systemName: "ellipsis.rectangle.fill")
-            tabBar.items![3].image = UIImage(systemName: "gearshape.fill")
-            tabBar.items![3].selectedImage = UIImage(systemName: "gearshape.fill")
-        } else if #available(iOS 14.0, *) {
-            log("Setting tab bar images for iOS 14.")
-            tabBar.items![0].image = UIImage(named: "Tab.Alerts")
-            tabBar.items![0].selectedImage = UIImage(named: "Tab.Alerts.Selected")
-            tabBar.items![1].image = UIImage(named: "Tab.Logins")
-            tabBar.items![1].selectedImage = UIImage(named: "Tab.Logins.Selected")
-            tabBar.items![2].image = UIImage(named: "Tab.Generator")
-            tabBar.items![2].selectedImage = UIImage(named: "Tab.Generator.Selected")
-            tabBar.items![3].image = UIImage(named: "Tab.Settings")
-            tabBar.items![3].selectedImage = UIImage(named: "Tab.Settings.Selected")
-        }
+        // Set images for tab bar
+        tabBar.items![0].image = UIImage(systemName: "exclamationmark.shield.fill")
+        tabBar.items![0].selectedImage = UIImage(systemName: "exclamationmark.shield.fill")
+        tabBar.items![1].image = UIImage(systemName: "key.fill")
+        tabBar.items![1].selectedImage = UIImage(systemName: "key.fill")
+        tabBar.items![2].image = UIImage(systemName: "ellipsis.rectangle.fill")
+        tabBar.items![2].selectedImage = UIImage(systemName: "ellipsis.rectangle.fill")
+        tabBar.items![3].image = UIImage(systemName: "gearshape.fill")
+        tabBar.items![3].selectedImage = UIImage(systemName: "gearshape.fill")
         
         // Localization
         viewControllers![0].title = NSLocalizedString("AlertsTab", comment: "Tabs")

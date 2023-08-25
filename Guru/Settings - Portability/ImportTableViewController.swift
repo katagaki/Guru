@@ -26,11 +26,10 @@ class ImportTableViewController: UITableViewController {
         case "ShowImportLogins":
             if let sender = sender as? UITableViewCell, let destination = segue.destination as? ImportLoginsTableViewController {
                 switch tableView.indexPath(for: sender)!.row {
-                case 0: destination.guideCode = "Guru"
-                case 1: destination.guideCode = "Edge"
-                case 2: destination.guideCode = "Chrome"
-                case 3: destination.guideCode = "Safari"
-                case 4: destination.guideCode = "OnePassword"
+                case 0: destination.guideCode = "Edge"
+                case 1: destination.guideCode = "Chrome"
+                case 2: destination.guideCode = "Safari"
+                case 3: destination.guideCode = "OnePassword"
                 default: break
                 }
             }
@@ -72,7 +71,7 @@ class ImportTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0: return 1
-        case 1: return 4
+        case 1: return 3
         case 2: return 2
         default: return 0
         }
@@ -100,15 +99,12 @@ class ImportTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ImportSourceCell") as! DetailWithImageCell
             switch indexPath.row {
             case 0:
-                cell.titleLabel.text = "Guru"
-                cell.iconView.image = UIImage(named: "AppIcon")
-            case 1:
                 cell.titleLabel.text = "Microsoft Edge"
                 cell.iconView.image = UIImage(named: "PM.Edge")
-            case 2:
+            case 1:
                 cell.titleLabel.text = "Google Chrome"
                 cell.iconView.image = UIImage(named: "PM.Chrome")
-            case 3:
+            case 2:
                 cell.titleLabel.text = "Safari"
                 cell.iconView.image = UIImage(named: "PM.Safari")
             default: break
